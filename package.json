@@ -1,0 +1,27 @@
+{
+  "name": "itsmyfavourite",
+  "version": "1.0.0",
+  "description": "A REACT app that used REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
+  "main": "index.js",
+  "dependencies": {
+    "npx": "^10.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chelle77322/ItsMyFavourite.git"
+  },
+  "keywords": [
+    "GooglePlaces",
+    "Favourites"
+  ],
+  "author": "Michelle Hall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Chelle77322/ItsMyFavourite/issues"
+  },
+  "homepage": "https://github.com/Chelle77322/ItsMyFavourite#readme"
+}
