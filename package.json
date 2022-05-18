@@ -4,9 +4,11 @@
   "description": "A REACT app that used REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
   "main": "index.js",
   "dependencies": {
-    "npx": "^10.2.2"
+    "@reduxjs/toolkit": "^1.8.1",
+    "npx": "^3.0.0",
+    "react-redux": "^8.0.1",
+    "redux": "^4.2.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -23,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/Chelle77322/ItsMyFavourite/issues"
   },
-  "homepage": "https://github.com/Chelle77322/ItsMyFavourite#readme"
+  "homepage": "https://github.com/Chelle77322/ItsMyFavourite#readme",
+  "devDependencies": {
+    "@redux-devtools/core": "^3.12.0"
+  }
 }
