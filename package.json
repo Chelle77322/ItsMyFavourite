@@ -1,17 +1,17 @@
 {
   "name": "itsmyfavourite",
   "version": "1.0.0",
-  "description": "A REACT app that used REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
+  "description": "A REACT app that uses REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
   "main": "index.js",
   "scripts": {
-    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev && NODE_OPTIONS = '--experimental-specifier-resolution=node' node itsmyfavourite/src/index.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev && NODE_OPTIONS = '--experimental-specifier-resolution=node' node favourite/src/index.js",
     "transpile": "babel ./server --out-dir dist-server",
     "start:prod": "node server.js",
-    "start:dev": "concurrently \"nodemon --ignore 'itsmyfavourite/*'\" \"npm run itsmyfavourite\"",
-    "itsmyfavourite": "cd itsmyfavourite && npm run start",
+    "start:dev": "concurrently \"nodemon --ignore 'favourite/*'\" \"npm run favourite\"",
+    "favourite": "cd favourite && npm run start",
     "seed": "node seeders/seed.js",
-    "install": "cd itsmyfavourite && npm install",
-    "build": "cd itsmyfavourite && npm run build",
+    "install": "cd favourite && npm install",
+    "build": "cd favourite && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
