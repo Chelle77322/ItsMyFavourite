@@ -19,10 +19,11 @@ export default [
             exact: true
             },
             {
-            path: '/favourites/:id',
+            path: '/favourite/:id',
             ...LandingPage
             },
             {
+                path: '/favourite/',
                 ...PageMiss
             }
         ]

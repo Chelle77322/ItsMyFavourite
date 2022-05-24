@@ -17,7 +17,7 @@ delete window.__PRELOADED_STATE__;
 const store = configureStore(favouriteApp, state, applyMiddleware(thunk));
 
 ReactDOM.hydrate(
-  <Provider store={store}>
+  <Provider store = {store}>
     <BrowserRouter>
     <div>{renderRoutes(Routes)}</div>
     <App />

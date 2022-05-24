@@ -16,6 +16,16 @@ const config = {
   // We don't serve bundle.js for server, so we can use dynamic external imports
   externals: [webpackNodeExternals()],
 
+  //fallbacks webpack
+  fallback: {
+    "zlib": require.resolve("browserify-zlib"),
+    "querystring": require.resolve("querystring-es3"),
+    "path-browserify": require.resolve("path-browserify"),
+    "url": require.resolve("url"),
+    "stream-browserify": require.resolve("stream-browserify"),
+    "crypto": require.resolve("crypto")
+  },
+
   // Tell webpack where to put the output file
   // that is generated
   output: {

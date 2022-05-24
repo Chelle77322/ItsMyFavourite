@@ -26,11 +26,11 @@ function handleRender(request, result) {
  
 
   // Create a new Redux store instance
-  const store = configureStore(favouriteApp)
+  const store = configureStore(favouriteApp);
 
   // Render the component to a string
   const html = renderToString(
-    <Provider store={store}>
+    <Provider store = { store }>
       <App/>
     </Provider>
   )

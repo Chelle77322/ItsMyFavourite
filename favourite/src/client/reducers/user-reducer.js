@@ -1,4 +1,5 @@
 /* eslint-disable default-case */
+import { Navigate } from 'react-router';
 import {Types} from '../actions/types.js';
 const initialState = {
     user: {
@@ -10,7 +11,7 @@ const initialState = {
     formSubmitted: false
 }
 const userReducer = (state = initialState,action) => {
-    switch(action.type){
+    switch (action.type) {
         case Types.REGISTER_SUCCESS:
             console.log('register', action.payload.user)
             return {
@@ -37,7 +38,7 @@ const userReducer = (state = initialState,action) => {
                 user: action.payload.user,
                 formSubmitted: false
             }
-    case Types.FORM_SUBMITTION_STATUS: 
+    case Types.FORM_SUBMITTITION_STATUS: 
     return {
         ...state,
         formSubmitted: action.payload.status

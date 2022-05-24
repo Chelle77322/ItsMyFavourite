@@ -14,7 +14,12 @@ module.exports = {
     main: './itsmyfavourite/src/index.js'
   },
   fallback:{
-    "url": require.resolve("url/")
+    "url": require.resolve("url/"),
+    "zlib": require.resolve("browserify-zlib"),
+    "querystring": require.resolve("querystring-es3"),
+    "path-browserify": require.resolve("path-browserify"),
+    "stream-browserify": require.resolve("stream-browserify"),
+    "crypto": require.resolve("crypto")
   },
   devServer: {
     inline: true
