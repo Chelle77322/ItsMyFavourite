@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-lone-blocks */
 import React from 'react';
-import * as ReactDOMClient from 'react-dom/client';
+import * as ReactDOMClient from 'react-dom-client';
 import { Provider} from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
