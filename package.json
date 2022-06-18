@@ -35,5 +35,9 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.3.0",
     "sass": "^1.52.3"
+  },
+  "engines": {
+    "npm":"8.12.1",
+    "node": "118.3.0"
   }
 }
