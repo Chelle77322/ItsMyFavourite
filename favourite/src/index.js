@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-import '@babel/polyfill';
+import 'core-js';
 import express from 'express';
 import React from 'react';
-import {matchRoutes} from 'react-router-config';
+import {matchRoutes, renderRoutes} from 'react-router-config';
 import compression from './helpers/helper';
 import configureStore from './store/store';
 import Routes from './client/Routes';

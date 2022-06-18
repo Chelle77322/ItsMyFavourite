@@ -1,5 +1,4 @@
 /* eslint-disable default-case */
-import { Navigate } from 'react-router';
 import {Types} from '../actions/types.js';
 const initialState = {
     user: {

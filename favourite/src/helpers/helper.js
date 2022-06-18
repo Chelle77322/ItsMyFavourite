@@ -8,10 +8,10 @@ import { Helmet } from 'react-helmet';
 import Routes from '../client/Routes';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (req, store, context) => {
+export default (request, store, context) => {
   const content = renderToString(
     <Provider store={store}>
-      <BrowserRouter location={req.path} context={context}>
+      <BrowserRouter location={request.path} context={context}>
         <div>{renderRoutes(Routes)}</div>
       </BrowserRouter>
     </Provider>

@@ -1,6 +1,7 @@
 //import path from 'path'
 import Express from 'express'
 import React from 'react'
+import ReactDOMServer from 'react-dom-server'
 import { configureStore} from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
 import favouriteApp from './reducers'
