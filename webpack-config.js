@@ -1,104 +1,78 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-lone-blocks */
-import React from 'react';
-import * as ReactDOMClient from 'react-dom-client';
-import { Provider} from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import store  from "./App/store";
-import {App}  from "./App/App";
-{
-module.exports = {
-  entry: {
-  output: {
-    path: path.join (__dirname, '...', 'build'),
-  publicPath: '/favourite/public/index.html',
-libraryTarget: "commonjs2" },
-target: 'node',
-externals: {
-  express: 'express',
-},
-  
-    main: './itsmyfavourite/src/index.js'
-  },
-  fallback:{
-    "url": require.resolve("url/"),
-    "zlib": require.resolve("browserify-zlib"),
-    "querystring": require.resolve("querystring-es3"),
-    "path-browserify": require.resolve("path-browserify"),
-    "stream-browserify": require.resolve("stream-browserify"),
-    "crypto": require.resolve("crypto")
-  },
-  devServer: {
-    inline: true
-  },
-  output: {
-    filename: 'bundle.js',
-    path: './public/scripts'
-  },
-  devtool: 'sourcemap',
+const path = require('path');
+const nodeExternals = require('webpack-node-externals');
+const commont = {
   module: {
-    loaders: [
-        {
-        test: /\.(js|jsx)?$/,
-        exclude: /node_modules/,
-        loaders: 'babel-loader'
-    },
+    rules: [
       {
-          query: {
-           presets: ['es2015', 'react']
+        test: /\.jsx?$/,
+        loader: 'core-jsx',
+        include: [path.resolve(__dirname, 'src')],
+        query: {
+          presets: ['es2015', 'react'],
         },
-        "plugins": [
-            "transform-es2015-modules-commonjs",
-            "transform-react-constant-elements",
-         ]
-    },
-  {
-      test: /\.tsx?$/, 
-      exclude: /node_modules/,
-      loaders: ["awesome-typescript-loader"]
-      },
-      {
-        test: /\.s?css$/,
-        exclude: /node_modules/,
-        loaders: ["style","css", "sass"]
       },
     ],
-    
-    
-    preLoaders: [
-      // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { test: /\.js$/, loader: "source-map-loader" }
-  ]
-},
-
-  alias: {
-    // Other aliases
-    redux: require.resolve("redux"),
-  }
+  },
 };
-}
+const clientConfig = {
+  ...common,
+  mode: 'development',
+  name: 'client',
+  target: 'web',
 
+  entry: {
+    client: [
+      '@core-jsx',
+      './src/client/client.js',
+    ],
+  },
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: '[name].js',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: module => /node_modules.test/.test(module.resource),
+          enforce: true,
+        },
+      },
+    },
+  },
+  devtool: 'cheap-module-source-map',
+  
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+  },
+};
+const serverConfig = {
+  ...common,
+  mode: 'development',
+  name: 'server',
+  target: 'node',
+  externals: [nodeExternals()],
 
-// eslint-disable-next-line no-undef
-index.js
-
-const container = document.getElementById('app');
-const app = ReactDOMClient.createRoot(container);
-
-
-app.render (
-    <React.StrictMode>
-    
-    <Provider store = {store}>
-        <React.StrictMode>
-     <BrowserRouter>  
-        <App/>
-        </BrowserRouter>
-        </React.StrictMode>
-    </Provider>,
-    </React.StrictMode>
-   
-);
-
+  entry: {
+    server: ['@core-jsx', path.resolve(__dirname,'server.js')]
+  },
+  output: {
+    path: path.resolve(__dirname, 'build'),
+    filename: 'server.js',
+  },
+  devtool: 'cheap-module-source-map',
+  
+  node: {
+    console: false,
+    global: false,
+    process: false,
+    Buffer: false,
+    __filename: false,
+    __dirname: false,
+  },
+};
+module.exports = [clientConfig, serverConfig];

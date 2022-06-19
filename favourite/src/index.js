@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import 'core-js';
-import express from 'express';
-import React from 'react';
+import * as express from 'express';
+import * as React from 'react';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import compression from './helpers/helper';
 import configureStore from './store/store';

@@ -1,7 +1,7 @@
 //import path from 'path'
 import  * as React from 'react';
 import  * as Express from 'express';
-//import * as ReactDOMServer from 'react-dom-server'
+import * as ReactDOMServer from 'react-dom/server'
 import { configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import favouriteApp from './reducers';
@@ -22,7 +22,7 @@ app.use('/static', Express.static('static'))
 app.use(handleRender)
 
 // We are going to fill these out in the sections to follow
-import { renderToString } from 'react-dom/server'
+import { renderToString } from 'ReactDOMServer'
 function handleRender(request, result) {
  
 
