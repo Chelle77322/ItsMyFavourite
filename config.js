@@ -1,4 +1,4 @@
 const config = {
-    API_KEY: 'enter-your-api-key'
+    API_KEY: 'AIzaSyCY5w-AX1oTVcgh8TXFrn2nBCbsKTIBr4M'
   };
   export default config;

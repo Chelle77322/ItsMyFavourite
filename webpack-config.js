@@ -11,6 +11,15 @@ import {App}  from "./App/App";
 {
 module.exports = {
   entry: {
+  output: {
+    path: path.join (__dirname, '...', 'build'),
+  publicPath: '/favourite/public/index.html',
+libraryTarget: "commonjs2" },
+target: 'node',
+externals: {
+  express: 'express',
+},
+  
     main: './itsmyfavourite/src/index.js'
   },
   fallback:{

@@ -1,12 +1,12 @@
 //import path from 'path'
-import Express from 'express'
-import React from 'react'
-import * as ReactDOMServer from 'react-dom-server'
-import { configureStore} from '@reduxjs/toolkit'
-import { Provider } from 'react-redux'
-import favouriteApp from './reducers'
+import  * as React from 'react';
+import  * as Express from 'express';
+//import * as ReactDOMServer from 'react-dom-server'
+import { configureStore} from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import favouriteApp from './reducers';
 
-import App from './containers/App'
+import App from './favourite/src/App';
 
 const app = Express()
 const port = process.env.port || 3031
@@ -27,14 +27,7 @@ function handleRender(request, result) {
  
 
   // Create a new Redux store instance
-  const store = configureStore(favouriteApp);
-
-  // Render the component to a string
-  const html = renderToString(
-    <Provider store = { store }>
-      <App/>
-    </Provider>
-  )
+  const { store, html } = newFunction()
 
   // Grab the initial state from our Redux store
   const preloadedState = store.getState()
@@ -42,6 +35,18 @@ function handleRender(request, result) {
   // Send the rendered page back to the client
   result.send(renderFullPage(html, preloadedState))
   
+
+  function newFunction() {
+    const store = configureStore(favouriteApp)
+
+    // Render the component to a string
+    const html = renderToString(
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+    return { store, html }
+  }
 }
 function renderFullPage(html, preloadedState) {
     return `

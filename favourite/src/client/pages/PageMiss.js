@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PageMiss = ({ staticContext = {} }) => {
+function PageMiss({ staticContext = {} }) {
   staticContext.notFound = true;
   return (
     <div className="ui container">
@@ -9,7 +9,7 @@ const PageMiss = ({ staticContext = {} }) => {
       <p>We seemed to have misplaced your favourites</p>
     </div>
   );
-};
+}
 
 PageMiss.propTypes = {
   staticContext: PropTypes.objectOf(PropTypes.any)

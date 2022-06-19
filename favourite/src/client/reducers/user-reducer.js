@@ -9,40 +9,40 @@ const initialState = {
     },
     formSubmitted: false
 }
-const userReducer = (state = initialState,action) => {
+function userReducer(state = initialState, action) {
     switch (action.type) {
         case Types.REGISTER_SUCCESS:
-            console.log('register', action.payload.user)
+            console.log('register', action.payload.user);
             return {
                 ...state,
                 user: action.payload.user,
                 formSubmitted: false
-            }
+            };
         case Types.REGISTER_FAIL:
-        console.log('register', action.payload.user)
-        return{
-            ...state,
-            user: action.payload.user,
-            formSubmitted: false
-        }
-        case Types.LOGIN_SUCCESS:
-            console.log('login', action.payload.user)
+            console.log('register', action.payload.user);
             return {
-            user: action.payload.user,
-            formSubmitted: false
-            }
-        case Types.LOGIN_FAIL:
-            console.log('login', action.payload.user)
-            return{
+                ...state,
                 user: action.payload.user,
                 formSubmitted: false
-            }
-    case Types.FORM_SUBMITTITION_STATUS: 
-    return {
-        ...state,
-        formSubmitted: action.payload.status
-    }
-    default: return state;
+            };
+        case Types.LOGIN_SUCCESS:
+            console.log('login', action.payload.user);
+            return {
+                user: action.payload.user,
+                formSubmitted: false
+            };
+        case Types.LOGIN_FAIL:
+            console.log('login', action.payload.user);
+            return {
+                user: action.payload.user,
+                formSubmitted: false
+            };
+        case Types.FORM_SUBMITTITION_STATUS:
+            return {
+                ...state,
+                formSubmitted: action.payload.status
+            };
+        default: return state;
     }
 
 }
