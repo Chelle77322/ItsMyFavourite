@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import merge from 'webpack-merge';
 import webpackNodeExternals from 'webpack-node-externals';
-import initialConfig from './webpack.config.js';
+import * as webpackConfig from './webpack-config';
 
 const config = {
   // Inform webpack that we're building a bundle
@@ -20,7 +20,7 @@ const config = {
   fallback: {
     "zlib": require.resolve("browserify-zlib"),
     "querystring": require.resolve("querystring-es3"),
-    "path-browserify": require.resolve("path-browserify"),
+    "path-browserify": require.resolve(false),
     "url": require.resolve("url"),
     "stream-browserify": require.resolve("stream-browserify"),
     "crypto": require.resolve("crypto")
@@ -34,4 +34,4 @@ const config = {
   }
 };
 
-export default merge(initialConfig, config);
+export default merge(webpackConfig, config);

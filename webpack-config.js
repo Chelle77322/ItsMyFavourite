@@ -1,12 +1,12 @@
-const path = require('path');
-const nodeExternals = require('webpack-node-externals');
-const commont = {
+import { resolve } from 'path';
+import nodeExternals from 'webpack-node-externals';
+const common = {
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         loader: 'core-jsx',
-        include: [path.resolve(__dirname, 'src')],
+        include: [resolve(__dirname, 'src')],
         query: {
           presets: ['es2015', 'react'],
         },
@@ -27,7 +27,8 @@ const clientConfig = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build'),
+    
     filename: '[name].js',
   },
   optimization: {
@@ -58,10 +59,10 @@ const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@core-jsx', path.resolve(__dirname,'server.js')]
+    server: ['@core-jsx', resolve(__dirname,'server.js')]
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build'),
     filename: 'server.js',
   },
   devtool: 'cheap-module-source-map',
@@ -75,4 +76,20 @@ const serverConfig = {
     __dirname: false,
   },
 };
-module.exports = [clientConfig, serverConfig];
+
+  mix.webpackConfig({ 
+    resolve: {
+      fallback: {
+         "stream": false,
+         "zlib": false,
+         "stream": require.resolve("stream-browserify"),
+         "zlib": require.resolve("browserify-zlib"),
+         "net": require.resolve ("net-browserify"),
+         "path": require.resolve("path-browserify"),
+
+      },
+    },
+  });
+
+
+export default [clientConfig, serverConfig, webpackConfig];

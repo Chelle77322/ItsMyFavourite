@@ -26,9 +26,13 @@
     "axios": "^0.27.2",
     "core-js": "^3.23.1",
     "express": "^4.18.1",
+    "express-ws": "^5.0.2",
     "gh-pages": "^4.0.0",
     "if-env": "^1.0.4",
     "mongoose": "^6.4.0",
+    "net": "^1.0.2",
+    "net-browserify": "^0.2.4",
+    "path-browserify": "^1.0.1",
     "plugin": "^0.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -37,7 +41,8 @@
     "react-redux": "^8.0.2",
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.3.0",
-    "sass": "^1.52.3"
+    "sass": "^1.52.3",
+    "webpack": "^5.73.0"
   },
   "engines": {
     "npm": "8.12.2",

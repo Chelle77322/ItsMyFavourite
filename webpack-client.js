@@ -1,11 +1,11 @@
 import { resolve } from 'path';
 import merge from 'webpack-merge';
-import initialConfig from './webpack-config';
+import * as webpackConfig from './webpack-config';
 
 const config = {
   mode: 'development',
   // Tell webpack to root file of our server app
-  entry: './src/client.js',
+  entry: './src/index.js',
 
   // Tell webpack where to put output file
   output: {
@@ -15,4 +15,4 @@ const config = {
   devtool: 'inline-source-map'
 };
 
-export default merge(initialConfig, config);
+export default merge(webpackConfig, config);

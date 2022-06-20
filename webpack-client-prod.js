@@ -3,8 +3,7 @@ import { resolve } from 'path';
 import merge from 'webpack-merge';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
-import initialConfig from './webpack-config';
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+import * as webpackConfig from './webpack-config';
 
 const config = {
   mode: 'production',
@@ -34,7 +33,7 @@ const config = {
     ]
   },
   // Tell webpack to root file of our server app
-  entry: './src/client.js',
+  entry: './src/index.js',
 
   // Tell webpack where to put output file
   output: {
@@ -53,4 +52,4 @@ const config = {
   ]
 };
 
-export default merge(initialConfig, config);
+export default merge(webpackConfig,config);
