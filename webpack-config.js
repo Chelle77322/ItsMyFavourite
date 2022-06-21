@@ -1,5 +1,6 @@
 import { resolve } from 'path';
 import nodeExternals from 'webpack-node-externals';
+import * as HtmlWebpackPlugin from'html-webpack-plugin';
 const common = {
   module: {
     rules: [

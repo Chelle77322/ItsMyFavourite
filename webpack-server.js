@@ -20,7 +20,7 @@ const config = {
   fallback: {
     "zlib": require.resolve("browserify-zlib"),
     "querystring": require.resolve("querystring-es3"),
-    "path-browserify": require.resolve(false),
+    "path": require.resolve("apth-browserify-webpack"),
     "url": require.resolve("url"),
     "stream-browserify": require.resolve("stream-browserify"),
     "crypto": require.resolve("crypto")
