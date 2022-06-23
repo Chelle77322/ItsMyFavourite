@@ -10,7 +10,7 @@ export function fetchFavourites(query) {
             url = `https://maps.googleapis.com/maps/api/js?q=${query}?key=${config.API_KEY}&callback=initMap`;
 
         } else {
-            url = `https://maps.googleapis.com/maps&key = ${config.API_KEYAPI_KEY}`;
+            url = `https://maps.googleapis.com/maps&key = ${config.API_KEY}`;
         }
         const result = await axios.get(url);
         dispatch({

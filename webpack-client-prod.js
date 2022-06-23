@@ -1,8 +1,8 @@
-import { DefinePlugin } from 'webpack';
-import { resolve } from 'path';
-import merge from 'webpack-merge';
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
-import CompressionPlugin from 'compression-webpack-plugin';
+import { DefinePlugin } from 'webpack';//Check DefinePlugin 
+import { resolve } from 'path';//Install Path Plugin
+import merge from 'webpack-merge';//Install webpack - merge
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';//check installation
+import CompressionPlugin from 'compression-webpack-plugin';//check installation
 import * as webpackConfig from './webpack-config';
 
 const config = {
@@ -42,7 +42,7 @@ const config = {
   },
   devtool: 'inline-source-map',
   plugins: [
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),//uncommented this part
     new CompressionPlugin(),
     new DefinePlugin({
       'process.env': {

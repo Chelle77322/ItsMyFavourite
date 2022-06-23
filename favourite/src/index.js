@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import 'core-js';
-import * as express from 'express';
+import * as Express from 'express';
 import * as React from 'react';
 import {matchRoutes, renderRoutes} from 'react-router-config';
 import compression from './helpers/helper';
@@ -13,7 +13,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 
-const app = express();
+const app = Express();
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -34,7 +34,7 @@ app.use(
   })
 );
 const port = process.env.PORT || 3031
-app.use(express.static('public'));
+app.use(Express.static('public'));
 app.get('*', (request, result) => {
   const params = request.params[0].split('/');
   const id = params[2];

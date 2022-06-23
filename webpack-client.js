@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import merge from 'webpack-merge';
+import { resolve } from 'path';//Check Installation
+import merge from 'webpack-merge';//Check Installation
 import * as webpackConfig from './webpack-config';
 
 const config = {

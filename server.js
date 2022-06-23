@@ -1,7 +1,6 @@
-//import path from 'path'
+/* eslint-disable no-unused-vars */
 import  * as React from 'react';
 import  * as Express from 'express';
-import * as ReactDOMServer from 'react-dom/server'
 import { configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import favouriteApp from './reducers';
@@ -27,7 +26,7 @@ function handleRender(request, result) {
  
 
   // Create a new Redux store instance
-  const { store, html } = newFunction()
+  const { store, html } = renderStore()
 
   // Grab the initial state from our Redux store
   const preloadedState = store.getState()
@@ -36,7 +35,7 @@ function handleRender(request, result) {
   result.send(renderFullPage(html, preloadedState))
   
 
-  function newFunction() {
+  function renderStore() {
     const store = configureStore(favouriteApp)
 
     // Render the component to a string
@@ -53,7 +52,7 @@ function renderFullPage(html, preloadedState) {
       <!doctype html>
       <html>
         <head>
-          <title>My Favourites</title>
+          <title>It's My Favourite</title>
         </head>
         <body>
           <div id="root">${html}</div>

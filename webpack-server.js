@@ -1,5 +1,5 @@
-import { resolve } from 'path';
-import merge from 'webpack-merge';
+import { resolve } from 'path';//need to install
+import merge from 'webpack-merge';//check to see if installation is needed
 import webpackNodeExternals from 'webpack-node-externals';
 import * as webpackConfig from './webpack-config';
 

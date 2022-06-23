@@ -1,6 +1,6 @@
-import { resolve } from 'path';
+import { resolve } from 'path';//need to install
 import nodeExternals from 'webpack-node-externals';
-import * as HtmlWebpackPlugin from'html-webpack-plugin';
+import * as HtmlWebpackPlugin from'html-webpack-plugin';//need to install
 const common = {
   module: {
     rules: [
@@ -9,7 +9,7 @@ const common = {
         loader: 'core-jsx',
         include: [resolve(__dirname, 'src')],
         query: {
-          presets: ['es2015', 'react'],
+          presets: ['es2015', 'react'],//checks for es2015 and react
         },
       },
     ],
