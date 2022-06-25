@@ -24,3 +24,4 @@ function Html({ children, initialState, scripts }) {
     </html>
   );
 }
+export default Html;

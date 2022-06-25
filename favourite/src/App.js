@@ -1,26 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import * as React from 'react'
+import * as React from 'react';
+import {connect} from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Welcome to Its My Favourite
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-        Monkey Shoulder
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = ({initialText, changeText})=>(
+<div>
+  <p>{initialText}</p>
+  <button onClick={changeText}>Change Text!</button>
+  </div>
+);
+const mapStateToProps = ({initialText}) => ({initialText,});
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  changeText: () => dispatch({type: 'CHANGE_TEXT'}),
+});
+
+export default connect(mapStateToProps,mapDispatchToProps)(App);
