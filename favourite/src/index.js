@@ -12,7 +12,7 @@ import Html from './components/Html';
 import App from './App';
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'build/index.html')));
+app.use(express.static(path.join(__dirname, 'favourite/build/index.html')));
 
 app.get('/*', async (request, result) =>
 {

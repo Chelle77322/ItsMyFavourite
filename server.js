@@ -1,27 +1,49 @@
 /* eslint-disable no-unused-vars */
-import  * as React from 'react';
+/**All imports are here */
+import path from 'path';
+import  React from 'react';
+import { renderToString } from 'ReactDOMServer'
+import ReactDOMServer from 'react-dom/server';
 import  * as Express from 'express';
 import { configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
-import favouriteApp from './reducers';
-
+import favouriteApp from './favourite/src/client/reducers';
+import * as reducers from './favourite/src/client/reducers';
+import Html from './favourite/src/components/Html';
 import App from './favourite/src/App';
 
 const app = Express()
 const port = process.env.port || 3031
 
-if(process.env.NODE_ENV === 'production'){
-    use(Express(`${__dirname}/favourite/build/`));
-}
+/*if(process.env.NODE_ENV === 'production'){
+    use(Express(`${__dirname}/favourite/build/index.html`));
+}*/
 
 //Serve static files
-app.use('/static', Express.static('static'))
+app.use(Express.static(path.join(__dirname, '/favourite/build/')));
+
+app.get('*' ,async(request, result) => {
+  const scripts = ['vendor.js', 'client.js'];
+  const initialState = { initialText: "It's My favourite has been rendered on the server"};
+  const store = configureStore(reducers,initialState);
+  const appMarkup = ReactDOMServer.renderToString(
+    <Provider store = {store}>
+      <App  />
+    </Provider>
+  );
+  const html = ReactDOMServer.renderToStaticMarkup(<Html
+    children = {appMarkup}
+    scripts={scripts}
+    initialState={initialState}/>
+    );
+result.send(`<!doctype html ${html}`);
+});
 
 // This is fired every time the server side receives a request
 app.use(handleRender)
 
 // We are going to fill these out in the sections to follow
-import { renderToString } from 'ReactDOMServer'
+
 function handleRender(request, result) {
  
 
@@ -37,6 +59,7 @@ function handleRender(request, result) {
 
   function renderStore() {
     const store = configureStore(favouriteApp)
+    console.log(`${store}`);
 
     // Render the component to a string
     const html = renderToString(
@@ -71,4 +94,5 @@ function renderFullPage(html, preloadedState) {
   }
 
 app.listen(port)
+console.log("Listening on" `${port}`);
 

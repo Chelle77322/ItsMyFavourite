@@ -28,7 +28,7 @@ const clientConfig = {
     ],
   },
   output: {
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, '/favourite/build'),
     
     filename: '[name].js',
   },
@@ -63,7 +63,7 @@ const serverConfig = {
     server: ['@core-jsx', resolve(__dirname,'server.js')]
   },
   output: {
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname),
     filename: 'server.js',
   },
   devtool: 'cheap-module-source-map',
