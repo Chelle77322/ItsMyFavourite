@@ -30,7 +30,7 @@ const config = {
   // that is generated
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '/favourite/build')
+    path: resolve(__dirname, '/favourite/build/')
   }
 };
 

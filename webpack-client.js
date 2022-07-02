@@ -5,12 +5,12 @@ import * as webpackConfig from './webpack-config';
 const config = {
   mode: 'development',
   // Tell webpack to root file of our server app
-  entry: './src/index.js',
+  entry: 'server.js',
 
   // Tell webpack where to put output file
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '/favourite/public')
+    path: resolve(__dirname, '/favourite/build/')
   },
   devtool: 'inline-source-map'
 };

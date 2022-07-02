@@ -1,12 +1,11 @@
 import { resolve } from 'path';//need to install
 import nodeExternals from 'webpack-node-externals';
-import * as HtmlWebpackPlugin from'html-webpack-plugin';//need to install
 const common = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        loader: 'core-jsx',
+        test: /\.js?$/,
+        loader: 'core-js',
         include: [resolve(__dirname, 'src')],
         query: {
           presets: ['es2015', 'react'],//checks for es2015 and react
@@ -23,12 +22,12 @@ const clientConfig = {
 
   entry: {
     client: [
-      '@core-jsx',
-      './src/client/client.js',
+      '@core-js',
+      '/favourite/src/client/client.js',
     ],
   },
   output: {
-    path: resolve(__dirname, '/favourite/build'),
+    path: resolve(__dirname, '/favourite/build/'),
     
     filename: '[name].js',
   },
@@ -60,7 +59,7 @@ const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@core-jsx', resolve(__dirname,'server.js')]
+    server: ['@core-js', resolve(__dirname,'server.js')]
   },
   output: {
     path: resolve(__dirname),

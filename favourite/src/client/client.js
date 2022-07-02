@@ -1,3 +1,27 @@
+import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import {hydrate} from 'react-dom';
+import {configureStore,applyMiddleware} from '@reduxjs/toolkit';
+import thunk from 'redux-thunk';
+import {Provider} from 'react-redux';
+import userReducer from './reducers';
+import App from '../App';
+
+const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))
+delete window.__PRELOADED_STATE__
+
+hydrate(
+  <Provider store = {store}>
+    <BrowserRouter>
+    <div>{renderRoutes(Routes)}</div>
+    <App />
+    </BrowserRouter>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+console.log(store);
+/* SAVING FOR LATER
 import '@core-js';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
@@ -24,4 +48,4 @@ ReactDOM.hydrate(
     </BrowserRouter>
   </Provider>,
   document.getElementById('#app')
-)
+)*/
