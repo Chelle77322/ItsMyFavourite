@@ -1,6 +1,8 @@
 {
   "presets":[
-    "@core-js/preset-env"
+   
+    "@babel/preset-env",
+    "@babel/preset-react"
   
   ],
   
@@ -10,7 +12,8 @@
       "transform-decorators-legacy",
       "transform-react-display-name",
       "transform-es2015-modules-commonjs",
-      "transform-react-constant-elements"
+      "transform-react-constant-elements",
+      "@babel/plugin-syntax-jsx"
     ],
   
     "env": {

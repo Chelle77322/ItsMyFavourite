@@ -4,16 +4,26 @@ const common = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
-        loader: 'core-js',
-        include: [resolve(__dirname, 'src')],
-        query: {
-          presets: ['es2015', 'react'],//checks for es2015 and react
+        test: path.join(__dirname, '.'),
+        exclude: /(node_modules)/,
+        loader: 'babel-loader',
+    
+        options: {
+          presets: [
+                    'es2015', 'react', 
+                    '@babel/preset-env', 
+                    '@babel/preset-react',
+                    '@babel/react',
+                    {
+                      'plugins': ['@babel/plugin-proposal-class-properties']
+          }]
+          }
         },
+    ]
       },
-    ],
-  },
-};
+    
+  }
+
 const clientConfig = {
   ...common,
   mode: 'development',
@@ -22,7 +32,7 @@ const clientConfig = {
 
   entry: {
     client: [
-      '@core-js',
+      '@babel/preset-react',
       '/favourite/src/client/client.js',
     ],
   },
@@ -59,7 +69,7 @@ const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@core-js', resolve(__dirname,'server.js')]
+    server: ['@babel/preset-react', resolve(__dirname,'server.js')]
   },
   output: {
     path: resolve(__dirname),

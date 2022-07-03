@@ -8,7 +8,7 @@ import  * as Express from 'express';
 import { configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import favouriteApp from '../client/reducers';
-import { App } from '@/src/App';
+import * as App from '@/src/App';
 
 const app = Express()
 const port = process.env.port || 3000
@@ -28,7 +28,7 @@ function handleRender(request, result) {
   const html = renderToString(
 
     <Provider store = {store}>
-      <App />
+      <App.App />
     </Provider>
   )
   //Gets the initial state from Redux strore

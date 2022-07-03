@@ -5,17 +5,16 @@ import {configureStore,applyMiddleware} from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 import userReducer from './reducers';
-import App from '../App';
+import { App } from '@/src/App';
 
 const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))
 delete window.__PRELOADED_STATE__
 
 hydrate(
   <Provider store = {store}>
-    <BrowserRouter>
-    <div>{renderRoutes(Routes)}</div>
-    <App />
-    </BrowserRouter>
+   
+   
+   
     <App />
   </Provider>,
   document.getElementById('root')
