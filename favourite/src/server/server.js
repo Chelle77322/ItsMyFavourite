@@ -8,7 +8,7 @@ import  * as Express from 'express';
 import { configureStore} from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import favouriteApp from '../client/reducers';
-import * as App from '@/src/App';
+import * as App from '@/src/client/App';
 
 const app = Express()
 const port = process.env.port || 3000

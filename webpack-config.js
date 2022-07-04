@@ -1,22 +1,16 @@
-import { resolve } from 'path';//need to install
+import { resolve } from 'path';
 import nodeExternals from 'webpack-node-externals';
 const common = {
   module: {
     rules: [
       {
-        test: path.join(__dirname, '.'),
-        exclude: /(node_modules)/,
+        test: /\/jsx?$/,
+        exclude: /(node_modules|bower_components|public\/)/,
         loader: 'babel-loader',
-    
-        options: {
+          options: {
           presets: [
-                    'es2015', 'react', 
-                    '@babel/preset-env', 
-                    '@babel/preset-react',
-                    '@babel/react',
-                    {
-                      'plugins': ['@babel/plugin-proposal-class-properties']
-          }]
+                    '@babel/preset-env'
+                    ]
           }
         },
     ]

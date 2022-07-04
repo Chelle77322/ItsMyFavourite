@@ -1,19 +1,16 @@
 {
   "presets":[
-   
-    "@babel/preset-env",
-    "@babel/preset-react"
-  
+    "@babel/preset-env"
   ],
   
     "plugins": [
-      "transform-runtime",
-      "add-module-exports",
-      "transform-decorators-legacy",
-      "transform-react-display-name",
-      "transform-es2015-modules-commonjs",
-      "transform-react-constant-elements",
-      "@babel/plugin-syntax-jsx"
+     "add-module-exports",
+     "@babel/transform-react-display-name",
+     "@babel/plugin-transform-react-jsx",
+     "@babel/plugin-transform-modules-commonjs",
+     "@babel/transform-react-constant-elements",
+      "@babel/plugin-transform-runtime",
+      ["@babel/plugin-proposal-decorators", {"legacy": true}]
     ],
   
     "env": {
