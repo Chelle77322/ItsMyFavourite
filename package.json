@@ -11,7 +11,7 @@
   ],
   "homepage": "http://chelle77322.github.io/ItsMyFavourite/",
   "scripts": {
-    "build": "browserify ./src/client/client.js -o ./build/bundle.js -t babelify && babel ./src/ --out-dir ./build/",
+    "build": "browserify favourite/src/client/client.js -o ./build/bundle.js -t babelify && babel ./src/ --out-dir ./build/",
     "watch": "concurrently \"watchify ./src/client/client.js -o ./build/bundle.js -t babelify -v\" \"babel ./src/ --out-dir ./build/ --watch\"",
     "start": "nodemon ./build/server/server.js"
   },
