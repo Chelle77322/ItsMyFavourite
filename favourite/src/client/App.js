@@ -1,16 +1,35 @@
-import * as React from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
-const App = ({initialText, changeText})=>(
-<div>
-  <p>{initialText}</p>
-  <button onClick={changeText}>Change Text!</button>
-  </div>
-);
-const mapStateToProps = ({initialText}) => ({initialText,});
+import {getUsers} from './redux/selectors';
+import {usersFetched} from './redux/actions';
 
-const mapDispatchToProps = (dispatch) => ({
-  changeText: () => dispatch({type: 'CHANGE_TEXT'}),
-});
+const ENDPOINT = "http://localhost:3000/users.json";
 
-export default connect(mapStateToProps,mapDispatchToProps)(App);
+class App extends React.Component {
+  componentWillMount() {
+    const { users, fetchUsers} = this.props;
+
+    if (users === null) {
+      fetchUsers();
+    }
+  }
+  render () {
+    const {users} = this.props;
+    return (
+      <div>
+        {
+          users && users.length > 0 && users.map(({id,first_name: firstName, last_name: lastName}) => <p key = {id}> {`${firstName} ${ lastName}`}</p>
+          )
+        }
+      </div>
+    );
+  }
+}
+const ConnectedApp = connect(
+  state => ({ users: getUsers(state)}),
+  dispatch => ({
+    fetchUsers: async () => dispatch(usersFetched(await(await fetch(ENDPOINT)).json()))
+  })
+)(App);
+export default ConnectedApp;
