@@ -9,7 +9,8 @@ const common = {
         loader: 'babel-loader',
           options: {
           presets: [
-                    '@babel/preset-env'
+                    '@babel/preset-env',
+                    '@babedl/preset-react'
                     ]
           }
         },
