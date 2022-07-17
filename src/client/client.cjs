@@ -1,25 +1,32 @@
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import {hydrate} from 'react-dom';
+import ReactDOM from 'react-dom';
+//import { BrowserRouter } from 'react-router-dom';
+//import {hydrate} from 'react-dom';
 import {configureStore,applyMiddleware} from '@reduxjs/toolkit';
-import thunk from 'redux-thunk';
+//import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-import userReducer from './reducers/index.cjs';
+//import userReducer from './reducers/index.cjs';
 import { App } from './App.cjs';
 
-const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))
-delete window.__PRELOADED_STATE__
-
-hydrate(
-  <Provider store = {store}>
-   
-   
-   
+ReactDOM.render (
+  <Provider store = {configureStore() }>
     <App />
-  </Provider>,
-  document.getElementById('root')
+  </Provider>, document.querySelector('#content')
 );
-console.log(store);
+
+//const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))
+//delete window.__PRELOADED_STATE__
+
+//hydrate(
+//  <Provider store = {store}>
+   
+   
+   
+ //   <App />
+//  </Provider>,
+// document.getElementById('root')
+//);
+//console.log(store);
 /* SAVING FOR LATER
 import '@core-js';
 import * as React from 'react';

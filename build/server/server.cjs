@@ -12,7 +12,7 @@ var _express2 = _interopRequireDefault(_express);
 import ('isomorphic-fetch');
 import {getUsers} from '../client/redux/selectors.cjs'
 
-import _store from'../client/redux/store';
+import _store from'../client/redux/store.cjs';
 var _store2 = _interopRequireDefault(_store);
 
 import _App from'../client/App.cjs';

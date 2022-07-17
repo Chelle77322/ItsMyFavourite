@@ -5,13 +5,13 @@ var _reactDom = require('react-dom');
 var _reactDom2 = _interopRequireDefault(_reactDom);
 var _reactRedux = require('react-redux');
 
-var _App = require('./app.js/index.js');
+var _App = require('../client/app.cjs');
 var _App2 = _interopRequireDefault(_App);
 
-var _store = require('./redux/store');
+var _store = require('./redux/store.cjs');
 var _store2 = _interopRequireDefault(_store);
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj: {default: obj };}
+function _interopRequireDefault(object) { return object && object.__esModule ? object: {default: object };}
 
 _reactDom2.default.render(_react2.default.createElement(
    _reactRedux.Provider,

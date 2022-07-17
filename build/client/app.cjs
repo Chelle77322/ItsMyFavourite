@@ -32,10 +32,10 @@ var _createClass = function () {
     import _react from "react";
     var _react2 = _interopRequireDefault(_react);
     import { connect } from 'react-redux';
-    import { getUsers } from './redux/selectors';
-    import { usersFetched } from './actions';
+    import { getUsers } from './redux/selectors.cjs';
+    import { usersFetched } from './redux/actions.cjs';
 
-    function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj: {default: obj}; }
+    function _interopRequireDefault(object) { return object && object.__esModule ? object: {default: object}; }
 
     function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor))
     {

@@ -5,10 +5,11 @@ import  React from 'react';
 import { renderToString } from 'ReactDOMServer'
 import ReactDOMServer from 'react-dom/server';
 import  * as Express from 'express';
-import { configureStore} from '@reduxjs/toolkit';
+import { configureStore} from '../../build/client/redux/store.cjs';
 import { Provider } from 'react-redux';
 import favouriteApp from '../client/reducers';
 import * as App from '../client/App.js';
+import 'isomorphic-fetch';
 
 const app = Express()
 const port = process.env.port || 3000

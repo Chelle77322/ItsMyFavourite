@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Routes} from '../client/Routes.cjs'
 
 import {getUsers} from '../.././build/client/redux/selectors.cjs';
 import {usersFetched} from '../.././build/client/redux/actions.cjs';
@@ -21,7 +22,9 @@ class App extends React.Component {
         {
           users && users.length > 0 && users.map(({id,first_name: firstName, last_name: lastName}) => <p key = {id}> {`${firstName} ${ lastName}`}</p>
           )
+         
         }
+         console.log(users);
       </div>
     );
   }
