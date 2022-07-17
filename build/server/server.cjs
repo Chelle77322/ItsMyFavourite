@@ -15,7 +15,7 @@ import {getUsers} from '../client/redux/selectors.cjs'
 import _store from'../client/redux/store';
 var _store2 = _interopRequireDefault(_store);
 
-import _App from'../client/App.js';
+import _App from'../client/App.cjs';
 
 var _App2 = _interopRequireDefault(_App);
 

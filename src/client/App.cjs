@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import {getUsers} from '../client/redux/selectors';
-import {usersFetched} from '../client/redux/actions';
+import {getUsers} from '../.././build/client/redux/selectors.cjs';
+import {usersFetched} from '../.././build/client/redux/actions.cjs';
 
-const ENDPOINT = "http://localhost:3000/users.json";
+const ENDPOINT = "http://localhost:3000/data/users.json";
 
 class App extends React.Component {
   componentWillMount() {
@@ -29,7 +29,9 @@ class App extends React.Component {
 const ConnectedApp = connect(
   state => ({ users: getUsers(state)}),
   dispatch => ({
-    fetchUsers: async () => dispatch(usersFetched(await(await fetch(ENDPOINT)).json()))
+    fetchUsers: async () => {
+      return dispatch(usersFetched(await (await fetch(ENDPOINT)).json()))
+    }
   })
 )(App);
 export default ConnectedApp;

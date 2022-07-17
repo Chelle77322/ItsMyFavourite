@@ -1,5 +1,5 @@
 /* eslint-disable default-case */
-import {Types} from '../actions/types.js';
+import {Types} from '../actions/types.cjs';
 const initialState = {
     user: {
         email: "",
