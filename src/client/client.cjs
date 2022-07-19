@@ -1,12 +1,11 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 //import { BrowserRouter } from 'react-router-dom';
-//import {hydrate} from 'react-dom';
-import {configureStore,applyMiddleware} from '@reduxjs/toolkit';
+import configureStore from './redux/store.cjs';
 //import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
 //import userReducer from './reducers/index.cjs';
-import { App } from './App.cjs';
+import { App } from './App.jsx';
 
 ReactDOM.render (
   <Provider store = {configureStore() }>

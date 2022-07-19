@@ -1,64 +1,58 @@
 /* eslint-disable no-unused-vars */
 /**All imports are here */
-import path from 'path';
-import  React from 'react';
-import { renderToString } from 'ReactDOMServer'
+
+import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import  * as Express from 'express';
-import { configureStore} from '../../build/client/redux/store.cjs';
-import { Provider } from 'react-redux';
-import favouriteApp from '../client/reducers';
-import * as App from '../client/App.js';
+import { Provider } from 'react-redux/redux';
+import express from 'express';
 import 'isomorphic-fetch';
 
-const app = Express()
-const port = process.env.port || 3000
+import { getUsers } from '../client/redux/selectors';
+import { configureStore} from '../client/redux/store';
 
+import App from '../client/App.cjs';
 
-//Serve static files
-app.use('/static',Express.static('static'));
+const app = express();
 
-// This is fired every time the server side receives a request
-app.use(handleRender)
+app.use(express.static(__dirname + '/../'));
+app.use(express.static(__dirname + '/../../data'));
 
-//This function handles the Render
+app.get('*', (request, result) => {
+  const store = configureStore();
+  const unsubscribe = store.subscribe(() => {
+    const users = getUsers(store.getState());
 
-function handleRender(request, result) {
-  const store = configureStore(favouriteApp)
-  //Renders the component to a string
-  const html = renderToString(
-
-    <Provider store = {store}>
+    if (users !== null && users.length > 0)
+    {
+      unsubscribe();
+      result.set('Content-Type', 'text/html');
+      result.send(`
+        <html>
+          <head>
+            <title>App</title>
+            <style>
+              body {
+                font-size: 18px;
+                font-family: Verdana;
+              }
+            </style>
+          </head>
+          <body>
+            <div id="content">${ ReactDOMServer.renderToString(<Provider store={ store }><App /></Provider>) }</div>
+            <script>
+              window.__APP_STATE = ${ JSON.stringify(store.getState()) };
+            </script>
+            <script src="/bundle.js"></script>
+          </body>
+        </html>
+      `);
+    }
+  });
+  ReactDOMServer.renderToString(
+    <Provider store={store}>
       <App />
     </Provider>
-  )
-  //Gets the initial state from Redux strore
-  const preloadedState = store.getState()
-  //Sends the rendered page back to the client
-  result.send(renderFullPage(html, preloadedState))
-  console.log(result);
-}
+  );
+});
 
-//This function renders the full page from server to client
-function renderFullPage(html, preloadedState){
-  return `
-  <!doctype html>
-  <html>
-  <head>
-  <title>It's My Favourite</title>
-  </head>
-  <body>
-  <div id = "root>${html}</div>
-  <script>
-  window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g,'\\u003c')}
-  </script>
-  <script src = "/favourite/build/static/"></script>
-  </body>
-
-  </html>`
-}
-
-
-app.listen(port)
-console.log(port);
-
+app.listen(3000, () => console.loog('Its My Favourite is live on port 3000!'));

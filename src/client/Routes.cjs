@@ -6,7 +6,7 @@ import LandingPage from '../client/pages/LandingPage.cjs';
 //import MyFavourites from './pages/MyFavourites';
 //import GooglePlace from './pages/GooglePlace;'
 
-import App from '../client/App.cjs';
+import App from './App.jsx';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [

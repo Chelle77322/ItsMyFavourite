@@ -5,7 +5,7 @@ var _reactDom = require('react-dom');
 var _reactDom2 = _interopRequireDefault(_reactDom);
 var _reactRedux = require('react-redux');
 
-var _App = require('../client/app.cjs');
+var _App = require('../../src/client/App');
 var _App2 = _interopRequireDefault(_App);
 
 var _store = require('./redux/store.cjs');
