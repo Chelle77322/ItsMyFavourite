@@ -42,7 +42,7 @@ app.get('*', (request, result) => {
             <script>
               window.__APP_STATE = ${ JSON.stringify(store.getState()) };
             </script>
-            <script src="/bundle.js"></script>
+            <script src="/bundle.js></script>
           </body>
         </html>
       `);
@@ -55,4 +55,4 @@ app.get('*', (request, result) => {
   );
 });
 
-app.listen(3000, () => console.loog('Its My Favourite is live on port 3000!'));
+app.listen(3000, () => console.log('Its My Favourite is live on port 3000!'));

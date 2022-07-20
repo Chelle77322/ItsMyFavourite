@@ -10,7 +10,7 @@ const common = {
           options: {
           presets: [
                     '@babel/preset-env',
-                    '@babedl/preset-react'
+                    '@babel/preset-react'
                     ]
           }
         },
@@ -28,11 +28,11 @@ const clientConfig = {
   entry: {
     client: [
       '@babel/preset-react',
-      '/favourite/src/client/client.js',
+      '/src/client/client.cjs',
     ],
   },
   output: {
-    path: resolve(__dirname, '/favourite/build/'),
+    path: resolve(__dirname, '/build/'),
     
     filename: '[name].js',
   },
@@ -64,11 +64,11 @@ const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@babel/preset-react', resolve(__dirname,'server.js')]
+    server: ['@babel/preset-react', resolve(__dirname,'/server/server.cjs')]
   },
   output: {
     path: resolve(__dirname),
-    filename: 'server.js',
+    filename: 'server.cjs',
   },
   devtool: 'cheap-module-source-map',
   

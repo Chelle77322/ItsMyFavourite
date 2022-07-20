@@ -1,5 +1,5 @@
-import { resolve } from 'path';//Check Installation
-import merge from 'webpack-merge';//Check Installation
+import { resolve } from 'path';
+import merge from 'webpack-merge';
 import * as webpackConfig from './webpack-config.cjs';
 
 const config = {
@@ -10,7 +10,7 @@ const config = {
   // Tell webpack where to put output file
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '/favourite/build/')
+    path: resolve(__dirname, '/build/')
   },
   devtool: 'inline-source-map'
 };

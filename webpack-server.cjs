@@ -1,7 +1,7 @@
-import { resolve } from 'path';//need to install
-import merge from 'webpack-merge';//check to see if installation is needed
+import { resolve } from 'path';
+import merge from 'webpack-merge';
 import webpackNodeExternals from 'webpack-node-externals';
-import * as webpackConfig from './webpack-config';
+import * as webpackConfig from './webpack-config.cjs';
 
 const config = {
   // Inform webpack that we're building a bundle
@@ -12,7 +12,7 @@ const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: 'server.js',
+  entry: './server/server.cjs',
   // We don't serve bundle.js for server, so we can use dynamic external imports
   externals: [webpackNodeExternals()],
 
@@ -20,7 +20,7 @@ const config = {
   fallback: {
     "zlib": require.resolve("browserify-zlib"),
     "querystring": require.resolve("querystring-es3"),
-    "path": require.resolve("apth-browserify-webpack"),
+    "path": require.resolve("path-browserify-webpack"),
     "url": require.resolve("url"),
     "stream-browserify": require.resolve("stream-browserify"),
     "crypto": require.resolve("crypto")
@@ -30,7 +30,7 @@ const config = {
   // that is generated
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '/favourite/build/')
+    path: resolve(__dirname, '/build/')
   }
 };
 

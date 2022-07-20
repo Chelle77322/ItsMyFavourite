@@ -1,9 +1,9 @@
-import { DefinePlugin } from 'webpack';//Check DefinePlugin 
-import { resolve } from 'path';//Install Path Plugin
-import merge from 'webpack-merge';//Install webpack - merge
-import UglifyJSPlugin from 'uglifyjs-webpack-plugin';//check installation
-import CompressionPlugin from 'compression-webpack-plugin';//check installation
-import * as webpackConfig from './webpack-config';
+import { DefinePlugin } from 'webpack';
+import { resolve } from 'path';
+import merge from 'webpack-merge';
+import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+import * as webpackConfig from './webpack-config.cjs';
 
 const config = {
   mode: 'production',
@@ -38,7 +38,7 @@ const config = {
   // Tell webpack where to put output file
   output: {
     filename: 'bundle.js',
-    path: resolve(__dirname, '/favourite/build/')
+    path: resolve(__dirname, '/build/')
   },
   devtool: 'inline-source-map',
   plugins: [
