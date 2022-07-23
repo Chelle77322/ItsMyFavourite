@@ -1,10 +1,10 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 //import { BrowserRouter } from 'react-router-dom';
-import configureStore from './redux/store.cjs';
+import configureStore from './redux/store.js';
 //import thunk from 'redux-thunk';
 import {Provider} from 'react-redux';
-//import userReducer from './reducers/index.cjs';
+//import userReducer from './reducers/index.js';
 import { App } from './App.jsx';
 
 ReactDOM.render (

@@ -11,9 +11,9 @@
   ],
   "homepage": "http://chelle77322.github.io/ItsMyFavourite/",
   "scripts": {
-    "build": "browserify ./src/client/client.cjs -o ./build/bundle.js -t babelify && babel ./src/ --out-dir ./build/",
+    "build": "browserify ./src/client/client.js -o ./build/bundle.js -t babelify && babel ./src/ --out-dir ./build/",
     "watch": "concurrently \"watchify ./src/client/client.js -o ./build/bundle.js -t babelify -v\" \"babel ./src/ --out-dir ../build/ --watch\"",
-    "start": "nodemon ./build/server/server.cjs"
+    "start": "nodemon ./build/server/server.js"
   },
   "dependencies": {
     "@babel/helpers": "^7.18.9",
@@ -49,7 +49,7 @@
     "html-webpack-plugin": "^5.5.0",
     "if-env": "^1.0.4",
     "isomorphic-fetch": "^3.0.0",
-    "mongoose": "^6.4.5",
+    "mongoose": "^6.4.6",
     "net": "^1.0.2",
     "net-browserify": "^0.1.4",
     "path": "^0.12.7",
@@ -64,9 +64,10 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.3.0",
     "react-tap-event-plugin": "^1.0.0",
+    "redux-auth0": "^1.0.10",
     "rimraf": "^3.0.2",
     "rimraff": "^0.0.1-security",
-    "sass": "^1.53.0",
+    "sass": "^1.54.0",
     "unpipe": "^1.0.0",
     "watchify": "^4.0.0"
   },

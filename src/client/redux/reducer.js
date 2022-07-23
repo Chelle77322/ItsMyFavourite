@@ -1,4 +1,4 @@
-import { USERS_FETCHED } from './constants.cjs';
+import { USERS_FETCHED } from './constants.js';
 
 function getInitialState(){
     if (typeof window !== 'undefined' && window.__APP_STATE) {

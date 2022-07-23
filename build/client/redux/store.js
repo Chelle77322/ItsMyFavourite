@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = _interopRequireDefault(require("./constants"));
 
 var _reactRedux = require("react-redux");
 
-var _reducer = _interopRequireDefault(require("./reducer.cjs"));
+var _reducer = _interopRequireDefault(require("./reducer.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

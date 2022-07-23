@@ -1,6 +1,6 @@
 import { resolve } from 'path';
 import merge from 'webpack-merge';
-import * as webpackConfig from './webpack-config.cjs';
+import webpackConfig from './webpack-config.js';
 
 const config = {
   mode: 'development',

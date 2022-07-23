@@ -11,9 +11,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _selectors = require("./redux/selectors.cjs");
+var _selectors = require("./redux/selectors.js");
 
-var _actions = require("./redux/actions.cjs");
+var _actions = require("./redux/actions.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, "__esModule", {value: true });
 
-var _constants = require('./constants.cjs');
+import { USERS_FETCHED } from './constants.js';
 
 function getInitialState() {
     if (typeof window !== 'undefined' && window.__APP_STATE){
@@ -15,9 +15,10 @@ var reducer = function reducer() {
     getInitialState();
     var action = arguments[1];
 
-    if (action.type === _constants.USERS_FETCHED) {
+    if (action.type === USERS_FETCHED) {
         return { users: action.response.data };
     }
     return oldState;
 };
-exports.default = reducer;
+const _default = reducer;
+export { _default as default };

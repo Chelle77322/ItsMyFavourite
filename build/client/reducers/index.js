@@ -7,7 +7,7 @@ exports["default"] = void 0;
 
 var _redux = require("redux");
 
-var _userReducer = _interopRequireDefault(require("../reducers/user-reducer.cjs"));
+var _userReducer = _interopRequireDefault(require("../reducers/user-reducer.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

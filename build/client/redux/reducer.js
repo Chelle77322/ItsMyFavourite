@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = require("./constants.js");
 
 function getInitialState() {
   if (typeof window !== 'undefined' && window.__APP_STATE) {

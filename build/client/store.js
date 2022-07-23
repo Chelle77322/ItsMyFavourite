@@ -8,7 +8,7 @@ var _redux = require('redux');
 
 var _reducer = require('./reducer.cjs');
 
-var _reducer2 = interopRequireDefault(_reducer);
+var _reducer2 = _interopRequireDefault(_reducer);
 
 function _interopRequireDefault(object)
 {

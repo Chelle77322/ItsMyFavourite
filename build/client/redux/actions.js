@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.usersFetched = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = require("./constants.js");
 
 var usersFetched = function usersFetched(response) {
   return {

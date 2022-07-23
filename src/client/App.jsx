@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { getUsers } from './redux/selectors.cjs';
-import {usersFetched } from './redux/actions.cjs';
+import { getUsers } from './redux/selectors.js';
+import {usersFetched } from './redux/actions.js';
 
 const ENDPOINT = 'http://localhost:3000/users.json';
 

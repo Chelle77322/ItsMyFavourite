@@ -3,7 +3,7 @@ import { resolve } from 'path';
 import merge from 'webpack-merge';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
-import * as webpackConfig from './webpack-config.cjs';
+import webpackConfig from './webpack-config.js';
 
 const config = {
   mode: 'production',

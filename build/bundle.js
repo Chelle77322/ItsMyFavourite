@@ -36558,9 +36558,9 @@ var _react = _interopRequireDefault(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _selectors = require("./redux/selectors.cjs");
+var _selectors = require("./redux/selectors.js");
 
-var _actions = require("./redux/actions.cjs");
+var _actions = require("./redux/actions.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -36677,7 +36677,7 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
 var _default = ConnectedApp;
 exports["default"] = _default;
 
-},{"./redux/actions.cjs":57,"./redux/selectors.cjs":60,"react":44,"react-redux":27}],56:[function(require,module,exports){
+},{"./redux/actions.js":57,"./redux/selectors.js":60,"react":44,"react-redux":27}],56:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -36686,7 +36686,7 @@ var React = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _store = _interopRequireDefault(require("./redux/store.cjs"));
+var _store = _interopRequireDefault(require("./redux/store.js"));
 
 var _reactRedux = require("react-redux");
 
@@ -36700,7 +36700,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 //import { BrowserRouter } from 'react-router-dom';
 //import thunk from 'redux-thunk';
-//import userReducer from './reducers/index.cjs';
+//import userReducer from './reducers/index.js';
 _reactDom["default"].render( /*#__PURE__*/React.createElement(_reactRedux.Provider, {
   store: (0, _store["default"])()
 }, /*#__PURE__*/React.createElement(_App.App, null)), document.querySelector('#content')); //const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))
@@ -36742,7 +36742,7 @@ ReactDOM.hydrate(
   document.getElementById('#app')
 )*/
 
-},{"./App.jsx":55,"./redux/store.cjs":61,"react":44,"react-dom":8,"react-redux":27}],57:[function(require,module,exports){
+},{"./App.jsx":55,"./redux/store.js":61,"react":44,"react-dom":8,"react-redux":27}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36750,7 +36750,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.usersFetched = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = require("./constants.js");
 
 var usersFetched = function usersFetched(response) {
   return {
@@ -36761,7 +36761,7 @@ var usersFetched = function usersFetched(response) {
 
 exports.usersFetched = usersFetched;
 
-},{"./constants.cjs":58}],58:[function(require,module,exports){
+},{"./constants.js":58}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36779,7 +36779,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = require("./constants.js");
 
 function getInitialState() {
   if (typeof window !== 'undefined' && window.__APP_STATE) {
@@ -36807,7 +36807,7 @@ var reducer = function reducer() {
 var _default = reducer;
 exports["default"] = _default;
 
-},{"./constants.cjs":58}],60:[function(require,module,exports){
+},{"./constants.js":58}],60:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36830,11 +36830,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _constants = require("./constants.cjs");
+var _constants = _interopRequireDefault(require("./constants"));
 
 var _reactRedux = require("react-redux");
 
-var _reducer = _interopRequireDefault(require("./reducer.cjs"));
+var _reducer = _interopRequireDefault(require("./reducer.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -36844,4 +36844,4 @@ var _default = function _default() {
 
 exports["default"] = _default;
 
-},{"./constants.cjs":58,"./reducer.cjs":59,"react-redux":27}]},{},[56]);
+},{"./constants":58,"./reducer.js":59,"react-redux":27}]},{},[56]);

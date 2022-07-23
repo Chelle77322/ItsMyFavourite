@@ -6,7 +6,7 @@ var React = _interopRequireWildcard(require("react"));
 
 var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _store = _interopRequireDefault(require("./redux/store.cjs"));
+var _store = _interopRequireDefault(require("./redux/store.js"));
 
 var _reactRedux = require("react-redux");
 
@@ -20,7 +20,7 @@ function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && 
 
 //import { BrowserRouter } from 'react-router-dom';
 //import thunk from 'redux-thunk';
-//import userReducer from './reducers/index.cjs';
+//import userReducer from './reducers/index.js';
 _reactDom["default"].render( /*#__PURE__*/React.createElement(_reactRedux.Provider, {
   store: (0, _store["default"])()
 }, /*#__PURE__*/React.createElement(_App.App, null)), document.querySelector('#content')); //const store = configureStore(userReducer,window.__PRELOADED_STATE__,applyMiddleware(thunk))

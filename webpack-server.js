@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import merge from 'webpack-merge';
 import webpackNodeExternals from 'webpack-node-externals';
-import * as webpackConfig from './webpack-config.cjs';
+import webpackConfig from './webpack-config.js';
 
 const config = {
   // Inform webpack that we're building a bundle
@@ -12,7 +12,7 @@ const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: './server/server.cjs',
+  entry: './server/server.js',
   // We don't serve bundle.js for server, so we can use dynamic external imports
   externals: [webpackNodeExternals()],
 

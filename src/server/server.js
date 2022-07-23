@@ -10,7 +10,7 @@ import 'isomorphic-fetch';
 import { getUsers } from '../client/redux/selectors';
 import { configureStore} from '../client/redux/store';
 
-import App from '../client/App.cjs';
+import App from '../client/App';
 
 const app = express();
 

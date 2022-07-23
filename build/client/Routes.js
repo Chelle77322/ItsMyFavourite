@@ -5,11 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _Home = _interopRequireDefault(require("../client/pages/Home.cjs"));
+var _Home = _interopRequireDefault(require("./pages/Home.cjs"));
 
-var _PageMiss = _interopRequireDefault(require("../client/pages/PageMiss.cjs"));
+var _PageMiss = _interopRequireDefault(require("./pages/PageMiss.cjs"));
 
-var _LandingPage = _interopRequireDefault(require("../client/pages/LandingPage.cjs"));
+var _LandingPage = _interopRequireDefault(require("./pages/LandingPage.cjs"));
 
 var _App = _interopRequireDefault(require("./App.jsx"));
 

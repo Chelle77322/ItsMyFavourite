@@ -28,7 +28,7 @@ const clientConfig = {
   entry: {
     client: [
       '@babel/preset-react',
-      '/src/client/client.cjs',
+      '/src/client/client.js',
     ],
   },
   output: {
@@ -64,11 +64,11 @@ const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@babel/preset-react', resolve(__dirname,'/server/server.cjs')]
+    server: ['@babel/preset-react', resolve(__dirname,'/server/server.js')]
   },
   output: {
     path: resolve(__dirname),
-    filename: 'server.cjs',
+    filename: 'server.js',
   },
   devtool: 'cheap-module-source-map',
   
