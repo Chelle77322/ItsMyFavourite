@@ -3,7 +3,7 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Provider } from 'react-redux/redux';
+import { Provider } from '@reduxjs/toolkit';
 import express from 'express';
 import 'isomorphic-fetch';
 

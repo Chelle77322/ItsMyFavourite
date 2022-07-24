@@ -4,7 +4,7 @@ var _react = _interopRequireDefault(require("react"));
 
 var _server = _interopRequireDefault(require("react-dom/server"));
 
-var _redux = require("react-redux/redux");
+var _toolkit = require("@reduxjs/toolkit");
 
 var _express = _interopRequireDefault(require("express"));
 
@@ -32,13 +32,13 @@ app.get('*', function (request, result) {
     if (users !== null && users.length > 0) {
       unsubscribe();
       result.set('Content-Type', 'text/html');
-      result.send("\n        <html>\n          <head>\n            <title>App</title>\n            <style>\n              body {\n                font-size: 18px;\n                font-family: Verdana;\n              }\n            </style>\n          </head>\n          <body>\n            <div id=\"content\">".concat(_server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_redux.Provider, {
+      result.send("\n        <html>\n          <head>\n            <title>App</title>\n            <style>\n              body {\n                font-size: 18px;\n                font-family: Verdana;\n              }\n            </style>\n          </head>\n          <body>\n            <div id=\"content\">".concat(_server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
         store: store
       }, /*#__PURE__*/_react["default"].createElement(_App["default"], null))), "</div>\n            <script>\n              window.__APP_STATE = ").concat(JSON.stringify(store.getState()), ";\n            </script>\n            <script src=\"/bundle.js></script>\n          </body>\n        </html>\n      "));
     }
   });
 
-  _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_redux.Provider, {
+  _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
     store: store
   }, /*#__PURE__*/_react["default"].createElement(_App["default"], null)));
 });

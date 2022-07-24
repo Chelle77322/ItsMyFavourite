@@ -1,7 +1,6 @@
 {
   "name": "itsmyfavourite",
   "version": "1.0.2",
-  "type": "module",
   "description": "A REACT app that uses REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
   "author": "Michelle Hall",
   "license": "ISC",
@@ -31,7 +30,7 @@
     "@reduxjs/toolkit": "^1.8.3",
     "@types/bytes": "^3.1.1",
     "@types/ee-first": "^1.1.0",
-    "@types/fbjs": "^3.0.2",
+    "@types/fbjs": "^3.0.3",
     "@types/http-errors": "^1.8.2",
     "@types/isomorphic-fetch": "^0.0.36",
     "async_hooks": "^1.0.0",
@@ -64,6 +63,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^6.3.0",
     "react-tap-event-plugin": "^1.0.0",
+    "redux": "^4.2.0",
     "redux-auth0": "^1.0.10",
     "rimraf": "^3.0.2",
     "rimraff": "^0.0.1-security",
@@ -84,6 +84,7 @@
     "@types/node": "^18.0.6",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/react-redux": "^7.1.24",
     "@types/react-router-config": "^5.0.6",
     "eslint-webpack-plugin": "^3.2.0",
     "webpack-node-externals": "^3.0.0"
