@@ -5,19 +5,17 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.GoogleMaps = void 0;
-
-var _lodash = _interopRequireDefault(require("lodash"));
+exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _reactBootstrap = require("react-bootstrap");
+
+require("../../styles/styles.scss");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -39,152 +37,43 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+var Home = /*#__PURE__*/function (_Component) {
+  _inherits(Home, _Component);
 
-var GoogleMaps = /*#__PURE__*/function (_Component) {
-  _inherits(GoogleMaps, _Component);
+  var _super = _createSuper(Home);
 
-  var _super = _createSuper(GoogleMaps);
+  function Home() {
+    _classCallCheck(this, Home);
 
-  function GoogleMaps(props) {
-    var _this;
-
-    _classCallCheck(this, GoogleMaps);
-
-    _this = _super.call(this, props);
-
-    _defineProperty(_assertThisInitialized(_this), "_createMap", function () {
-      var mapCanvas = _this.props.mapCanvas;
-      var config = _this.props.config;
-
-      if (config.type === 'street') {
-        return new GoogleMaps.maps.StreetViewPanorama(mapCanvas, config.mapOptions);
-      }
-
-      return new GoogleMaps.maps.Map(mapCanvas, config.mapOptions);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "_createMarkers", function () {
-      var config = _this.props.config;
-
-      var _assertThisInitialize = _assertThisInitialized(_this),
-          _createInfoWindow = _assertThisInitialize._createInfoWindow;
-
-      if (config.allowClusters) {// eslint-disable-next-line no-undef
-        // eslint-disable-next-line no-unused-vars
-        // eslint-disable-next-line no-undef
-      } else {
-        _lodash["default"].forEach(config.locations, function (location) {
-          var marker = new GoogleMaps.maps.Marker({
-            position: location,
-            map: _this.map,
-            title: location.infoWindowContent.title || ''
-          });
-
-          _createInfoWindow(marker, location);
-        });
-      }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "_createInfoWindow", function (marker, location) {
-      var _location$infoWindowC = location.infoWindowContent,
-          title = _location$infoWindowC.title,
-          text = _location$infoWindowC.text,
-          imgUrl = _location$infoWindowC.imgUrl;
-      var infoWindowTemplate = "<div class = \"info-window\"\n        style = \"background-image: url(".concat(imgUrl, ")\"}>\n        <h4> ").concat(title, "</h4>\n        <p> ").concat(text, "</p>\n        </div>");
-      var infoWindow = new GoogleMaps.maps.InfoWindow({
-        content: infoWindowTemplate
-      });
-      marker.addListener('click', function () {
-        infoWindow.open(this.map, marker);
-      });
-    });
-
-    _this.state = "";
-    return _this;
+    return _super.apply(this, arguments);
   }
 
-  _createClass(GoogleMaps, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      this.map = this._createMap();
-      this.marker = this._createmarkers();
-    }
-  }, {
+  _createClass(Home, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        className: "google-map",
-        ref: "mapCanvas"
-      }, "LOADING MAP ...");
+      return /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Container, {
+        fluid: true,
+        className: "imf-container",
+        id: "content"
+      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Container, {
+        className: "home-content"
+      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "home-header"
+      }, /*#__PURE__*/_react["default"].createElement("h1", {
+        style: {
+          paddingBottom: 5
+        },
+        className: "heading"
+      })), /*#__PURE__*/_react["default"].createElement("div", {
+        style: {
+          padding: 50,
+          textAlign: "right"
+        }
+      }))))));
     }
   }]);
 
-  return GoogleMaps;
+  return Home;
 }(_react.Component);
 
-exports.GoogleMaps = GoogleMaps;
-
-_defineProperty(GoogleMaps, "propTypes", {
-  config: _react.PropTypes.object.isRequired
-});
-
-_defineProperty(GoogleMaps, "defaultProps", {
-  config: {}
-});
-
-var Home = function Home() {
-  var streetViewConfig = {
-    type: 'street',
-    mapOptions: {
-      position: {
-        lat: -31.6443212,
-        lng: -138.2993317
-      },
-      pov: {
-        heading: 200,
-        pitch: 0
-      },
-      scrollWheel: false
-    }
-  };
-  var mapViewConfig = {
-    mapOptions: {
-      center: {
-        lat: -31.6443212,
-        lng: -138.2993317
-      },
-      zoom: 13,
-      streetViewControl: true,
-      scrollWheel: true
-    },
-    type: 'map',
-    allowClusters: false,
-    locations: [{
-      lat: -31.6443212,
-      lng: -138.2993317,
-      infoWindowContent: {
-        title: 'Rawnsley Park Station',
-        text: "Rawnsley Park Station is owned and managed by fourth generation Flinders Ranges’ residents, Tony and Julieanne Smith. The station has been in the Smith family since 1953, and was originally owned by Tony’s father, Clem Smith. Initially devoted to sheep shearing, the station ventured into tourism in 1968, when the first cabins were opened and sheep shearing demonstrations began. ",
-        imgUrl: 'https://goo.gl/maps/k2WQ7SSNapErQ4jV7'
-      }
-    }]
-  };
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "page"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "flexbox"
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "map-container u-vr"
-  }, /*#__PURE__*/_react["default"].createElement(GoogleMaps, {
-    config: mapViewConfig
-  })), /*#__PURE__*/_react["default"].createElement("div", {
-    className: "map-container"
-  }, /*#__PURE__*/_react["default"].createElement(GoogleMaps, {
-    config: streetViewConfig
-  }))));
-};
-
-(0, _reactDom["default"])( /*#__PURE__*/_react["default"].createElement(Home, null), document.body);
-var _default = GoogleMaps;
-exports["default"] = _default;
+exports["default"] = Home;

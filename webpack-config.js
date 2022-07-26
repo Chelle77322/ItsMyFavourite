@@ -29,6 +29,7 @@ const clientConfig = {
     client: [
       '@babel/preset-react',
       '/src/client/client.js',
+      '/build/bundle.js'
     ],
   },
   output: {
