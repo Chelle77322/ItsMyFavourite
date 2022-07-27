@@ -12,7 +12,7 @@ const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: './server/server.js',
+  entry: 'index.js',
   // We don't serve bundle.js for server, so we can use dynamic external imports
   externals: [webpackNodeExternals()],
 

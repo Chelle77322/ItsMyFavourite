@@ -1,4 +1,5 @@
 import { resolve } from 'path';
+
 import nodeExternals from 'webpack-node-externals';
 const common = {
   module: {

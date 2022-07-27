@@ -5,7 +5,7 @@ import webpackConfig from './webpack-config.js';
 const config = {
   mode: 'development',
   // Tell webpack to root file of our server app
-  entry: 'server.js',
+  entry: 'client.js',
 
   // Tell webpack where to put output file
   output: {

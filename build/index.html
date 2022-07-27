@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="A React-Redux App called Its My Favourite that allows users to login and save all there favourite places using Google Search API"
+      content="A React-Redux App called Its My Favourite that allows users to login and save all their favourite places using Google Search API"
     />
     <meta
       name="keywords"
@@ -29,13 +29,14 @@
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.7.0-alpha.2/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.7.0-alpha.2/umd/react-dom.production.min.js"></script>
-    <script type="module" src="./client/App.js"></script>
+    
     <title>It's My Favourite App</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script type="module" src="./client/App.js"></script>
-    <div id="root"></div>
+    <script src="/build/bundle.js"></script>
+    
+    <div id="app"></div>
     <script>
       !(function (l) {
         function e(e) {
@@ -122,7 +123,6 @@
         a();
       })([]);
     </script>
-    <script src="/static/js/1.5e303c1c.chunk.js"></script>
-    <script src="/static/js/main.238b8b2e.chunk.js"></script>
+  
   </body>
 </html>
