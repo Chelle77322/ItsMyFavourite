@@ -7,5 +7,7 @@ import reducers from "../client/reducers";
 
 export default () => {
   const store = configureStore(reducers, {}, applyMiddleware(thunk));
+  
   return store;
 };
+

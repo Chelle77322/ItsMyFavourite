@@ -1,12 +1,14 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {value: true });
+import { configureStore, applyMiddleware } from "@reduxjs/toolkit";
 
-var _constants = require('./constants.cjs');
+
+var _constants = require('./constants.js');
 
 var _redux = require('redux');
 
-var _reducer = require('./reducer.cjs');
+var _reducer = require('./reducer.js');
 
 var _reducer2 = _interopRequireDefault(_reducer);
 
@@ -17,3 +19,4 @@ function _interopRequireDefault(object)
 exports.default = function() { 
     return (0, _redux.configureStore)(_reducer2.default);
 };
+console.log(_redux.configureStore);

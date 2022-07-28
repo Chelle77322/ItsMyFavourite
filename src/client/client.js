@@ -1,6 +1,8 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
-import configureStore from './redux/store.js';
+
+import { configureStore } from '@reduxjs/toolkit';
+
 
 import {Provider} from 'react-redux';
 
