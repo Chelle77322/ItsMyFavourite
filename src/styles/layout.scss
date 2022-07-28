@@ -1,5 +1,5 @@
 //stylelint-disable-next-line selector-max-type
-@import url('https://fonts.googleapis.com/css?family=GFS Didot@display=swap');
+
 body{
     display: flex;
     flex-direction: column;
@@ -10,3 +10,123 @@ body{
     opacity:0;
     
 }
+ // stylelint-disable selector-max-type, selector-no-qualifying-type
+ main,
+ main.imf-container {
+   height:auto;
+     width: 100%;
+     background-image:url("../assets/background.gif");
+     background-size: cover;
+     background-repeat: no-repeat;
+     color: rgb(121, 11, 102);
+     opacity: 0.65;
+     margin-top: 10px;
+     font-size: 2em;
+     text-align: center;
+     line-height: 100px;
+     font-family: $imf-font-family;
+     color: $imf-font-color;
+ }
+ 
+ 
+ footer {
+   margin-top: auto;
+   background-image:url("../assets/background.gif");
+   
+ }
+ 
+ article {
+   max-width: 100vw;
+ 
+   > img {
+     position:center;
+     margin-right: auto;
+     margin-left: auto;
+     height:5%;
+     width: 5%;
+   }
+ }
+ // stylelint-enable
+ .imf-img {
+   position:center;
+   margin-right: auto;
+   margin-left: auto;
+   height:10%;
+   width: 7%;
+ }
+ 
+ .imf-container {
+   display: flex;
+   flex-direction: column;
+   max-width: fit-content;
+   margin-right: auto;
+   margin-left: auto;
+   padding: 1rem;
+
+ 
+ }
+ 
+ .imf-column-container {
+   display: grid;
+   grid-gap: 2em;
+   grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
+ }
+ 
+ // stylelint-disable-next-line selector-no-qualifying-type, selector-max-type
+ ul.imf-column-container {
+   padding-left: 0;
+ }
+ 
+ .imf-section {
+   width: 100%;
+   height: auto;
+ 
+   &--padded {
+     padding-top: 1vh;
+     padding-bottom: 1vh;
+   }
+ 
+   // stylelint-disable-next-line selector-max-universal
+   *:last-child {
+     margin-bottom: 10vh;
+   }
+ }
+ 
+ .imf-hero {
+   display: grid;
+   background-image: url("../assets/Banner.png");
+   min-height: 60vh;
+   place-content: center;
+   padding-top: 0px;
+   padding-bottom: 0px;
+   text-align: center;
+   margin-top: 0 auto;
+   opacity: 1;
+ }
+ 
+ .imf-row {
+   display: grid;
+   grid-gap: 2.25rem;
+   align-self: center;
+   place-content: center;
+ 
+   @media (min-width: 80ch) {
+     grid-auto-flow: column;
+     grid-auto-columns: max-content;
+   }
+ 
+   &--center-content {
+     justify-content: center;
+   }
+ 
+   &--center-alignitems {
+     align-items: center;
+   }
+ }
+ 
+ // stylelint-disable-next-line selector-max-type
+ hr {
+   margin-top: 4rem;
+   margin-bottom: 4rem;
+   border: 10px groove imf-color("secondary");
+ }

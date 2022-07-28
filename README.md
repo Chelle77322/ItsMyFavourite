@@ -2,7 +2,7 @@
   
 ![badge](https://img.shields.io/badge/license-Academic-brightgreen)<br />
 ## Description
-ℹ️ A ReactJs Redux application that uses GooglePlaces API to manage all your favourite places.
+ℹ️ A  Server-side rendered React Redux application that uses GooglePlaces API to manage all your favourite places you like to visit from coffee shops, to boutique bars and holiday destinations.
 ## Table of Contents
 - [Description](#description)
 - [Installation](#installation)
@@ -24,7 +24,7 @@ This application is covered by the Academic license.
 
 🙋‍♀️Michelle Hall 
 ## Future Directions
- To upgrade this REACT app to be a fullstack MERN app with an interactive blog, calendar and chat feature so people are able to book me as a freelance web developer 
+Adding more interactive features to the app
 ## Questions
 🤔 If you have any questions or comments regarding this project. Please get in contact<br />
 <br />

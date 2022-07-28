@@ -72,6 +72,12 @@ const serverConfig = {
     path: resolve(__dirname),
     filename: 'server.js',
   },
+  module: {
+    rules: [
+      { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+      { test: /\.(scss|css)$/, loader: "ignore-loader" }
+    ]
+  },
   devtool: 'cheap-module-source-map',
   
   node: {

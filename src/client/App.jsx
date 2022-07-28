@@ -1,12 +1,13 @@
-import React from 'react';
+import React , {Component} from 'react';
 import { connect } from 'react-redux';
+import Home  from "../../build/components/Home/Home.jsx"
 
 import { getUsers } from './redux/selectors.js';
 import {usersFetched } from './redux/actions.js';
-
+import "../styles/layout.scss";
 const ENDPOINT = 'http://localhost:3000/users.json';
 
-class App extends React.Component {
+class App extends Component {
   componentWillMount() {
     const { users, fetchUsers } = this.props;
 
@@ -15,6 +16,7 @@ class App extends React.Component {
     }
   }
   render() {
+    <Home />
     const { users } = this.props;
     return (
       <div>
