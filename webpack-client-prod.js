@@ -4,6 +4,7 @@ import merge from 'webpack-merge';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 import webpackConfig from './webpack-config.js';
+const CleanWebpackPlugin = require("clean-webpack-plugin")
 
 const config = {
   mode: 'production',
@@ -43,18 +44,21 @@ const config = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.(scss|css)$/, loader: "ignore-loader" }
+      { test: /\.(scss|css)$/, loader: 'style-loader!css-loader!'}
     ]
   },
   devtool: 'inline-source-map',
   plugins: [
-    new BundleAnalyzerPlugin(),//uncommented this part
+    new BundleAnalyzerPlugin(),
     new CompressionPlugin(),
     new DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     })
+  ],
+  plugins: [
+    new CleanWebpackPlugin()
   ]
 };
 

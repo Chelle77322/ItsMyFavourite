@@ -1,4 +1,5 @@
 const config = {
-    API_KEY: 'AIzaSyCY5w-AX1oTVcgh8TXFrn2nBCbsKTIBr4M'
+    GOOGLE_API_KEY:  process.env.GOOGLE_API_KEY
   };
   export default config;
+  process.env.GOOGLE_API_KEY

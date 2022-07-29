@@ -3,3 +3,5 @@ node_modules/
 .babelrc
 .gitignore
 webpack.config.js
+.env.developing
+/env.production

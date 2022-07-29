@@ -51,7 +51,6 @@
     "mongoose": "^6.5.0",
     "net": "^1.0.2",
     "net-browserify": "^0.1.4",
-    "node-sass": "^7.0.1",
     "path": "^0.12.7",
     "path-browserify": "^1.0.1",
     "plugin": "^0.0.15",

@@ -1,20 +1,38 @@
+import path from 'node:path/win32';
 import { resolve } from 'path';
 import merge from 'webpack-merge';
 import webpackNodeExternals from 'webpack-node-externals';
 import webpackConfig from './webpack-config.js';
+const CleanWebpackPlugin = require("clean-webpack-plugin")
 
 const config = {
   // Inform webpack that we're building a bundle
   // for nodeJS, rather than for the browser
+  mode: "production",
   target: 'node',
-
-  mode: 'production',
+  // We don't serve bundle.js for server, so we can use dynamic external imports
+  externals: [webpackNodeExternals()],
 
   // Tell webpack the root file of our
   // server application
   entry: 'index.js',
-  // We don't serve bundle.js for server, so we can use dynamic external imports
-  externals: [webpackNodeExternals()],
+  output: {
+    path: resolve(__dirname, '/build/'),
+    filename: '[name].js',
+    libraryTarget: "commonjs2"
+   
+  },
+  module: {
+    rules: [
+      {test: /\.js$/, exclude: /node_modules/, loader: "babel-loader"},
+      {test: /\.(scss|css)$/,loader: 'style-loader!css-loader!'}
+    ]
+  },
+  plugins:
+  [
+    new CleanWebpackPlugin()
+  ],
+
 
   //fallbacks webpack
   fallback: {
@@ -28,10 +46,7 @@ const config = {
 
   // Tell webpack where to put the output file
   // that is generated
-  output: {
-    filename: 'bundle.js',
-    path: resolve(__dirname, '/build/')
-  }
+
 };
 
 export default merge(webpackConfig, config);

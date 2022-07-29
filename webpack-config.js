@@ -1,6 +1,6 @@
 import { resolve } from 'path';
-
 import nodeExternals from 'webpack-node-externals';
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const common = {
   module: {
     rules: [
@@ -15,8 +15,13 @@ const common = {
                     ]
           }
         },
+        {test: /\.(scss\css)$/, 
+        loader: 'style-loader!css-loader!'}
     ]
       },
+      plugins: [
+        new CleanWebpackPlugin()
+      ]
     
   }
 
@@ -75,7 +80,7 @@ const serverConfig = {
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
-      { test: /\.(scss|css)$/, loader: "ignore-loader" }
+      { test: /\.(scss|css)$/, loader: 'style-loader!css-loader!' }
     ]
   },
   devtool: 'cheap-module-source-map',

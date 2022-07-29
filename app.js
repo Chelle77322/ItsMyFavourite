@@ -4,6 +4,7 @@ import template from './src/styles/styles'
 import ssr from './src/server/server'
 import data from './data/users.json'
 
+
 const app = express()
 
 // Serving static files
@@ -21,16 +22,16 @@ let initialState = {
 }
 
 // server rendered home page
-app.get('/', (req, res) => {
+app.get('/', (request, result) => {
   const { preloadedState, content}  = ssr(initialState)
   const response = template("Server Rendered Page", preloadedState, content)
-  res.setHeader('Cache-Control', 'assets, max-age=604800')
-  res.send(response);
+  result.setHeader('Cache-Control', 'assets, max-age=604800')
+  result.send(response);
 });
 
 // Pure client side rendered page
-app.get('/client', (req, res) => {
+app.get('/client', (request, result) => {
   let response = template('Client Side Rendered page')
-  res.setHeader('Cache-Control', 'assets, max-age=604800')
-  res.send(response)
+  result.setHeader('Cache-Control', 'assets, max-age=604800')
+  result.send(response)
 });
