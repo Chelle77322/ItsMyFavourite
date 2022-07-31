@@ -8,6 +8,8 @@ var _reactDom = _interopRequireWildcard(require("react-dom"));
 
 var _toolkit = require("@reduxjs/toolkit");
 
+var _redux = require("redux");
+
 var _index = require("./reducers/index");
 
 var _reactRedux = require("react-redux");
@@ -26,7 +28,10 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var store = (0, _toolkit.configureStore)(_index.reducer, _objectSpread({}, window.__APP_STATE));
+var newReducer = _redux.combineReducers = (_index.reducer, function () {
+  throw new Error('"' + "combineReducers" + '" is read-only.');
+}());
+var store = (0, _toolkit.configureStore)(newReducer, _objectSpread({}, window.__APP_STATE));
 
 _reactDom["default"].hydrate( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
   store: store

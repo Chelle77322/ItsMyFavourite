@@ -8,6 +8,8 @@ var _server = _interopRequireDefault(require("react-dom/server"));
 
 var _toolkit = require("@reduxjs/toolkit");
 
+var _redux = require("redux");
+
 var _express = _interopRequireDefault(require("express"));
 
 require("isomorphic-fetch");
@@ -31,6 +33,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var app = (0, _express["default"])();
+var newReducer = (0, _redux.combineReducers)(_reducers.reducer);
+console.log(newReducer);
 app.use(_express["default"]["static"](_path["default"].join(__dirname)));
 app.get('*', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, result) {
@@ -43,7 +47,7 @@ app.get('*', /*#__PURE__*/function () {
             initialState = {
               state: 'rendered on the server'
             };
-            store = (0, _toolkit.configureStore)(_reducers.reducer, initialState);
+            store = (0, _toolkit.configureStore)((0, _redux.combineReducers)(newReducer), {}, initialState);
             appMarkup = _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
               store: store
             }, /*#__PURE__*/_react["default"].createElement(_App["default"], null)));

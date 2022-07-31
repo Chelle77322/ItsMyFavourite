@@ -3,7 +3,8 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Provider, configureStore } from '@reduxjs/toolkit';
+import { Provider, configureStore} from '@reduxjs/toolkit';
+import {combineReducers} from 'redux';
 import express from 'express';
 import 'isomorphic-fetch';
 import path from 'path';
@@ -15,6 +16,8 @@ import Html from "../components/Html";
 import App from "../components/App";
 
 const app = express();
+const newReducer = combineReducers(reducer);
+console.log(newReducer);
 
 app.use(express.static(path.join(__dirname)));
 
@@ -23,7 +26,7 @@ app.get ('*', async(request, result)=> {
 
   const initialState = {state:'rendered on the server'};
 
-  const store = configureStore(reducer, initialState);
+  const store = configureStore(combineReducers(newReducer),{}, initialState);
 
   const appMarkup = ReactDOMServer.renderToString(
     <Provider store={store}>
