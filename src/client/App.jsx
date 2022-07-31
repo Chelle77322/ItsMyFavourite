@@ -4,8 +4,8 @@ import Home  from "../../build/components/Home/Home.jsx"
 
 import { getUsers } from './redux/selectors.js';
 import {usersFetched } from './redux/actions.js';
-import "../styles/layout.scss";
-const ENDPOINT = 'http://localhost:3000/users.json';
+
+const ENDPOINT = 'http://localhost:3000/data/users.json';
 
 class App extends Component {
   componentWillMount() {

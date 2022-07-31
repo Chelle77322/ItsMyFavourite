@@ -1,20 +1,21 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {hydrate} from 'react-dom';
 
 import { configureStore } from '@reduxjs/toolkit';
-
+import {reducer} from "./reducers/index";
 
 import {Provider} from 'react-redux';
 
 import { App } from './App.jsx';
 
-const state = window.__STATE__;
-delete window.__STATE__;
 
-const store = configureStore(state);
-hydrate(
-  <Provider store = {store}>
+
+const store = configureStore(reducer, {...window.__APP_STATE});
+
+ReactDOM.hydrate(
+  <Provider store={store}>
     <App />
   </Provider>,
-  document.querySelector('#app')
+  document.getElementById('app')
 );

@@ -17,8 +17,6 @@ var _selectors = require("./redux/selectors.js");
 
 var _actions = require("./redux/actions.js");
 
-require("../styles/layout.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -51,7 +49,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ENDPOINT = 'http://localhost:3000/users.json';
+var ENDPOINT = 'http://localhost:3000/data/users.json';
 
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);

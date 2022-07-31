@@ -41673,8 +41673,6 @@ var _selectors = require("./redux/selectors.js");
 
 var _actions = require("./redux/actions.js");
 
-require("../styles/layout.scss");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -41707,7 +41705,7 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ENDPOINT = 'http://localhost:3000/users.json';
+var ENDPOINT = 'http://localhost:3000/data/users.json';
 
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
@@ -41797,29 +41795,153 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
 var _default = ConnectedApp;
 exports["default"] = _default;
 
-},{"../../build/components/Home/Home.jsx":1,"../styles/layout.scss":73,"./redux/actions.js":70,"./redux/selectors.js":72,"react":53,"react-redux":36}],69:[function(require,module,exports){
+},{"../../build/components/Home/Home.jsx":1,"./redux/actions.js":73,"./redux/selectors.js":75,"react":53,"react-redux":36}],69:[function(require,module,exports){
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.Types = void 0;
+var Types = {
+  REGISTER_SUCCESS: "REGISTER_SUCCESS",
+  REGISTER_FAIL: "REGISTER_FAIL",
+  LOGIN_SUCCESS: "LOGIN_SUCCESS",
+  LOGIN_FAIL: "LOGIN_FAIL",
+  LOGOUT: "LOGOUT",
+  FORM_SUBMITITION_STATUS: "FORM_SUBMITITION_STATUS",
+  SET_MESSAGE: "SET_MESSAGE",
+  CLEAR_MESSAGE: "CLEAR_MESSAGE"
+};
+exports.Types = Types;
+
+},{}],70:[function(require,module,exports){
+"use strict";
+
+function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = require("react-dom");
+var _reactDom = _interopRequireWildcard(require("react-dom"));
 
 var _toolkit = require("@reduxjs/toolkit");
+
+var _index = require("./reducers/index");
 
 var _reactRedux = require("react-redux");
 
 var _App = require("./App.jsx");
 
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var state = window.__STATE__;
-delete window.__STATE__;
-var store = (0, _toolkit.configureStore)(state);
-(0, _reactDom.hydrate)( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
-  store: store
-}, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.querySelector('#app'));
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
-},{"./App.jsx":68,"@reduxjs/toolkit":7,"react":53,"react-dom":17,"react-redux":36}],70:[function(require,module,exports){
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var store = (0, _toolkit.configureStore)(_index.reducer, _objectSpread({}, window.__APP_STATE));
+
+_reactDom["default"].hydrate( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
+  store: store
+}, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.getElementById('app'));
+
+},{"./App.jsx":68,"./reducers/index":71,"@reduxjs/toolkit":7,"react":53,"react-dom":17,"react-redux":36}],71:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _redux = require("redux");
+
+var _userReducer = _interopRequireDefault(require("../reducers/user-reducer.js"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+var reducer = (0, _redux.combineReducers)({
+  userReducer: _userReducer["default"]
+});
+var _default = reducer;
+exports["default"] = _default;
+
+},{"../reducers/user-reducer.js":72,"redux":55}],72:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
+var _types = require("../actions/types.js");
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var initialState = {
+  user: {
+    email: "",
+    password: "",
+    full_name: "",
+    favourites: []
+  },
+  formSubmitted: false
+};
+
+function userReducer() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case _types.Types.REGISTER_SUCCESS:
+      console.log('register', action.payload.user);
+      return _objectSpread(_objectSpread({}, state), {}, {
+        user: action.payload.user,
+        formSubmitted: false
+      });
+
+    case _types.Types.REGISTER_FAIL:
+      console.log('register', action.payload.user);
+      return _objectSpread(_objectSpread({}, state), {}, {
+        user: action.payload.user,
+        formSubmitted: false
+      });
+
+    case _types.Types.LOGIN_SUCCESS:
+      console.log('login', action.payload.user);
+      return {
+        user: action.payload.user,
+        formSubmitted: false
+      };
+
+    case _types.Types.LOGIN_FAIL:
+      console.log('login', action.payload.user);
+      return {
+        user: action.payload.user,
+        formSubmitted: false
+      };
+
+    case _types.Types.FORM_SUBMITITION_STATUS:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        formSubmitted: action.payload.status
+      });
+
+    default:
+      return state;
+  }
+}
+
+var _default = userReducer;
+exports["default"] = _default;
+
+},{"../actions/types.js":69}],73:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41838,7 +41960,7 @@ var usersFetched = function usersFetched(response) {
 
 exports.usersFetched = usersFetched;
 
-},{"./constants.js":71}],71:[function(require,module,exports){
+},{"./constants.js":74}],74:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41848,7 +41970,7 @@ exports.USERS_FETCHED = void 0;
 var USERS_FETCHED = 'USERS_FETCHED';
 exports.USERS_FETCHED = USERS_FETCHED;
 
-},{}],72:[function(require,module,exports){
+},{}],75:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41863,136 +41985,4 @@ var getUsers = function getUsers(_ref) {
 
 exports.getUsers = getUsers;
 
-},{}],73:[function(require,module,exports){
-
-//body{
- //   display: flex;
-//    flex-direction: column;
-//  min-height: 50vh;
-//  background-image:url("../assets/background.gif");
-//    background-size: cover;
-//    background-repeat: no-repeat;
-//    opacity:0;
-    
-//}
- // stylelint-disable selector-max-type, selector-no-qualifying-type
- //.main,
- //.main.imf-container {
-//   height:auto;
- //    width: 100%;
- //    background-image:url("../assets/background.gif");
-//     background-size: cover;
-//     background-repeat: no-repeat;
-//    color: rgb(121, 11, 102);
-//     opacity: 0.65;
-//     margin-top: 10px;
-//     font-size: 2em;
-//    text-align: center;
-//     line-height: 100px;
-//     font-family: $imf-font-family;
-//     color: $imf-font-color;
-// }
- 
- 
-// .footer {
- //  margin-top: auto;
-//   background-image:url("../assets/background.gif");
-   
-// }
- 
-// .article {
-//   max-width: 100vw;
- 
-// img {
-//   position:center;
-//     margin-right: auto;
-//    margin-left: auto;
-//    height:5%;
-//     width: 5%;
-//   }
-// }
- // stylelint-enable
-// .imf-img {
-//   position:center;
-//   margin-right: auto;
-//   margin-left: auto;
-//   height:10%;
-//   width: 7%;
-// }
- 
-// .imf-container {
- //  display: flex;
-//   flex-direction: column;
-//   max-width: fit-content;
-//   margin-right: auto;
-//   margin-left: auto;
-//   padding: 1rem;
-
- 
-// }
- 
-// .imf-column-container {
-//   display: grid;
-  // grid-gap: 2em;
- //  grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
- //}
- 
- // stylelint-disable-next-line selector-no-qualifying-type, selector-max-type
- //ul.imf-column-container {
-  // padding-left: 0;
- //}
- 
- //.imf-section {
- //  width: 100%;
- //  height: auto;
- 
-//   &--padded {
- //    padding-top: 1vh;
- //    padding-bottom: 1vh;
-//   }
- 
-   // stylelint-disable-next-line selector-max-universal
-//   *:last-child {
- //    margin-bottom: 10vh;
- //  }
- //}
- 
-// .imf-hero {
-//   display: grid;
-//   background-image: url("../assets/Banner.png");
-//   min-height: 60vh;
-//   place-content: center;
-//   padding-top: 0px;
- //  padding-bottom: 0px;
-//   text-align: center;
-//   margin-top: 0 auto;
- //  opacity: 1;
-// }
- 
-// .imf-row {
-//   display: grid;
-//   grid-gap: 2.25rem;
-//   align-self: center;
-//   place-content: center;
- 
-//   @media (min-width: 80ch) {
-//     grid-auto-flow: column;
- //    grid-auto-columns: max-content;
- //  }
- 
-//   &--center-content {
-//    justify-content: center;
-//   }
- 
-//   &--center-alignitems {
-//     align-items: center;
-//   }
-// }
- 
- // stylelint-disable-next-line selector-max-type
-// .hr {
-//   margin-top: 4rem;
-//   margin-bottom: 4rem;
-//   border: 10px groove imf-color("secondary");
-// }
-},{}]},{},[69]);
+},{}]},{},[70]);

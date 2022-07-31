@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _Home = _interopRequireDefault(require("./pages/Home.cjs"));
+var _Home = _interopRequireDefault(require("./pages/Home"));
 
-var _PageMiss = _interopRequireDefault(require("./pages/PageMiss.cjs"));
+var _PageMiss = _interopRequireDefault(require("./pages/PageMiss"));
 
-var _LandingPage = _interopRequireDefault(require("./pages/LandingPage.cjs"));
+var _LandingPage = _interopRequireDefault(require("./pages/LandingPage"));
 
-var _App = _interopRequireDefault(require("./App.jsx"));
+var _App = require("./App.jsx");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -22,14 +22,14 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-var _default = [_objectSpread(_objectSpread({}, _App["default"]), {}, {
+var _default = [_objectSpread(_objectSpread({}, _App.App), {}, {
   routes: [_objectSpread(_objectSpread({}, _Home["default"]), {}, {
     path: '/',
     exact: true
   }), _objectSpread({
-    path: '/favourite/:id'
+    path: '/:id'
   }, _LandingPage["default"]), _objectSpread({
-    path: '/favourite/'
+    path: '/'
   }, _PageMiss["default"])]
 })];
 exports["default"] = _default;

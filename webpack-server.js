@@ -1,5 +1,4 @@
-import path from 'node:path/win32';
-import { resolve } from 'path';
+import{ resolve } from 'path';
 import merge from 'webpack-merge';
 import webpackNodeExternals from 'webpack-node-externals';
 import webpackConfig from './webpack-config.js';

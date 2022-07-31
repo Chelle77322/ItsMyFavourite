@@ -37,7 +37,7 @@ function userReducer(state = initialState, action) {
                 user: action.payload.user,
                 formSubmitted: false
             };
-        case Types.FORM_SUBMITTITION_STATUS:
+        case Types.FORM_SUBMITITION_STATUS:
             return {
                 ...state,
                 formSubmitted: action.payload.status

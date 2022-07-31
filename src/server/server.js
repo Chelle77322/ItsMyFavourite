@@ -3,56 +3,45 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Provider } from '@reduxjs/toolkit';
+import { Provider, configureStore } from '@reduxjs/toolkit';
 import express from 'express';
 import 'isomorphic-fetch';
+import path from 'path';
 
 import { getUsers } from '../client/redux/selectors';
-import { configureStore} from '../client/redux/store';
 
-import App from '../client/App';
+import {reducer} from '../client/reducers';
+import Html from "../components/Html";
+import App from "../components/App";
 
 const app = express();
 
-app.use(express.static(__dirname + '/../'));
-app.use(express.static(__dirname + '/../../data'));
+app.use(express.static(path.join(__dirname)));
 
-app.get('*', (request, result) => {
-  const store = configureStore();
-  const unsubscribe = store.subscribe(() => {
-    const users = getUsers(store.getState());
+app.get ('*', async(request, result)=> {
+  const scripts = ['vendor.js', 'client.js'];
 
-    if (users !== null && users.length > 0)
-    {
-      unsubscribe();
-      result.set('Content-Type', 'text/html');
-      result.send(`
-        <html>
-          <head>
-            <title>App</title>
-            <style>
-              body {
-                font-size: 18px;
-                font-family: Verdana;
-              }
-            </style>
-          </head>
-          <body>
-            <div id="content">${ ReactDOMServer.renderToString(<Provider store={ store }><App /></Provider>) }</div>
-            <script>
-              window.__APP_STATE = ${ JSON.stringify(store.getState()) };
-            </script>
-            <script src="/bundle.js></script>
-          </body>
-        </html>
-      `);
-    }
-  });
-  ReactDOMServer.renderToString(
+  const initialState = {state:'rendered on the server'};
+
+  const store = configureStore(reducer, initialState);
+
+  const appMarkup = ReactDOMServer.renderToString(
     <Provider store={store}>
       <App />
     </Provider>
   );
-});
+  const html = ReactDOMServer.renderToStaticMarkup(
+    <Html
+    children={appMarkup}
+    scripts={scripts}
+    initialState={initialState}
+    />
+  );
+  result.send(`<!document html>${html}`);
 
-app.listen(3000, () => console.log('Its My Favourite is live on port 3000!'));
+});
+app.listen(3000, () => console.log('Its My Favourite is live on Port 3000'
+));
+
+
+

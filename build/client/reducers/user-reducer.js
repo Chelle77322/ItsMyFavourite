@@ -56,7 +56,7 @@ function userReducer() {
         formSubmitted: false
       };
 
-    case _types.Types.FORM_SUBMITTITION_STATUS:
+    case _types.Types.FORM_SUBMITITION_STATUS:
       return _objectSpread(_objectSpread({}, state), {}, {
         formSubmitted: action.payload.status
       });

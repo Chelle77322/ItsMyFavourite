@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import userReducer from '../reducers/user-reducer.js';
 
-export default combineReducers({
-  favouriteApp: userReducer
-});
+const reducer = combineReducers({userReducer});
+export default reducer;

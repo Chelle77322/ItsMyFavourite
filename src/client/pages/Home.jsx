@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import "../../styles/styles.scss";
+
 
 export default class Home extends Component{
     render(){
