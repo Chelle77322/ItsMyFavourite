@@ -41795,7 +41795,7 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
 var _default = ConnectedApp;
 exports["default"] = _default;
 
-},{"../../build/components/Home/Home.jsx":1,"./redux/actions.js":73,"./redux/selectors.js":75,"react":53,"react-redux":36}],69:[function(require,module,exports){
+},{"../../build/components/Home/Home.jsx":1,"./redux/actions.js":74,"./redux/selectors.js":76,"react":53,"react-redux":36}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41817,25 +41817,17 @@ exports.Types = Types;
 },{}],70:[function(require,module,exports){
 "use strict";
 
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
 var _react = _interopRequireDefault(require("react"));
 
-var _reactDom = _interopRequireWildcard(require("react-dom"));
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
 var _toolkit = require("@reduxjs/toolkit");
-
-var _redux = require("redux");
 
 var _index = require("./reducers/index");
 
 var _reactRedux = require("react-redux");
 
 var _App = require("./App.jsx");
-
-function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
-function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -41845,16 +41837,13 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var newReducer = _redux.combineReducers = (_index.reducer, function () {
-  throw new Error('"' + "combineReducers" + '" is read-only.');
-}());
-var store = (0, _toolkit.configureStore)(newReducer, _objectSpread({}, window.__APP_STATE));
+var store = (0, _toolkit.configureStore)(_index.rootReducer, _objectSpread({}, window.__APP_STATE));
 
 _reactDom["default"].hydrate( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
   store: store
 }, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.getElementById('app'));
 
-},{"./App.jsx":68,"./reducers/index":71,"@reduxjs/toolkit":7,"react":53,"react-dom":17,"react-redux":36,"redux":55}],71:[function(require,module,exports){
+},{"./App.jsx":68,"./reducers/index":71,"@reduxjs/toolkit":7,"react":53,"react-dom":17,"react-redux":36}],71:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41864,15 +41853,55 @@ exports["default"] = void 0;
 
 var _redux = require("redux");
 
-var _userReducer = _interopRequireDefault(require("../reducers/user-reducer.js"));
+var _message = _interopRequireDefault(require("./message.js"));
+
+var _userReducer = _interopRequireDefault(require("./user-reducer.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var reducer = (0, _redux.combineReducers)(_userReducer["default"]);
-var _default = reducer;
+var rootReducer = (0, _redux.combineReducers)({
+  message: _message["default"],
+  userReducer: _userReducer["default"]
+});
+var _default = rootReducer;
 exports["default"] = _default;
 
-},{"../reducers/user-reducer.js":72,"redux":55}],72:[function(require,module,exports){
+},{"./message.js":72,"./user-reducer.js":73,"redux":55}],72:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = alert;
+
+var _constants = require("../redux/constants");
+
+function alert() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
+
+  switch (action.type) {
+    case alertConstants.SUCCESS:
+      return {
+        type: 'alert-success',
+        message: action.message
+      };
+
+    case alertConstants.ERROR:
+      return {
+        type: 'alert-danger',
+        message: action.message
+      };
+
+    case alertConstants.CLEAR:
+      return {};
+
+    default:
+      return state;
+  }
+}
+
+},{"../redux/constants":75}],73:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41890,16 +41919,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var initialState = {
   user: {
-    email: "",
-    password: "",
-    full_name: "",
+    id: "",
+    firstName: "",
+    lastName: "",
     favourites: []
   },
   formSubmitted: false
 };
 
 function userReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intialState;
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
@@ -41941,10 +41970,12 @@ function userReducer() {
   }
 }
 
-var _default = userReducer;
+var _default = {
+  userReducer: userReducer
+};
 exports["default"] = _default;
 
-},{"../actions/types.js":69}],73:[function(require,module,exports){
+},{"../actions/types.js":69}],74:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -41963,29 +41994,32 @@ var usersFetched = function usersFetched(response) {
 
 exports.usersFetched = usersFetched;
 
-},{"./constants.js":74}],74:[function(require,module,exports){
+},{"./constants.js":75}],75:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.USERS_FETCHED = void 0;
-var USERS_FETCHED = 'USERS_FETCHED';
-exports.USERS_FETCHED = USERS_FETCHED;
+exports.Constants = void 0;
+var Constants = {
+  USERS_FETCHED: 'USERS_FETCHED',
+  SUCCESS: 'ALERT_SUCCESS',
+  ERROR: 'ALERT_ERROR',
+  CLEAR: 'ALERT_CLEAR'
+};
+exports.Constants = Constants;
 
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getUsers = void 0;
+exports.getUsers = getUsers;
 
-var getUsers = function getUsers(_ref) {
+function getUsers(_ref) {
   var users = _ref.users;
   return users;
-};
-
-exports.getUsers = getUsers;
+}
 
 },{}]},{},[70]);

@@ -3,33 +3,30 @@
 
 import React from 'react';
 import ReactDOMServer from 'react-dom/server';
-import { Provider, configureStore} from '@reduxjs/toolkit';
-import {combineReducers} from 'redux';
+import { Provider} from '@reduxjs/toolkit';
 import express from 'express';
 import 'isomorphic-fetch';
 import path from 'path';
-
-import { getUsers } from '../client/redux/selectors';
-
-import {reducer} from '../client/reducers';
 import Html from "../components/Html";
 import App from "../components/App";
+import Store from '../store/store.js';
 
 const app = express();
-const newReducer = combineReducers(reducer);
-console.log(newReducer);
+
+
 
 app.use(express.static(path.join(__dirname)));
+
 
 app.get ('*', async(request, result)=> {
   const scripts = ['vendor.js', 'client.js'];
 
-  const initialState = {state:'rendered on the server'};
+  const initialState = {state:{}};
 
-  const store = configureStore(combineReducers(newReducer),{}, initialState);
+
 
   const appMarkup = ReactDOMServer.renderToString(
-    <Provider store={store}>
+    <Provider Store={Store}>
       <App />
     </Provider>
   );

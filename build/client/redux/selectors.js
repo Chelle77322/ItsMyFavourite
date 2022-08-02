@@ -3,11 +3,9 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getUsers = void 0;
+exports.getUsers = getUsers;
 
-var getUsers = function getUsers(_ref) {
+function getUsers(_ref) {
   var users = _ref.users;
   return users;
-};
-
-exports.getUsers = getUsers;
+}

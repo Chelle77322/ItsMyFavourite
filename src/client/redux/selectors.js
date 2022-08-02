@@ -1,1 +1,3 @@
-export const getUsers = ({ users }) => users;
+export function getUsers({ users }) {
+    return users;
+}

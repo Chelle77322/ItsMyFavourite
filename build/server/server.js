@@ -8,21 +8,17 @@ var _server = _interopRequireDefault(require("react-dom/server"));
 
 var _toolkit = require("@reduxjs/toolkit");
 
-var _redux = require("redux");
-
 var _express = _interopRequireDefault(require("express"));
 
 require("isomorphic-fetch");
 
 var _path = _interopRequireDefault(require("path"));
 
-var _selectors = require("../client/redux/selectors");
-
-var _reducers = require("../client/reducers");
-
 var _Html = _interopRequireDefault(require("../components/Html"));
 
 var _App = _interopRequireDefault(require("../components/App"));
+
+var _store = _interopRequireDefault(require("../store/store.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -33,23 +29,20 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var app = (0, _express["default"])();
-var newReducer = (0, _redux.combineReducers)(_reducers.reducer);
-console.log(newReducer);
 app.use(_express["default"]["static"](_path["default"].join(__dirname)));
 app.get('*', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, result) {
-    var scripts, initialState, store, appMarkup, html;
+    var scripts, initialState, appMarkup, html;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             scripts = ['vendor.js', 'client.js'];
             initialState = {
-              state: 'rendered on the server'
+              state: {}
             };
-            store = (0, _toolkit.configureStore)((0, _redux.combineReducers)(newReducer), {}, initialState);
             appMarkup = _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
-              store: store
+              Store: _store["default"]
             }, /*#__PURE__*/_react["default"].createElement(_App["default"], null)));
             html = _server["default"].renderToStaticMarkup( /*#__PURE__*/_react["default"].createElement(_Html["default"], {
               children: appMarkup,
@@ -58,7 +51,7 @@ app.get('*', /*#__PURE__*/function () {
             }));
             result.send("<!document html>".concat(html));
 
-          case 6:
+          case 5:
           case "end":
             return _context.stop();
         }

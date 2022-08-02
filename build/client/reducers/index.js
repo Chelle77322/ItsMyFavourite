@@ -7,10 +7,15 @@ exports["default"] = void 0;
 
 var _redux = require("redux");
 
-var _userReducer = _interopRequireDefault(require("../reducers/user-reducer.js"));
+var _message = _interopRequireDefault(require("./message.js"));
+
+var _userReducer = _interopRequireDefault(require("./user-reducer.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var reducer = (0, _redux.combineReducers)(_userReducer["default"]);
-var _default = reducer;
+var rootReducer = (0, _redux.combineReducers)({
+  message: _message["default"],
+  userReducer: _userReducer["default"]
+});
+var _default = rootReducer;
 exports["default"] = _default;

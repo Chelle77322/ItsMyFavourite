@@ -1,15 +1,16 @@
 /* eslint-disable default-case */
 import {Types} from '../actions/types.js';
+
 const initialState = {
     user: {
-        email: "",
-        password: "",
-        full_name: "",
-        favourites: []
+        id:"",
+        firstName: "",
+        lastName: "",
+        favourites:[],
     },
     formSubmitted: false
 }
-function userReducer(state = initialState, action) {
+function userReducer(state = intialState, action) {
     switch (action.type) {
         case Types.REGISTER_SUCCESS:
             console.log('register', action.payload.user);
@@ -46,4 +47,4 @@ function userReducer(state = initialState, action) {
     }
 
 }
-export default userReducer;
+export default {userReducer};

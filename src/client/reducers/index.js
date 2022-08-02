@@ -1,5 +1,9 @@
-import { combineReducers } from 'redux';
-import userReducer from '../reducers/user-reducer.js';
+import {combineReducers} from "redux";
+import message from './message.js';
+import userReducer from "./user-reducer.js";
 
-const reducer = combineReducers(userReducer);
-export default reducer;
+const rootReducer = combineReducers({
+    message,
+    userReducer
+});
+export default rootReducer;
