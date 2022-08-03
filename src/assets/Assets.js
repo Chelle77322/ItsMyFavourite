@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {fetchAssets} from "./Api";
+
 import "../styles/layout.scss"
 
 class Assets extends React {

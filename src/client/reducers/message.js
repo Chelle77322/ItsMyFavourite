@@ -1,4 +1,4 @@
-import {Constants } from '../redux/constants';
+
 export  default function alert(state = {}, action){
   switch(action.type){
     case alertConstants.SUCCESS: 

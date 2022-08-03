@@ -1,9 +1,9 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
-import Home  from "../../build/components/Home/Home.jsx"
+import Home  from "../client/pages/Home";
 
-import { getUsers } from './redux/selectors.js';
-import {usersFetched } from './redux/actions.js';
+import { getUsers } from './redux/selectors';
+import {usersFetched } from './redux/actions';
 
 const ENDPOINT = 'http://localhost:3000/data/users.json';
 

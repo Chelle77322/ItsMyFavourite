@@ -14,9 +14,9 @@ require("isomorphic-fetch");
 
 var _path = _interopRequireDefault(require("path"));
 
-var _Html = _interopRequireDefault(require("../components/Html"));
+var _Html = _interopRequireDefault(require("../components/Html.js"));
 
-var _App = _interopRequireDefault(require("../components/App"));
+var _App = _interopRequireDefault(require("../client/App.jsx"));
 
 var _store = _interopRequireDefault(require("../store/store.js"));
 

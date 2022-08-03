@@ -5,7 +5,7 @@ function Html({ children, initialState, scripts }) {
     <html>
       <head>
         <meta charSet="UTF-8" />
-        <title>This is the server side of Its My Favourite</title>
+        <title>This is the server side of 'Its My Favourite'</title>
       </head>
       <body>
         <div

@@ -10,7 +10,7 @@ const initialState = {
     },
     formSubmitted: false
 }
-function userReducer(state = intialState, action) {
+function userReducer(state = initialState,{}, action) {
     switch (action.type) {
         case Types.REGISTER_SUCCESS:
             console.log('register', action.payload.user);

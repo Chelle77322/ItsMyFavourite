@@ -6,12 +6,12 @@ import LandingPage from './pages/LandingPage';
 //import MyFavourites from './pages/MyFavourites';
 //import GooglePlace from './pages/GooglePlace;'
 
-import {App} from './App.jsx';
+import {ConnectedApp} from "../client/App";
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [
     {
-        ...App,
+        ...ConnectedApp,
         routes:[
             {
             ...Home,

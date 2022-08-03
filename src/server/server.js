@@ -8,8 +8,9 @@ import express from 'express';
 import 'isomorphic-fetch';
 import path from 'path';
 import Html from "../components/Html";
-import App from "../components/App";
-import Store from '../store/store.js';
+import ConnectedApp from "../client/App";
+
+import Store from '../store/store';
 
 const app = express();
 
@@ -27,7 +28,7 @@ app.get ('*', async(request, result)=> {
 
   const appMarkup = ReactDOMServer.renderToString(
     <Provider Store={Store}>
-      <App />
+      <ConnectedApp />
     </Provider>
   );
   const html = ReactDOMServer.renderToStaticMarkup(

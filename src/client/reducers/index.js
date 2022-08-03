@@ -1,6 +1,6 @@
 import {combineReducers} from "redux";
-import message from './message.js';
-import userReducer from "./user-reducer.js";
+import message from './message';
+import userReducer from "./user-reducer";
 
 const rootReducer = combineReducers({
     message,
