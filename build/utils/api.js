@@ -2,23 +2,14 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
-var _react = _interopRequireDefault(require("react"));
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
 
-var _server = _interopRequireDefault(require("react-dom/server"));
+var _axios = _interopRequireDefault(require("axios"));
 
-var _toolkit = require("@reduxjs/toolkit");
-
-var _express = _interopRequireDefault(require("express"));
-
-require("isomorphic-fetch");
-
-var _path = _interopRequireDefault(require("path"));
-
-var _Html = _interopRequireDefault(require("../components/Html"));
-
-var _App = _interopRequireDefault(require("../components/App"));
-
-var _store = _interopRequireDefault(require("../store/store.js"));
+var _config = _interopRequireDefault(require("../../config"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -28,41 +19,58 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var app = (0, _express["default"])();
-app.use(_express["default"]["static"](_path["default"].join(__dirname)));
-app.get('*', /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, result) {
-    var scripts, initialState, appMarkup, html;
-    return _regeneratorRuntime().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            scripts = ['vendor.js', 'client.js'];
-            initialState = {
-              state: {}
-            };
-            appMarkup = _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
-              Store: _store["default"]
-            }, /*#__PURE__*/_react["default"].createElement(_App["default"], null)));
-            html = _server["default"].renderToStaticMarkup( /*#__PURE__*/_react["default"].createElement(_Html["default"], {
-              children: appMarkup,
-              scripts: scripts,
-              initialState: initialState
-            }));
-            result.send("<!document html>".concat(html));
+//eslint-disable-next-line
+var _default = {
+  //Looks for a Google Place
+  googlePlace: function googlePlace(query) {
+    return _axios["default"].get("https://maps.googleapis.com/maps/api/js?q=".concat(query, "?key=").concat(_config["default"], "&callback=initMap"));
+  },
+  //Saves the search to the mongodb associated by booking_id
+  SavePlace: function SavePlace(placesInfo) {
+    return _axios["default"].post("/".concat(placesInfo.id));
+  },
+  //Gets the places you have saved from the mongodb
+  getPlaces: function () {
+    var _getPlaces = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var result;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return _axios["default"].get("./api/GooglePlace");
 
-          case 5:
-          case "end":
-            return _context.stop();
+            case 3:
+              result = _context.sent;
+              return _context.abrupt("return", result.data);
+
+            case 7:
+              _context.prev = 7;
+              _context.t0 = _context["catch"](0);
+              throw _context.t0;
+
+            case 10:
+            case "end":
+              return _context.stop();
+          }
         }
-      }
-    }, _callee);
-  }));
+      }, _callee, null, [[0, 7]]);
+    }));
 
-  return function (_x, _x2) {
-    return _ref.apply(this, arguments);
-  };
-}());
-app.listen(3000, function () {
-  return console.log('Its My Favourite is live on Port 3000');
-});
+    function getPlaces() {
+      return _getPlaces.apply(this, arguments);
+    }
+
+    return getPlaces;
+  }(),
+  //This gets all places associated with booking_id of a registered user
+  getPlace: function getPlace(user) {
+    return _axios["default"].get("./api/GooglePlace" + URLSearchParams);
+  },
+  //This will delete a specific record associated with the booking_id of a registered user
+  deletePlace: function deletePlace(user) {
+    return _axios["default"]["delete"]("./api/GooglePlace" + user);
+  }
+};
+exports["default"] = _default;

@@ -59583,13 +59583,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Home = _interopRequireDefault(require("../client/pages/Home.jsx"));
+var _Home = require("../client/pages/Home.jsx");
 
 var _selectors = require("./redux/selectors.js");
 
 var _actions = require("./redux/actions.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -59649,7 +59647,7 @@ var App = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       /*#__PURE__*/
-      _react["default"].createElement(_Home["default"], null);
+      _react["default"].createElement(_Home.Home, null);
 
       var users = this.props.users;
       return /*#__PURE__*/_react["default"].createElement("div", null, users && users.length > 0 && users.map(function (_ref) {
@@ -59757,7 +59755,7 @@ var store = (0, _toolkit.configureStore)(_index.rootReducer, _objectSpread({}, w
 
 _reactDom["default"].hydrate( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
   store: store
-}, /*#__PURE__*/_react["default"].createElement(_App.ConnectedApp, null)), document.getElementById('app'));
+}, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.getElementById('app'));
 
 },{"./App.jsx":300,"./reducers/index":304,"@reduxjs/toolkit":11,"react":279,"react-dom":236,"react-redux":256}],303:[function(require,module,exports){
 "use strict";
@@ -59848,9 +59846,9 @@ exports["default"] = void 0;
 
 var _redux = require("redux");
 
-var _message = _interopRequireDefault(require("./message.js"));
+var _message = _interopRequireDefault(require("./message"));
 
-var _userReducer = _interopRequireDefault(require("./user-reducer.js"));
+var _userReducer = _interopRequireDefault(require("./user-reducer"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -59861,15 +59859,13 @@ var rootReducer = (0, _redux.combineReducers)({
 var _default = rootReducer;
 exports["default"] = _default;
 
-},{"./message.js":305,"./user-reducer.js":306,"redux":282}],305:[function(require,module,exports){
+},{"./message":305,"./user-reducer":306,"redux":282}],305:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = alert;
-
-var _constants = require("../redux/constants");
 
 function alert() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -59896,7 +59892,7 @@ function alert() {
   }
 }
 
-},{"../redux/constants":308}],306:[function(require,module,exports){
+},{}],306:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -59912,6 +59908,8 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
+
 var initialState = {
   user: {
     id: "",
@@ -59923,8 +59921,13 @@ var initialState = {
 };
 
 function userReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : intialState;
-  var action = arguments.length > 1 ? arguments[1] : undefined;
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+
+  var _ref = arguments.length > 1 ? arguments[1] : undefined;
+
+  _objectDestructuringEmpty(_ref);
+
+  var action = arguments.length > 2 ? arguments[2] : undefined;
 
   switch (action.type) {
     case _types.Types.REGISTER_SUCCESS:
@@ -59978,7 +59981,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.usersFetched = void 0;
 
-var _constants = require("./constants.js");
+var _constants = require("./constants");
 
 var usersFetched = function usersFetched(response) {
   return {
@@ -59989,7 +59992,7 @@ var usersFetched = function usersFetched(response) {
 
 exports.usersFetched = usersFetched;
 
-},{"./constants.js":308}],308:[function(require,module,exports){
+},{"./constants":308}],308:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

@@ -2,9 +2,14 @@
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports["default"] = void 0;
+
 var _react = _interopRequireWildcard(require("react"));
 
-require("../styles/layout.scss");
+var _reactBootstrap = require("react-bootstrap");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -30,47 +35,43 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var Assets = /*#__PURE__*/function (_React) {
-  _inherits(Assets, _React);
+var Home = /*#__PURE__*/function (_Component) {
+  _inherits(Home, _Component);
 
-  var _super = _createSuper(Assets);
+  var _super = _createSuper(Home);
 
-  function Assets(props) {
-    var _this;
+  function Home() {
+    _classCallCheck(this, Home);
 
-    _classCallCheck(this, Assets);
-
-    _this = _super.call(this, props);
-    _this.state = {
-      assets: props.assets || []
-    };
-    return _this;
+    return _super.apply(this, arguments);
   }
 
-  _createClass(Assets, [{
-    key: "componentsDidMount",
-    value: function componentsDidMount() {
-      var _this2 = this;
-
-      var assets = window.__ASSETS__ ? JSON.parse(window.__ASSETS) : [];
-      delete window.__ASSETS__this.setState({
-        assets: assets
-      });
-
-      if (assets.length == 0) {
-        fetchAssets().then(function (json) {
-          _this2.setState({
-            assets: json
-          });
-        });
-      }
-    }
-  }, {
+  _createClass(Home, [{
     key: "render",
     value: function render() {
-      return;
+      return /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Container, {
+        fluid: true,
+        className: "imf-container",
+        id: "content"
+      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Container, {
+        className: "home-content"
+      }, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Row, null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Col, null, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "home-header"
+      }, /*#__PURE__*/_react["default"].createElement("h1", {
+        style: {
+          paddingBottom: 5
+        },
+        className: "heading"
+      })), /*#__PURE__*/_react["default"].createElement("div", {
+        style: {
+          padding: 50,
+          textAlign: "right"
+        }
+      }))))));
     }
   }]);
 
-  return Assets;
-}(_react["default"]);
+  return Home;
+}(_react.Component);
+
+exports["default"] = Home;

@@ -8,9 +8,8 @@ import express from 'express';
 import 'isomorphic-fetch';
 import path from 'path';
 import Html from "../components/Html";
-import ConnectedApp from "../client/App";
-
-import Store from '../store/store';
+import App from "../components/App";
+import Store from '../store/store.js';
 
 const app = express();
 
@@ -28,7 +27,7 @@ app.get ('*', async(request, result)=> {
 
   const appMarkup = ReactDOMServer.renderToString(
     <Provider Store={Store}>
-      <ConnectedApp />
+      <App />
     </Provider>
   );
   const html = ReactDOMServer.renderToStaticMarkup(
@@ -43,6 +42,4 @@ app.get ('*', async(request, result)=> {
 });
 app.listen(3000, () => console.log('Its My Favourite is live on Port 3000'
 ));
-
-
 
