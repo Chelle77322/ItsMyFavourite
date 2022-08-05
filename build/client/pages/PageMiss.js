@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = PageMiss;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -25,9 +25,4 @@ PageMiss.propTypes = {
 };
 PageMiss.defaultProps = {
   staticContext: {}
-}; // eslint-disable-next-line import/no-anonymous-default-export
-
-var _default = {
-  component: PageMiss
 };
-exports["default"] = _default;

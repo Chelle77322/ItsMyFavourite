@@ -1,8 +1,7 @@
-/* eslint-disable import/no-anonymous-default-export */
 import { configureStore} from '@reduxjs/toolkit';
 
 import {userSlice} from "../client/features/userSlice";
-export default configureStore({
+export default () => configureStore({
   reducer: {
     user: userSlice.reducer,
   }

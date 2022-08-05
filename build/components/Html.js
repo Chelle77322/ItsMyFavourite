@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = Html;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -33,6 +33,3 @@ function Html(_ref) {
     });
   })));
 }
-
-var _default = Html;
-exports["default"] = _default;

@@ -1,6 +1,7 @@
 import React from 'react';
 import "../helpers/helper";
-function Html({ children, initialState, scripts }) {
+
+export default function Html({ children, initialState, scripts }) {
   return (
     <html>
       <head>
@@ -25,4 +26,3 @@ function Html({ children, initialState, scripts }) {
     </html>
   );
 }
-export default Html;

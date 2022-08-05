@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderToString } from 'react-dom/server';
+import ReactDOMServer,{ renderToString } from 'react-dom/server';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { renderRoutes } from 'react-router-config';
@@ -8,7 +8,7 @@ import { Helmet } from 'react-helmet';
 import Routes from '../client/Routes';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default (request, store, context) => {
+export default  (request, store, context) => {
   const content = renderToString(
     <Provider store={store}>
       <BrowserRouter location={request.path} context={context}>

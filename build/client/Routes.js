@@ -5,13 +5,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _Home = _interopRequireDefault(require("./pages/Home"));
+var _Home = require("./pages/Home");
 
 var _PageMiss = _interopRequireDefault(require("./pages/PageMiss"));
 
-var _LandingPage = _interopRequireDefault(require("./pages/LandingPage"));
+var _LandingPage = require("./pages/LandingPage");
 
-var _App = require("./App.jsx");
+var _App = require("../components/App");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -23,12 +23,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 // eslint-disable-next-line import/no-anonymous-default-export
 var _default = [_objectSpread(_objectSpread({}, _App.App), {}, {
-  routes: [_objectSpread(_objectSpread({}, _Home["default"]), {}, {
+  routes: [_objectSpread(_objectSpread({}, _Home.Home), {}, {
     path: '/',
     exact: true
   }), _objectSpread({
     path: '/:id'
-  }, _LandingPage["default"]), _objectSpread({
+  }, _LandingPage.LandingPage), _objectSpread({
     path: '/'
   }, _PageMiss["default"])]
 })];

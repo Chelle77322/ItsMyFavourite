@@ -9,23 +9,21 @@ import 'isomorphic-fetch';
 import path from 'path';
 import Html from "../components/Html";
 import App from "../components/App";
-import Store from '../store/store.js';
+import Store from '../store/store';
 
 const app = express();
-
-
 
 app.use(express.static(path.join(__dirname)));
 
 
-app.get ('*', async(request, result)=> {
+app.get ('/*', async(request, result)=> {
   const scripts = ['vendor.js', 'client.js'];
 
-  const initialState = {state:{}};
+  const initialState = {state:{App}};
 
 
 
-  const appMarkup = ReactDOMServer.renderToString(
+  const appMarkup = (
     <Provider Store={Store}>
       <App />
     </Provider>

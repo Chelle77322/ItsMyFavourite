@@ -1,6 +1,6 @@
 import React , {Component} from 'react';
 import { connect } from 'react-redux';
-import {Home}  from "../client/pages/Home.jsx";
+import {Home}  from "./pages/Home";
 
 import { getUsers } from './redux/selectors.js';
 import {usersFetched } from './redux/actions.js';

@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.FETCH_FAVOURITES = void 0;
-exports.fetchFavourites = fetchFavourites;
+exports["default"] = fetchFavourites;
 
 var _axios = _interopRequireDefault(require("axios"));
 

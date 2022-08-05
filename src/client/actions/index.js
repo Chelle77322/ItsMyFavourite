@@ -3,7 +3,7 @@ import config from '../../../config';
 
 export const FETCH_FAVOURITES = 'fetch_favourites';
 
-export function fetchFavourites(query) {
+export default function fetchFavourites(query) {
     return async (dispatch) => {
         let url;
         if (query) {

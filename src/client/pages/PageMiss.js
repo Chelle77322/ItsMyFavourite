@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function PageMiss({ staticContext = {} }) {
+export default function PageMiss({ staticContext = {} }) {
   staticContext.notFound = true;
   return (
     <div className="ui container">
@@ -19,7 +19,3 @@ PageMiss.defaultProps = {
   staticContext: {}
 };
 
-// eslint-disable-next-line import/no-anonymous-default-export
-export default {
-  component: PageMiss
-};

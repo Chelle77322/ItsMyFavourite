@@ -3,15 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.usersFetched = void 0;
+exports.usersFetched = usersFetched;
 
 var _constants = require("./constants");
 
-var usersFetched = function usersFetched(response) {
+function usersFetched(response) {
   return {
     type: _constants.USERS_FETCHED,
     response: response
   };
-};
-
-exports.usersFetched = usersFetched;
+}

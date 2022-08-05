@@ -9,11 +9,12 @@ var _toolkit = require("@reduxjs/toolkit");
 
 var _userSlice = require("../client/features/userSlice");
 
-/* eslint-disable import/no-anonymous-default-export */
-var _default = (0, _toolkit.configureStore)({
-  reducer: {
-    user: _userSlice.userSlice.reducer
-  }
-});
+var _default = function _default() {
+  return (0, _toolkit.configureStore)({
+    reducer: {
+      user: _userSlice.userSlice.reducer
+    }
+  });
+};
 
 exports["default"] = _default;

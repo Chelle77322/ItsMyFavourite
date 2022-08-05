@@ -11,7 +11,7 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Home = require("../client/pages/Home.jsx");
+var _Home = require("./pages/Home");
 
 var _selectors = require("./redux/selectors.js");
 
