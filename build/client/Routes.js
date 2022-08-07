@@ -11,7 +11,7 @@ var _PageMiss = _interopRequireDefault(require("./pages/PageMiss"));
 
 var _LandingPage = require("./pages/LandingPage");
 
-var _App = require("../components/App");
+var _App = _interopRequireDefault(require("../components/App"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -22,7 +22,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 // eslint-disable-next-line import/no-anonymous-default-export
-var _default = [_objectSpread(_objectSpread({}, _App.App), {}, {
+var _default = [_objectSpread(_objectSpread({}, _App["default"]), {}, {
   routes: [_objectSpread(_objectSpread({}, _Home.Home), {}, {
     path: '/',
     exact: true

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
+import {Login} from "../../components/Login";
 
 
 export default class Home extends Component{
@@ -19,6 +20,13 @@ export default class Home extends Component{
 
                     </div>
                     </Col>
+                    </Row>
+                    <Row>
+                        <Router>
+                        <Routes>
+                            <Route exact component = {Login} path = "/Login"/>
+                        </Routes>
+                        </Router>
                     </Row>
                     </Container>
                     </Container>

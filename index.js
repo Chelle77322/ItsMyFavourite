@@ -1,3 +1,2 @@
-import "@babel/register"
+export * from "./src/client/App";
 
-import './app'

@@ -5,17 +5,23 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = exports.Login = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Home = _interopRequireDefault(require("./pages/Home"));
+var _userActions = require("../client/actions/userActions");
 
-var _selectors = require("./redux/selectors.js");
+var _reactstrap = require("reactstrap");
 
-var _actions = require("./redux/actions.js");
+var _form = _interopRequireDefault(require("react-validation/build/form"));
+
+var _input = _interopRequireDefault(require("react-validation/build/input"));
+
+var _button = _interopRequireDefault(require("react-validation/build/button"));
+
+var _index = require("../utils/index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -49,78 +55,98 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ENDPOINT = 'http://localhost:3000/data/users.json';
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
+var Login = /*#__PURE__*/function (_Component) {
+  _inherits(Login, _Component);
 
-  var _super = _createSuper(App);
+  var _super = _createSuper(Login);
 
-  function App() {
-    _classCallCheck(this, App);
+  function Login(props) {
+    var _this;
 
-    return _super.apply(this, arguments);
-  }
+    _classCallCheck(this, Login);
 
-  _createClass(App, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this$props = this.props,
-          users = _this$props.users,
-          fetchUsers = _this$props.fetchUsers;
+    _this = _super.call(this, props);
 
-      if (users === null) {
-        fetchUsers();
+    _defineProperty(_assertThisInitialized(_this), "makeChange", function (event) {
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+
+      _this.setState(_defineProperty({}, name, value));
+
+      _this.validationErrorMessage(event);
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "validationErrorMessage", function (event) {
+      var _event$target2 = event.target,
+          name = _event$target2.name,
+          value = _event$target2.value;
+      var errors = _this.state.errors;
+
+      switch (name) {
+        case 'id':
+          errors.id = value.length < 1 ? "Enter your unique identifier here" : ' ';
+          break;
+
+        case 'password':
+          errors.password = value.length < 1 ? "Enter your password here" : ' ';
+          break;
+
+        default:
+          break;
       }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      /*#__PURE__*/
-      _react["default"].createElement(_Home["default"], null);
 
-      var users = this.props.users;
-      return /*#__PURE__*/_react["default"].createElement("div", null, users && users.length > 0 && users.map(function (_ref) {
-        var id = _ref.id,
-            firstName = _ref.first_name,
-            lastName = _ref.last_name;
-        return /*#__PURE__*/_react["default"].createElement("p", {
-          key: id
-        }, "".concat(firstName, " ").concat(lastName));
-      }));
-    }
-  }]);
+      _this.setState({
+        errors: errors
+      });
+    });
 
-  return App;
-}(_react.Component);
+    _defineProperty(_assertThisInitialized(_this), "validateForm", function (errors) {
+      var valid = true;
+      console.log(errors);
+      Object.entries(errors).forEach(function (item) {
+        console.log(item);
+        item && item[1].length > 0 && (valid = false);
+      });
+      console.log(valid);
+      return valid;
+    });
 
-var ConnectedApp = (0, _reactRedux.connect)(function (state) {
-  return {
-    users: (0, _selectors.getUsers)(state)
-  };
-}, function (dispatch) {
-  return {
-    fetchUsers: function () {
-      var _fetchUsers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    _defineProperty(_assertThisInitialized(_this), "loginForm", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+        var user;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.t0 = dispatch;
-                _context.t1 = _actions.usersFetched;
-                _context.next = 4;
-                return fetch(ENDPOINT);
+                _this.setState({
+                  submitted: true
+                });
 
-              case 4:
-                _context.next = 6;
-                return _context.sent.json();
+                event.PreventDefault();
 
-              case 6:
-                _context.t2 = _context.sent;
-                _context.t3 = (0, _context.t1)(_context.t2);
-                return _context.abrupt("return", (0, _context.t0)(_context.t3));
+                if (_this.validateForm(_this.state.errors)) {
+                  console.info('Form is Validated');
+                  user = (0, _index.getStore)('user');
 
-              case 9:
+                  if (user) {
+                    _this.props.dispatch(_userActions.userActions.loginSuccess(user));
+
+                    _this.props.history.push('/favourites');
+                  } else {
+                    _this.setState({
+                      loginStatus: 'Login Failed!. Wrong id and or password combination'
+                    });
+                  }
+                } else {
+                  _this.props.dispatch(_userActions.userActions.loginFail);
+
+                  console.info('Login Form in Invalid');
+                }
+
+              case 3:
               case "end":
                 return _context.stop();
             }
@@ -128,13 +154,117 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
         }, _callee);
       }));
 
-      function fetchUsers() {
-        return _fetchUsers.apply(this, arguments);
-      }
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
 
-      return fetchUsers;
-    }()
+    _this.state = {
+      id: ' ',
+      password: ' ',
+      errors: {
+        id: "Enter your unique id",
+        password: "Please enter your password"
+      },
+      loginStatus: ' ',
+      submitted: false
+    };
+    return _this;
+  }
+
+  _createClass(Login, [{
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state = this.state,
+          id = _this$state.id,
+          password = _this$state.password,
+          errors = _this$state.errors,
+          submitted = _this$state.submitted,
+          loginStatus = _this$state.loginStatus;
+      return /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement(_reactstrap.Container, {
+        className: "imf-column-container"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "imf-card"
+      }), /*#__PURE__*/_react["default"].createElement(_form["default"], {
+        name: "loginForm"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
+        htmlFor: "booking_id"
+      }, "Booking ID"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "text",
+        value: booking_id,
+        name: "id",
+        onChange: function onChange(event) {
+          _this2.makeChange(event);
+        },
+        className: "form-control",
+        id: "id",
+        placeholder: "ID"
+      }), submitted && errors.booking_id.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: "error"
+      }, errors.id)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
+        htmlFor: "password"
+      }, "Password"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "password",
+        value: password,
+        name: "password",
+        onChange: function onChange(event) {
+          _this2.makeChange(event);
+        },
+        className: "form-control",
+        id: "password",
+        placeholder: "Enter Password"
+      }), submitted && errors.password.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: "error"
+      }, errors.password)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-sm-4"
+      }), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: " col-sm-12 center mt-1"
+      }, submitted && loginStatus.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: "error"
+      }, " ", loginStatus))), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-sm-12 center mt-2"
+      }, /*#__PURE__*/_react["default"].createElement(_button["default"], {
+        type: "submit",
+        className: "button, btn btn-primary",
+        onClick: this.loginForm
+      }, "Login"))), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "row"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-sm-4 mt-2"
+      }), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-sm-4 right"
+      }, /*#__PURE__*/_react["default"].createElement(_button["default"], {
+        type: "submit",
+        className: "button, btn btn-primary"
+      }, /*#__PURE__*/_react["default"].createElement("a", {
+        href: "/Register"
+      }, " Register"))), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-sm-4 mt-2"
+      })))));
+    }
+  }]);
+
+  return Login;
+}(_react.Component);
+
+exports.Login = Login;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user.user
   };
-})(App);
-var _default = ConnectedApp;
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(Login);
+
 exports["default"] = _default;

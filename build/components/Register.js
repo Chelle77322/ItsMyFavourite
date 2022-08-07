@@ -5,17 +5,19 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = exports.Register = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Home = _interopRequireDefault(require("./pages/Home"));
+var _userActions = require("../client/actions/userActions");
 
-var _selectors = require("./redux/selectors.js");
+var _form = _interopRequireDefault(require("react-validation/build/form"));
 
-var _actions = require("./redux/actions.js");
+var _input = _interopRequireDefault(require("react-validation/build/input"));
+
+var _button = _interopRequireDefault(require("react-validation/build/button"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -49,78 +51,125 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
-var ENDPOINT = 'http://localhost:3000/data/users.json';
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var App = /*#__PURE__*/function (_Component) {
-  _inherits(App, _Component);
+//import {isValidEmail} from "../utils/index";
+var Register = /*#__PURE__*/function (_Component) {
+  _inherits(Register, _Component);
 
-  var _super = _createSuper(App);
+  var _super = _createSuper(Register);
 
-  function App() {
-    _classCallCheck(this, App);
+  function Register(props) {
+    var _this;
 
-    return _super.apply(this, arguments);
-  }
+    _classCallCheck(this, Register);
 
-  _createClass(App, [{
-    key: "componentWillMount",
-    value: function componentWillMount() {
-      var _this$props = this.props,
-          users = _this$props.users,
-          fetchUsers = _this$props.fetchUsers;
+    _this = _super.call(this, props);
 
-      if (users === null) {
-        fetchUsers();
+    _defineProperty(_assertThisInitialized(_this), "makeChange", function (event) {
+      var password = "";
+      var _event$target = event.target,
+          name = _event$target.name,
+          value = _event$target.value;
+      var user = _this.state.user;
+
+      if (name === "password") {
+        password = value;
+        user[name] = password;
+      } else {
+        user[name] = value;
       }
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      /*#__PURE__*/
-      _react["default"].createElement(_Home["default"], null);
 
-      var users = this.props.users;
-      return /*#__PURE__*/_react["default"].createElement("div", null, users && users.length > 0 && users.map(function (_ref) {
-        var id = _ref.id,
-            firstName = _ref.first_name,
-            lastName = _ref.last_name;
-        return /*#__PURE__*/_react["default"].createElement("p", {
-          key: id
-        }, "".concat(firstName, " ").concat(lastName));
-      }));
-    }
-  }]);
+      _this.setState({
+        user: user
+      });
 
-  return App;
-}(_react.Component);
+      _this.validationErrorMessage(event);
+    });
 
-var ConnectedApp = (0, _reactRedux.connect)(function (state) {
-  return {
-    users: (0, _selectors.getUsers)(state)
-  };
-}, function (dispatch) {
-  return {
-    fetchUsers: function () {
-      var _fetchUsers = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+    _defineProperty(_assertThisInitialized(_this), "validationErrorMessage", function (event) {
+      var _event$target2 = event.target,
+          name = _event$target2.name,
+          value = _event$target2.value;
+      var errors = _this.state.errors;
+
+      switch (name) {
+        case 'id':
+          errors.user.id = value.length < 1 ? 'Enter unique id' : ' ';
+          break;
+
+        case 'first_name':
+          errors.user.first_name = value < 1 ? "Enter your first name" : " ";
+          break;
+
+        case 'last_name':
+          errors.user.last_name = value < 1 ? "Enter your last name" : " ";
+          break;
+
+        case "password":
+          errors.user.password = value < 1 ? " Enter a password" : " ";
+          break;
+
+        default:
+          break;
+      }
+
+      _this.setState({
+        errors: errors
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "checkChange", function (event) {
+      var _event$target3 = event.target,
+          name = _event$target3.name,
+          checked = _event$target3.checked;
+      var user = _this.state.user;
+      user[name] = checked;
+
+      _this.setState({
+        user: user
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "validateForm", function (errors) {
+      var valid = true;
+      Object.entries(errors.user).forEach(function (item) {
+        console.log(item);
+        item && item[1].length > 0 && (valid = false);
+      });
+      return valid;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "submitForm", /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(event) {
+        var user;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.t0 = dispatch;
-                _context.t1 = _actions.usersFetched;
-                _context.next = 4;
-                return fetch(ENDPOINT);
+                _this.setState({
+                  submitted: true
+                });
+
+                _this.props.dispatch(_userActions.userActions.formSubmitionStatus(true));
+
+                user = _this.state.user;
+
+                if (user && _this.props.user.user) {
+                  console.info('Valid Form');
+
+                  _this.props.dispatch(_userActions.userActions.registerSuccess(user));
+
+                  _this.checkChange.history.push("../login");
+                } else {
+                  _this.props.dispatch(_userActions.userActions.registerFail);
+
+                  _this.props.history.push('/register');
+
+                  console.Console("Something Aint Right, please check the form again");
+                }
 
               case 4:
-                _context.next = 6;
-                return _context.sent.json();
-
-              case 6:
-                _context.t2 = _context.sent;
-                _context.t3 = (0, _context.t1)(_context.t2);
-                return _context.abrupt("return", (0, _context.t0)(_context.t3));
-
-              case 9:
               case "end":
                 return _context.stop();
             }
@@ -128,13 +177,151 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
         }, _callee);
       }));
 
-      function fetchUsers() {
-        return _fetchUsers.apply(this, arguments);
-      }
+      return function (_x) {
+        return _ref.apply(this, arguments);
+      };
+    }());
 
-      return fetchUsers;
-    }()
+    _defineProperty(_assertThisInitialized(_this), "resetErrorMessage", function () {
+      var errors = _this.state.errors;
+      errors.user.id = " ", errors.user.first_name = " ", errors.user.last_name = " ", errors.user.password = " ", _this.setState({
+        errors: errors
+      });
+    });
+
+    _this.state = {
+      user: {
+        id: '',
+        first_name: '',
+        last_name: '',
+        password: '',
+        favourites: [],
+        submitted: false
+      },
+      errors: {
+        user: {
+          id: "Enter your unique identifier here",
+          first_name: "Enter your first name here",
+          last_name: "Enter your last name here",
+          password: " Enter a unique password of at least 9 alpha numeric characters"
+        }
+      },
+      validForm: false,
+      submitted: false
+    };
+    return _this;
+  }
+
+  _createClass(Register, [{
+    key: "componentsDidMount",
+    value: function componentsDidMount() {
+      if (this.props.user) {
+        this.setState({
+          user: this.props.user
+        });
+
+        if (this.props.user.password) {
+          this.resetErrorMessage();
+        }
+      }
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+
+      var _this$state$user = this.state.user,
+          id = _this$state$user.id,
+          first_name = _this$state$user.first_name,
+          last_name = _this$state$user.last_name,
+          password = _this$state$user.password;
+      var submitted = this.state.submitted;
+      return /*#__PURE__*/_react["default"].createElement("div", {
+        className: "col-md-12"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "card card-container"
+      }, /*#__PURE__*/_react["default"].createElement("img", {
+        src: "//ssl.gstatic.com/accounts/ui/avatar_2x.png",
+        alt: "profile-img",
+        className: "profile-img-card"
+      }), /*#__PURE__*/_react["default"].createElement(_form["default"], null, /*#__PURE__*/_react["default"].createElement("div", null, /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement("label", {
+        htmlFor: "id"
+      }, "ID"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "text",
+        className: "form-control",
+        value: id,
+        name: "id",
+        onChange: function onChange(e) {
+          _this2.makeChange(e);
+        }
+      })), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement("label", {
+        htmlFor: "first_name"
+      }, " First Name"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "text",
+        value: first_name,
+        name: "first_name",
+        onChange: function onChange(e) {
+          _this2.makeChange(e);
+        },
+        className: "form-control",
+        placeholder: "First Name"
+      }), submitted && this.state.errors.user.first_name.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: "error"
+      }, this.state.errors.user.first_name)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement("label", {
+        htmlFor: "last_name"
+      }, " Last Name"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "text",
+        value: last_name,
+        name: "last_name",
+        onChange: function onChange(e) {
+          _this2.makeChange(e);
+        },
+        className: "form-control",
+        placeholder: "Last Name"
+      }), submitted && this.state.errors.user.last_name.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: "error"
+      }, this.state.errors.user.last_name)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement("label", {
+        htmlFor: "password"
+      }, " Password"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        type: "password",
+        value: password,
+        name: "password",
+        onChange: function onChange(e) {
+          _this2.makeChange(e);
+        },
+        className: "form-control",
+        placeholder: "Password Required"
+      }), submitted && this.state.errors.user.password.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+        className: " error"
+      }, " ", this.state.errors.user.password)), /*#__PURE__*/_react["default"].createElement("div", {
+        className: "form-group"
+      }, /*#__PURE__*/_react["default"].createElement(_button["default"], {
+        type: "button",
+        className: "btn btn-primary btn-block",
+        onClick: this.submitForm
+      }, "Register"))))));
+    }
+  }]);
+
+  return Register;
+}(_react.Component);
+
+exports.Register = Register;
+
+var mapStateToProps = function mapStateToProps(state) {
+  return {
+    user: state.user.user
   };
-})(App);
-var _default = ConnectedApp;
+};
+
+var _default = (0, _reactRedux.connect)(mapStateToProps)(Register);
+
 exports["default"] = _default;
