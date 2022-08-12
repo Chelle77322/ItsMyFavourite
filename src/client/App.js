@@ -1,4 +1,5 @@
 import React , {Component} from 'react';
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { Home }  from "./pages/Home";
 
@@ -15,7 +16,7 @@ export default class App extends Component {
       fetchUsers();
     }
   }
-  render() {
+  hydrate() {
     <Home />
     const { users } = this.props;
     return (
@@ -29,11 +30,12 @@ export default class App extends Component {
     );
   }
 }
-const ConnectedApp = connect( 
+export const ConnectedApp = connect( 
   state => ({ users: getUsers(state) }), dispatch =>
   ({
     fetchUsers: async () => dispatch(usersFetched (await (await fetch(ENDPOINT)).json()))
   })
 )(App);
+
 
 

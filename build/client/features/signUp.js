@@ -66,7 +66,7 @@ var signUp = function signUp() {
     "class": "sm:mx-auto sm:w-full sm:max-w-md"
   }, /*#__PURE__*/_react["default"].createElement("h2", {
     "class": "mt-6 text-center text-3xl font-extrabold text-gray-900"
-  }, "Sign Up to your account")), /*#__PURE__*/_react["default"].createElement("div", {
+  }, "Sign up to create your new account with Its My Favourite")), /*#__PURE__*/_react["default"].createElement("div", {
     className: "mt-8 sm:mx-auto sm:w-full sm:max-w-md"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10"

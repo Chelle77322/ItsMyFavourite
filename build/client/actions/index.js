@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.FETCH_FAVOURITES = void 0;
+exports["default"] = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -20,7 +20,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var FETCH_FAVOURITES = 'fetch_favourites';
-exports.FETCH_FAVOURITES = FETCH_FAVOURITES;
 
 function fetchFavourites(query) {
   return /*#__PURE__*/function () {

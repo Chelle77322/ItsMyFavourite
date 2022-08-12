@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.userSlice = exports.userSelector = exports.registerUser = exports.loginUser = exports.fetchUserByToken = exports.clearState = void 0;
+exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 
@@ -40,8 +40,9 @@ var registerUser = (0, _toolkit.createAsyncThunk)('./features/signUp', /*#__PURE
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                booking_id: booking_id,
-                full_name: full_name,
+                id: id,
+                first_name: first_name,
+                last_name: last_name,
                 password: password
               })
             });
@@ -90,15 +91,14 @@ var registerUser = (0, _toolkit.createAsyncThunk)('./features/signUp', /*#__PURE
     return _ref2.apply(this, arguments);
   };
 }());
-exports.registerUser = registerUser;
 var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(_ref3, thunkAPI) {
-    var booking_id, password, response, data;
+    var id, password, response, data;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            booking_id = _ref3.booking_id, password = _ref3.password;
+            id = _ref3.id, password = _ref3.password;
             _context2.prev = 1;
             _context2.next = 4;
             return fetch('https://itsmyfavourite.herokuapp.com/api/auth', {
@@ -108,7 +108,7 @@ var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/funct
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify({
-                booking_id: booking_id,
+                id: id,
                 password: password
               })
             });
@@ -155,7 +155,6 @@ var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/funct
     return _ref4.apply(this, arguments);
   };
 }());
-exports.loginUser = loginUser;
 var fetchUserByToken = (0, _toolkit.createAsyncThunk)('users/fetchUserByToken', /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_ref5, thunkAPI) {
     var token, response, data;
@@ -216,7 +215,6 @@ var fetchUserByToken = (0, _toolkit.createAsyncThunk)('users/fetchUserByToken', 
     return _ref6.apply(this, arguments);
   };
 }());
-exports.fetchUserByToken = fetchUserByToken;
 var userSlice = (0, _toolkit.createSlice)({
   name: 'user',
   initialState: {
@@ -271,7 +269,7 @@ var userSlice = (0, _toolkit.createSlice)({
     var payload = _ref11.payload;
     state.isFetching = false;
     state.isSuccess = true;
-    state.id = payload.booking_id;
+    state.id = payload.id;
     state.first_name = payload.first_name;
   }), _defineProperty(_extraReducers, fetchUserByToken.rejected, function (state) {
     console.log('fetchUserByToken');
@@ -279,12 +277,11 @@ var userSlice = (0, _toolkit.createSlice)({
     state.isError = true;
   }), _extraReducers)
 });
-exports.userSlice = userSlice;
 var clearState = userSlice.actions.clearState;
-exports.clearState = clearState;
 
 var userSelector = function userSelector(state) {
   return state.user;
 };
 
-exports.userSelector = userSelector;
+var _default = userSelector;
+exports["default"] = _default;

@@ -17,7 +17,7 @@ function Html(_ref) {
       scripts = _ref.scripts;
   return /*#__PURE__*/_react["default"].createElement("html", null, /*#__PURE__*/_react["default"].createElement("head", null, /*#__PURE__*/_react["default"].createElement("meta", {
     charSet: "UTF-8"
-  }), /*#__PURE__*/_react["default"].createElement("title", null, "Welcome to It's My Favourite")), /*#__PURE__*/_react["default"].createElement("body", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("title", null, "Welcome to It's My Favourite \uD83E\uDD98 ")), /*#__PURE__*/_react["default"].createElement("body", null, /*#__PURE__*/_react["default"].createElement("div", {
     id: "app",
     dangerouslySetInnerHTML: {
       __html: children

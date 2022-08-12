@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import ReactDOM, {hydrate} from 'react-dom';
+
 import {userActions} from "../client/actions/userActions"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Button from "react-validation/build/button";
 //import {isValidEmail} from "../utils/index";
+import {signUp} from "../client/features/signUp";
 
 export class Register extends Component {
     constructor(props) { 
@@ -113,7 +116,7 @@ resetErrorMessage = () => {
     this.setState({errors});
 
 }
-render() {
+hydrate() {
     const {id, first_name, last_name, password} = this.state.user;
     
     const {submitted} = this.state.user;

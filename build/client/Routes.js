@@ -11,9 +11,9 @@ var _PageMiss = _interopRequireDefault(require("./pages/PageMiss"));
 
 var _LandingPage = require("./pages/LandingPage");
 
-var _Register = _interopRequireDefault(require("../components/Register"));
+var _Register = require("../components/Register");
 
-var _Login = _interopRequireDefault(require("../components/Login"));
+var _Login = require("../components/Login");
 
 var _App = require("./App");
 
@@ -30,12 +30,15 @@ var _default = [_objectSpread(_objectSpread({}, _App.App), {}, {
   routes: [_objectSpread(_objectSpread({}, _Home.Home), {}, {
     path: '/',
     exact: true
-  }), _objectSpread(_objectSpread({}, _Register["default"]), {}, {
+  }), _objectSpread(_objectSpread({}, _Register.Register), {}, {
     path: '/Register',
     exact: true
   }), _objectSpread({
     path: '/:id'
-  }, _LandingPage.LandingPage), _objectSpread({
+  }, _LandingPage.LandingPage), _objectSpread(_objectSpread({}, _Login.Login), {}, {
+    path: '/Login',
+    exact: true
+  }), _objectSpread({
     path: '/'
   }, _PageMiss["default"])]
 })];

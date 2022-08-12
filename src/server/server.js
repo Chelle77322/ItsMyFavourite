@@ -14,13 +14,13 @@ import Store from '../store/store';
 const app = express();
 
 
-app.use(express.static(path.join(__dirname)));
-console.info(app);
+app.use(express.static(path.join(__dirname ,'./index.html')));
 
-app.get ('*', async(request, result)=> {
+
+app.get ('/*', async(request, result)=> {
   const scripts = ['vendor.js', 'client.js'];
 
-  const initialState = {state:{Html}};
+  const initialState = {state:{}};
 
 
 

@@ -14,7 +14,7 @@ var _userReducer = _interopRequireDefault(require("./user-reducer"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var rootReducer = (0, _redux.combineReducers)({
-  message: _message["default"],
+  alert: _message["default"],
   userReducer: _userReducer["default"]
 });
 var _default = rootReducer;

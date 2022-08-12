@@ -4,7 +4,7 @@ import webpackNodeExternals from 'webpack-node-externals';
 import webpackConfig from './webpack-config.js';
 const CleanWebpackPlugin = require("clean-webpack-plugin")
 
-const config = {
+export const config = {
   // Inform webpack that we're building a bundle
   // for nodeJS, rather than for the browser
   mode: "production",
@@ -14,7 +14,7 @@ const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: 'index.js',
+  entry: '/server/server.js',
   output: {
     path: resolve(__dirname, '/build/'),
     filename: '[name].js',

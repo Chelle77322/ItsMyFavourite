@@ -9,7 +9,7 @@ import {Routes} from '../client/Routes';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (request, store, context) {
-  const content = renderToString(
+  let content = renderToString(
     <Provider store={store}>
       <BrowserRouter location={request.path} context={context}>
         <div>{renderRoutes(Routes)}</div>

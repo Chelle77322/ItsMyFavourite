@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 
-export const registerUser  = createAsyncThunk ('./features/signUp', 
+const registerUser  = createAsyncThunk ('./features/signUp', 
 async({id, first_name, last_name}, thunkAPI)=> {
 try {
   const response = await fetch ('https://itsmyfavourite.herokuapp.com/api/users/',
@@ -11,8 +11,8 @@ try {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      booking_id,
-      full_name,
+      id,
+      first_name, last_name,
       password,
     }),
   }
@@ -32,9 +32,9 @@ try {
 }
 }
 );
-export const loginUser = createAsyncThunk(
+const loginUser = createAsyncThunk(
   'users/login',
-  async({booking_id, password}, thunkAPI) => {
+  async({id, password}, thunkAPI) => {
     try{
       const response = await fetch(
         'https://itsmyfavourite.herokuapp.com/api/auth',
@@ -45,7 +45,7 @@ export const loginUser = createAsyncThunk(
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            booking_id,
+            id,
             password,
           }),
         }
@@ -64,7 +64,7 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-export const fetchUserByToken = createAsyncThunk('users/fetchUserByToken',
+const fetchUserByToken = createAsyncThunk('users/fetchUserByToken',
 async ({token}, thunkAPI) => {
   try{
     const response = await fetch(
@@ -92,7 +92,7 @@ async ({token}, thunkAPI) => {
   }
 }
 );
-export const userSlice = createSlice({
+const userSlice = createSlice({
   name: 'user',
   initialState: {
     id: '',
@@ -151,7 +151,7 @@ export const userSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       
-      state.id = payload.booking_id;
+      state.id = payload.id;
       state.first_name = payload.first_name;
     },
     [fetchUserByToken.rejected]: (state) => {
@@ -161,5 +161,6 @@ export const userSlice = createSlice({
     },
   },
 });
-export const { clearState } = userSlice.actions;
-export const userSelector = (state) => state.user;
+const { clearState } = userSlice.actions;
+const userSelector = (state) => state.user;
+export default userSelector;

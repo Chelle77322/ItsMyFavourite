@@ -29,9 +29,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 var app = (0, _express["default"])();
-app.use(_express["default"]["static"](_path["default"].join(__dirname)));
-console.info(app);
-app.get('*', /*#__PURE__*/function () {
+app.use(_express["default"]["static"](_path["default"].join(__dirname, './index.html')));
+app.get('/*', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, result) {
     var scripts, initialState, appMarkup, html;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -40,9 +39,7 @@ app.get('*', /*#__PURE__*/function () {
           case 0:
             scripts = ['vendor.js', 'client.js'];
             initialState = {
-              state: {
-                Html: _Html["default"]
-              }
+              state: {}
             };
             appMarkup = /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
               Store: _store["default"]

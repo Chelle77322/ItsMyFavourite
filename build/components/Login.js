@@ -13,6 +13,8 @@ var _reactRedux = require("react-redux");
 
 var _userActions = require("../client/actions/userActions");
 
+var _userSlice = require("../client/features/userSlice");
+
 var _reactstrap = require("reactstrap");
 
 var _form = _interopRequireDefault(require("react-validation/build/form"));
@@ -173,8 +175,8 @@ var Login = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(Login, [{
-    key: "render",
-    value: function render() {
+    key: "hydrate",
+    value: function hydrate() {
       var _this2 = this;
 
       var _this$state = this.state,
@@ -203,7 +205,7 @@ var Login = /*#__PURE__*/function (_Component) {
         className: "form-control",
         id: "id",
         placeholder: "ID"
-      }), submitted && errors.booking_id.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
+      }), submitted && errors.id.length > 0 && /*#__PURE__*/_react["default"].createElement("span", {
         className: "error"
       }, errors.id)), /*#__PURE__*/_react["default"].createElement("div", {
         className: "form-group"

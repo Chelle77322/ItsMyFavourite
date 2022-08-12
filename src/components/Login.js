@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect}from 'react-redux';
 import {userActions} from "../client/actions/userActions";
+import {userSelector} from "../client/features/userSlice";
 
 import {Label, Container} from "reactstrap";
 import Form from "react-validation/build/form";
@@ -67,7 +68,7 @@ export class Login extends Component {
                 console.info('Login Form in Invalid')
             }
         }
-    render () { 
+    hydrate () { 
         const {id, password, errors, submitted, loginStatus} = this.state;
         return (
             <div>
@@ -83,7 +84,7 @@ export class Login extends Component {
                         className = "form-control"
                         id = "id"
                         placeholder = "ID"/>
-                        {submitted && errors.booking_id.length >0 && <span className = "error">{errors.id}</span>}
+                        {submitted && errors.id.length >0 && <span className = "error">{errors.id}</span>}
                       </div>
         
                       <div className = "form-group">

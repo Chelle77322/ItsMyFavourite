@@ -9,9 +9,15 @@ exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _reactDom = _interopRequireDefault(require("react-dom"));
+
 var _reactBootstrap = require("react-bootstrap");
 
 var _Login = require("../../components/Login");
+
+var _Register = require("../../components/Register");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -49,8 +55,8 @@ var Home = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(Home, [{
-    key: "render",
-    value: function render() {
+    key: "hydrate",
+    value: function hydrate() {
       return /*#__PURE__*/_react["default"].createElement("section", null, /*#__PURE__*/_react["default"].createElement(_reactBootstrap.Container, {
         fluid: true,
         className: "imf-container",
@@ -73,6 +79,10 @@ var Home = /*#__PURE__*/function (_Component) {
         exact: true,
         component: _Login.Login,
         path: "/Login"
+      }), /*#__PURE__*/_react["default"].createElement(Route, {
+        exact: true,
+        component: _Register.Register,
+        path: "/Register"
       })))))));
     }
   }]);

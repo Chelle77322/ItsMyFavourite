@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = App;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -28,3 +28,6 @@ function App() {
     path: "/pagemiss"
   }))));
 }
+
+var _default = App;
+exports["default"] = _default;

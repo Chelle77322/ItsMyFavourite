@@ -11,6 +11,8 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
+var _reactDom = _interopRequireWildcard(require("react-dom"));
+
 var _userActions = require("../client/actions/userActions");
 
 var _form = _interopRequireDefault(require("react-validation/build/form"));
@@ -18,6 +20,8 @@ var _form = _interopRequireDefault(require("react-validation/build/form"));
 var _input = _interopRequireDefault(require("react-validation/build/input"));
 
 var _button = _interopRequireDefault(require("react-validation/build/button"));
+
+var _signUp = require("../client/features/signUp");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -53,7 +57,6 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-//import {isValidEmail} from "../utils/index";
 var Register = /*#__PURE__*/function (_Component) {
   _inherits(Register, _Component);
 
@@ -226,8 +229,8 @@ var Register = /*#__PURE__*/function (_Component) {
       }
     }
   }, {
-    key: "render",
-    value: function render() {
+    key: "hydrate",
+    value: function hydrate() {
       var _this2 = this;
 
       var _this$state$user = this.state.user,

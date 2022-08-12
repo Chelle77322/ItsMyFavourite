@@ -1,10 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
+
 import {Home} from '../client/pages/Home';
 import {PageMiss} from '../client/pages/PageMiss';
 
-export default function App() { 
+function App() { 
     return (
         <div className = "app">
             <Router>
@@ -16,4 +17,4 @@ export default function App() {
         </div>
     );
 }
-
+export default App;

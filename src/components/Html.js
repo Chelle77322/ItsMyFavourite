@@ -6,7 +6,7 @@ function Html({ children, initialState, scripts }) {
     <html>
       <head>
         <meta charSet="UTF-8" />
-        <title>Welcome to It's My Favourite</title>
+        <title>Welcome to It's My Favourite 🦘 </title>
       </head>
       <body>
         <div

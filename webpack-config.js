@@ -39,7 +39,7 @@ export const clientConfig = {
     ],
   },
   output: {
-    path: resolve(__dirname, '/build/'),
+    path: resolve(__dirname, '/build'),
     
     filename: '[name].js',
   },
@@ -104,6 +104,7 @@ export const serverConfig = {
          "zlib": require.resolve("browserify-zlib"),
          "net": require.resolve ("net-browserify"),
          "path": require.resolve("path-browserify"),
+         "babel": "babel src -d views",
 
       },
     },

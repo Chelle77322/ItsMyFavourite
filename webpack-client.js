@@ -6,7 +6,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const config = {
   mode: 'development',
   // Tell webpack to root file of our server app
-  entry: 'client.js',
+  entry: '/server/server.js',
 
   // Tell webpack where to put output file
   output: {

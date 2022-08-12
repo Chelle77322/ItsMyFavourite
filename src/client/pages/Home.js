@@ -1,10 +1,12 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom';
 import {Container, Row, Col} from 'react-bootstrap';
 import {Login} from "../../components/Login";
+import {Register} from "../../components/Register";
 
 
 export default class Home extends Component{
-    render(){
+    hydrate(){
         return(
             <section>
                 <Container fluid className = "imf-container" id="content">
@@ -25,6 +27,7 @@ export default class Home extends Component{
                         <Router>
                         <Routes>
                             <Route exact component = {Login} path = "/Login"/>
+                            <Route exact component = {Register} path = "/Register"/>
                         </Routes>
                         </Router>
                     </Row>

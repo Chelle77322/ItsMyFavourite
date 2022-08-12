@@ -1,7 +1,7 @@
 import axios from 'axios';
 import {config} from '../../../config';
 
-export const FETCH_FAVOURITES = 'fetch_favourites';
+const FETCH_FAVOURITES = 'fetch_favourites';
 
 function fetchFavourites(query) {
     return async (dispatch) => {
