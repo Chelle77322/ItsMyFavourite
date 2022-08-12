@@ -10,7 +10,7 @@ var _index = require("./reducers/index");
 
 var _reactRedux = require("react-redux");
 
-var _App = _interopRequireDefault(require("../components/App"));
+var _App = require("./App");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -24,4 +24,4 @@ var store = (0, _toolkit.configureStore)(_index.rootReducer, _objectSpread({}, w
 
 _reactDom["default"].hydrate( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
   store: store
-}, /*#__PURE__*/_react["default"].createElement(_App["default"], null)), document.getElementById('app'));
+}, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.getElementById('app'));

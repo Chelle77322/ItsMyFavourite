@@ -7,7 +7,7 @@ import {rootReducer} from "./reducers/index";
 
 import {Provider} from 'react-redux';
 
-import App  from '../components/App';
+import {App}  from './App';
 
 const store = configureStore(rootReducer, {...window.__APP_STATE});
 

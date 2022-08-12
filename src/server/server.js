@@ -13,13 +13,14 @@ import Store from '../store/store';
 
 const app = express();
 
+
 app.use(express.static(path.join(__dirname)));
+console.info(app);
 
-
-app.get ('/*', async(request, result)=> {
+app.get ('*', async(request, result)=> {
   const scripts = ['vendor.js', 'client.js'];
 
-  const initialState = {state:{App}};
+  const initialState = {state:{Html}};
 
 
 
@@ -27,8 +28,9 @@ app.get ('/*', async(request, result)=> {
     <Provider Store={Store}>
       <App />
     </Provider>
+    
   );
-  const html = ReactDOMServer.renderToStaticMarkup(
+  const html = ReactDOMServer.renderToString(
     <Html
     children={appMarkup}
     scripts={scripts}
@@ -36,6 +38,8 @@ app.get ('/*', async(request, result)=> {
     />
   );
   result.send(`<!document html>${html}`);
+  
+ 
 
 });
 app.listen(3000, () => console.log('Its My Favourite is live on Port 3000'

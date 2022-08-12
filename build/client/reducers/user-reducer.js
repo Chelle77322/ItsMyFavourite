@@ -73,7 +73,5 @@ function userReducer() {
   }
 }
 
-var _default = {
-  userReducer: userReducer
-};
+var _default = userReducer;
 exports["default"] = _default;

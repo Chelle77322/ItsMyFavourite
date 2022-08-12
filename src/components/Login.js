@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import {connect}from 'react-redux';
 import {userActions} from "../client/actions/userActions";
 
 import {Label, Container} from "reactstrap";
@@ -76,9 +76,9 @@ export class Login extends Component {
                     </div>
                     <Form name = "loginForm">
                       <div className = 'form-group'>
-                        <Label htmlFor = "booking_id">Booking ID</Label>
+                        <Label htmlFor = "id">ID</Label>
                         <Input type = "text"
-                        value = {booking_id}
+                        value = {id}
                         name = "id" onChange={(event) =>{this.makeChange(event)}}
                         className = "form-control"
                         id = "id"

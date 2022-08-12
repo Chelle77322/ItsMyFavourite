@@ -5,12 +5,11 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.FETCH_FAVOURITES = void 0;
-exports["default"] = fetchFavourites;
+exports["default"] = exports.FETCH_FAVOURITES = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
-var _config = _interopRequireDefault(require("../../../config"));
+var _config = require("../../../config");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -32,9 +31,9 @@ function fetchFavourites(query) {
           switch (_context.prev = _context.next) {
             case 0:
               if (query) {
-                url = "https://maps.googleapis.com/maps/api/js?q=".concat(query, "?key=").concat(_config["default"].GOOGLE_API_KEY, "&callback=initMap");
+                url = "https://maps.googleapis.com/maps/api/js?q=".concat(query, "?key=").concat(_config.config.GOOGLE_API_KEY, "&callback=initMap");
               } else {
-                url = "https://maps.googleapis.com/maps&key = ".concat(_config["default"].GOOGLE_API_KEY);
+                url = "https://maps.googleapis.com/maps&key = ".concat(_config.config.GOOGLE_API_KEY);
               }
 
               _context.next = 3;
@@ -60,3 +59,6 @@ function fetchFavourites(query) {
     };
   }();
 }
+
+var _default = fetchFavourites;
+exports["default"] = _default;

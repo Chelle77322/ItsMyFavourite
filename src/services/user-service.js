@@ -2,7 +2,7 @@ import axios from 'axios';
 import authHeader from "./auth-header";
 const GOOGLE_API_KEY = "http://localhost:3000/api";
 
-class UserService {
+export class UserService {
     getPublicContent() {
         return axios. get(GOOGLE_API_KEY + " all");
     }

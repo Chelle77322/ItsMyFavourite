@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = Html;
+exports["default"] = void 0;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -17,7 +17,7 @@ function Html(_ref) {
       scripts = _ref.scripts;
   return /*#__PURE__*/_react["default"].createElement("html", null, /*#__PURE__*/_react["default"].createElement("head", null, /*#__PURE__*/_react["default"].createElement("meta", {
     charSet: "UTF-8"
-  }), /*#__PURE__*/_react["default"].createElement("title", null, "Welcome to It's My Favourite'")), /*#__PURE__*/_react["default"].createElement("body", null, /*#__PURE__*/_react["default"].createElement("div", {
+  }), /*#__PURE__*/_react["default"].createElement("title", null, "Welcome to It's My Favourite")), /*#__PURE__*/_react["default"].createElement("body", null, /*#__PURE__*/_react["default"].createElement("div", {
     id: "app",
     dangerouslySetInnerHTML: {
       __html: children
@@ -33,3 +33,6 @@ function Html(_ref) {
     });
   })));
 }
+
+var _default = Html;
+exports["default"] = _default;

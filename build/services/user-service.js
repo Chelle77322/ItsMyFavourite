@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = exports.UserService = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -47,6 +47,8 @@ var UserService = /*#__PURE__*/function () {
 
   return UserService;
 }();
+
+exports.UserService = UserService;
 
 var _default = new UserService();
 

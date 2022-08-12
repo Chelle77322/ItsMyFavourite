@@ -1,14 +1,14 @@
 import React from 'react';
-import ReactDOMServer,{ renderToString } from 'react-dom/server';
+import { renderToString} from 'react-dom/server';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux';
+import { Provider } from '@reduxjs/toolkit';
 import { renderRoutes } from 'react-router-config';
-import serialize from 'serialize-javascript';
-import { Helmet } from 'react-helmet';
-import Routes from '../client/Routes';
+import {serialize} from 'serialize-javascript';
+import { Helmet} from 'react-helmet';
+import {Routes} from '../client/Routes';
 
 // eslint-disable-next-line import/no-anonymous-default-export
-export default  (request, store, context) => {
+export default function (request, store, context) {
   const content = renderToString(
     <Provider store={store}>
       <BrowserRouter location={request.path} context={context}>
@@ -26,12 +26,12 @@ export default  (request, store, context) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
             </head>
             <body>
-                <div id="root">${content}</div>
+                <div id="app">${content}</div>
                 <script>
                     window.__PRELOADED_STATE__ = ${serialize(store.getState()).replace(
-                      /</g,
-                      '\\u003c'
-                    )}
+    /</g,
+    '\\u003c'
+  )}
                 </script>
                 <script src="/bundle.js"></script>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

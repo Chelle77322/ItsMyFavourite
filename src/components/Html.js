@@ -1,12 +1,12 @@
 import React from 'react';
 import "../helpers/helper";
 
-export default function Html({ children, initialState, scripts }) {
+function Html({ children, initialState, scripts }) {
   return (
     <html>
       <head>
         <meta charSet="UTF-8" />
-        <title>Welcome to It's My Favourite'</title>
+        <title>Welcome to It's My Favourite</title>
       </head>
       <body>
         <div
@@ -26,3 +26,4 @@ export default function Html({ children, initialState, scripts }) {
     </html>
   );
 }
+export default Html;

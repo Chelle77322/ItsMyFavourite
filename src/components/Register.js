@@ -116,7 +116,7 @@ resetErrorMessage = () => {
 render() {
     const {id, first_name, last_name, password} = this.state.user;
     
-    const {submitted} = this.state;
+    const {submitted} = this.state.user;
     
     
     return (

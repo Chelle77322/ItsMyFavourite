@@ -3,17 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.logout = exports.login = exports.authActions = void 0;
+exports.logout = exports.login = exports["default"] = exports.authActions = void 0;
 
 var _types = require("./types");
 
-var _authService = _interopRequireDefault(require("../services/auth-service"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+var _authService = require("../../services/auth-service");
 
 var authActions = function authActions(id, firstName, lastName, password) {
   return function (dispatch) {
-    return _authService["default"].register(id, firstName, lastName, password).then(function (response) {
+    return _authService.AuthService.register(id, firstName, lastName, password).then(function (response) {
       dispatch({
         type: _types.Types.REGISTER_SUCCESS
       });
@@ -40,7 +38,7 @@ exports.authActions = authActions;
 
 var login = function login(id, password) {
   return function (dispatch) {
-    return _authService["default"].login(id, password).then(function (data) {
+    return _authService.AuthService.login(id, password).then(function (data) {
       dispatch({
         type: _types.Types.LOGIN_SUCCESS,
         payload: {
@@ -66,7 +64,7 @@ exports.login = login;
 
 var logout = function logout() {
   return function (dispatch) {
-    _authService["default"].logout();
+    _authService.AuthService.logout();
 
     dispatch({
       type: _types.Types.LOGOUT
@@ -75,3 +73,7 @@ var logout = function logout() {
 };
 
 exports.logout = logout;
+
+var _default = new _authService.AuthService();
+
+exports["default"] = _default;

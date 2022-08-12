@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.userSlice = exports.userSelector = exports.registerUser = exports.loginUser = exports.fetchUserBytoken = exports.clearState = void 0;
+exports.userSlice = exports.userSelector = exports.registerUser = exports.loginUser = exports.fetchUserByToken = exports.clearState = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 
@@ -156,7 +156,7 @@ var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/funct
   };
 }());
 exports.loginUser = loginUser;
-var fetchUserBytoken = (0, _toolkit.createAsyncThunk)('users/fetchUserByToken', /*#__PURE__*/function () {
+var fetchUserByToken = (0, _toolkit.createAsyncThunk)('users/fetchUserByToken', /*#__PURE__*/function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(_ref5, thunkAPI) {
     var token, response, data;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -216,13 +216,13 @@ var fetchUserBytoken = (0, _toolkit.createAsyncThunk)('users/fetchUserByToken', 
     return _ref6.apply(this, arguments);
   };
 }());
-exports.fetchUserBytoken = fetchUserBytoken;
+exports.fetchUserByToken = fetchUserByToken;
 var userSlice = (0, _toolkit.createSlice)({
   name: 'user',
   initialState: {
-    booking_id: '',
-    full_name: '',
-    email: '',
+    id: '',
+    first_name: '',
+    last_name: '',
     password: '',
     isFetching: false,
     isSuccess: false,
@@ -253,7 +253,7 @@ var userSlice = (0, _toolkit.createSlice)({
     state.errorMessage = payload.message;
   }), _defineProperty(_extraReducers, loginUser.fulfilled, function (state, _ref9) {
     var payload = _ref9.payload;
-    state.booking_id = payload.booking_id;
+    state.id = payload.id;
     state.isFetching = false;
     state.isSuccess = true;
     return state;
@@ -265,16 +265,16 @@ var userSlice = (0, _toolkit.createSlice)({
     state.errorMessage = payload.message;
   }), _defineProperty(_extraReducers, loginUser.pending, function (state) {
     state.isFetching = true;
-  }), _defineProperty(_extraReducers, fetchUserBytoken.pending, function (state) {
+  }), _defineProperty(_extraReducers, fetchUserByToken.pending, function (state) {
     state.isFetching = true;
-  }), _defineProperty(_extraReducers, fetchUserBytoken.fulfilled, function (state, _ref11) {
+  }), _defineProperty(_extraReducers, fetchUserByToken.fulfilled, function (state, _ref11) {
     var payload = _ref11.payload;
     state.isFetching = false;
     state.isSuccess = true;
-    state.booking_id = payload.booking_id;
-    state.full_name = payload.full_name;
-  }), _defineProperty(_extraReducers, fetchUserBytoken.rejected, function (state) {
-    console.log('fetchUserBytoken');
+    state.id = payload.booking_id;
+    state.first_name = payload.first_name;
+  }), _defineProperty(_extraReducers, fetchUserByToken.rejected, function (state) {
+    console.log('fetchUserByToken');
     state.isFetching = false;
     state.isError = true;
   }), _extraReducers)

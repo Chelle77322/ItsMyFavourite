@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = exports.AuthService = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -95,6 +95,8 @@ var AuthService = /*#__PURE__*/function () {
 
   return AuthService;
 }();
+
+exports.AuthService = AuthService;
 
 var _default = new AuthService();
 

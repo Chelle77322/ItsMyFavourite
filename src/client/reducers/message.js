@@ -1,5 +1,5 @@
 
-export  default function alert(state = {}, action){
+function alert(state = {}, action){
   switch(action.type){
     case alertConstants.SUCCESS: 
     return{
@@ -16,3 +16,4 @@ export  default function alert(state = {}, action){
         default: return state
   }
 }
+export default alert;

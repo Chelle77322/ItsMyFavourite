@@ -7,7 +7,7 @@ axios.create({
     }
 });
 
-class AuthService {
+export class AuthService {
     async login(id, password){
         const response = await axios.post(GOOGLE_API_KEY + "signin", {id, password});
         if(response.data.accessToken)

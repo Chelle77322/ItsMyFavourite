@@ -1,7 +1,7 @@
 import { resolve } from 'path';
 import nodeExternals from 'webpack-node-externals';
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const common = {
+export const common = {
   module: {
     rules: [
       {
@@ -25,7 +25,7 @@ const common = {
     
   }
 
-const clientConfig = {
+export const clientConfig = {
   ...common,
   mode: 'development',
   name: 'client',
@@ -34,8 +34,8 @@ const clientConfig = {
   entry: {
     client: [
       '@babel/preset-react',
-      '/src/client/client.js',
-      '/build/bundle.js'
+      './src/client/client.js',
+      './scr/bundle.js'
     ],
   },
   output: {
@@ -63,7 +63,7 @@ const clientConfig = {
     tls: 'empty',
   },
 };
-const serverConfig = {
+export const serverConfig = {
   ...common,
   mode: 'development',
   name: 'server',

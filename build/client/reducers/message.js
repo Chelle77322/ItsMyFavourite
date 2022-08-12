@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = alert;
+exports["default"] = void 0;
 
 function alert() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
@@ -29,3 +29,6 @@ function alert() {
       return state;
   }
 }
+
+var _default = alert;
+exports["default"] = _default;

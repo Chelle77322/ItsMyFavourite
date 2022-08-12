@@ -64,7 +64,7 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-export const fetchUserBytoken = createAsyncThunk('users/fetchUserByToken',
+export const fetchUserByToken = createAsyncThunk('users/fetchUserByToken',
 async ({token}, thunkAPI) => {
   try{
     const response = await fetch(
@@ -95,9 +95,9 @@ async ({token}, thunkAPI) => {
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    booking_id: '',
-    full_name: '',
-    email: '',
+    id: '',
+    first_name: '',
+    last_name: '',
     password: '',
     isFetching: false,
     isSuccess: false,
@@ -130,7 +130,7 @@ export const userSlice = createSlice({
       state.errorMessage = payload.message;
     },
     [loginUser.fulfilled]: (state,{payload}) => {
-      state.booking_id = payload.booking_id;
+      state.id = payload.id;
       state.isFetching = false;
       state.isSuccess = true;
       return state;
@@ -144,18 +144,18 @@ export const userSlice = createSlice({
     [loginUser.pending]: (state) => {
       state.isFetching = true;
     },
-    [fetchUserBytoken.pending]: (state) => {
+    [fetchUserByToken.pending]: (state) => {
       state.isFetching = true;
     },
-    [fetchUserBytoken.fulfilled]: (state, {payload})=> {
+    [fetchUserByToken.fulfilled]: (state, {payload})=> {
       state.isFetching = false;
       state.isSuccess = true;
       
-      state.booking_id = payload.booking_id;
-      state.full_name = payload.full_name;
+      state.id = payload.booking_id;
+      state.first_name = payload.first_name;
     },
-    [fetchUserBytoken.rejected]: (state) => {
-      console.log('fetchUserBytoken');
+    [fetchUserByToken.rejected]: (state) => {
+      console.log('fetchUserByToken');
       state.isFetching = false;
       state.isError = true;
     },

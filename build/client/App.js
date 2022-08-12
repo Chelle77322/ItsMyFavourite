@@ -11,13 +11,11 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRedux = require("react-redux");
 
-var _Home = _interopRequireDefault(require("./pages/Home"));
+var _Home = require("./pages/Home");
 
 var _selectors = require("./redux/selectors.js");
 
 var _actions = require("./redux/actions.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
@@ -77,7 +75,7 @@ var App = /*#__PURE__*/function (_Component) {
     key: "render",
     value: function render() {
       /*#__PURE__*/
-      _react["default"].createElement(_Home["default"], null);
+      _react["default"].createElement(_Home.Home, null);
 
       var users = this.props.users;
       return /*#__PURE__*/_react["default"].createElement("div", null, users && users.length > 0 && users.map(function (_ref) {
@@ -94,6 +92,7 @@ var App = /*#__PURE__*/function (_Component) {
   return App;
 }(_react.Component);
 
+exports["default"] = App;
 var ConnectedApp = (0, _reactRedux.connect)(function (state) {
   return {
     users: (0, _selectors.getUsers)(state)
@@ -136,5 +135,3 @@ var ConnectedApp = (0, _reactRedux.connect)(function (state) {
     }()
   };
 })(App);
-var _default = ConnectedApp;
-exports["default"] = _default;

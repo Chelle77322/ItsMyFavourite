@@ -1,9 +1,9 @@
 import axios from 'axios';
-import config from '../../../config';
+import {config} from '../../../config';
 
 export const FETCH_FAVOURITES = 'fetch_favourites';
 
-export default function fetchFavourites(query) {
+function fetchFavourites(query) {
     return async (dispatch) => {
         let url;
         if (query) {
@@ -19,3 +19,4 @@ export default function fetchFavourites(query) {
         });
     };
 }
+export default fetchFavourites;

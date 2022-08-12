@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.usersFetched = usersFetched;
+exports["default"] = usersFetched;
 
 var _constants = require("./constants");
 

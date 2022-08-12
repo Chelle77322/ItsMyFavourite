@@ -30,7 +30,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 var app = (0, _express["default"])();
 app.use(_express["default"]["static"](_path["default"].join(__dirname)));
-app.get('/*', /*#__PURE__*/function () {
+console.info(app);
+app.get('*', /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(request, result) {
     var scripts, initialState, appMarkup, html;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -40,13 +41,13 @@ app.get('/*', /*#__PURE__*/function () {
             scripts = ['vendor.js', 'client.js'];
             initialState = {
               state: {
-                App: _App["default"]
+                Html: _Html["default"]
               }
             };
             appMarkup = /*#__PURE__*/_react["default"].createElement(_toolkit.Provider, {
               Store: _store["default"]
             }, /*#__PURE__*/_react["default"].createElement(_App["default"], null));
-            html = _server["default"].renderToStaticMarkup( /*#__PURE__*/_react["default"].createElement(_Html["default"], {
+            html = _server["default"].renderToString( /*#__PURE__*/_react["default"].createElement(_Html["default"], {
               children: appMarkup,
               scripts: scripts,
               initialState: initialState

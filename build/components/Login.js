@@ -192,10 +192,10 @@ var Login = /*#__PURE__*/function (_Component) {
       }, /*#__PURE__*/_react["default"].createElement("div", {
         className: "form-group"
       }, /*#__PURE__*/_react["default"].createElement(_reactstrap.Label, {
-        htmlFor: "booking_id"
-      }, "Booking ID"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
+        htmlFor: "id"
+      }, "ID"), /*#__PURE__*/_react["default"].createElement(_input["default"], {
         type: "text",
-        value: booking_id,
+        value: id,
         name: "id",
         onChange: function onChange(event) {
           _this2.makeChange(event);

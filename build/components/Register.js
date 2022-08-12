@@ -235,7 +235,7 @@ var Register = /*#__PURE__*/function (_Component) {
           first_name = _this$state$user.first_name,
           last_name = _this$state$user.last_name,
           password = _this$state$user.password;
-      var submitted = this.state.submitted;
+      var submitted = this.state.user.submitted;
       return /*#__PURE__*/_react["default"].createElement("div", {
         className: "col-md-12"
       }, /*#__PURE__*/_react["default"].createElement("div", {

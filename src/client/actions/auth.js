@@ -1,5 +1,5 @@
 import {Types} from './types';
-import AuthService from "../services/auth-service"
+import {AuthService} from "../../services/auth-service";
 
 export const authActions = (id, firstName, lastName, password) => (dispatch) => {
     return AuthService.register(id, firstName, lastName, password).then
@@ -58,3 +58,4 @@ export const logout = () => (dispatch)=> {
         type: Types.LOGOUT,
     });
 };
+export default new AuthService();
