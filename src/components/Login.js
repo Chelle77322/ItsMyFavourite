@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect}from 'react-redux';
 import {userActions} from "../client/actions/userActions";
-import {userSelector} from "../client/features/userSlice";
+import userSelector from "../client/features/userSlice";
 
 import {Label, Container} from "reactstrap";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Button from "react-validation/build/button";
-import {getStore} from "../utils/index";
+
 
 export class Login extends Component {
     constructor (props){ 

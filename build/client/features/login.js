@@ -35,7 +35,7 @@ var Login = function Login(_ref) {
   var history = (0, _reactRouterDom.useNavigate)();
 
   var _useForm = (0, _reactHookForm.useForm)(),
-      signup = _useForm.signup,
+      signUp = _useForm.signUp,
       errors = _useForm.errors,
       handleSubmit = _useForm.handleSubmit;
 

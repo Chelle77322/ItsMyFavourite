@@ -13,7 +13,7 @@ var _reactRedux = require("react-redux");
 
 var _userActions = require("../client/actions/userActions");
 
-var _userSlice = require("../client/features/userSlice");
+var _userSlice = _interopRequireDefault(require("../client/features/userSlice"));
 
 var _reactstrap = require("reactstrap");
 
@@ -22,8 +22,6 @@ var _form = _interopRequireDefault(require("react-validation/build/form"));
 var _input = _interopRequireDefault(require("react-validation/build/input"));
 
 var _button = _interopRequireDefault(require("react-validation/build/button"));
-
-var _index = require("../utils/index");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -131,7 +129,7 @@ var Login = /*#__PURE__*/function (_Component) {
 
                 if (_this.validateForm(_this.state.errors)) {
                   console.info('Form is Validated');
-                  user = (0, _index.getStore)('user');
+                  user = getStore('user');
 
                   if (user) {
                     _this.props.dispatch(_userActions.userActions.loginSuccess(user));

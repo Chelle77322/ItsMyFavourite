@@ -161,6 +161,6 @@ const userSlice = createSlice({
     },
   },
 });
-const { clearState } = userSlice.actions;
-const userSelector = (state) => state.user;
-export default userSelector;
+export const { setValue } = userSlice.actions;
+export const userSelector = (state) => state.user;
+export default userSlice.reducer;

@@ -1,19 +1,45 @@
-import React from 'react';
-import {renderToString} from 'react-dom/server';
-import {Provider} from "react-redux";
-import configuredStore from "../redux/configureStore";
-import App from "../components/App";
 
-module.exports = function render(initialState){
-  const store = configuredStore(initialState)
+import { hydrateRoot } from "react-dom/client";
+import { configureStore } from '@reduxjs/toolkit';
 
-  let content = renderToString(
-    <Provider store={store} >
-      console.info(store={store});
-      <App />
-    </Provider>
-  );
-  const preloadedState = store.getState()
+import { Provider }from 'react-redux';
 
-  return {content, preloadedState};
-}
+import rootReducer from "./reducers/index";
+
+const preloadedState = window.__PRELOADED_STATE__
+
+const clientStore = configureStore({
+  reducer: rootReducer,
+  preloadedState,
+})
+hydrateRoot(
+  document.getElementById('app'),
+  <Provider store={clientStore}
+  serverState={preloadedState}>
+
+    <App />
+  </Provider>
+)
+
+//**OLD CODE KEPT HERE
+//import React from 'react';
+//import {renderToString} from 'react-dom/server';
+//import {Provider} from "react-redux";
+//import {configureStore} from "@reduxjs/toolkit"
+//import rootReducer from '../client/reducers/index'
+//import App from "../components/App";
+
+
+//module.exports = function render(initialState){
+ // const store = configureStore(rootReducer(initialState))
+
+ // let content = renderToString(
+  //  <Provider store={store} >
+     
+  //    <App />
+  //  </Provider>
+ // );
+ // const preloadedState = store.getState()
+
+ // return {content, preloadedState};
+//}

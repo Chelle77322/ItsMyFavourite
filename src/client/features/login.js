@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({}) => {
   const dispatch = useDispatch();
   const history = useNavigate();
-  const { signup, errors, handleSubmit } = useForm();
+  const { signUp, errors, handleSubmit } = useForm();
   const {isFetching, isSuccess, isError, errorMessage } = useSelector(
     userSelector);
 

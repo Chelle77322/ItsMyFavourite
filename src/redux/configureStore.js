@@ -1,14 +1,13 @@
-import { configureStore, applyMiddleware } from '@reduxjs/toolkit'
-import thunkMiddleware from 'redux-thunk'
-import rootReducer from '../client/reducers/index'
+import { configureStore} from '@reduxjs/toolkit';
+import userSlice from "../client/features/userSlice";
+import rootReducer from "../client/reducers/index";
 
 
-export default function configuredStore(preloadedState) {
-  return configureStore(
-    rootReducer,
-    preloadedState,
-    applyMiddleware(
-      thunkMiddleware
-    )
-  )
-}
+
+const configuredStore = configureStore({
+  reducer: {
+    reducer:rootReducer,
+    user: userSlice,
+  }
+});
+export default configuredStore

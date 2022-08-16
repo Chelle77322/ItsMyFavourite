@@ -5,7 +5,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.userSelector = exports.setValue = exports["default"] = void 0;
 
 var _toolkit = require("@reduxjs/toolkit");
 
@@ -277,11 +277,13 @@ var userSlice = (0, _toolkit.createSlice)({
     state.isError = true;
   }), _extraReducers)
 });
-var clearState = userSlice.actions.clearState;
+var setValue = userSlice.actions.setValue;
+exports.setValue = setValue;
 
 var userSelector = function userSelector(state) {
   return state.user;
 };
 
-var _default = userSelector;
+exports.userSelector = userSelector;
+var _default = userSlice.reducer;
 exports["default"] = _default;

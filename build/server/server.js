@@ -1,25 +1,37 @@
 "use strict";
 
-var _react = _interopRequireDefault(require("react"));
+var _client = require("react-dom/client");
 
-var _server = require("react-dom/server");
+var _toolkit = require("@reduxjs/toolkit");
 
 var _reactRedux = require("react-redux");
 
-var _configureStore = _interopRequireDefault(require("../redux/configureStore"));
-
-var _App = _interopRequireDefault(require("../components/App"));
+var _index = _interopRequireDefault(require("./reducers/index"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-module.exports = function render(initialState) {
-  var store = (0, _configureStore["default"])(initialState);
-  var content = (0, _server.renderToString)( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
-    store: store
-  }, "console.info(store=", store, ");", /*#__PURE__*/_react["default"].createElement(_App["default"], null)));
-  var preloadedState = store.getState();
-  return {
-    content: content,
-    preloadedState: preloadedState
-  };
-};
+var preloadedState = window.__PRELOADED_STATE__;
+var clientStore = (0, _toolkit.configureStore)({
+  reducer: _index["default"],
+  preloadedState: preloadedState
+});
+(0, _client.hydrateRoot)(document.getElementById('app'), /*#__PURE__*/React.createElement(_reactRedux.Provider, {
+  store: clientStore,
+  serverState: preloadedState
+}, /*#__PURE__*/React.createElement(App, null))); //**OLD CODE KEPT HERE
+//import React from 'react';
+//import {renderToString} from 'react-dom/server';
+//import {Provider} from "react-redux";
+//import {configureStore} from "@reduxjs/toolkit"
+//import rootReducer from '../client/reducers/index'
+//import App from "../components/App";
+//module.exports = function render(initialState){
+// const store = configureStore(rootReducer(initialState))
+// let content = renderToString(
+//  <Provider store={store} >
+//    <App />
+//  </Provider>
+// );
+// const preloadedState = store.getState()
+// return {content, preloadedState};
+//}
