@@ -71,11 +71,11 @@ export const serverConfig = {
   externals: [nodeExternals()],
 
   entry: {
-    server: ['@babel/preset-react', resolve(__dirname,'/server/server.js')]
+    server: ['@babel/preset-react', resolve(__dirname,'index.js')]
   },
   output: {
     path: resolve(__dirname),
-    filename: 'server.js',
+    filename: 'index.js',
   },
   module: {
     rules: [

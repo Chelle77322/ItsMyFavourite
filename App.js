@@ -1,8 +1,8 @@
 import express from 'express'
 import path from 'path'
 //import template from './src/template'
-import server from './src/server/server'
-import data from './data/users.json'
+import server from './src/server/server.js'
+import data from './data/users.json' assert {type: "json"};
 
 const app = express()
 
@@ -19,7 +19,7 @@ let initialState = {
   isFetching: false,
   apps: data
 }
-
+console.info(initialState);
 // server rendered home page
 app.get('/', (request, result) => {
   const { preloadedState, content}  = server(initialState)

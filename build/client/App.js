@@ -9,7 +9,7 @@ exports["default"] = exports.ConnectedApp = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _reactDom = _interopRequireDefault(require("react-dom"));
+var _reactDom = _interopRequireWildcard(require("react-dom"));
 
 var _reactRedux = require("react-redux");
 
@@ -18,8 +18,6 @@ var _Home = require("./pages/Home");
 var _selectors = require("./redux/selectors.js");
 
 var _actions = require("./redux/actions.js");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 

@@ -14,7 +14,7 @@ export const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: '/server/server.js',
+  entry: 'index.js',
   output: {
     path: resolve(__dirname, '/build/'),
     filename: '[name].js',

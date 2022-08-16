@@ -1,20 +1,18 @@
 import React from 'react';
-import ReactDOM, {hydrate} from 'react-dom';
-import { configureStore} from '@reduxjs/toolkit';
-import {fetchFavourites} from './actions';
+import {hydrate} from 'react-dom';
+import {Provider} from "react-redux";
+import configuredStore from "../redux/configureStore";
 
+import App from "../components/App";
 
-import {rootReducer} from "./reducers/index";
+var state = global.__STATE__;
 
-import {Provider} from 'react-redux';
+delete global.__STATE__;
 
-import {App}  from './App';
-
-const store = configureStore(rootReducer, {...window.__APP_STATE}, fetchFavourites);
-console.info({...window.__APP_STATE});
-ReactDOM.hydrate(
-  <Provider store = {store}>
+const store = configuredStore(state);
+hydrate(
+  <Provider store={store} >
     <App />
   </Provider>,
-  document.getElementById('app')
-);
+  document.querySelector('#app')
+)
