@@ -1,15 +1,86 @@
-import {Types} from "./types";
+import { userConstants } from '../constants';
+import { UserService } from '../../services';
+import { alertActions } from './';
+import { history } from '../../helpers';
 
 export const userActions = {
-    registerSuccess: (user) => ({types: Types.REGISTER_SUCCESS, payload: {user} }),
+    login,
+    logout,
+    register,
+    getAll,
+    delete: _delete
+};
 
-    registerFail : (user) => ({type: Types.REGISTER_FAIL, payload: {user} }),
+function login(id, password, from){
+    return dispatch => {
+        dispatch(request({ id}));
 
-    loginSuccess: (user) => ({type: Types.LOGIN_SUCCESS, payload: {user} }),
+        UserService.login(id, password).then(user => {
+            dispatch(success(user));
+            history.push(from);
+        },
+        error => {
+            dispatch(failure(error.toString()));
+            dispatch(alertActions.error(error.toString()));
+        }
+        );
+    };
+    function request (user) { return { type: userConstants.LOGIN_REQUEST, user}}
 
-    loginFail: (user) => ({type: Types.LOGIN_FAIL, payload: {user} }),
+    function success(user){ return {type: userConstants.LOGIN_SUCCESS, user}}
 
-    logout: (user) => ({types: Types.LOGOUT, payload: {user} }),
+    function failure(error){return {type: userConstants.LOGIN_FAILURE, error}}
+}
 
-    formSubmitionStatus: (status) => ({types: Types.FORM_SUBMITITION_STATUS, payload: {status} }),
+function logout () {
+    UserService.logout();
+    return { type: userConstants.LOGOUT};
+}
+function register(user){
+    return dispatch => {
+        dispatch(request(user));
+        UserService.register(user).then(user => {
+            dispatch(success());
+            history.push('/login');
+            dispatch(alertActions.success('Registration successful'));
+        },
+        error => {
+            dispatch(failure(error.toString()));
+            dispatch(alertActions.error(error.toString()));
+        }
+        );
+    };
+    function request(user) { return { type: userConstants.REGISTER_REQUEST, user } }
+    function success(user) { return { type: userConstants.REGISTER_SUCCESS, user } }
+    function failure(error) { return { type: userConstants.REGISTER_FAILURE, error } }
+}
+function getAll() {
+    return dispatch => {
+        dispatch(request());
+
+        userService.getAll()
+            .then(
+                users => dispatch(success(users)),
+                error => dispatch(failure(error.toString()))
+            );
+    };
+
+    function request() { return { type: userConstants.GETALL_REQUEST } }
+    function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
+    function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
+}
+function _delete(id) {
+    return dispatch => {
+        dispatch(request(id));
+
+        userService.delete(id)
+            .then(
+                user => dispatch(success(id)),
+                error => dispatch(failure(id, error.toString()))
+            );
+    };
+
+    function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
+    function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
+    function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }

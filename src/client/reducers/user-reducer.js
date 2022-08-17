@@ -1,50 +1,37 @@
-/* eslint-disable default-case */
-import {Types} from '../actions/types.js';
+import { userConstants } from '../constants';
 
-const initialState = {
-    user: {
-        id:"",
-        firstName: "",
-        lastName: "",
-        favourites:[],
-    },
-    formSubmitted: false
-}
-function userReducer(state = initialState,{}, action) {
+export function users(state = {}, action){
     switch (action.type) {
-        case Types.REGISTER_SUCCESS:
-            console.log('register', action.payload.user);
-            return {
-                ...state,
-                user: action.payload.user,
-                formSubmitted: false
-            };
-        case Types.REGISTER_FAIL:
-            console.log('register', action.payload.user);
-            return {
-                ...state,
-                user: action.payload.user,
-                formSubmitted: false
-            };
-        case Types.LOGIN_SUCCESS:
-            console.log('login', action.payload.user);
-            return {
-                user: action.payload.user,
-                formSubmitted: false
-            };
-        case Types.LOGIN_FAIL:
-            console.log('login', action.payload.user);
-            return {
-                user: action.payload.user,
-                formSubmitted: false
-            };
-        case Types.FORM_SUBMITITION_STATUS:
-            return {
-                ...state,
-                formSubmitted: action.payload.status
-            };
-        default: return state;
+        case userConstants.GETALL_REQUEST: return {
+            loading: true
+        };
+        case userConstants.GETALL_SUCCESS: return {
+            items: action.users
+        };
+        case userConstants.GETALL_FAILURE: return {
+            error: action.error
+        };
+        case userConstants.DELETE_REQUEST: return {
+            ...state,
+            items: state.items.map(user =>
+                user.id === action.id ? 
+                { ... user, deleting: true}: user )
+        };
+        case userConstants.DELETE_SUCCESS:
+        return {
+            items: state.items.filter(user => user.id !== action.id)
+        };
+        case userConstants.DELETE_FAILURE:
+    return {
+        ...state,
+        items: state.items.map(user => {
+            if(user.id === action.id){
+                const { deleting, ... userCopy} = user;
+                return { ...userCopy, deleteError: action.error};
+            }
+            return user;
+        })
+    };
+    default: return state
     }
-
 }
-export default userReducer;

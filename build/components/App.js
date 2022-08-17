@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 function App() {
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "#app"
+    className: "app"
   }, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Routes, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
     exact: true,
     Component: _Home.Home,
@@ -29,5 +29,7 @@ function App() {
   }))));
 }
 
-var _default = App;
+var _default = {
+  App: App
+};
 exports["default"] = _default;

@@ -1,65 +1,26 @@
-import { Types} from '../actions/types';
+import { userConstants } from '../constants';
 
-const initialState = {
+let user = JSON.parse(localStorage.getItem('user'));
 
-    user:{
-    id:"",
-    password: "",
-    },
-  
-  loginFormSubmitted: false
+const initialState = user ? {loggedIn : true, user }: {};
+
+export function authentication (state = initialState, action) {
+  switch (action.type){
+    case userConstants.LOGIN_REQUEST: 
+    return {
+      loggingIn: true,
+      user: action.user
+    };
+    case userConstants.LOGIN_SUCCESS: 
+    return {
+      loggedIn: true,
+      user: action.user
+    };
+    case userConstants.LOGIN_FAILURE: 
+    return {};
+    case userConstants.LOGOUT:
+      return {};
+      default: 
+      return state
+  }
 }
-
-
-const authReducer = (state = initialState, action) =>{
-  switch(action.type){
-  case Types.LOGIN_REQUEST:
-    console.log('login', action.payload.user)
-    return{
-      ...state,
-      loggedIn:action.payload.user,
-      loginFormSubmitted: false
-    }
-    case Types.LOGIN_SUCCESS:
-      return {
-        loggedIn: true,
-        user: action.payload.user
-      };
-      case Types.LOGIN_FAILURE:
-        return{
-          loggedIn: false,
-          user: action.payload.user
-        };
-        case Types.LOGOUT:
-          return{
-            loggedOut: true
-          };
-          default: return state
-        case Types.REGISTER_REQUEST:
-          return{
-          ...state,
-          user: action.payload.user,
-          formSubmitted: false
-          }
-          case Types.REGISTER_SUCCESS:
-            return{
-              ...state,
-              user: action.payload.user,
-              
-            }
-            case Types.REGISTER_FAILURE:
-              return {};
-            
-      case Types.FORM_SUBMITION_STATUS:
-       return {
-        ...state,
-          user: action.payload.status,
-           
-          
-       }  
-         
-      }     
- 
-}
-
-export default authReducer;

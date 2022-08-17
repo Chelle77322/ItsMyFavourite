@@ -7,7 +7,7 @@ import {PageMiss} from '../client/pages/PageMiss';
 
 function App() { 
     return (
-        <div className = "#app">
+        <div className = "app">
             <Router>
                 <Routes>
                     <Route exact Component={Home} path = "/home"/>
@@ -17,4 +17,4 @@ function App() {
         </div>
     );
 }
-export default App;
+export default {App};

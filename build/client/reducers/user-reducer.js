@@ -3,9 +3,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports.users = users;
 
-var _types = require("../actions/types.js");
+var _constants = require("../constants");
+
+var _excluded = ["deleting"];
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
@@ -13,65 +19,59 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _objectDestructuringEmpty(obj) { if (obj == null) throw new TypeError("Cannot destructure undefined"); }
-
-var initialState = {
-  user: {
-    id: "",
-    firstName: "",
-    lastName: "",
-    favourites: []
-  },
-  formSubmitted: false
-};
-
-function userReducer() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
-
-  var _ref = arguments.length > 1 ? arguments[1] : undefined;
-
-  _objectDestructuringEmpty(_ref);
-
-  var action = arguments.length > 2 ? arguments[2] : undefined;
+function users() {
+  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var action = arguments.length > 1 ? arguments[1] : undefined;
 
   switch (action.type) {
-    case _types.Types.REGISTER_SUCCESS:
-      console.log('register', action.payload.user);
-      return _objectSpread(_objectSpread({}, state), {}, {
-        user: action.payload.user,
-        formSubmitted: false
-      });
-
-    case _types.Types.REGISTER_FAIL:
-      console.log('register', action.payload.user);
-      return _objectSpread(_objectSpread({}, state), {}, {
-        user: action.payload.user,
-        formSubmitted: false
-      });
-
-    case _types.Types.LOGIN_SUCCESS:
-      console.log('login', action.payload.user);
+    case _constants.userConstants.GETALL_REQUEST:
       return {
-        user: action.payload.user,
-        formSubmitted: false
+        loading: true
       };
 
-    case _types.Types.LOGIN_FAIL:
-      console.log('login', action.payload.user);
+    case _constants.userConstants.GETALL_SUCCESS:
       return {
-        user: action.payload.user,
-        formSubmitted: false
+        items: action.users
       };
 
-    case _types.Types.FORM_SUBMITITION_STATUS:
+    case _constants.userConstants.GETALL_FAILURE:
+      return {
+        error: action.error
+      };
+
+    case _constants.userConstants.DELETE_REQUEST:
       return _objectSpread(_objectSpread({}, state), {}, {
-        formSubmitted: action.payload.status
+        items: state.items.map(function (user) {
+          return user.id === action.id ? _objectSpread(_objectSpread({}, user), {}, {
+            deleting: true
+          }) : user;
+        })
+      });
+
+    case _constants.userConstants.DELETE_SUCCESS:
+      return {
+        items: state.items.filter(function (user) {
+          return user.id !== action.id;
+        })
+      };
+
+    case _constants.userConstants.DELETE_FAILURE:
+      return _objectSpread(_objectSpread({}, state), {}, {
+        items: state.items.map(function (user) {
+          if (user.id === action.id) {
+            var deleting = user.deleting,
+                userCopy = _objectWithoutProperties(user, _excluded);
+
+            return _objectSpread(_objectSpread({}, userCopy), {}, {
+              deleteError: action.error
+            });
+          }
+
+          return user;
+        })
       });
 
     default:
       return state;
   }
 }
-
-var _default = userReducer;
-exports["default"] = _default;
