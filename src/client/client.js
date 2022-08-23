@@ -6,10 +6,13 @@ import {combineReducers} from "redux";
 import rootReducer from "./reducers/index";
 
 import {App} from "../components/App";
+if (!window) {
+  require('localstorage-polyfill');
+}
+var state = window.__STATE__;
 
-var state = global.__STATE__;
+delete window.__STATE__;
 
-delete global.__STATE__;
 const reducer = combineReducers(rootReducer);
 
 const store = configureStore(reducer, state);

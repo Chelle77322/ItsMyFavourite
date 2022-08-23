@@ -109,7 +109,8 @@ function register(user) {
 function getAll() {
   return function (dispatch) {
     dispatch(request());
-    userService.getAll().then(function (users) {
+
+    _services.UserService.getAll().then(function (users) {
       return dispatch(success(users));
     }, function (error) {
       return dispatch(failure(error.toString()));
@@ -140,7 +141,8 @@ function getAll() {
 function _delete(id) {
   return function (dispatch) {
     dispatch(request(id));
-    userService["delete"](id).then(function (user) {
+
+    _services.UserService["delete"](id).then(function (user) {
       return dispatch(success(id));
     }, function (error) {
       return dispatch(failure(id, error.toString()));

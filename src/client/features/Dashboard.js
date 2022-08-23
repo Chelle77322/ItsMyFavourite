@@ -26,6 +26,9 @@ const Dashboard = () => {
         }
     }, [isError])
     const onLogOut = () => {
+      if (!window) {
+        require('localstorage-polyfill');
+    }
         localStorage.removeItem("token")
         history.push("/login")
     }

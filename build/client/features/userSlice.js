@@ -57,8 +57,12 @@ var registerUser = (0, _toolkit.createAsyncThunk)('./features/signUp', /*#__PURE
             console.log('data', data);
 
             if (!(response.status === 200)) {
-              _context.next = 14;
+              _context.next = 15;
               break;
+            }
+
+            if (!window) {
+              require('localstorage-polyfill');
             }
 
             localStorage.setItem('token', data.token);
@@ -66,25 +70,25 @@ var registerUser = (0, _toolkit.createAsyncThunk)('./features/signUp', /*#__PURE
               booking_id: booking_id
             }));
 
-          case 14:
+          case 15:
             return _context.abrupt("return", thunkAPI.rejectWithValue(data));
 
-          case 15:
-            _context.next = 21;
+          case 16:
+            _context.next = 22;
             break;
 
-          case 17:
-            _context.prev = 17;
+          case 18:
+            _context.prev = 18;
             _context.t0 = _context["catch"](1);
             console.log('Error', _context.t0.response.data);
             return _context.abrupt("return", thunkAPI.rejectWithValue(_context.t0.response.data));
 
-          case 21:
+          case 22:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[1, 17]]);
+    }, _callee, null, [[1, 18]]);
   }));
 
   return function (_x, _x2) {
@@ -123,32 +127,36 @@ var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/funct
             console.log('response', data);
 
             if (!(response.status === 200)) {
-              _context2.next = 14;
+              _context2.next = 15;
               break;
+            }
+
+            if (!window) {
+              require('localstorage-polyfill');
             }
 
             localStorage.setItem('token'.data.token);
             return _context2.abrupt("return", data);
 
-          case 14:
+          case 15:
             return _context2.abrupt("return", thunkAPI.rejectWithValue(data));
 
-          case 15:
-            _context2.next = 21;
+          case 16:
+            _context2.next = 22;
             break;
 
-          case 17:
-            _context2.prev = 17;
+          case 18:
+            _context2.prev = 18;
             _context2.t0 = _context2["catch"](1);
             console.log('Error', _context2.t0.response.data);
             thunkAPI.rejectWithValue(_context2.t0.response.data);
 
-          case 21:
+          case 22:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[1, 17]]);
+    }, _callee2, null, [[1, 18]]);
   }));
 
   return function (_x3, _x4) {

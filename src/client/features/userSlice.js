@@ -21,6 +21,9 @@ try {
   console.log('data', data);
 
   if (response.status === 200){
+    if (!window) {
+      require('localstorage-polyfill');
+  }
     localStorage.setItem('token', data.token);
     return {...data, booking_id: booking_id};
   }else {
@@ -53,6 +56,9 @@ const loginUser = createAsyncThunk(
       let data = await response.json();
       console.log('response', data);
       if(response.status === 200){
+        if (!window) {
+          require('localstorage-polyfill');
+      }
         localStorage.setItem('token'.data.token);
         return data;
       } else{

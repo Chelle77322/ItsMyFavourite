@@ -29,7 +29,7 @@ app.get('/', (request, result) => {
 });
 
 // Pure client side rendered page
-app.get('/client', (request, res) => {
+app.get('/client', (request, result) => {
   let response = template('Client Side Rendered page')
   result.setHeader('Cache-Control', 'build, max-age=604800')
   result.send(response)

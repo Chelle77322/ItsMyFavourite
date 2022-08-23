@@ -47,6 +47,10 @@ var Dashboard = function Dashboard() {
   }, [isError]);
 
   var onLogOut = function onLogOut() {
+    if (!window) {
+      require('localstorage-polyfill');
+    }
+
     localStorage.removeItem("token");
     history.push("/login");
   };

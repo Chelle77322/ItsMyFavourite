@@ -16,8 +16,12 @@ var _App = require("../components/App");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var state = global.__STATE__;
-delete global.__STATE__;
+if (!window) {
+  require('localstorage-polyfill');
+}
+
+var state = window.__STATE__;
+delete window.__STATE__;
 var reducer = (0, _redux.combineReducers)(_index["default"]);
 var store = (0, _toolkit.configureStore)(reducer, state);
 (0, _reactDom.hydrate)( /*#__PURE__*/_react["default"].createElement(_reactRedux.Provider, {
