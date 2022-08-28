@@ -6,3 +6,5 @@ node_modules/
 webpack.config.js
 .env.developing
 .env.production
+
+its_my_favourite.pem

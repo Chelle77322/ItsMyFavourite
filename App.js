@@ -2,13 +2,19 @@ import express from 'express'
 import path from 'path'
 //import template from './src/template'
 import server from './src/server/server.js'
+import mongoose from 'mongoose';
 import data from './data/users.json' assert {type: "json"};
 
-const app = express()
+const app = express();
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ItsMyFavourite";
 
 // Serving static files
 app.use('/build', express.static(path.resolve(__dirname, 'build')));
 app.use('/assets', express.static(path.resolve(__dirname, 'assets')));
+mongoose.connect(MONGODB_URI , {
+  useNewUrlParser: true,
+  useFindAndModify: false
+});
 
 // hide powered by express
 app.disable('x-powered-by');
