@@ -31,6 +31,15 @@ export const config = {
   [
     new CleanWebpackPlugin()
   ],
+  devServer: {
+    historyApiFallback: true
+},
+externals: {
+    // global app config object
+    config: JSON.stringify({
+        apiUrl: 'http://localhost:3000'
+    })
+},
 
 
   //fallbacks webpack

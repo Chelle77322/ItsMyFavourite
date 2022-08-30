@@ -77,6 +77,15 @@ export const serverConfig = {
     path: resolve(__dirname),
     filename: 'index.js',
   },
+  devServer: {
+    historyApiFallback: true
+},
+externals: {
+    // global app config object
+    config: JSON.stringify({
+        apiUrl: 'http://localhost:3000'
+    })
+},
   module: {
     rules: [
       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },

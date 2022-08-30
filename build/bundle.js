@@ -86945,14 +86945,14 @@ var utils = {
   focusableElements: focusableElements
 };
 
-var _excluded$1f = ["className", "cssModule", "fluid", "tag"];
-var propTypes$1l = {
+var _excluded$1h = ["className", "cssModule", "fluid", "tag"];
+var propTypes$1m = {
   tag: tagPropType,
   fluid: PropTypes__default["default"].oneOfType([PropTypes__default["default"].bool, PropTypes__default["default"].string]),
   className: PropTypes__default["default"].string,
   cssModule: PropTypes__default["default"].object
 };
-var defaultProps$1j = {
+var defaultProps$1k = {
   tag: 'div'
 };
 
@@ -86961,7 +86961,7 @@ function Container(props) {
       cssModule = props.cssModule,
       fluid = props.fluid,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1f);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1h);
 
   var containerClass = 'container';
 
@@ -86977,13 +86977,13 @@ function Container(props) {
   }));
 }
 
-Container.propTypes = propTypes$1l;
-Container.defaultProps = defaultProps$1j;
+Container.propTypes = propTypes$1m;
+Container.defaultProps = defaultProps$1k;
 
-var _excluded$1e = ["className", "cssModule", "noGutters", "tag", "widths"];
+var _excluded$1g = ["className", "cssModule", "noGutters", "tag", "widths"];
 var rowColWidths = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 var rowColsPropType = PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string]);
-var propTypes$1k = {
+var propTypes$1l = {
   tag: tagPropType,
   noGutters: deprecated(PropTypes__default["default"].bool, 'Please use Bootstrap 5 gutter utility classes. https://getbootstrap.com/docs/5.0/layout/gutters/'),
   className: PropTypes__default["default"].string,
@@ -86996,7 +86996,7 @@ var propTypes$1k = {
   xxl: rowColsPropType,
   widths: PropTypes__default["default"].array
 };
-var defaultProps$1i = {
+var defaultProps$1j = {
   tag: 'div',
   widths: rowColWidths
 };
@@ -87007,7 +87007,7 @@ function Row(props) {
       noGutters = props.noGutters,
       Tag = props.tag,
       widths = props.widths,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1e);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1g);
 
   var colClasses = [];
   widths.forEach(function (colWidth, i) {
@@ -87027,10 +87027,10 @@ function Row(props) {
   }));
 }
 
-Row.propTypes = propTypes$1k;
-Row.defaultProps = defaultProps$1i;
+Row.propTypes = propTypes$1l;
+Row.defaultProps = defaultProps$1j;
 
-var _excluded$1d = ["className", "cssModule", "widths", "tag"];
+var _excluded$1f = ["className", "cssModule", "widths", "tag"];
 var colWidths$1 = ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'];
 var stringOrNumberProp$1 = PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string]);
 var columnProps$1 = PropTypes__default["default"].oneOfType([PropTypes__default["default"].bool, PropTypes__default["default"].number, PropTypes__default["default"].string, PropTypes__default["default"].shape({
@@ -87038,7 +87038,7 @@ var columnProps$1 = PropTypes__default["default"].oneOfType([PropTypes__default[
   order: stringOrNumberProp$1,
   offset: stringOrNumberProp$1
 })]);
-var propTypes$1j = {
+var propTypes$1k = {
   tag: tagPropType,
   xs: columnProps$1,
   sm: columnProps$1,
@@ -87050,7 +87050,7 @@ var propTypes$1j = {
   cssModule: PropTypes__default["default"].object,
   widths: PropTypes__default["default"].array
 };
-var defaultProps$1h = {
+var defaultProps$1i = {
   tag: 'div',
   widths: colWidths$1
 };
@@ -87107,7 +87107,7 @@ function Col(props) {
       cssModule = props.cssModule,
       widths = props.widths,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1d);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1f);
 
   var _getColumnClasses = getColumnClasses(attributes, cssModule, widths),
       modifiedAttributes = _getColumnClasses.modifiedAttributes,
@@ -87123,11 +87123,11 @@ function Col(props) {
   }));
 }
 
-Col.propTypes = propTypes$1j;
-Col.defaultProps = defaultProps$1h;
+Col.propTypes = propTypes$1k;
+Col.defaultProps = defaultProps$1i;
 
-var _excluded$1c = ["expand", "className", "cssModule", "light", "dark", "fixed", "sticky", "color", "container", "tag", "children"];
-var propTypes$1i = {
+var _excluded$1e = ["expand", "className", "cssModule", "light", "dark", "fixed", "sticky", "color", "container", "tag", "children"];
+var propTypes$1j = {
   children: PropTypes__default["default"].node,
 
   /** Add custom class */
@@ -87162,7 +87162,7 @@ var propTypes$1i = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$1g = {
+var defaultProps$1h = {
   tag: 'nav',
   expand: false,
   container: 'fluid'
@@ -87194,7 +87194,7 @@ function Navbar(props) {
       container = props.container,
       Tag = props.tag,
       children = props.children,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1c);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1e);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'navbar', getExpandClass(expand), (_classNames = {
     'navbar-light': light,
@@ -87208,11 +87208,11 @@ function Navbar(props) {
   }, children) : children);
 }
 
-Navbar.propTypes = propTypes$1i;
-Navbar.defaultProps = defaultProps$1g;
+Navbar.propTypes = propTypes$1j;
+Navbar.defaultProps = defaultProps$1h;
 
-var _excluded$1b = ["className", "cssModule", "tag"];
-var propTypes$1h = {
+var _excluded$1d = ["className", "cssModule", "tag"];
+var propTypes$1i = {
   /** Add custom class */
   className: PropTypes__default["default"].string,
 
@@ -87222,7 +87222,7 @@ var propTypes$1h = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$1f = {
+var defaultProps$1g = {
   tag: 'a'
 };
 
@@ -87230,7 +87230,7 @@ function NavbarBrand(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1b);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1d);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'navbar-brand'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -87238,11 +87238,11 @@ function NavbarBrand(props) {
   }));
 }
 
-NavbarBrand.propTypes = propTypes$1h;
-NavbarBrand.defaultProps = defaultProps$1f;
+NavbarBrand.propTypes = propTypes$1i;
+NavbarBrand.defaultProps = defaultProps$1g;
 
-var _excluded$1a = ["className", "cssModule", "active", "tag"];
-var propTypes$1g = {
+var _excluded$1c = ["className", "cssModule", "active", "tag"];
+var propTypes$1h = {
   /** Add custom class */
   className: PropTypes__default["default"].string,
 
@@ -87253,7 +87253,7 @@ var propTypes$1g = {
   tag: tagPropType,
   active: PropTypes__default["default"].bool
 };
-var defaultProps$1e = {
+var defaultProps$1f = {
   tag: 'span'
 };
 
@@ -87261,7 +87261,7 @@ function NavbarText(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$1a);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1c);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'navbar-text'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -87269,11 +87269,11 @@ function NavbarText(props) {
   }));
 }
 
-NavbarText.propTypes = propTypes$1g;
-NavbarText.defaultProps = defaultProps$1e;
+NavbarText.propTypes = propTypes$1h;
+NavbarText.defaultProps = defaultProps$1f;
 
-var _excluded$19 = ["className", "cssModule", "children", "tag"];
-var propTypes$1f = {
+var _excluded$1b = ["className", "cssModule", "children", "tag"];
+var propTypes$1g = {
   /** Add custom class */
   className: PropTypes__default["default"].string,
 
@@ -87287,7 +87287,7 @@ var propTypes$1f = {
   /** Pass children so this component can wrap the child elements */
   children: PropTypes__default["default"].node
 };
-var defaultProps$1d = {
+var defaultProps$1e = {
   tag: 'button',
   type: 'button'
 };
@@ -87297,7 +87297,7 @@ function NavbarToggler(props) {
       cssModule = props.cssModule,
       children = props.children,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$19);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1b);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'navbar-toggler'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({
@@ -87309,11 +87309,11 @@ function NavbarToggler(props) {
   }));
 }
 
-NavbarToggler.propTypes = propTypes$1f;
-NavbarToggler.defaultProps = defaultProps$1d;
+NavbarToggler.propTypes = propTypes$1g;
+NavbarToggler.defaultProps = defaultProps$1e;
 
-var _excluded$18 = ["className", "cssModule", "tabs", "pills", "vertical", "horizontal", "justified", "fill", "navbar", "card", "tag"];
-var propTypes$1e = {
+var _excluded$1a = ["className", "cssModule", "tabs", "pills", "vertical", "horizontal", "justified", "fill", "navbar", "card", "tag"];
+var propTypes$1f = {
   /** Adding card prop adds `.card-header-tabs` or `.card-header-pills` class */
   card: PropTypes__default["default"].bool,
 
@@ -87347,7 +87347,7 @@ var propTypes$1e = {
   /** Stack your navigation by changing the flex item direction */
   vertical: PropTypes__default["default"].oneOfType([PropTypes__default["default"].bool, PropTypes__default["default"].string])
 };
-var defaultProps$1c = {
+var defaultProps$1d = {
   tag: 'ul',
   vertical: false
 };
@@ -87376,7 +87376,7 @@ function Nav(props) {
       navbar = props.navbar,
       card = props.card,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$18);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$1a);
 
   var classes = mapToCssModules(classNames__default["default"](className, navbar ? 'navbar-nav' : 'nav', horizontal ? "justify-content-" + horizontal : false, getVerticalClass(vertical), {
     'nav-tabs': tabs,
@@ -87391,11 +87391,11 @@ function Nav(props) {
   }));
 }
 
-Nav.propTypes = propTypes$1e;
-Nav.defaultProps = defaultProps$1c;
+Nav.propTypes = propTypes$1f;
+Nav.defaultProps = defaultProps$1d;
 
-var _excluded$17 = ["className", "cssModule", "active", "tag"];
-var propTypes$1d = {
+var _excluded$19 = ["className", "cssModule", "active", "tag"];
+var propTypes$1e = {
   /** Add active class to element */
   active: PropTypes__default["default"].bool,
 
@@ -87408,7 +87408,7 @@ var propTypes$1d = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$1b = {
+var defaultProps$1c = {
   tag: 'li'
 };
 
@@ -87417,7 +87417,7 @@ function NavItem(props) {
       cssModule = props.cssModule,
       active = props.active,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$17);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$19);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'nav-item', active ? 'active' : false), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -87425,11 +87425,11 @@ function NavItem(props) {
   }));
 }
 
-NavItem.propTypes = propTypes$1d;
-NavItem.defaultProps = defaultProps$1b;
+NavItem.propTypes = propTypes$1e;
+NavItem.defaultProps = defaultProps$1c;
 
-var _excluded$16 = ["className", "cssModule", "active", "tag", "innerRef"];
-var propTypes$1c = {
+var _excluded$18 = ["className", "cssModule", "active", "tag", "innerRef"];
+var propTypes$1d = {
   /** Add active class to NavLink */
   active: PropTypes__default["default"].bool,
 
@@ -87450,7 +87450,7 @@ var propTypes$1c = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$1a = {
+var defaultProps$1b = {
   tag: 'a'
 };
 
@@ -87489,7 +87489,7 @@ var NavLink = /*#__PURE__*/function (_React$Component) {
         active = _this$props.active,
         Tag = _this$props.tag,
         innerRef = _this$props.innerRef,
-        attributes = _objectWithoutPropertiesLoose(_this$props, _excluded$16);
+        attributes = _objectWithoutPropertiesLoose(_this$props, _excluded$18);
 
     var classes = mapToCssModules(classNames__default["default"](className, 'nav-link', {
       disabled: attributes.disabled,
@@ -87505,12 +87505,12 @@ var NavLink = /*#__PURE__*/function (_React$Component) {
   return NavLink;
 }(React__default["default"].Component);
 
-NavLink.propTypes = propTypes$1c;
-NavLink.defaultProps = defaultProps$1a;
+NavLink.propTypes = propTypes$1d;
+NavLink.defaultProps = defaultProps$1b;
 var NavLink$1 = NavLink;
 
-var _excluded$15 = ["className", "listClassName", "cssModule", "children", "tag", "listTag", "aria-label"];
-var propTypes$1b = {
+var _excluded$17 = ["className", "listClassName", "cssModule", "children", "tag", "listTag", "aria-label"];
+var propTypes$1c = {
   /** Aria label */
   'aria-label': PropTypes__default["default"].string,
 
@@ -87532,7 +87532,7 @@ var propTypes$1b = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$19 = {
+var defaultProps$1a = {
   tag: 'nav',
   listTag: 'ol',
   'aria-label': 'breadcrumb'
@@ -87546,7 +87546,7 @@ function Breadcrumb(props) {
       Tag = props.tag,
       ListTag = props.listTag,
       label = props['aria-label'],
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$15);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$17);
 
   var classes = mapToCssModules(classNames__default["default"](className), cssModule);
   var listClasses = mapToCssModules(classNames__default["default"]('breadcrumb', listClassName), cssModule);
@@ -87558,11 +87558,11 @@ function Breadcrumb(props) {
   }, children));
 }
 
-Breadcrumb.propTypes = propTypes$1b;
-Breadcrumb.defaultProps = defaultProps$19;
+Breadcrumb.propTypes = propTypes$1c;
+Breadcrumb.defaultProps = defaultProps$1a;
 
-var _excluded$14 = ["className", "cssModule", "active", "tag"];
-var propTypes$1a = {
+var _excluded$16 = ["className", "cssModule", "active", "tag"];
+var propTypes$1b = {
   /** Adds a visual "active" state to a Breadcrumb Item */
   active: PropTypes__default["default"].bool,
 
@@ -87575,7 +87575,7 @@ var propTypes$1a = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$18 = {
+var defaultProps$19 = {
   tag: 'li'
 };
 
@@ -87584,7 +87584,7 @@ function BreadcrumbItem(props) {
       cssModule = props.cssModule,
       active = props.active,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$14);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$16);
 
   var classes = mapToCssModules(classNames__default["default"](className, active ? 'active' : false, 'breadcrumb-item'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -87593,11 +87593,11 @@ function BreadcrumbItem(props) {
   }));
 }
 
-BreadcrumbItem.propTypes = propTypes$1a;
-BreadcrumbItem.defaultProps = defaultProps$18;
+BreadcrumbItem.propTypes = propTypes$1b;
+BreadcrumbItem.defaultProps = defaultProps$19;
 
-var _excluded$13 = ["className", "cssModule", "variant", "innerRef"];
-var propTypes$19 = {
+var _excluded$15 = ["className", "cssModule", "variant", "innerRef"];
+var propTypes$1a = {
   /** Disable the button if needed */
   active: PropTypes__default["default"].bool,
 
@@ -87613,7 +87613,7 @@ var propTypes$19 = {
   cssModule: PropTypes__default["default"].object,
   innerRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].object, PropTypes__default["default"].string, PropTypes__default["default"].func])
 };
-var defaultProps$17 = {
+var defaultProps$18 = {
   'aria-label': 'close'
 };
 
@@ -87621,7 +87621,7 @@ function CloseButton(props) {
   var className = props.className,
       variant = props.variant,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$13);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$15);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'btn-close', variant && "btn-close-" + variant));
   return /*#__PURE__*/React__default["default"].createElement("button", _extends({
@@ -87631,11 +87631,11 @@ function CloseButton(props) {
   }, attributes));
 }
 
-CloseButton.propTypes = propTypes$19;
-CloseButton.defaultProps = defaultProps$17;
+CloseButton.propTypes = propTypes$1a;
+CloseButton.defaultProps = defaultProps$18;
 
-var _excluded$12 = ["active", "aria-label", "block", "className", "close", "cssModule", "color", "outline", "size", "tag", "innerRef"];
-var propTypes$18 = {
+var _excluded$14 = ["active", "aria-label", "block", "className", "close", "cssModule", "color", "outline", "size", "tag", "innerRef"];
+var propTypes$19 = {
   /** Manually set the visual state of the button to active */
   active: PropTypes__default["default"].bool,
 
@@ -87674,7 +87674,7 @@ var propTypes$18 = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$16 = {
+var defaultProps$17 = {
   color: 'secondary',
   tag: 'button'
 };
@@ -87702,7 +87702,7 @@ function Button(props) {
       size = props.size,
       Tag = props.tag,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$12);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$14);
 
   if (close) {
     return /*#__PURE__*/React__default["default"].createElement(CloseButton, attributes);
@@ -87728,11 +87728,11 @@ function Button(props) {
   }));
 }
 
-Button.propTypes = propTypes$18;
-Button.defaultProps = defaultProps$16;
+Button.propTypes = propTypes$19;
+Button.defaultProps = defaultProps$17;
 
-var _excluded$11 = ["className"];
-var propTypes$17 = {
+var _excluded$13 = ["className"];
+var propTypes$18 = {
   onClick: PropTypes__default["default"].func,
   onBlur: PropTypes__default["default"].func,
   onFocus: PropTypes__default["default"].func,
@@ -87740,7 +87740,7 @@ var propTypes$17 = {
   className: PropTypes__default["default"].string,
   cssModule: PropTypes__default["default"].object
 };
-var defaultProps$15 = {
+var defaultProps$16 = {
   defaultValue: false
 };
 
@@ -87776,7 +87776,7 @@ function ButtonToggle(props) {
   }, [props.onClick]);
 
   var className = props.className,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$11);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$13);
 
   var classes = mapToCssModules(classNames__default["default"](className, {
     focus: focus
@@ -87790,8 +87790,8 @@ function ButtonToggle(props) {
   }, attributes));
 }
 
-ButtonToggle.propTypes = propTypes$17;
-ButtonToggle.defaultProps = defaultProps$15;
+ButtonToggle.propTypes = propTypes$18;
+ButtonToggle.defaultProps = defaultProps$16;
 
 /**
  * DropdownContext
@@ -87808,8 +87808,8 @@ var DropdownContext = React__default["default"].createContext({});
 
 var InputGroupContext = React__default["default"].createContext({});
 
-var _excluded$10 = ["className", "cssModule", "direction", "isOpen", "group", "size", "nav", "setActiveFromChild", "active", "tag", "menuRole"];
-var propTypes$16 = {
+var _excluded$12 = ["className", "cssModule", "direction", "isOpen", "group", "size", "nav", "setActiveFromChild", "active", "tag", "menuRole"];
+var propTypes$17 = {
   a11y: PropTypes__default["default"].bool,
   disabled: PropTypes__default["default"].bool,
   direction: PropTypes__default["default"].oneOf(['up', 'down', 'start', 'end', 'left', 'right']),
@@ -87828,7 +87828,7 @@ var propTypes$16 = {
   setActiveFromChild: PropTypes__default["default"].bool,
   menuRole: PropTypes__default["default"].oneOf(['listbox', 'menu'])
 };
-var defaultProps$14 = {
+var defaultProps$15 = {
   a11y: true,
   isOpen: false,
   direction: 'down',
@@ -88029,7 +88029,7 @@ var Dropdown = /*#__PURE__*/function (_React$Component) {
   };
 
   _proto.getItemType = function getItemType() {
-    if (this.context.menuRole === 'listbox') {
+    if (this.props.menuRole === 'listbox') {
       return 'option';
     }
 
@@ -88084,7 +88084,7 @@ var Dropdown = /*#__PURE__*/function (_React$Component) {
         setActiveFromChild = _omit.setActiveFromChild,
         active = _omit.active,
         tag = _omit.tag,
-        attrs = _objectWithoutPropertiesLoose(_omit, _excluded$10);
+        attrs = _objectWithoutPropertiesLoose(_omit, _excluded$12);
 
     var Tag = tag || (nav ? 'li' : 'div');
     var subItemIsActive = false;
@@ -88102,7 +88102,7 @@ var Dropdown = /*#__PURE__*/function (_React$Component) {
     if (this.context.insideInputGroup) {
       return /*#__PURE__*/React__default["default"].createElement(DropdownContext.Provider, {
         value: this.getContextValue()
-      }, /*#__PURE__*/React__default["default"].createElement(reactPopper.Manager, null, this.props.children.map(function (child) {
+      }, /*#__PURE__*/React__default["default"].createElement(reactPopper.Manager, null, React__default["default"].Children.map(this.props.children, function (child) {
         return React__default["default"].cloneElement(child, {
           onKeyDown: _this5.handleKeyDown
         });
@@ -88120,12 +88120,12 @@ var Dropdown = /*#__PURE__*/function (_React$Component) {
   return Dropdown;
 }(React__default["default"].Component);
 
-Dropdown.propTypes = propTypes$16;
-Dropdown.defaultProps = defaultProps$14;
+Dropdown.propTypes = propTypes$17;
+Dropdown.defaultProps = defaultProps$15;
 Dropdown.contextType = InputGroupContext;
 var Dropdown$1 = Dropdown;
 
-var propTypes$15 = {
+var propTypes$16 = {
   children: PropTypes__default["default"].node
 };
 
@@ -88135,10 +88135,10 @@ function ButtonDropdown(props) {
   }, props));
 }
 
-ButtonDropdown.propTypes = propTypes$15;
+ButtonDropdown.propTypes = propTypes$16;
 
-var _excluded$$ = ["className", "cssModule", "size", "vertical", "tag"];
-var propTypes$14 = {
+var _excluded$11 = ["className", "cssModule", "size", "vertical", "tag"];
+var propTypes$15 = {
   /** Aria label */
   'aria-label': PropTypes__default["default"].string,
 
@@ -88160,7 +88160,7 @@ var propTypes$14 = {
   /** Make button group vertical */
   vertical: PropTypes__default["default"].bool
 };
-var defaultProps$13 = {
+var defaultProps$14 = {
   tag: 'div',
   role: 'group'
 };
@@ -88171,7 +88171,7 @@ function ButtonGroup(props) {
       size = props.size,
       vertical = props.vertical,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$$);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$11);
 
   var classes = mapToCssModules(classNames__default["default"](className, size ? 'btn-group-' + size : false, vertical ? 'btn-group-vertical' : 'btn-group'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -88179,11 +88179,11 @@ function ButtonGroup(props) {
   }));
 }
 
-ButtonGroup.propTypes = propTypes$14;
-ButtonGroup.defaultProps = defaultProps$13;
+ButtonGroup.propTypes = propTypes$15;
+ButtonGroup.defaultProps = defaultProps$14;
 
-var _excluded$_ = ["className", "cssModule", "tag"];
-var propTypes$13 = {
+var _excluded$10 = ["className", "cssModule", "tag"];
+var propTypes$14 = {
   /** Aria label */
   'aria-label': PropTypes__default["default"].string,
 
@@ -88199,7 +88199,7 @@ var propTypes$13 = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$12 = {
+var defaultProps$13 = {
   tag: 'div',
   role: 'toolbar'
 };
@@ -88208,7 +88208,7 @@ function ButtonToolbar(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$_);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$10);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'btn-toolbar'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -88216,11 +88216,11 @@ function ButtonToolbar(props) {
   }));
 }
 
-ButtonToolbar.propTypes = propTypes$13;
-ButtonToolbar.defaultProps = defaultProps$12;
+ButtonToolbar.propTypes = propTypes$14;
+ButtonToolbar.defaultProps = defaultProps$13;
 
-var _excluded$Z = ["className", "cssModule", "divider", "tag", "header", "active", "text"];
-var propTypes$12 = {
+var _excluded$$ = ["className", "cssModule", "divider", "tag", "header", "active", "text"];
+var propTypes$13 = {
   children: PropTypes__default["default"].node,
   active: PropTypes__default["default"].bool,
   disabled: PropTypes__default["default"].bool,
@@ -88233,7 +88233,7 @@ var propTypes$12 = {
   toggle: PropTypes__default["default"].bool,
   text: PropTypes__default["default"].bool
 };
-var defaultProps$11 = {
+var defaultProps$12 = {
   tag: 'button',
   toggle: true
 };
@@ -88307,7 +88307,7 @@ var DropdownItem = /*#__PURE__*/function (_React$Component) {
         header = _omit.header,
         active = _omit.active,
         text = _omit.text,
-        props = _objectWithoutPropertiesLoose(_omit, _excluded$Z);
+        props = _objectWithoutPropertiesLoose(_omit, _excluded$$);
 
     var classes = mapToCssModules(classNames__default["default"](className, {
       disabled: props.disabled,
@@ -88343,13 +88343,13 @@ var DropdownItem = /*#__PURE__*/function (_React$Component) {
   return DropdownItem;
 }(React__default["default"].Component);
 
-DropdownItem.propTypes = propTypes$12;
-DropdownItem.defaultProps = defaultProps$11;
+DropdownItem.propTypes = propTypes$13;
+DropdownItem.defaultProps = defaultProps$12;
 DropdownItem.contextType = DropdownContext;
 var DropdownItem$1 = DropdownItem;
 
-var _excluded$Y = ["className", "cssModule", "dark", "end", "right", "tag", "flip", "modifiers", "persist", "strategy", "container", "updateOnSelect"];
-var propTypes$11 = {
+var _excluded$_ = ["className", "cssModule", "dark", "end", "right", "tag", "flip", "modifiers", "persist", "strategy", "container", "updateOnSelect"];
+var propTypes$12 = {
   tag: tagPropType,
   children: PropTypes__default["default"].node.isRequired,
   dark: PropTypes__default["default"].bool,
@@ -88369,7 +88369,7 @@ var propTypes$11 = {
   updateOnSelect: PropTypes__default["default"].bool,
   right: deprecated(PropTypes__default["default"].bool, 'Please use "end" instead.')
 };
-var defaultProps$10 = {
+var defaultProps$11 = {
   tag: 'div',
   flip: true,
   modifiers: []
@@ -88416,7 +88416,7 @@ var DropdownMenu = /*#__PURE__*/function (_React$Component) {
         strategy = _this$props.strategy,
         container = _this$props.container,
         updateOnSelect = _this$props.updateOnSelect,
-        attrs = _objectWithoutPropertiesLoose(_this$props, _excluded$Y);
+        attrs = _objectWithoutPropertiesLoose(_this$props, _excluded$_);
 
     var classes = mapToCssModules(classNames__default["default"](className, 'dropdown-menu', {
       'dropdown-menu-dark': dark,
@@ -88491,13 +88491,13 @@ var DropdownMenu = /*#__PURE__*/function (_React$Component) {
   return DropdownMenu;
 }(React__default["default"].Component);
 
-DropdownMenu.propTypes = propTypes$11;
-DropdownMenu.defaultProps = defaultProps$10;
+DropdownMenu.propTypes = propTypes$12;
+DropdownMenu.defaultProps = defaultProps$11;
 DropdownMenu.contextType = DropdownContext;
 var DropdownMenu$1 = DropdownMenu;
 
-var _excluded$X = ["className", "color", "cssModule", "caret", "split", "nav", "tag", "innerRef"];
-var propTypes$10 = {
+var _excluded$Z = ["className", "color", "cssModule", "caret", "split", "nav", "tag", "innerRef"];
+var propTypes$11 = {
   caret: PropTypes__default["default"].bool,
   color: PropTypes__default["default"].string,
   children: PropTypes__default["default"].node,
@@ -88511,7 +88511,7 @@ var propTypes$10 = {
   nav: PropTypes__default["default"].bool,
   innerRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].object, PropTypes__default["default"].string, PropTypes__default["default"].func])
 };
-var defaultProps$$ = {
+var defaultProps$10 = {
   color: 'secondary',
   'aria-haspopup': true
 };
@@ -88562,7 +88562,7 @@ var DropdownToggle = /*#__PURE__*/function (_React$Component) {
         nav = _this$props.nav,
         tag = _this$props.tag,
         innerRef = _this$props.innerRef,
-        props = _objectWithoutPropertiesLoose(_this$props, _excluded$X);
+        props = _objectWithoutPropertiesLoose(_this$props, _excluded$Z);
 
     var ariaLabel = props['aria-label'] || 'Toggle Dropdown';
     var classes = mapToCssModules(classNames__default["default"](className, {
@@ -88623,14 +88623,14 @@ var DropdownToggle = /*#__PURE__*/function (_React$Component) {
   return DropdownToggle;
 }(React__default["default"].Component);
 
-DropdownToggle.propTypes = propTypes$10;
-DropdownToggle.defaultProps = defaultProps$$;
+DropdownToggle.propTypes = propTypes$11;
+DropdownToggle.defaultProps = defaultProps$10;
 DropdownToggle.contextType = DropdownContext;
 var DropdownToggle$1 = DropdownToggle;
 
-var _excluded$W = ["tag", "baseClass", "baseClassActive", "className", "cssModule", "children", "innerRef"];
+var _excluded$Y = ["tag", "baseClass", "baseClassActive", "className", "cssModule", "children", "innerRef"];
 
-var propTypes$$ = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.propTypes), {}, {
+var propTypes$10 = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.propTypes), {}, {
   children: PropTypes__default["default"].oneOfType([PropTypes__default["default"].arrayOf(PropTypes__default["default"].node), PropTypes__default["default"].node]),
   tag: tagPropType,
   baseClass: PropTypes__default["default"].string,
@@ -88640,7 +88640,7 @@ var propTypes$$ = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transit
   innerRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].object, PropTypes__default["default"].string, PropTypes__default["default"].func])
 });
 
-var defaultProps$_ = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.defaultProps), {}, {
+var defaultProps$$ = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.defaultProps), {}, {
   tag: 'div',
   baseClass: 'fade',
   baseClassActive: 'show',
@@ -88659,7 +88659,7 @@ function Fade(props) {
       cssModule = props.cssModule,
       children = props.children,
       innerRef = props.innerRef,
-      otherProps = _objectWithoutPropertiesLoose(props, _excluded$W);
+      otherProps = _objectWithoutPropertiesLoose(props, _excluded$Y);
 
   var transitionProps = pick(otherProps, TransitionPropTypeKeys);
   var childProps = omit(otherProps, TransitionPropTypeKeys);
@@ -88674,8 +88674,8 @@ function Fade(props) {
   });
 }
 
-Fade.propTypes = propTypes$$;
-Fade.defaultProps = defaultProps$_;
+Fade.propTypes = propTypes$10;
+Fade.defaultProps = defaultProps$$;
 
 /**
  * AccordionContext
@@ -88687,8 +88687,8 @@ Fade.defaultProps = defaultProps$_;
 
 var AccordionContext = React__default["default"].createContext({});
 
-var _excluded$V = ["flush", "open", "toggle", "className", "cssModule", "tag", "innerRef"];
-var propTypes$_ = {
+var _excluded$X = ["flush", "open", "toggle", "className", "cssModule", "tag", "innerRef"];
+var propTypes$$ = {
   children: PropTypes__default["default"].node,
 
   /** Add custom class */
@@ -88710,7 +88710,7 @@ var propTypes$_ = {
   /** Function that's triggered on clicking `AccordionHeader` */
   toggle: PropTypes__default["default"].func.isRequired
 };
-var defaultProps$Z = {
+var defaultProps$_ = {
   tag: 'div'
 };
 
@@ -88722,7 +88722,7 @@ function Accordion(props) {
       cssModule = props.cssModule,
       Tag = props.tag,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$V);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$X);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'accordion', {
     'accordion-flush': flush
@@ -88741,11 +88741,11 @@ function Accordion(props) {
   })));
 }
 
-Accordion.propTypes = propTypes$_;
-Accordion.defaultProps = defaultProps$Z;
+Accordion.propTypes = propTypes$$;
+Accordion.defaultProps = defaultProps$_;
 
-var _excluded$U = ["defaultOpen", "stayOpen"];
-var propTypes$Z = {
+var _excluded$W = ["defaultOpen", "stayOpen"];
+var propTypes$_ = {
   tag: tagPropType,
   className: PropTypes__default["default"].string,
   cssModule: PropTypes__default["default"].object,
@@ -88754,14 +88754,14 @@ var propTypes$Z = {
   defaultOpen: PropTypes__default["default"].oneOfType([PropTypes__default["default"].array, PropTypes__default["default"].string]),
   stayOpen: PropTypes__default["default"].bool
 };
-var defaultProps$Y = {
+var defaultProps$Z = {
   tag: 'div'
 };
 
 function UncontrolledAccordion(_ref) {
   var defaultOpen = _ref.defaultOpen,
       stayOpen = _ref.stayOpen,
-      props = _objectWithoutPropertiesLoose(_ref, _excluded$U);
+      props = _objectWithoutPropertiesLoose(_ref, _excluded$W);
 
   var _useState = React.useState(defaultOpen || (stayOpen ? [] : undefined)),
       open = _useState[0],
@@ -88789,11 +88789,11 @@ function UncontrolledAccordion(_ref) {
   }));
 }
 
-UncontrolledAccordion.propTypes = propTypes$Z;
-UncontrolledAccordion.defaultProps = defaultProps$Y;
+UncontrolledAccordion.propTypes = propTypes$_;
+UncontrolledAccordion.defaultProps = defaultProps$Z;
 
-var _excluded$T = ["className", "cssModule", "tag", "innerRef", "children", "targetId"];
-var propTypes$Y = {
+var _excluded$V = ["className", "cssModule", "tag", "innerRef", "children", "targetId"];
+var propTypes$Z = {
   children: PropTypes__default["default"].node,
 
   /** Add custom class */
@@ -88809,7 +88809,7 @@ var propTypes$Y = {
   /** Unique key used to control item's collapse/expand */
   targetId: PropTypes__default["default"].string.isRequired
 };
-var defaultProps$X = {
+var defaultProps$Y = {
   tag: 'h2'
 };
 
@@ -88820,7 +88820,7 @@ function AccordionHeader(props) {
       innerRef = props.innerRef,
       children = props.children,
       targetId = props.targetId,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$T);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$V);
 
   var _useContext = React.useContext(AccordionContext),
       open = _useContext.open,
@@ -88842,11 +88842,11 @@ function AccordionHeader(props) {
   }, children));
 }
 
-AccordionHeader.propTypes = propTypes$Y;
-AccordionHeader.defaultProps = defaultProps$X;
+AccordionHeader.propTypes = propTypes$Z;
+AccordionHeader.defaultProps = defaultProps$Y;
 
-var _excluded$S = ["className", "cssModule", "tag", "innerRef"];
-var propTypes$X = {
+var _excluded$U = ["className", "cssModule", "tag", "innerRef"];
+var propTypes$Y = {
   children: PropTypes__default["default"].node,
 
   /** To add custom class */
@@ -88859,7 +88859,7 @@ var propTypes$X = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$W = {
+var defaultProps$X = {
   tag: 'div'
 };
 
@@ -88868,7 +88868,7 @@ function AccordionItem(props) {
       cssModule = props.cssModule,
       Tag = props.tag,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$S);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$U);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'accordion-item'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -88877,14 +88877,14 @@ function AccordionItem(props) {
   }));
 }
 
-AccordionItem.propTypes = propTypes$X;
-AccordionItem.defaultProps = defaultProps$W;
+AccordionItem.propTypes = propTypes$Y;
+AccordionItem.defaultProps = defaultProps$X;
 
-var _excluded$R = ["tag", "horizontal", "isOpen", "className", "navbar", "cssModule", "children", "innerRef"];
+var _excluded$T = ["tag", "horizontal", "isOpen", "className", "navbar", "cssModule", "children", "innerRef"];
 
 var _transitionStatusToCl;
 
-var propTypes$W = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.propTypes), {}, {
+var propTypes$X = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.propTypes), {}, {
   /** Make content animation appear horizontally */
   horizontal: PropTypes__default["default"].bool,
 
@@ -88906,7 +88906,7 @@ var propTypes$W = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transit
   })
 });
 
-var defaultProps$V = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.defaultProps), {}, {
+var defaultProps$W = _objectSpread2(_objectSpread2({}, reactTransitionGroup.Transition.defaultProps), {}, {
   horizontal: false,
   isOpen: false,
   appear: false,
@@ -89004,7 +89004,7 @@ var Collapse = /*#__PURE__*/function (_Component) {
         navbar = _this$props.navbar,
         cssModule = _this$props.cssModule,
         children = _this$props.children,
-        otherProps = _objectWithoutPropertiesLoose(_this$props, _excluded$R);
+        otherProps = _objectWithoutPropertiesLoose(_this$props, _excluded$T);
 
     var dimension = this.state.dimension;
     var transitionProps = pick(otherProps, TransitionPropTypeKeys);
@@ -89034,12 +89034,12 @@ var Collapse = /*#__PURE__*/function (_Component) {
   return Collapse;
 }(React.Component);
 
-Collapse.propTypes = propTypes$W;
-Collapse.defaultProps = defaultProps$V;
+Collapse.propTypes = propTypes$X;
+Collapse.defaultProps = defaultProps$W;
 var Collapse$1 = Collapse;
 
-var _excluded$Q = ["className", "cssModule", "tag", "innerRef", "children", "accordionId"];
-var propTypes$V = {
+var _excluded$S = ["className", "cssModule", "tag", "innerRef", "children", "accordionId"];
+var propTypes$W = {
   /** Unique key used to control item's collapse/expand */
   accordionId: PropTypes__default["default"].string.isRequired,
 
@@ -89056,7 +89056,7 @@ var propTypes$V = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$U = {
+var defaultProps$V = {
   tag: 'div'
 };
 
@@ -89067,7 +89067,7 @@ function AccordionBody(props) {
       innerRef = props.innerRef,
       children = props.children,
       accordionId = props.accordionId,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$Q);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$S);
 
   var _useContext = React.useContext(AccordionContext),
       open = _useContext.open;
@@ -89082,11 +89082,11 @@ function AccordionBody(props) {
   }, children));
 }
 
-AccordionBody.propTypes = propTypes$V;
-AccordionBody.defaultProps = defaultProps$U;
+AccordionBody.propTypes = propTypes$W;
+AccordionBody.defaultProps = defaultProps$V;
 
-var _excluded$P = ["className", "cssModule", "color", "innerRef", "pill", "tag"];
-var propTypes$U = {
+var _excluded$R = ["className", "cssModule", "color", "innerRef", "pill", "tag"];
+var propTypes$V = {
   /** Pass children so this component can wrap the child elements */
   children: PropTypes__default["default"].node,
 
@@ -89106,7 +89106,7 @@ var propTypes$U = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$T = {
+var defaultProps$U = {
   color: 'secondary',
   pill: false,
   tag: 'span'
@@ -89119,7 +89119,7 @@ function Badge(props) {
       innerRef = props.innerRef,
       pill = props.pill,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$P);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$R);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'badge', 'bg-' + color, pill ? 'rounded-pill' : false), cssModule);
 
@@ -89133,11 +89133,11 @@ function Badge(props) {
   }));
 }
 
-Badge.propTypes = propTypes$U;
-Badge.defaultProps = defaultProps$T;
+Badge.propTypes = propTypes$V;
+Badge.defaultProps = defaultProps$U;
 
-var _excluded$O = ["className", "cssModule", "color", "body", "inverse", "outline", "tag", "innerRef"];
-var propTypes$T = {
+var _excluded$Q = ["className", "cssModule", "color", "body", "inverse", "outline", "tag", "innerRef"];
+var propTypes$U = {
   /** Toggles card padding using `.card-body` */
   body: PropTypes__default["default"].bool,
 
@@ -89160,7 +89160,7 @@ var propTypes$T = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$S = {
+var defaultProps$T = {
   tag: 'div'
 };
 
@@ -89173,7 +89173,7 @@ function Card(props) {
       outline = props.outline,
       Tag = props.tag,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$O);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$Q);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card', inverse ? 'text-white' : false, body ? 'card-body' : false, color ? (outline ? 'border' : 'bg') + "-" + color : false), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89182,10 +89182,35 @@ function Card(props) {
   }));
 }
 
-Card.propTypes = propTypes$T;
-Card.defaultProps = defaultProps$S;
+Card.propTypes = propTypes$U;
+Card.defaultProps = defaultProps$T;
 
-var _excluded$N = ["className", "cssModule", "tag"];
+var _excluded$P = ["className", "cssModule", "tag"];
+var propTypes$T = {
+  tag: tagPropType,
+  className: PropTypes__default["default"].string,
+  cssModule: PropTypes__default["default"].object
+};
+var defaultProps$S = {
+  tag: 'div'
+};
+
+function CardGroup(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      Tag = props.tag,
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$P);
+
+  var classes = mapToCssModules(classNames__default["default"](className, 'card-group'), cssModule);
+  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
+    className: classes
+  }));
+}
+
+CardGroup.propTypes = propTypes$T;
+CardGroup.defaultProps = defaultProps$S;
+
+var _excluded$O = ["className", "cssModule", "tag"];
 var propTypes$S = {
   tag: tagPropType,
   className: PropTypes__default["default"].string,
@@ -89195,22 +89220,22 @@ var defaultProps$R = {
   tag: 'div'
 };
 
-function CardGroup(props) {
+function CardDeck(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$N);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$O);
 
-  var classes = mapToCssModules(classNames__default["default"](className, 'card-group'), cssModule);
+  var classes = mapToCssModules(classNames__default["default"](className, 'card-deck'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
     className: classes
   }));
 }
 
-CardGroup.propTypes = propTypes$S;
-CardGroup.defaultProps = defaultProps$R;
+CardDeck.propTypes = propTypes$S;
+CardDeck.defaultProps = defaultProps$R;
 
-var _excluded$M = ["className", "cssModule", "tag"];
+var _excluded$N = ["className", "cssModule", "tag"];
 var propTypes$R = {
   tag: tagPropType,
   className: PropTypes__default["default"].string,
@@ -89220,36 +89245,11 @@ var defaultProps$Q = {
   tag: 'div'
 };
 
-function CardDeck(props) {
-  var className = props.className,
-      cssModule = props.cssModule,
-      Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$M);
-
-  var classes = mapToCssModules(classNames__default["default"](className, 'card-deck'), cssModule);
-  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
-    className: classes
-  }));
-}
-
-CardDeck.propTypes = propTypes$R;
-CardDeck.defaultProps = defaultProps$Q;
-
-var _excluded$L = ["className", "cssModule", "tag"];
-var propTypes$Q = {
-  tag: tagPropType,
-  className: PropTypes__default["default"].string,
-  cssModule: PropTypes__default["default"].object
-};
-var defaultProps$P = {
-  tag: 'div'
-};
-
 function CardColumns(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$L);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$N);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card-columns'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89257,11 +89257,11 @@ function CardColumns(props) {
   }));
 }
 
-CardColumns.propTypes = propTypes$Q;
-CardColumns.defaultProps = defaultProps$P;
+CardColumns.propTypes = propTypes$R;
+CardColumns.defaultProps = defaultProps$Q;
 
-var _excluded$K = ["className", "cssModule", "innerRef", "tag"];
-var propTypes$P = {
+var _excluded$M = ["className", "cssModule", "innerRef", "tag"];
+var propTypes$Q = {
   /** Add custom class */
   className: PropTypes__default["default"].string,
 
@@ -89272,7 +89272,7 @@ var propTypes$P = {
   /** Set a custom element for this component */
   tag: tagPropType
 };
-var defaultProps$O = {
+var defaultProps$P = {
   tag: 'div'
 };
 
@@ -89281,7 +89281,7 @@ function CardBody(props) {
       cssModule = props.cssModule,
       innerRef = props.innerRef,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$K);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$M);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card-body'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89290,17 +89290,17 @@ function CardBody(props) {
   }));
 }
 
-CardBody.propTypes = propTypes$P;
-CardBody.defaultProps = defaultProps$O;
+CardBody.propTypes = propTypes$Q;
+CardBody.defaultProps = defaultProps$P;
 
-var _excluded$J = ["className", "cssModule", "tag", "innerRef"];
-var propTypes$O = {
+var _excluded$L = ["className", "cssModule", "tag", "innerRef"];
+var propTypes$P = {
   tag: tagPropType,
   innerRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].object, PropTypes__default["default"].func, PropTypes__default["default"].string]),
   className: PropTypes__default["default"].string,
   cssModule: PropTypes__default["default"].object
 };
-var defaultProps$N = {
+var defaultProps$O = {
   tag: 'a'
 };
 
@@ -89309,7 +89309,7 @@ function CardLink(props) {
       cssModule = props.cssModule,
       Tag = props.tag,
       innerRef = props.innerRef,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$J);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$L);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card-link'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89318,10 +89318,40 @@ function CardLink(props) {
   }));
 }
 
-CardLink.propTypes = propTypes$O;
-CardLink.defaultProps = defaultProps$N;
+CardLink.propTypes = propTypes$P;
+CardLink.defaultProps = defaultProps$O;
 
-var _excluded$I = ["className", "cssModule", "tag"];
+var _excluded$K = ["className", "cssModule", "tag"];
+var propTypes$O = {
+  /** Add custom class */
+  className: PropTypes__default["default"].string,
+
+  /** Change underlying component's CSS base class name */
+  cssModule: PropTypes__default["default"].object,
+
+  /** Set a custom element for this component */
+  tag: tagPropType
+};
+var defaultProps$N = {
+  tag: 'div'
+};
+
+function CardFooter(props) {
+  var className = props.className,
+      cssModule = props.cssModule,
+      Tag = props.tag,
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$K);
+
+  var classes = mapToCssModules(classNames__default["default"](className, 'card-footer'), cssModule);
+  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
+    className: classes
+  }));
+}
+
+CardFooter.propTypes = propTypes$O;
+CardFooter.defaultProps = defaultProps$N;
+
+var _excluded$J = ["className", "cssModule", "tag"];
 var propTypes$N = {
   /** Add custom class */
   className: PropTypes__default["default"].string,
@@ -89336,41 +89366,11 @@ var defaultProps$M = {
   tag: 'div'
 };
 
-function CardFooter(props) {
-  var className = props.className,
-      cssModule = props.cssModule,
-      Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$I);
-
-  var classes = mapToCssModules(classNames__default["default"](className, 'card-footer'), cssModule);
-  return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
-    className: classes
-  }));
-}
-
-CardFooter.propTypes = propTypes$N;
-CardFooter.defaultProps = defaultProps$M;
-
-var _excluded$H = ["className", "cssModule", "tag"];
-var propTypes$M = {
-  /** Add custom class */
-  className: PropTypes__default["default"].string,
-
-  /** Change underlying component's CSS base class name */
-  cssModule: PropTypes__default["default"].object,
-
-  /** Set a custom element for this component */
-  tag: tagPropType
-};
-var defaultProps$L = {
-  tag: 'div'
-};
-
 function CardHeader(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$H);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$J);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card-header'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89378,11 +89378,11 @@ function CardHeader(props) {
   }));
 }
 
-CardHeader.propTypes = propTypes$M;
-CardHeader.defaultProps = defaultProps$L;
+CardHeader.propTypes = propTypes$N;
+CardHeader.defaultProps = defaultProps$M;
 
-var _excluded$G = ["className", "cssModule", "top", "bottom", "tag"];
-var propTypes$L = {
+var _excluded$I = ["className", "cssModule", "top", "bottom", "tag"];
+var propTypes$M = {
   /** Add `bottom` prop if image is at bottom of card */
   bottom: PropTypes__default["default"].bool,
 
@@ -89398,7 +89398,7 @@ var propTypes$L = {
   /** Add `top` prop if image is at top of card */
   top: PropTypes__default["default"].bool
 };
-var defaultProps$K = {
+var defaultProps$L = {
   tag: 'img'
 };
 
@@ -89408,7 +89408,7 @@ function CardImg(props) {
       top = props.top,
       bottom = props.bottom,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$G);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$I);
 
   var cardImgClassName = 'card-img';
 
@@ -89426,16 +89426,16 @@ function CardImg(props) {
   }));
 }
 
-CardImg.propTypes = propTypes$L;
-CardImg.defaultProps = defaultProps$K;
+CardImg.propTypes = propTypes$M;
+CardImg.defaultProps = defaultProps$L;
 
-var _excluded$F = ["className", "cssModule", "tag"];
-var propTypes$K = {
+var _excluded$H = ["className", "cssModule", "tag"];
+var propTypes$L = {
   tag: tagPropType,
   className: PropTypes__default["default"].string,
   cssModule: PropTypes__default["default"].object
 };
-var defaultProps$J = {
+var defaultProps$K = {
   tag: 'div'
 };
 
@@ -89443,7 +89443,7 @@ function CardImgOverlay(props) {
   var className = props.className,
       cssModule = props.cssModule,
       Tag = props.tag,
-      attributes = _objectWithoutPropertiesLoose(props, _excluded$F);
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$H);
 
   var classes = mapToCssModules(classNames__default["default"](className, 'card-img-overlay'), cssModule);
   return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
@@ -89451,10 +89451,19 @@ function CardImgOverlay(props) {
   }));
 }
 
-CardImgOverlay.propTypes = propTypes$K;
-CardImgOverlay.defaultProps = defaultProps$J;
+CardImgOverlay.propTypes = propTypes$L;
+CardImgOverlay.defaultProps = defaultProps$K;
 
-var _excluded$E = ["in", "children", "cssModule", "slide", "tag", "className"];
+/**
+ * CarouselContext
+ * {
+ *  direction: PropTypes.oneOf(['start', 'end']).isRequired,
+ * }
+ */
+
+var CarouselContext = React__default["default"].createContext({});
+
+var _excluded$G = ["in", "children", "cssModule", "slide", "tag", "className"];
 
 var CarouselItem = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(CarouselItem, _React$Component);
@@ -89523,7 +89532,7 @@ var CarouselItem = /*#__PURE__*/function (_React$Component) {
         slide = _this$props.slide,
         Tag = _this$props.tag,
         className = _this$props.className,
-        transitionProps = _objectWithoutPropertiesLoose(_this$props, _excluded$E);
+        transitionProps = _objectWithoutPropertiesLoose(_this$props, _excluded$G);
 
     return /*#__PURE__*/React__default["default"].createElement(reactTransitionGroup.Transition, _extends({}, transitionProps, {
       enter: slide,
@@ -89569,21 +89578,66 @@ CarouselItem.defaultProps = _objectSpread2(_objectSpread2({}, reactTransitionGro
   timeout: TransitionTimeouts.Carousel,
   slide: true
 });
-CarouselItem.contextTypes = {
-  direction: PropTypes__default["default"].string
-};
+CarouselItem.contextType = CarouselContext;
 var CarouselItem$1 = CarouselItem;
 
-/**
- * CarouselContext
- * {
- *  direction: PropTypes.oneOf(['start', 'end']).isRequired,
- * }
- */
-
-var CarouselContext = React__default["default"].createContext({});
-
 var SWIPE_THRESHOLD = 40;
+var propTypes$K = {
+  /** the current active slide of the carousel */
+  activeIndex: PropTypes__default["default"].number,
+
+  /** a function which should advance the carousel to the next slide (via activeIndex) */
+  next: PropTypes__default["default"].func.isRequired,
+
+  /** a function which should advance the carousel to the previous slide (via activeIndex) */
+  previous: PropTypes__default["default"].func.isRequired,
+
+  /** controls if the left and right arrow keys should control the carousel */
+  keyboard: PropTypes__default["default"].bool,
+
+  /** If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on
+   * mouseleave. If set to false, hovering over the carousel won't pause it.
+   */
+  pause: PropTypes__default["default"].oneOf(['hover', false]),
+
+  /** Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load. */
+  ride: PropTypes__default["default"].oneOf(['carousel']),
+
+  /** the interval at which the carousel automatically cycles */
+  interval: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string, PropTypes__default["default"].bool]),
+  children: PropTypes__default["default"].array,
+
+  /** called when the mouse enters the Carousel */
+  mouseEnter: PropTypes__default["default"].func,
+
+  /** called when the mouse exits the Carousel */
+  mouseLeave: PropTypes__default["default"].func,
+
+  /** controls whether the slide animation on the Carousel works or not */
+  slide: PropTypes__default["default"].bool,
+
+  /** make the controls, indicators and captions dark on the Carousel */
+  dark: PropTypes__default["default"].bool,
+  fade: PropTypes__default["default"].bool,
+
+  /** Change underlying component's CSS base class name */
+  cssModule: PropTypes__default["default"].object,
+
+  /** Add custom class */
+  className: PropTypes__default["default"].string,
+
+  /** Enable touch support */
+  enableTouch: PropTypes__default["default"].bool
+};
+var propsToOmit$2 = Object.keys(propTypes$K);
+var defaultProps$J = {
+  interval: 5000,
+  pause: 'hover',
+  keyboard: true,
+  slide: true,
+  enableTouch: true,
+  fade: false
+};
 
 var Carousel = /*#__PURE__*/function (_React$Component) {
   _inheritsLoose(Carousel, _React$Component);
@@ -89793,6 +89847,7 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
         className = _this$props3.className,
         dark = _this$props3.dark,
         fade = _this$props3.fade;
+    var attributes = omit(this.props, propsToOmit$2);
     var outerClasses = mapToCssModules(classNames__default["default"](className, 'carousel', fade && 'carousel-fade', slide && 'slide', dark && 'carousel-dark'), cssModule);
     var innerClasses = mapToCssModules(classNames__default["default"]('carousel-inner'), cssModule); // filter out booleans, null, or undefined
 
@@ -89804,11 +89859,11 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
     }); // Rendering only slides
 
     if (slidesOnly) {
-      return /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default["default"].createElement("div", _extends({}, attributes, {
         className: outerClasses,
         onMouseEnter: this.hoverStart,
         onMouseLeave: this.hoverEnd
-      }, /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
+      }), /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
         value: this.getContextValue()
       }, this.renderItems(children, innerClasses)));
     } // Rendering slides and controls
@@ -89818,11 +89873,11 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
       var _carouselItems = children[0];
       var _controlLeft = children[1];
       var _controlRight = children[2];
-      return /*#__PURE__*/React__default["default"].createElement("div", {
+      return /*#__PURE__*/React__default["default"].createElement("div", _extends({}, attributes, {
         className: outerClasses,
         onMouseEnter: this.hoverStart,
         onMouseLeave: this.hoverEnd
-      }, /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
+      }), /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
         value: this.getContextValue()
       }, this.renderItems(_carouselItems, innerClasses), _controlLeft, _controlRight));
     } // Rendering indicators, slides and controls
@@ -89846,13 +89901,13 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
     var carouselItems = children[1];
     var controlLeft = children[2];
     var controlRight = children[3];
-    return /*#__PURE__*/React__default["default"].createElement("div", {
+    return /*#__PURE__*/React__default["default"].createElement("div", _extends({}, attributes, {
       className: outerClasses,
       onMouseEnter: this.hoverStart,
       onMouseLeave: this.hoverEnd,
       onTouchStart: this.handleTouchStart,
       onTouchEnd: this.handleTouchEnd
-    }, /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
+    }), /*#__PURE__*/React__default["default"].createElement(CarouselContext.Provider, {
       value: this.getContextValue()
     }, wrappedIndicators, this.renderItems(carouselItems, innerClasses), controlLeft, controlRight));
   };
@@ -89860,72 +89915,20 @@ var Carousel = /*#__PURE__*/function (_React$Component) {
   return Carousel;
 }(React__default["default"].Component);
 
-Carousel.propTypes = {
-  /** the current active slide of the carousel */
-  activeIndex: PropTypes__default["default"].number,
-
-  /** a function which should advance the carousel to the next slide (via activeIndex) */
-  next: PropTypes__default["default"].func.isRequired,
-
-  /** a function which should advance the carousel to the previous slide (via activeIndex) */
-  previous: PropTypes__default["default"].func.isRequired,
-
-  /** controls if the left and right arrow keys should control the carousel */
-  keyboard: PropTypes__default["default"].bool,
-
-  /** If set to "hover", pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on
-   * mouseleave. If set to false, hovering over the carousel won't pause it.
-   */
-  pause: PropTypes__default["default"].oneOf(['hover', false]),
-
-  /** Autoplays the carousel after the user manually cycles the first item. If "carousel", autoplays the carousel on load. */
-  ride: PropTypes__default["default"].oneOf(['carousel']),
-
-  /** the interval at which the carousel automatically cycles */
-  interval: PropTypes__default["default"].oneOfType([PropTypes__default["default"].number, PropTypes__default["default"].string, PropTypes__default["default"].bool]),
-  children: PropTypes__default["default"].array,
-
-  /** called when the mouse enters the Carousel */
-  mouseEnter: PropTypes__default["default"].func,
-
-  /** called when the mouse exits the Carousel */
-  mouseLeave: PropTypes__default["default"].func,
-
-  /** controls whether the slide animation on the Carousel works or not */
-  slide: PropTypes__default["default"].bool,
-
-  /** make the controls, indicators and captions dark on the Carousel */
-  dark: PropTypes__default["default"].bool,
-  fade: PropTypes__default["default"].bool,
-
-  /** Change underlying component's CSS base class name */
-  cssModule: PropTypes__default["default"].object,
-
-  /** Add custom class */
-  className: PropTypes__default["default"].string,
-
-  /** Enable touch support */
-  enableTouch: PropTypes__default["default"].bool
-};
-Carousel.defaultProps = {
-  interval: 5000,
-  pause: 'hover',
-  keyboard: true,
-  slide: true,
-  enableTouch: true,
-  fade: false
-};
-Carousel.childContextTypes = {
-  direction: PropTypes__default["default"].string
-};
+Carousel.propTypes = propTypes$K;
+Carousel.defaultProps = defaultProps$J;
 var Carousel$1 = Carousel;
+
+var _excluded$F = ["direction", "onClickHandler", "cssModule", "directionText", "className"];
 
 function CarouselControl(props) {
   var direction = props.direction,
       onClickHandler = props.onClickHandler,
       cssModule = props.cssModule,
       directionText = props.directionText,
-      className = props.className;
+      className = props.className,
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$F);
+
   var anchorClasses = mapToCssModules(classNames__default["default"](className, "carousel-control-" + direction), cssModule);
   var iconClasses = mapToCssModules(classNames__default["default"]("carousel-control-" + direction + "-icon"), cssModule);
   var screenReaderClasses = mapToCssModules(classNames__default["default"]('visually-hidden'), cssModule);
@@ -89935,7 +89938,7 @@ function CarouselControl(props) {
     // `<button>` because that's what the Bootstrap examples require:
     // https://getbootstrap.com/docs/4.5/components/carousel/#with-controls
     // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    React__default["default"].createElement("a", {
+    React__default["default"].createElement("a", _extends({}, attributes, {
       className: anchorClasses,
       style: {
         cursor: 'pointer'
@@ -89946,7 +89949,7 @@ function CarouselControl(props) {
         e.preventDefault();
         onClickHandler();
       }
-    }, /*#__PURE__*/React__default["default"].createElement("span", {
+    }), /*#__PURE__*/React__default["default"].createElement("span", {
       className: iconClasses,
       "aria-hidden": "true"
     }), /*#__PURE__*/React__default["default"].createElement("span", {
@@ -89972,12 +89975,16 @@ CarouselControl.propTypes = {
   className: PropTypes__default["default"].string
 };
 
+var _excluded$E = ["items", "activeIndex", "cssModule", "onClickHandler", "className"];
+
 function CarouselIndicators(props) {
   var items = props.items,
       activeIndex = props.activeIndex,
       cssModule = props.cssModule,
       onClickHandler = props.onClickHandler,
-      className = props.className;
+      className = props.className,
+      attributes = _objectWithoutPropertiesLoose(props, _excluded$E);
+
   var listClasses = mapToCssModules(classNames__default["default"](className, 'carousel-indicators'), cssModule);
   var indicators = items.map(function (item, idx) {
     var indicatorClasses = mapToCssModules(classNames__default["default"]({
@@ -89995,9 +90002,9 @@ function CarouselIndicators(props) {
       className: indicatorClasses
     });
   });
-  return /*#__PURE__*/React__default["default"].createElement("div", {
+  return /*#__PURE__*/React__default["default"].createElement("div", _extends({
     className: listClasses
-  }, indicators);
+  }, attributes), indicators);
 }
 
 CarouselIndicators.propTypes = {
@@ -91903,10 +91910,9 @@ function ListGroup(props) {
 ListGroup.propTypes = propTypes$u;
 ListGroup.defaultProps = defaultProps$t;
 
-var _excluded$q = ["className", "cssModule", "inline", "tag", "innerRef"];
+var _excluded$q = ["className", "cssModule", "tag", "innerRef"];
 var propTypes$t = {
   children: PropTypes__default["default"].node,
-  inline: PropTypes__default["default"].bool,
   tag: tagPropType,
   innerRef: PropTypes__default["default"].oneOfType([PropTypes__default["default"].object, PropTypes__default["default"].func, PropTypes__default["default"].string]),
   className: PropTypes__default["default"].string,
@@ -91948,12 +91954,11 @@ var Form = /*#__PURE__*/function (_Component) {
     var _this$props = this.props,
         className = _this$props.className,
         cssModule = _this$props.cssModule,
-        inline = _this$props.inline,
         Tag = _this$props.tag,
         innerRef = _this$props.innerRef,
         attributes = _objectWithoutPropertiesLoose(_this$props, _excluded$q);
 
-    var classes = mapToCssModules(classNames__default["default"](className, inline ? 'form-inline' : false), cssModule);
+    var classes = mapToCssModules(className, cssModule);
     return /*#__PURE__*/React__default["default"].createElement(Tag, _extends({}, attributes, {
       ref: innerRef,
       className: classes
