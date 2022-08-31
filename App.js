@@ -27,7 +27,7 @@ app.use(cors());
 app.use(jwt());
 
 //api routes
-app.use('/client', require('./client/client.controller'));
+app.use('/users',require('/controllers/user.controller.js'))
 
 //global error handler
 app.use(errorHandler);
@@ -36,6 +36,10 @@ app.use(errorHandler);
 app.disable('x-powered-by');
 // start the server
 app.listen(process.env.PORT || 3000);
+
+const server = app.listen(PORT, function(){ 
+  console.log('Server is listening on port' + PORT);
+})
 
 let initialState = {
   isFetching: false,
