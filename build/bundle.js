@@ -97482,7 +97482,7 @@ var _default = [_objectSpread(_objectSpread({}, _App.App), {}, {
 })];
 exports["default"] = _default;
 
-},{"../components/Login":410,"../components/Register":411,"./App":388,"./pages/Home":399,"./pages/LandingPage":400,"./pages/PageMiss":401}],390:[function(require,module,exports){
+},{"../components/Login":409,"../components/Register":410,"./App":388,"./pages/Home":399,"./pages/LandingPage":400,"./pages/PageMiss":401}],390:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -97727,7 +97727,7 @@ function _delete(id) {
   }
 }
 
-},{"../../helpers":416,"../../services":420,"../constants":395,"./":391}],393:[function(require,module,exports){
+},{"../../helpers":415,"../../services":419,"../constants":395,"./":391}],393:[function(require,module,exports){
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -97742,7 +97742,7 @@ var _redux = require("redux");
 
 var _index = _interopRequireDefault(require("./reducers/index"));
 
-var _App = require("../components/App");
+var _App = require("./App");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -97758,7 +97758,7 @@ var store = (0, _toolkit.configureStore)(reducer, state);
   store: store
 }, /*#__PURE__*/_react["default"].createElement(_App.App, null)), document.querySelector('#app'));
 
-},{"../components/App":409,"./reducers/index":403,"@reduxjs/toolkit":12,"localstorage-polyfill":134,"react":360,"react-dom":283,"react-redux":314,"redux":365}],394:[function(require,module,exports){
+},{"./App":388,"./reducers/index":403,"@reduxjs/toolkit":12,"localstorage-polyfill":134,"react":360,"react-dom":283,"react-redux":314,"redux":365}],394:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -98316,7 +98316,7 @@ var Home = /*#__PURE__*/function (_Component) {
 
 exports["default"] = Home;
 
-},{"../../components/Login":410,"../../components/Register":411,"react":360,"react-bootstrap":269,"react-dom":283}],400:[function(require,module,exports){
+},{"../../components/Login":409,"../../components/Register":410,"react":360,"react-bootstrap":269,"react-dom":283}],400:[function(require,module,exports){
 "use strict";
 
 },{}],401:[function(require,module,exports){
@@ -98584,43 +98584,6 @@ var _default = getUsers;
 exports["default"] = _default;
 
 },{}],409:[function(require,module,exports){
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactRouterDom = require("react-router-dom");
-
-var _Home = require("../client/pages/Home");
-
-var _PageMiss = require("../client/pages/PageMiss");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function App() {
-  return /*#__PURE__*/_react["default"].createElement("div", {
-    className: "app"
-  }, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.BrowserRouter, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Routes, null, /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
-    exact: true,
-    Component: _Home.Home,
-    path: "/home"
-  }), /*#__PURE__*/_react["default"].createElement(_reactRouterDom.Route, {
-    exact: true,
-    Component: _PageMiss.PageMiss,
-    path: "/pagemiss"
-  }))));
-}
-
-var _default = {
-  App: App
-};
-exports["default"] = _default;
-
-},{"../client/pages/Home":399,"../client/pages/PageMiss":401,"react":360,"react-router-dom":332}],410:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -98892,7 +98855,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps)(Login);
 
 exports["default"] = _default;
 
-},{"../client/actions/userActions":392,"../client/features/userSlice":398,"react":360,"react-redux":314,"react-validation/build/button":350,"react-validation/build/form":351,"react-validation/build/input":352,"reactstrap":362}],411:[function(require,module,exports){
+},{"../client/actions/userActions":392,"../client/features/userSlice":398,"react":360,"react-redux":314,"react-validation/build/button":350,"react-validation/build/form":351,"react-validation/build/input":352,"reactstrap":362}],410:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -99224,7 +99187,7 @@ var _default = (0, _reactRedux.connect)(mapStateToProps)(Register);
 
 exports["default"] = _default;
 
-},{"../client/actions/userActions":392,"../client/features/signUp":397,"react":360,"react-dom":283,"react-redux":314,"react-validation/build/button":350,"react-validation/build/form":351,"react-validation/build/input":352}],412:[function(require,module,exports){
+},{"../client/actions/userActions":392,"../client/features/signUp":397,"react":360,"react-dom":283,"react-redux":314,"react-validation/build/button":350,"react-validation/build/form":351,"react-validation/build/input":352}],411:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99244,7 +99207,7 @@ function authHeader() {
   }
 }
 
-},{}],413:[function(require,module,exports){
+},{}],412:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99394,7 +99357,7 @@ function configureFakeBackend() {
   };
 }
 
-},{}],414:[function(require,module,exports){
+},{}],413:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99436,7 +99399,7 @@ function _default(request, store, context) {
 
 ;
 
-},{"../client/Routes":389,"@reduxjs/toolkit":12,"react":360,"react-dom/server":284,"react-helmet":286,"react-router-config":331,"react-router-dom":332,"serialize-javascript":372}],415:[function(require,module,exports){
+},{"../client/Routes":389,"@reduxjs/toolkit":12,"react":360,"react-dom/server":284,"react-helmet":286,"react-router-config":331,"react-router-dom":332,"serialize-javascript":372}],414:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99450,7 +99413,7 @@ var _default = (0, _history.createBrowserHistory)();
 
 exports["default"] = _default;
 
-},{"history":125}],416:[function(require,module,exports){
+},{"history":125}],415:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99522,7 +99485,7 @@ Object.keys(_store).forEach(function (key) {
   });
 });
 
-},{"./auth-header":412,"./fakebackend":413,"./helper":414,"./history":415,"./store":417}],417:[function(require,module,exports){
+},{"./auth-header":411,"./fakebackend":412,"./helper":413,"./history":414,"./store":416}],416:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99544,7 +99507,7 @@ var loggerMiddleware = (0, _reduxLogger.createLogger)();
 var store = (0, _redux.configureStore)(_reducers["default"], (0, _redux.applyMiddleware)(_reduxThunk["default"], loggerMiddleware));
 exports.store = store;
 
-},{"../client/reducers":403,"redux":365,"redux-logger":363,"redux-thunk":364}],418:[function(require,module,exports){
+},{"../client/reducers":403,"redux":365,"redux-logger":363,"redux-thunk":364}],417:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99564,7 +99527,7 @@ function authHeader() {
   }
 }
 
-},{}],419:[function(require,module,exports){
+},{}],418:[function(require,module,exports){
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -99669,7 +99632,7 @@ var _default = new AuthService();
 
 exports["default"] = _default;
 
-},{"axios":67}],420:[function(require,module,exports){
+},{"axios":67}],419:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99715,7 +99678,7 @@ Object.keys(_authService).forEach(function (key) {
   });
 });
 
-},{"./auth-header":418,"./auth-service":419,"./user-service":421}],421:[function(require,module,exports){
+},{"./auth-header":417,"./auth-service":418,"./user-service":420}],420:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -99772,4 +99735,4 @@ var _default = new UserService();
 
 exports["default"] = _default;
 
-},{"./auth-header":418,"axios":67}]},{},[393]);
+},{"./auth-header":417,"axios":67}]},{},[393]);

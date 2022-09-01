@@ -11,13 +11,13 @@ export const userActions = {
     delete: _delete
 };
 
-function login(id, password, from){
+function login(id, password){
     return dispatch => {
         dispatch(request({ id}));
 
         UserService.login(id, password).then(user => {
             dispatch(success(user));
-            history.push(from);
+            history.push('/');
         },
         error => {
             dispatch(failure(error.toString()));
@@ -83,4 +83,19 @@ function _delete(id) {
     function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
     function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
+}
+function _delete(id){
+    return dispatch => {
+        dispatch(request(id));
+        UserService.delete(id).then(
+            user => dispatch(success(id)),
+            error => dispatch(failure(id,error.toString()))
+        );
+    };
+    function request(id) { return {type: userConstants.DELETE_REQUEST, id}}
+
+    function success(id){ return { type: userConstants.DELETE_SUCCESS, id }}
+
+    function failure(id, error){ return { type: userConstants.DELETE_FAILURE, id, error }}
+
 }

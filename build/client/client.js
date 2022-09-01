@@ -12,7 +12,7 @@ var _redux = require("redux");
 
 var _index = _interopRequireDefault(require("./reducers/index"));
 
-var _App = require("../components/App");
+var _App = require("./App");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
