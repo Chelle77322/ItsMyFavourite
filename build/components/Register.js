@@ -13,15 +13,13 @@ var _reactRedux = require("react-redux");
 
 var _reactDom = _interopRequireWildcard(require("react-dom"));
 
-var _userActions = require("../client/actions/userActions");
+var _userActions = require("../client/_actions/userActions");
 
 var _form = _interopRequireDefault(require("react-validation/build/form"));
 
 var _input = _interopRequireDefault(require("react-validation/build/input"));
 
 var _button = _interopRequireDefault(require("react-validation/build/button"));
-
-var _signUp = require("../client/features/signUp");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -57,6 +55,8 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//import {isValidEmail} from "../utils/index";
+//import signUp from "../client/features/signUp";
 var Register = /*#__PURE__*/function (_Component) {
   _inherits(Register, _Component);
 
@@ -165,7 +165,7 @@ var Register = /*#__PURE__*/function (_Component) {
 
                   _this.checkChange.history.push("../login");
                 } else {
-                  _this.props.dispatch(_userActions.userActions.registerFail);
+                  _this.props.dispatch(_userActions.userActions.register);
 
                   _this.props.history.push('/register');
 

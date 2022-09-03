@@ -21,9 +21,16 @@ const config = {
   },
   plugins:
   [
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin({
+      template: './src/views/index.html'
+    })
   ],
-  devtool: 'inline-source-map'
+  devServer: {
+    historyApiFallback: true
+  },
+  externals: {
+    config: JSON.stringify({apiUrl: "http://localhost:4000"})
+  }
 };
 
 export default merge(webpackConfig, config);

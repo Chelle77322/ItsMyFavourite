@@ -5,13 +5,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.userActions = void 0;
 
-var _constants = require("../constants");
+var _constants = require("../_constants");
 
-var _services = require("../../services");
+var _services = require("../_services");
 
-var _ = require("./");
+var _ = require(".");
 
-//import { history } from '../../helpers';
+var _history = require("../../helpers/history");
+
 var userActions = {
   login: login,
   logout: logout,
@@ -27,9 +28,10 @@ function login(id, password) {
       id: id
     }));
 
-    _services.UserService.login(id, password).then(function (user) {
+    _services.userService.login(id, password).then(function (user) {
       dispatch(success(user));
-      history.push('/');
+
+      _history.history.push('/');
     }, function (error) {
       dispatch(failure(error.toString()));
       dispatch(_.alertActions.error(error.toString()));
@@ -59,7 +61,7 @@ function login(id, password) {
 }
 
 function logout() {
-  _services.UserService.logout();
+  _services.userService.logout();
 
   return {
     type: _constants.userConstants.LOGOUT
@@ -70,9 +72,11 @@ function register(user) {
   return function (dispatch) {
     dispatch(request(user));
 
-    _services.UserService.register(user).then(function (user) {
+    _services.userService.register(user).then(function (user) {
       dispatch(success());
-      history.push('/login');
+
+      _history.history.push('/login');
+
       dispatch(_.alertActions.success('Registration successful'));
     }, function (error) {
       dispatch(failure(error.toString()));
@@ -106,7 +110,7 @@ function getAll() {
   return function (dispatch) {
     dispatch(request());
 
-    _services.UserService.getAll().then(function (users) {
+    _services.userService.getAll().then(function (users) {
       return dispatch(success(users));
     }, function (error) {
       return dispatch(failure(error.toString()));
@@ -138,7 +142,7 @@ function _delete(id) {
   return function (dispatch) {
     dispatch(request(id));
 
-    _services.UserService["delete"](id).then(function (user) {
+    _services.userService["delete"](id).then(function (user) {
       return dispatch(success(id));
     }, function (error) {
       return dispatch(failure(id, error.toString()));

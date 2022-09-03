@@ -2,12 +2,12 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ReactDOM, {hydrate} from 'react-dom';
 
-import {userActions} from "../client/actions/userActions"
+import {userActions} from "../client/_actions/userActions"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Button from "react-validation/build/button";
 //import {isValidEmail} from "../utils/index";
-import {signUp} from "../client/features/signUp";
+//import signUp from "../client/features/signUp";
 
 export class Register extends Component {
     constructor(props) { 
@@ -101,7 +101,7 @@ submitForm = async(event) => {
         this.props.dispatch(userActions.registerSuccess(user));
         this.checkChange.history.push("../login")
     } else { 
-        this.props.dispatch(userActions.registerFail);
+        this.props.dispatch(userActions.register);
         this.props.history.push('/register')
         console.Console("Something Aint Right, please check the form again")
     }

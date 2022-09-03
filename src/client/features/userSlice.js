@@ -25,7 +25,7 @@ try {
       require('localstorage-polyfill');
   }
     localStorage.setItem('token', data.token);
-    return {...data, booking_id: booking_id};
+    return {...data,id: id};
   }else {
     return thunkAPI.rejectWithValue(data);
   }
@@ -40,7 +40,7 @@ const loginUser = createAsyncThunk(
   async({id, password}, thunkAPI) => {
     try{
       const response = await fetch(
-        'https://itsmyfavourite.herokuapp.com/api/auth',
+        'https://localhost:3000/auth',
         {
           method: 'POST',
           headers: {

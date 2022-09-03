@@ -15,7 +15,8 @@
     "build": "browserify ./src/client/client.js -o ./build/bundle.js -t babelify && babel ./src/ --out-dir ./build/",
     "watch": "concurrently \"watchify ./src/client/client.js -o ./build/bundle.js -t babelify -v\" \"babel ./src/ --out-dir ../build/ --watch\"",
     "babel-node": "babel-node --build-dir ./build/bundle.js",
-    "start": "npm run babel-node index.js"
+    "start": "npm run babel-node index.js",
+    
   },
   "dependencies": {
     "@babel/helpers": "^7.18.9",
@@ -87,7 +88,7 @@
     "redux-thunk": "^2.4.1",
     "rimraf": "^3.0.2",
     "rimraff": "^0.0.1-security",
-    "sass": "^1.54.7",
+    "sass": "^1.54.8",
     "serialize-javascript": "^6.0.0",
     "unpipe": "^1.0.0",
     "watchify": "^4.0.0"

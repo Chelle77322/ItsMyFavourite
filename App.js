@@ -45,6 +45,9 @@ let initialState = {
   isFetching: false,
   apps: data
 }
+if (!window) {
+  require('localstorage-polyfill');
+}
 console.info(initialState);
 // server rendered home page
 app.get('/server', (request, result) => {

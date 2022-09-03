@@ -1,7 +1,9 @@
-import { userConstants } from '../constants';
-import { UserService } from '../../services';
-import { alertActions } from './';
-import { history } from '../../helpers';
+import { userConstants } from '../_constants';
+import { userService } from '../_services';
+import { alertActions } from '.';
+import { history } from '../../helpers/history'
+
+
 
 export const userActions = {
     login,
@@ -15,7 +17,7 @@ function login(id, password){
     return dispatch => {
         dispatch(request({ id}));
 
-        UserService.login(id, password).then(user => {
+        userService.login(id, password).then(user => {
             dispatch(success(user));
             history.push('/');
         },
@@ -33,13 +35,13 @@ function login(id, password){
 }
 
 function logout () {
-    UserService.logout();
+    userService.logout();
     return { type: userConstants.LOGOUT};
 }
 function register(user){
     return dispatch => {
         dispatch(request(user));
-        UserService.register(user).then(user => {
+        userService.register(user).then(user => {
             dispatch(success());
             history.push('/login');
             dispatch(alertActions.success('Registration successful'));
@@ -58,7 +60,7 @@ function getAll() {
     return dispatch => {
         dispatch(request());
 
-        UserService.getAll()
+        userService.getAll()
             .then(
                 users => dispatch(success(users)),
                 error => dispatch(failure(error.toString()))
@@ -73,7 +75,7 @@ function _delete(id) {
     return dispatch => {
         dispatch(request(id));
 
-        UserService.delete(id)
+        userService.delete(id)
             .then(
                 user => dispatch(success(id)),
                 error => dispatch(failure(id, error.toString()))
@@ -84,18 +86,8 @@ function _delete(id) {
     function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }
-function _delete(id){
-    return dispatch => {
-        dispatch(request(id));
-        UserService.delete(id).then(
-            user => dispatch(success(id)),
-            error => dispatch(failure(id,error.toString()))
-        );
-    };
-    function request(id) { return {type: userConstants.DELETE_REQUEST, id}}
 
     function success(id){ return { type: userConstants.DELETE_SUCCESS, id }}
 
     function failure(id, error){ return { type: userConstants.DELETE_FAILURE, id, error }}
 
-}

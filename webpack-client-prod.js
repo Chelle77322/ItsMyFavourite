@@ -58,8 +58,14 @@ const config = {
     })
   ],
   plugins: [
-    new CleanWebpackPlugin()
-  ]
+    new CleanWebpackPlugin({template: './src/views/index.html'})
+  ],
+  devServer: {
+    historyApiFallback: true
+  },
+  externals: {
+    config: JSON.stringify({apiUrl: 'http://localhost:3000'})
+  }
 };
 
 export default merge(webpackConfig,config);

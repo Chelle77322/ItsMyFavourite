@@ -67,7 +67,7 @@ var registerUser = (0, _toolkit.createAsyncThunk)('./features/signUp', /*#__PURE
 
             localStorage.setItem('token', data.token);
             return _context.abrupt("return", _objectSpread(_objectSpread({}, data), {}, {
-              booking_id: booking_id
+              id: id
             }));
 
           case 15:
@@ -105,7 +105,7 @@ var loginUser = (0, _toolkit.createAsyncThunk)('users/login', /*#__PURE__*/funct
             id = _ref3.id, password = _ref3.password;
             _context2.prev = 1;
             _context2.next = 4;
-            return fetch('https://itsmyfavourite.herokuapp.com/api/auth', {
+            return fetch('https://localhost:3000/auth', {
               method: 'POST',
               headers: {
                 Accept: 'application/json',

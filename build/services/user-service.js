@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = exports.UserService = void 0;
+exports.userService = exports["default"] = void 0;
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -19,12 +19,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
 var GOOGLE_API_KEY = "http://localhost:3000/api";
 
-var UserService = /*#__PURE__*/function () {
-  function UserService() {
-    _classCallCheck(this, UserService);
+var userService = /*#__PURE__*/function () {
+  function userService() {
+    _classCallCheck(this, userService);
   }
 
-  _createClass(UserService, [{
+  _createClass(userService, [{
     key: "getPublicContent",
     value: function getPublicContent() {
       return _axios["default"].get(GOOGLE_API_KEY + " all");
@@ -45,11 +45,11 @@ var UserService = /*#__PURE__*/function () {
     }
   }]);
 
-  return UserService;
+  return userService;
 }();
 
-exports.UserService = UserService;
+exports.userService = userService;
 
-var _default = new UserService();
+var _default = new userService();
 
 exports["default"] = _default;
