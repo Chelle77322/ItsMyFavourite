@@ -1,0 +1,51 @@
+.rms-content-maxlength {
+    max-width: 75ch;
+    margin-inline-start: 3%;
+    margin-top: 0%;
+  }
+  
+  $rms-alignments: left, center, right, justify !default;
+  
+  @each $alignment in $rms-alignments {
+    .rms-text-align--#{$alignment} {
+      text-align: #{$alignment};
+  
+      @if ($alignment == "center") {
+        > a {
+          align-self: center !important;
+        }
+      }
+    }
+  }
+  
+  @each $key in $rms-background-colors {
+    .rms-background--#{$key} {
+      background-color: rms-color($key);
+    }
+  }
+  
+  @each $key in $rms-ink-colors {
+    .rms-ink--#{$key},
+    a.rms-ink--#{$key} {
+      color: rms-color(#{$key});
+    }
+  
+    .rms-ink--#{$key} > a:not(.rms-button) {
+      color: inherit;
+    }
+  }
+  
+  .rms-mx-auto {
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  @each $key, $unit in $rms-spacing {
+    .rms-mt-#{$key} {
+      margin-top: $unit;
+    }
+  }
+  
+  .rms-mb-none {
+    margin: 0;
+  }

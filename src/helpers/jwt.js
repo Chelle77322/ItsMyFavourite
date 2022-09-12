@@ -3,8 +3,7 @@ import config from '../../config.js';
 import userService from "../services/user-service.js";
 
 
-module.exports = jwt;
-function jwt() {
+export function jwt() {
     const secret = config.secret;
     return expressJwt({secret, algorithms: ['HS256'], isRevoked}).unless ({
         path: [

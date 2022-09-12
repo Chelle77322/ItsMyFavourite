@@ -1,0 +1,143 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Yeon+Sung&display=swap');
+
+$rms-typography-variants: h1, h2, h3, h4, blockquote, p, link;
+
+@each $type in $rms-typography-variants {
+  #{$type},
+  .rms-#{$type} {
+    font-weight: $rms-strong-font-weight;
+    line-height: 1.15;
+    margin-bottom: 0.65em;
+  }
+}
+
+// As of v0.3.0, `clamp` not well enough supported on mobile browsers for use
+// Due to build-in min/max Sass functions, requires `unquote()` to correctly
+// render as CSS min/max
+h1,
+.rms-h1 {
+  font-size: $rms-h1-font-size;
+  font-size: unquote("min(max(4rem, 6vw), #{$rms-h1-font-size})");
+  color: rms-color("text");
+}
+
+h2,
+.rms-h2 {
+  font-size: $rms-h2-font-size;
+  font-size: unquote("min(max(3rem, 5vw), #{$rms-h2-font-size})");
+  color: rms-color("text");
+}
+
+h3,
+.rms-h3 {
+  font-size: $rms-h3-font-size;
+  font-size: unquote("min(max(2rem, 4vw), #{$rms-h2-font-size})");
+  color: rms-color("text");
+}
+
+h4,
+.rms-h4 {
+  font-size: $rms-h4-font-size;
+  color: rms-color("text");
+}
+
+p,
+li {
+  font-size: $rms-text-font-size;
+  color: rms-color("text");
+}
+
+p {
+  margin: 0 0 1rem;
+  color: rms-color("text");
+}
+
+article {
+  > ul,
+  > ol {
+    > li + li {
+      margin-top: 1rem;
+    }
+  }
+
+  * {
+    + h2 {
+      margin-top: 4rem;
+    }
+
+    + h3 {
+      margin-top: 2rem;
+    }
+  }
+}
+
+strong {
+  font-weight: $rms-strong-font-weight;
+  color: rms-color("text");
+}
+
+a:not(.rms-button) {
+  color: $rms-link-color;
+}
+
+pre,
+code {
+  font-family: "Yeon Sung", "sans-serif";
+  font-weight: bold;
+  color: rms-color("text");
+}
+
+code {
+  display: inline-flex;
+  padding: 0.15em;
+  background-color: rms-color("light");
+  font-size: 0.75em;
+  color: rms-color("text");
+  border: 1px solid scale-color(rms-color("gray"), $lightness: 50%);
+  border-radius: 2px;
+  line-height: 1.1;
+}
+
+pre {
+  margin: 0;
+  display: inline-block;
+
+  code {
+    display: block;
+    padding: 0 1rem;
+    white-space: pre-wrap;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    overflow-x: auto;
+  }
+}
+
+blockquote {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 1.5rem;
+  border-left: 2px solid rms-color("secondary");
+  color: rms-color("gray");
+
+  &,
+  p {
+    font-size: $rms-h4-font-size;
+  }
+
+  + * {
+    margin-top: 3rem;
+  }
+}
+
+.rms-lead {
+  font-size: $rms-lead-font-size;
+  letter-spacing: 0.01em;
+  margin-bottom: 1em;
+  line-height: 1.3;
+}
+
+.rms-list-unstyled {
+  list-style: none;
+  padding: 0;
+}

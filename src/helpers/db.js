@@ -8,7 +8,7 @@ const connectionOptions = {
 mongoose.connect(process.env.MONGODB_URI || config.connectionString, connectionOptions);
 mongoose.Promise = global.Promise;
 
-module.exports = {
+export function db() {
     User: require('../controllers/user.model')
 }
 

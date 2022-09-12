@@ -1,7 +1,7 @@
 import config from '../../config';
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import db from '../helpers/db';
+import {db} from '../helpers/db';
 
 const User = db.User;
 

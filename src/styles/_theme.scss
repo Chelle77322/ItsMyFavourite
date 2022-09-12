@@ -1,0 +1,56 @@
+$rms-color-primary: #a3bdd3 !default;
+$rms-color-secondary: #426972 !default;
+$rms-color-background: #52a2b4 !default;
+$rms-font-color: #11574a !default;
+
+$rms-brand-colors: (
+  "primary": $rms-color-primary,
+  "secondary": $rms-color-secondary,
+  "text": $rms-font-color
+) !default;
+
+$rms-color-body: scale-color($rms-color-primary, $lightness: -40%, $saturation: -50%) !default;
+$rms-color-gray: mix(#ddd8d8, $rms-color-body, 70%) !default;
+
+$rms-colors: map-merge(
+  $rms-brand-colors,
+  (
+    "text": $rms-font-color,
+    "background": $rms-color-background,
+    "light": #fff,
+    "dark": rgba(black, 0.87),
+    "gray": $rms-color-gray,
+  )
+);
+
+@function rms-color($key) {
+  @return map-get($rms-colors, $key);
+}
+
+// Add/remove to selectively generate `ink` (text color) classes
+$rms-ink-colors: "text", "secondary", "gray", "light", "dark" !default;
+
+// Add/remove to selectively generate `background` (text color) classes
+$rms-background-colors: "primary", "secondary", "background", "gray", "light" !default;
+
+$rms-button-variants: "primary", "secondary", "light", "gray" !default;
+$rms-link-color: rms-color("text") !default;
+$rms-border-radius: 12px !default;
+
+$rms-font-family: "Yeon Sung", sans-serif;
+$rms-strong-font-weight: 500 !default;
+$rms-h1-font-size: 4.2rem !default;
+$rms-h2-font-size: 3.15rem !default;
+$rms-h3-font-size: 2rem !default;
+$rms-h4-font-size: 1.35rem !default;
+$rms-text-font-size: 1.15rem !default;
+$rms-lead-font-size: 1.35rem !default;
+$rms-font-color:$rms-color-secondary;
+
+$rms-spacing: (
+  sm: 0.8rem,
+  md: 2.5rem,
+  lg: 4rem,
+  xl: 6.5rem,
+  auto: "auto",
+) !default;

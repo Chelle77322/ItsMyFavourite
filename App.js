@@ -2,8 +2,8 @@
 const app = express();
 import cors from 'cors';
 import { urlencoded, json } from 'body-parser';
-import jwt from './src/helpers/jwt.js';
-import errorHandler from './src/helpers/error-handler.js';
+import {jwt} from './src/helpers/jwt.js';
+import {errorHandler} from './src/helpers/error-handler.js';
 
 app.use(urlencoded({ extended: false }));
 app.use(json());

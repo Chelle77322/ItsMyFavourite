@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import UserService from './user.service.js';
+import {UserService} from '../services/user-service';
 
 //setting out the routes useDispatch
 Router.post('/authenticate',authenticate);

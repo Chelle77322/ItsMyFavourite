@@ -1,5 +1,7 @@
 import path from 'path';
+import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import ExtractTextPlugin from 'extract-text-webpack-plugin';
 const paths = {
   BUILD: path.resolve(__dirname, '/build'),
   SRC: path.resolve(__dirname, '/src')
@@ -12,6 +14,7 @@ module.exports = {
     path: paths.BUILD,
     filename: '[name].js',
   },
+  
   devServer: {
     historyApiFallback: true,
   },
@@ -21,19 +24,78 @@ externals: {
       apiUrl: 'http://localhost:3000'
   })
 },
-target:'node',
-resolve: {
-  extensions: ['.js', '.jsx']
-},
 
 plugins: [
+  new WebpackShellPluginNext({
+    onBuildStart:{
+      scripts: ['echo "===> Starting packing with WEBPACK 5"'],
+      blocking: true,
+      parallel: false
+    },
+    onBuildEnd:{
+      scripts: ['npm run dev'],
+      blocking: false,
+      parallel: true
+    },
+  }),
   new HtmlWebpackPlugin({
     template: './public/index.html',
     filename: './index.html',
     favicon: './public/favicon.png'
-  })
-]
-}
+    
+  }),
+  //new ExtractTextPlugin('style.bundle.sass'),
+],
+module: {
+  rules: [
+    {
+    test: /\.(js|jsx)$/,
+    exclude: /node_modules/,
+    use: [
+      'babel-loader',
+  ],
+  },
+  {
+    test: /\.(sass)$/,
+    
+      use: [
+        'sass-loader',
+      ],
+    
+  },
+  {
+    test: /\.(png|jpg|gif)$/,
+    use: [
+      'file-loader',
+    ],
+  },
+],
+},
+
+resolve: {
+  extensions: ['*', '.js', '.jsx', '.tsx', '.ts.'],
+  alias: {
+    '~': path.resolve(__dirname, './src'),
+    
+  },
+  fallback: {
+    fs: false,
+    tls: false,
+    net: false,
+    path: false,
+    zlib: false,
+    http: false,
+    https: false,
+    stream: false,
+    crypto: false,
+    assert: false,
+  },
+    },
+    
+  };
+
+
+
 
 
 

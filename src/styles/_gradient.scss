@@ -1,0 +1,66 @@
+/* COLOR VARIABLES
+============================================= */
+$primary:#11574a;
+$secondary:#52a2b4;
+$tertiary:#a3bdd3;
+
+
+/* GRADIENT LISTS
+============================================= */
+
+$list1: $primary, $secondary, $tertiary; 
+
+$list2: $primary 0%,$primary 33%,$secondary 33%,$secondary 66%, $tertiary 66%, $tertiary 30%; 
+
+$list3: $primary 0%,$primary 10%,$secondary 25%,$secondary 39%,$tertiary 79%,$tertiary 100%; 
+
+$list4: $primary, $secondary, $tertiary, $primary, $secondary, $tertiary, $primary, $secondary, $tertiary; 
+
+@mixin gradient($direction, $list) { 
+  background: -webkit-linear-gradient($direction, $list);
+  background: -moz-linear-gradient($direction, $list);
+  background: -o-linear-gradient($direction, $list);
+  background: linear-gradient($direction, $list);  
+}
+
+
+.wrapper {
+  position: fixed;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.bar {
+  height:auto;
+  width: auto;
+  margin-top:10px;
+}
+
+
+.one {
+  @include gradient( to left, $list1);
+}
+
+.two {
+  @include gradient(to right, $list1);
+}
+
+.three {
+  @include gradient(to left, $list2);
+}
+
+.four {
+  @include gradient( to top, $list3);
+}
+
+.five {
+  @include gradient( to bottom, $list3);
+}
+
+.six {
+  @include gradient(to left, $list4);
+}
+
+
