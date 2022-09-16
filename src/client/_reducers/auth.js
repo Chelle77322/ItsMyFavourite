@@ -1,10 +1,25 @@
 import { userConstants } from '../_constants';
+import React, { useState, useEffect } from 'react';
 
-let user = JSON.parse(localStorage.getItem('user'));
+const initialState = {
+  user: {
+    id: "",
+    password: "",
+  },
+  loginFormSubmitted: false
+}
+function auth (state = initialState, action) {
+  const [user, setItems] = useState([]);
+const windowGlobal = typeof window !== 'undefined' && window === windowGlobal.localStorage('user');
 
-const initialState = user ? {loggedIn : true, user }: {};
+useEffect(() => {
+  windowGlobal.localStorage.setItems('user', JSON.stringify(user));
+}, []);
 
-export function authentication (state = initialState, action) {
+//let user = JSON.parse(windowGlobal.localStorage.getAll('user'));
+let users = windowGlobal.localStorage('user') ? JSON.parse(windowGlobal.localStorage('user')) : null;
+
+
   switch (action.type){
     case userConstants.LOGIN_REQUEST: 
     return {
@@ -24,3 +39,4 @@ export function authentication (state = initialState, action) {
       return state
   }
 }
+export default auth;

@@ -3,7 +3,7 @@
 body {
     display: block;
     min-height: 50vh;
-    font-family: $rms-font-family;
+    font-family: $imf-font-family;
     min-width: fit-content;
     background-color: #1d7565;
   
@@ -11,7 +11,7 @@ body {
   
   // stylelint-disable selector-max-type, selector-no-qualifying-type
   main,
-  main.rms-container {
+  main.imf-container {
     max-height:auto fit-content;
       max-width:  auto fit-content;
       align-self: center;
@@ -20,14 +20,14 @@ body {
       font-size: 2em;
       text-align: center;
       line-height: 100px;
-      font-family: $rms-font-family;
-      color: $rms-font-color;
+      font-family: $imf-font-family;
+      color: $imf-font-color;
   }
   
   
   footer {
     margin-top: auto;
-    background-color: $rms-color-secondary;
+    background-color: $imf-color-secondary;
     
   }
   
@@ -45,7 +45,7 @@ body {
     }
   }
   // stylelint-enable
-  .rms-img {
+  .imf-img {
     position:center;
     margin-right: auto;
     margin-left: auto;
@@ -53,18 +53,18 @@ body {
     width: 7%;
   }
   
-  .rms-container {
+  .imf-container {
     background-image:url("../assets/banner.png");
     background-size:100%;
     background-repeat: no-repeat ;
     max-width:fit-content auto;
     max-height: fit-content auto;
     margin-top: 0;
-    border-radius: $rms-border-radius;
+    border-radius: $imf-border-radius;
     box-shadow: 0 4px 4px rgba(14, 83, 80, 0.18);
   }
   
-  .rms-column-container {
+  .imf-column-container {
     grid-gap: 2em;
     grid-template-columns: repeat(auto-fit, minmax(25ch, 1fr));
     align-self: top center;
@@ -72,11 +72,11 @@ body {
   }
   
   // stylelint-disable-next-line selector-no-qualifying-type, selector-max-type
-  ul.rms-column-container {
+  ul.imf-column-container {
     padding-left: 0;
   }
   
-  .rms-section {
+  .imf-section {
     display: contents;
     width: fit-content auto;
     height:  fit-content auto;
@@ -94,7 +94,7 @@ body {
     }
   }
   
-  .rms-hero {
+  .imf-hero {
     display: flex;
     min-height: fit-content;
     max-width: fit-content;
@@ -103,7 +103,7 @@ body {
     margin-top: 0 auto;
    
   }
-  .rms-navrow {
+  .imf-navrow {
     display: flex;
     grid-gap: 1.5rem;
       margin-inline-start: 20%;
@@ -113,7 +113,7 @@ body {
        place-content: center;
        max-width: fit-content;
   }
-  .rms-row {
+  .imf-row {
   display: flex;
     grid-gap: 1.25rem;
   
@@ -126,5 +126,5 @@ body {
   hr {
     margin-top: 2%;
     margin-bottom: 2%;
-    border: 10px groove rms-color("secondary");
+    border: 10px groove imf-color("secondary");
   }

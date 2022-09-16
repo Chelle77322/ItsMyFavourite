@@ -1,14 +1,14 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
 import {Provider} from "react-redux";
-import {configureStore} from "@reduxjs/toolkit";
+//import {configureStore} from "@reduxjs/toolkit";
 import {combineReducers} from "redux";
 import rootReducer from "./_reducers/index";
 import { store} from "./_helpers/store";
 
 import {App} from "./App";
 
-var state = window.__STATE__;
+let state = window.__STATE__;
 
 delete window.__STATE__;
 

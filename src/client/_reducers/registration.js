@@ -1,6 +1,8 @@
 import { userConstants } from "../_constants";
 
-export function registration(state = {}, action)
+
+
+function registration(state = initialState,{}, action)
 {
     switch (action.type){
         case userConstants.REGISTER_REQUEST:
@@ -13,3 +15,4 @@ export function registration(state = {}, action)
             return state
     }
 }
+export default registration;

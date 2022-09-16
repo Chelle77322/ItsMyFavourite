@@ -1,6 +1,13 @@
 import { userConstants } from '../_constants';
+const initialState = {
+    user: {
+      id: "",
+      password: "",
+    },
+   
+  }
 
-export function users(state = {}, action){
+function user(state = initialState, action){
     switch (action.type) {
         case userConstants.GETALL_REQUEST: return {
             loading: true
@@ -35,3 +42,4 @@ export function users(state = {}, action){
     default: return state
     }
 }
+export default user;

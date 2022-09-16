@@ -1,5 +1,3 @@
-
-
 export function errorHandler(error, request, result, next){
     if(typeof (error)=== 'string'){
         return result.status(400).json({message: error });

@@ -2,7 +2,6 @@ import expressJwt from "express-jwt";
 import config from '../../config.js';
 import userService from "../services/user-service.js";
 
-
 export function jwt() {
     const secret = config.secret;
     return expressJwt({secret, algorithms: ['HS256'], isRevoked}).unless ({

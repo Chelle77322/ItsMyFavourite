@@ -1,5 +1,5 @@
 import React , {Component} from 'react';
-import ReactDOM, {hydrate} from 'react-dom';
+//import ReactDOM, {hydrate} from 'react-dom';
 import { connect } from 'react-redux';
 import { Home }  from "./pages/Home";
 

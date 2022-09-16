@@ -19,7 +19,7 @@ function register(request, result, next){
     UserService.create(request.body).then(() => result.json({})).catch(error => next(error));
 }
 function getAll(request, result, next){ 
-    UserService.getAll().then(users => result.json(users)).catch (error => next(error))
+    UserService.getAll(request.body).then(users => result.json(users)).catch (error => next(error))
 }
 function getCurrent(request, result, next) {
     UserService.getById(request.user.sub).then(user => user ? result.json(user):result.sendStatus(404)).catch(error => next(error));

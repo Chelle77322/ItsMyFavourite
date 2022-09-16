@@ -1,4 +1,4 @@
-.rms-button {
+.imf-button {
     display: inline-flex;
     align-items: center;
     align-self: start;
@@ -7,7 +7,7 @@
     min-height: 44px;
     padding: 0.25em 1em;
     transition: 180ms ease-in-out;
-    border-radius: $rms-border-radius/2;
+    border-radius: $imf-border-radius/2;
     background-color:#104a70;
     color:#c6c6d4;
     font-size: 1.125rem;
@@ -24,7 +24,7 @@
     &:focus {
       outline-color: transparent;
       outline-style: solid;
-      box-shadow: 0 0 0 3px scale-color(rms-color("primary"), $lightness: -30%);
+      box-shadow: 0 0 0 3px scale-color(imf-color("primary"), $lightness: -30%);
     }
   
     &--small {
@@ -57,26 +57,26 @@
     }
   
     &-outlined {
-      border: 2px solid rms-color("primary");
+      border: 2px solid imf-color("primary");
       background-color: multiply;
-      color: rms-color("hr six");
+      color: imf-color("hr six");
   
       &:hover,
       &:focus {
-        background-color: scale-color(rms-color("secondary"), $lightness: 80%);
+        background-color: scale-color(imf-color("secondary"), $lightness: 80%);
       }
     }
   
     // stylelint-disable max-nesting-depth
-    @each $key in $rms-button-variants {
-      $color: rms-color($key);
+    @each $key in $imf-button-variants {
+      $color: imf-color($key);
   
       @if ($key != "primary") {
         &--#{$key} {
           background-color: $color;
   
           @if ($key == "light") {
-            color: rms-color("dark");
+            color: imf-color("dark");
           }
   
           &:focus {

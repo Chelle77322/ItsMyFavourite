@@ -1,5 +1,5 @@
 import * as React from 'react';
-import "../helpers/helper";
+
 
 function Html({ children, initialState, scripts }) {
   return (

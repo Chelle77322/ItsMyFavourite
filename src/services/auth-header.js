@@ -3,6 +3,6 @@ export default function authHeader() {
     if (user && user.accessToken) {
         return { 'x-access-token, application/json': user.accessToken};
     } else{
-        return {};
+        return {user};
     }
 }
