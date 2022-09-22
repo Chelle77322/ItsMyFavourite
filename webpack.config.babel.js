@@ -3,42 +3,69 @@ import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
-import store  from "./src/client/_helpers/store";
-import {App}  from "./App";
 
-const dotEnv = require('dotenv-webpack');
+//import store  from "./src/client/_helpers/store";
+//import {App}  from "./App";
+
 const paths = {
-  DIST: path.resolve(__dirname, '/dist'),
-  SRC: path.resolve(__dirname, '/src')
- 
+  BUILD: path.resolve(__dirname, './build'),
+  SRC: path.resolve(__dirname, './src'),
 };
+
 module.exports = {
   mode: 'development',
-  entry:{
-    main: './src/index.js'
-
-  },
-  fallback: { "url": require.resolve("url/")},
+  entry:path.resolve(__dirname, 'index.js'),
   output: {
-    path: path.resolve(__dirname, '..', '/views/static/'),
+    path: paths.BUILD,
    filename: '[name].js',
-    publicPath: './public/scripts',
-    libraryTarget: "commonjs2"
   },
-  externals: {
-  // global app config object
-        config: JSON.stringify({
-        apiUrl: 'http://localhost:3000/api',
-        express: 'express',
-        whitelist: ['express', 'mongodb', 'body-parser', 'react', 'react-dom']
-    
-    })
-  },
-  devtool: 'sourcemap',
-  
-  devServer: {
+
+devServer: {
     historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, './views'),
   },
+ 
+  },
+
+  externals: {
+    //global app config object,
+          config: JSON.stringify({
+          apiUrl: 'http://localhost:3000/api',
+          express: 'express',
+          whitelist: ['express', 'mongodb', 'body-parser', 'react', 'react-dom, redux']
+      })
+    },
+    plugins: [
+      new WebpackShellPluginNext({
+        onBuildStart:{
+          scripts: ['echo "===> Starting packing with WEBPACK 5.7.4"'],
+          blocking: true,
+          parallel: false
+        },
+        onBuildEnd:{
+          scripts: ['npm run dev'],
+          blocking: false,
+          parallel: true
+        },
+      }),
+      new HtmlWebpackPlugin({
+        template: path.join(__dirname, "./public/", "index.html"),
+        new: ExtractTextPlugin('style.bundle.sass'),
+        
+      }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
+      //[new dotEnv()],
+      new webpack.DefinePlugin({"process.env": {
+        NODE_ENV: JSON.stringify("development"),
+      },
+    }),
+    new webpack.DefinePlugin({
+      'process.platform': JSON.stringify(process.platform)
+  })
+  ],
 
 module: {
   rules: [
@@ -53,7 +80,8 @@ module: {
   {
       test: /\.s?css$/,
       exclude: /node_modules/,
-      loaders: ["style","css", "sass"]
+      rules: ["style","css", "sass"],
+      use:["sass-loader"]
     
   },
   {
@@ -68,49 +96,20 @@ module: {
     rules: ["awesome-typescript-loader"]
     },
 ],
-preLoaders: [
+
+rules: [
   // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
   { test: /\.js$/, loader: "source-map-loader" }
 ]
 },
-plugins: [
-  new WebpackShellPluginNext({
-    onBuildStart:{
-      scripts: ['echo "===> Starting packing with WEBPACK 5.7.4"'],
-      blocking: true,
-      parallel: false
-    },
-    onBuildEnd:{
-      scripts: ['npm run dev'],
-      blocking: false,
-      parallel: true
-    },
-  }),
-  new HtmlWebpackPlugin({
-    template: path.join(__dirname, "/public/", "index.html"),
-    new: ExtractTextPlugin('style.bundle.sass'),
-    
-  }),
-  new webpack.ProvidePlugin({
-    process: 'process/browser',
-  }),
-  //[new dotEnv()],
-  new webpack.DefinePlugin({"process.env": {
-    NODE_ENV: JSON.stringify("development"),
-  },
-}),
 
-],
-optimization: {
-  minimize: true,
-},
-
+//optimization: {
+  //minimize: true,
+//},
 resolve: {
   extensions: ['*', '.js', '.jsx', '.tsx', '.ts.'],
   alias: {
-    process: "process/browser",
-    redux: require.resolve("redux"),
-    
+    '~': path.resolve(__dirname, './src'),
   },
   fallback: {
     fs: false,
@@ -128,26 +127,20 @@ resolve: {
     },
     // eslint-disable-next-line no-undef    
   };
-  // eslint-disable-next-line no-undef
-index.js
-
-const container = document.getElementById('#app');
-const app = ReactDOMClient.createRoot(container);
-
-
-app.render (
-    <React.StrictMode>
-    
-    <Provider store = {store}>
-        <React.StrictMode>
-     <BrowserRouter>  
-        <App/>
-        </BrowserRouter>
-        </React.StrictMode>
-    </Provider>,
-    </React.StrictMode>
-   
-);
+  if (process.env.NODE_ENV === 'production') {
+    module.exports.devtool = '#source-map'
+    module.exports.plugins = (module.exports.plugins || []).concat([
+      new webpack.DefinePlugin({
+        'process.env': { NODE_ENV: '"production"' }
+      }),
+      new webpack.optimize.UglifyJsPlugin({
+        sourceMap: true,
+        compress: { warnings: false }
+      }),
+      new webpack.LoaderOptionsPlugin({ minimize: true })
+    ])
+  }
+   // eslint-disable-next-line no-undef
 
 
 

@@ -81,3 +81,4 @@ function handleResponse(response){
         return data;
     });
 }
+export default userService;

@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/heading-has-content */
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
+
 import {Container, Row, Col} from 'react-bootstrap';
+import {Route, Routes, Router}from 'react-router-dom'
 import {Login} from "../../components/Login";
 import {Register} from "../../components/Register";
 

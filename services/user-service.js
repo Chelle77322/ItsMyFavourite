@@ -1,6 +1,6 @@
 import axios from 'axios';
 import authHeader from "./auth-header";
-const GOOGLE_API_KEY = "http://localhost:3000/api";
+const GOOGLE_API_KEY = "../config";
 
 export class UserService {
     getPublicContent() {
