@@ -1,5 +1,6 @@
-import config from '../../../config';
-import {authHeader} from "../_helpers/auth-header";
+/* eslint-disable no-undef */
+import config from '../../../config.js';
+import {authHeader} from "../_helpers/auth-header.js";
 
 export const userService = {
     login,
@@ -73,6 +74,7 @@ function handleResponse(response){
         if (!response.ok){
             if(response.status === 401){
                 logout();
+                // eslint-disable-next-line no-restricted-globals
                 location.reload(true);
             }
         const error = (data && data.message) || response.statusText;

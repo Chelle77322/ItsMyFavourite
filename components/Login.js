@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect}from 'react-redux';
-import {userActions} from "../client/_actions/userActions";
-import {userSelector} from "../client/features/userSlice";
+import {userActions} from "../client/_actions/userActions.js";
+import {userSelector} from "../client/features/userSlice.js";
 
 import {Label, Container} from "reactstrap";
 import Form from "react-validation/build/form";

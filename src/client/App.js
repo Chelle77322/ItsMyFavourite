@@ -1,7 +1,7 @@
 import React , {Component} from 'react';
 //import ReactDOM, {hydrate} from 'react-dom';
 import { connect } from 'react-redux';
-import { Home }  from "./pages/Home";
+import { Home }  from "./pages/Home.js";
 
 import { getUsers } from './redux/selectors.js';
 import {usersFetched } from './redux/actions.js';

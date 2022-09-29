@@ -3,17 +3,22 @@ import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
+import nodeExternals from 'webpack-node-externals'
+ 
 
-//import store  from "./src/client/_helpers/store";
+//import store  from "./src/client/_helpers/store"
 //import {App}  from "./App";
 
 const paths = {
-  BUILD: path.resolve(__dirname, './build'),
-  SRC: path.resolve(__dirname, './src'),
+  BUILD: path.resolve(__dirname, './build/'),
+  SRC: path.resolve(__dirname, './src/'),
 };
 
 module.exports = {
   mode: 'development',
+  entry:{
+    main: './src/index.js'
+  },
   entry:path.resolve(__dirname, 'index.js'),
   output: {
     path: paths.BUILD,
@@ -21,19 +26,21 @@ module.exports = {
   },
 
 devServer: {
+ 
     historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, './views'),
+      directory: path.join(__dirname, '/src/views'),
   },
  
-  },
+  },  devtool: false,
 
   externals: {
     //global app config object,
           config: JSON.stringify({
-          apiUrl: 'http://localhost:3000/api',
+          apiUrl: 'http://localhost:3000/Routes/api',
           express: 'express',
-          whitelist: ['express', 'mongodb', 'body-parser', 'react', 'react-dom, redux']
+          whitelist: ['express', 'mongodb', 'body-parser', 'react', 'react-dom, redux'],
+          node: 'nodeExternals'
       })
     },
     plugins: [
@@ -50,7 +57,7 @@ devServer: {
         },
       }),
       new HtmlWebpackPlugin({
-        template: path.join(__dirname, "./public/", "index.html"),
+        template: path.join(__dirname, "./views/", "index.html"),
         new: ExtractTextPlugin('style.bundle.sass'),
         
       }),
@@ -65,6 +72,7 @@ devServer: {
     new webpack.DefinePlugin({
       'process.platform': JSON.stringify(process.platform)
   })
+
   ],
 
 module: {
@@ -109,7 +117,7 @@ rules: [
 resolve: {
   extensions: ['*', '.js', '.jsx', '.tsx', '.ts.'],
   alias: {
-    '~': path.resolve(__dirname, './src'),
+    '~': path.resolve(__dirname, '/src'),
   },
   fallback: {
     fs: false,

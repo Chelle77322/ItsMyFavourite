@@ -1,5 +1,5 @@
 import axios from "axios";
-import GOOGLE_API_KEY from "../config"
+import GOOGLE_API_KEY from "../config.js"
 
 //eslint-disable-next-line
 export default  {

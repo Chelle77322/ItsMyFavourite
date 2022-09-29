@@ -1,4 +1,4 @@
-import config from "../config";
+import config from "../config.js";
 import mongoose from 'mongoose';
 const connectionOptions = { 
     useCreateIndex: true,
@@ -9,6 +9,6 @@ mongoose.connect(process.env.MONGODB_URI || config.connectionString, connectionO
 mongoose.Promise = global.Promise;
 
 export function db() {
-    User: require('../controllers/user.model')
+    User: require('../controllers/user.model.js')
 }
 

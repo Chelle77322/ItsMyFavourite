@@ -3,7 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import { Provider }from 'react-redux';
 
-import rootReducer from "../src/client/_reducers/index";
+import rootReducer from "../src/client/_reducers/index.js";
 
 const preloadedState = window.__PRELOADED_STATE__
 
@@ -12,7 +12,7 @@ const clientStore = configureStore({
   preloadedState,
 })
 hydrateRoot(
-  document.getElementById('#app'),
+  document.getElementById('app'),
   <Provider store={clientStore}
   serverState={preloadedState}>
 

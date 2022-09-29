@@ -1,12 +1,12 @@
-import {Home} from './pages/Home';
-import PageMiss from './pages/PageMiss';
-import {LandingPage} from './pages/LandingPage';
-import {Register} from '../components/Register';
-import {Login} from '../components/Login';
+import {Home} from './pages/Home.js';
+import PageMiss from './pages/.js';
+import {LandingPage} from './pages/LandingPage.js';
+import {Register} from '../components/Register.js';
+import {Login} from '../components/Login.js';
 //import MyFavourites from './pages/MyFavourites';
 //import GooglePlace from './pages/GooglePlace;'
 
-import {App} from './App';
+import {App} from './App.js';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default [

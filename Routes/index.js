@@ -1,5 +1,5 @@
 import {join} from "path";
-import apiRoutes from "./api/index";
+import apiRoutes from "./api/index.js";
 var router = require("express").Router();
 
 router.use("/api", apiRoutes);

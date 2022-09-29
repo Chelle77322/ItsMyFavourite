@@ -1,6 +1,6 @@
 import expressJwt from "express-jwt";
-import config from '../config';
-import userService from "../services/user-service";
+import config from '../config.js';
+import userService from "../services/user-service.js";
 
 export function jwt() {
     const secret = config.connectionString;

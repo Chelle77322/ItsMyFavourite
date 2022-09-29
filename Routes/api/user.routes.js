@@ -1,5 +1,5 @@
 import router from "express";
-import {authenticate,getById, register, _delete,update, getAll } from "../../controllers/user.controller";
+import {authenticate,getById, register, _delete,update, getAll } from "../../controllers/user.controller.js";
 
 router.use((request, result, next)=> {
     result.header(

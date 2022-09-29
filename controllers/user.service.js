@@ -1,11 +1,11 @@
-import config from '../../config';
+import config from '../config.js';
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
-import {db} from '../helpers/db';
+import {db} from '../helpers/db.js';
 
 const User = db.User;
 
-module.exports = {
+export const userService = {
     authenticate,
     getAll,
     getById,
@@ -46,7 +46,17 @@ async function create(userParam){
 Object.assign(User, userParam);
 await User.save();
 }
+async function update(user){
+    const requestOptions = {
+        method: 'PUT',
+        headers: { ...authHeader(), 'Content-Type': 'application/json'},
+        body: JSON.stringify(user)
+    };
+    const response = await fetch(`${config.apiUrl}/users/${user.id}`, requestOptions);
+    return handleResponse(response);;
+}
 async function _delete(id){
     await User.findByIdAndRemove(id);
 }
+
 

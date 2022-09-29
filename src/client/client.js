@@ -6,7 +6,7 @@ import {Provider} from "react-redux";
 //import rootReducer from "./_reducers/index";
 import { store} from "./_helpers/store";
 
-import {App} from "./App";
+import {App} from "./app.js";
 
 
 
@@ -14,5 +14,5 @@ hydrate(
   <Provider store={store} >
     <App />
   </Provider>,
-  document.querySelector('#app')
+  document.querySelector('app')
 )

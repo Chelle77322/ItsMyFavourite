@@ -1,5 +1,5 @@
 
-import userRoutes from "./user.routes";
+import userRoutes from "./user.routes.js";
 router = require("express").Router();
 router.use("/user.routes.js", userRoutes);
 

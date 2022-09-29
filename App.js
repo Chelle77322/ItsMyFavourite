@@ -1,29 +1,33 @@
-﻿import cors from 'cors';
-import { urlencoded, json } from 'express-ws';
-import {jwt} from './helpers/jwt';
-import {errorHandler} from './helpers/error-handler';
-import express from 'express'
-import routes from "./Routes/index";
+﻿
+import cors from 'cors';
+import pkg from 'express-ws';
+import {jwt} from './helpers/jwt.js';
+
+import {errorHandler} from './helpers/error-handler.js';
+import express from 'express'//**causes critical dependency */
+import routes from "./Routes/index.js";
 import dotenv from 'dotenv';
-dotenv.config()
+dotenv.config();
+const {urlencoded, json} = pkg;d
 
-const app = express();
+const app = express();//**Causes criticl dependency */
 const http = require('http');
+const res = Object.create(http.ServerResponse.prototype);
 
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ItsMyFavourite";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/ItsMyFavourite/";
 
 app.use(urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.json());
+app.use(express.json());//**Causes critical dependency */
 
 // use JWT auth to secure the api
 app.use(jwt());
 
 // api routes
-app.use(routes, require('./controllers/user.controller'));
+app.use(routes, require('./controllers/user.controller.js'));
 
-
+//**Causes critical dependency */
 app.use(express.static(path.join(__dirname,'/src','index.js')));
 if(process.env.NODE_ENV === "production"){
   use(express(__dirname + "/itsmyfavourite/build/"));
@@ -50,18 +54,18 @@ app.use(bodyParser.json());
 app.use(cors());
 
  //**GETS APP AND APPLIES CORS SETTING ETC */
- get('*',cors(),(request, result)=>{
-  result.set('Access-Control-Allow-Origin', 'http://localhost:3000', '*')
-  result.sendFile('index.html', { root: "/public/"});
+ get('*',cors(),(req, res)=>{
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000/src/', '*')
+  res.sendFile('index.html', { root: "/views/"});
   console.log(result.toString());
 });
 //** CORS LISTENING */
 listen(3032,() => {
   console.log('CORS-enabled web server listening on port 3032')
 })
-const resulter = Object.create(http.ServerResponse.prototype);
-app.get('*', function(request, result){
-  resulter.sendFile('index.html', { root: "/public/"});
+
+app.get('*', function(req, res){
+  res.sendFile('index.html', { root: "/views/"});
 });
 
 //global error handler
@@ -82,21 +86,21 @@ app.listen(process.env.PORT || 3000);
  }
  console.info(initialState);
  // server rendered home page
-app.get('/server', (request, result) => {
+app.get('./src/server/', (req, res) => {
  const { preloadedState, content}  = server(initialState)
  const response = template("Server Rendered Page", preloadedState, content)
-   result.setHeader('Cache-Control', 'build max-age=604800')
-  result.send(response);
-  console.log(result);
+   res.setHeader('Cache-Control', 'build max-age=604800')
+  res.send(response);
+  console.log(res);
   console.alert("I got here");
  });
 
 // // Pure client side rendered page
-app.get('/client', (request, result) => {
+app.get('./src/client/', (req, res) => {
 let response = template('Client Side Rendered page')
-result.setHeader('Cache-Control', 'build, max-age=604800')
-   result.send(response)
-   console.log(result);
+res.setHeader('Cache-Control', 'build, max-age=604800')
+   res.send(response)
+   console.log(res);
    console.alert("yeah it's the client");
  });
 

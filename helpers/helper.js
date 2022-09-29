@@ -5,7 +5,7 @@ import { Provider } from '@reduxjs/toolkit';
 import { renderRoutes } from 'react-router-config';
 import {serialize} from 'serialize-javascript';
 import { Helmet} from 'react-helmet';
-import {Routes} from '../src/client/Routes';
+import {Routes} from '../src/client/Routes/';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default function (request, store, context) {

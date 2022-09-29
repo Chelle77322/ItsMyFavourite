@@ -1,6 +1,7 @@
-import { Router } from 'express';
-import {UserService} from '../services/user-service';
-
+//import { Router } from 'express';
+import { useNavigate } from 'react-router-dom';
+import {userService} from './user.service.js';
+const Router = useNavigate();
 //setting out the routes useDispatch
 Router.post('/authenticate',authenticate);
 Router.post('/register',register);
@@ -10,23 +11,23 @@ Router.get('/:id', getById);
 Router.put('/:id', update);
 Router.delete('/:id', _delete);
 
-module.exports = Router;
+module.export = Router;
 
 export function authenticate(request, result, next){
-    UserService.authenicate(request.body).then(user => user ? result.json(user):result.status(400).json({message: "ID or password is incorrect"})).catch(error => next(error));
+    userService.authenicate(request.body).then(user => user ? result.json(user):result.status(400).json({message: "ID or password is incorrect"})).catch(error => next(error));
 }
 export function register(request, result, next){
-    UserService.create(request.body).then(() => result.json({})).catch(error => next(error));
+    userService.create(request.body).then(() => result.json({})).catch(error => next(error));
 }
 export function getAll(request, result, next){ 
-    UserService.getAll(request.body).then(users => result.json(users)).catch (error => next(error))
+    userService.getAll(request.body).then(users => result.json(users)).catch (error => next(error))
 }
 export function getCurrent(request, result, next) {
-    UserService.getById(request.user.sub).then(user => user ? result.json(user):result.sendStatus(404)).catch(error => next(error));
+    userService.getById(request.user.sub).then(user => user ? result.json(user):result.sendStatus(404)).catch(error => next(error));
 }
 
 export function getById(request, result, next){ 
-    UserService.getByID(request.params.id).then(user => user ? result.json(user): result.sendStatus(404)).catch(error => next(error));
+    userService.getByID(request.params.id).then(user => user ? result.json(user): result.sendStatus(404)).catch(error => next(error));
 }
 export function update(request, result, next)
 {

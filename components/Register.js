@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import ReactDOM, {hydrate} from 'react-dom';
 
-import {userActions} from "../client/_actions/userActions"
+import {userActions} from "../client/_actions/userActions.js"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import Button from "react-validation/build/button";
