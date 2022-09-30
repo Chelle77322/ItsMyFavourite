@@ -3,7 +3,7 @@ import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
-import nodeExternals from 'webpack-node-externals'
+import webpackNodeExternals from 'webpack-node-externals'
  
 
 //import store  from "./src/client/_helpers/store"
@@ -17,9 +17,9 @@ const paths = {
 module.exports = {
   mode: 'development',
   entry:{
-    main: './src/index.js'
+    main: 'index.js'
   },
-  entry:path.resolve(__dirname, 'index.js'),
+  entry:path.resolve(__dirname, './index.js'),
   output: {
     path: paths.BUILD,
    filename: '[name].js',
@@ -40,7 +40,7 @@ devServer: {
           apiUrl: 'http://localhost:3000/Routes/api',
           express: 'express',
           whitelist: ['express', 'mongodb', 'body-parser', 'react', 'react-dom, redux'],
-          node: 'nodeExternals'
+         
       })
     },
     plugins: [

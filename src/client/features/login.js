@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({}) => {
   const dispatch = useDispatch();
   const history = useNavigate();
-  const { signUp, errors, handleSubmit } = useForm();
-  const {isFetching, isSuccess, isError, errorMessage } = useSelector(
+  const {handleSubmit } = useForm();
+  const {isSuccess, isError, errorMessage } = useSelector(
     userSelector);
 
   const onSubmit = (data) => {
@@ -22,7 +22,7 @@ const Login = ({}) => {
     return () => {
       dispatch(clearState());
     };
-  }, []);
+  }, [dispatch]);
   useEffect(() => {
     if (isError) {
       toast.error(errorMessage);
@@ -32,7 +32,7 @@ const Login = ({}) => {
       dispatch(clearState());
       history.push('/');
     }
-  }, [isError, isSuccess]);
+  }, []);
   return (
     <Fragment>
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

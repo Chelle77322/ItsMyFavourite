@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 
 const registerUser  = createAsyncThunk ('./features/signUp', 
-async({id, first_name, last_name}, thunkAPI)=> {
+async({id, first_name, last_name, password}, thunkAPI)=> {
 try {
   const response = await fetch ('https://itsmyfavourite.herokuapp.com/api/users/',
   {

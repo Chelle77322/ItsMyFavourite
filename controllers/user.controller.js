@@ -1,7 +1,7 @@
-//import { Router } from 'express';
-import { useNavigate } from 'react-router-dom';
+import {Router} from 'react-router-dom';
+
 import {userService} from './user.service.js';
-const Router = useNavigate();
+
 //setting out the routes useDispatch
 Router.post('/authenticate',authenticate);
 Router.post('/register',register);
@@ -14,7 +14,7 @@ Router.delete('/:id', _delete);
 module.export = Router;
 
 export function authenticate(request, result, next){
-    userService.authenicate(request.body).then(user => user ? result.json(user):result.status(400).json({message: "ID or password is incorrect"})).catch(error => next(error));
+    userService.authenticate(request.body).then(user => user ? result.json(user):result.status(400).json({message: "ID or password is incorrect"})).catch(error => next(error));
 }
 export function register(request, result, next){
     userService.create(request.body).then(() => result.json({})).catch(error => next(error));

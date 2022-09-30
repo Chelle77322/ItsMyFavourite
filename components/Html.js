@@ -10,7 +10,7 @@ function Html({ children, initialState, scripts }) {
       </head>
       <body>
         <div
-          id="#app"
+          id="app"
           dangerouslySetInnerHTML={{ __html: children }} />
 
         {initialState && (

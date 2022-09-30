@@ -4,11 +4,11 @@ import pkg from 'express-ws';
 import {jwt} from './helpers/jwt.js';
 
 import {errorHandler} from './helpers/error-handler.js';
-import express from 'express'//**causes critical dependency */
+import {default as express} from 'express'//**causes critical dependency */
 import routes from "./Routes/index.js";
 import dotenv from 'dotenv';
 dotenv.config();
-const {urlencoded, json} = pkg;d
+const {urlencoded, json} = pkg;
 
 const app = express();//**Causes criticl dependency */
 const http = require('http');
@@ -28,7 +28,7 @@ app.use(jwt());
 app.use(routes, require('./controllers/user.controller.js'));
 
 //**Causes critical dependency */
-app.use(express.static(path.join(__dirname,'/src','index.js')));
+app.use(express.static(path.join(__dirname,'src','index.js')));
 if(process.env.NODE_ENV === "production"){
   use(express(__dirname + "/itsmyfavourite/build/"));
   }
@@ -39,7 +39,7 @@ app.get("/*", (request, response) => { response.sendFile(path.join(__dirname ,'.
 app.use(errorHandler);
 
 // start server
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 3000;
+const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : 8080;
 const server = app.listen(port, function () {
     console.log('Server listening on port ' + port);
 });
