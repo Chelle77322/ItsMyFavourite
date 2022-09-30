@@ -64,11 +64,7 @@ devServer: {
       new webpack.ProvidePlugin({
         process: 'process/browser',
       }),
-      //[new dotEnv()],
-      new webpack.DefinePlugin({"process.env": {
-        NODE_ENV: JSON.stringify("development"),
-      },
-    }),
+    
     new webpack.DefinePlugin({
       'process.platform': JSON.stringify(process.platform)
   })
