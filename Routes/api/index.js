@@ -1,6 +1,8 @@
 
 import userRoutes from "./user.routes.js";
-router = require("express").Router();
+
+import {Routes as Router} from 'react-router-dom';
+const router = Router;
 router.use("/user.routes.js", userRoutes);
 
 export default router;

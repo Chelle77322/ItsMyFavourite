@@ -1,5 +1,6 @@
-import router from "express";
+import {Routes as Router}from 'react-router-dom';
 import {authenticate,getById, register, _delete,update, getAll } from "../../controllers/user.controller.js";
+const router = Router;
 
 router.use((request, result, next)=> {
     result.header(

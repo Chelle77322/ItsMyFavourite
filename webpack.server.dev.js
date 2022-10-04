@@ -8,7 +8,7 @@ import webpackNodeExternals
         server: path.join(__dirname, "src/server/server.js"),
     },
     output: {
-        path: psth.join(__dirname, "build"),
+        path: path.join(__dirname, "build"),
         publicPath: "/",
         filename: "[name].js",
         libraryTarget: 'commonjs2',

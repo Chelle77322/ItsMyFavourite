@@ -4,8 +4,9 @@
       "@babel/preset-env",
       {
         "targets": {
-          "esmodules": true
+          "node": true
         }
+       
       }
     ],
     "@babel/preset-react"
@@ -16,7 +17,7 @@
     [
       "transform-assets",
       {
-        "extensions": ["svg"],
+        "extensions": ["png", "gif", "jpg"],
         "name": "[name].[ext]?[sha512:hash:base64:7]"
       }
     ]
