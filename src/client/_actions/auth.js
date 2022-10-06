@@ -1,5 +1,5 @@
-import {Types} from './types';
-import {AuthService} from "../../services/auth-service";
+import {Types} from '../_constants/user-constants';
+import {AuthService} from "../../../server/services/auth-service";
 
 export const authActions = (id, firstName, lastName, password) => (dispatch) => {
     return AuthService.register(id, firstName, lastName, password).then

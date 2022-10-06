@@ -1,7 +1,7 @@
 import { userConstants } from '../_constants';
 import { userService } from '../_services';
-import { alertActions } from '.';
-import { history } from '../../helpers/history'
+import { alertActions } from '../_actions';
+import history from '../../../server/helpers/history'
 
 
 

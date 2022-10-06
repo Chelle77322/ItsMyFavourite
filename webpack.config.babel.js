@@ -5,11 +5,6 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 import webpack from 'webpack';
 
- 
-
-//import store  from "./src/client/_helpers/store"
-//import {App}  from "./App";
-
 const paths = {
   BUILD: path.resolve(__dirname, './build/'),
   SRC: path.resolve(__dirname, './src/'),
@@ -17,12 +12,11 @@ const paths = {
 
 module.exports = {
   mode: 'development',
- 
-   entry: ["react-hot-loader/patch", "./index.js"],
-   node: {
-    global: false
+  entry: {
+    javascript: "./index.js",
+    html:"./views/index.html"
   },
-  entry:path.resolve(__dirname, './index.js'),
+  entry:path.resolve(__dirname,'src', 'index.jsx'),
   output: {
     path: path.join(__dirname, "build"),
     publicPath: "/",
@@ -30,19 +24,15 @@ module.exports = {
   },
   target: "web",
 
-
 devServer: {
-  hot: true,
-contentBase: "./build",
-  historyApiFallback: true,
+    historyApiFallback: true,
     static: {
-      directory: path.join(__dirname, '/views'),
+    directory: path.join(__dirname, '/public'),
   },
  
   },  devtool: false,
 
   externals: {
-    //global app config object,
           config: JSON.stringify({
           apiUrl: 'http://localhost:3000/Routes/api',
          
@@ -83,57 +73,56 @@ contentBase: "./build",
   })
 
   ],
-
-module: {
-  rules: [
-    {
-    test: /\.(js|jsx)$/,
-    exclude: /node_modules/,
-    use: {
-      loaders: 'babel-loader',
-      options: {
-        presets: ['@babel/preset-env', '@babel/preset-react'],
-      }
-    }
-  },
-
-  {
-      test: /\.(css)$/,
-      exclude: /node_modules/,
-      rules: ["style","css", "sass"],
-      use:["style-loader, css-loader "]
-    
-  },
-  {
-    test: /\.(gif|jpe?g|png|ico)$/,
-    exclude: /node_modules/,
-    loader: 'url-loader?limit=10000'
-  },
-  {
-    test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
-    exclude: /node_modules/,
-    loader: 'url-loader?limit=10000'
-  },
-  {
-    test: /\.tsx?$/, 
-    exclude: /node_modules/,
-    rules: ["awesome-typescript-loader"]
-    },
-],
-
+module:{
 rules: [
   // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-  { test: /\.js|jsx|ts|tsx.$/, 
-  exclude: /node_modules/,}
+  //Loader Rule 1
+  { test: /\.js?$|jsx?$|ts?$|tsx.$/, 
+  exclude: /node_modules/,
+  use: {loader: 'source-map-loader'},
+},
+  //Loader Rule 2
+  {
+    test: /\.js?$|jsx?$/,
+    exclude: /node_modules/,
+    options: { presets: ['@babel/env','@babel/preset-react'] },
+    loader:'babel-loader',
 
-  
+  },
+    //Loader Rule 3
+  {
+    test: /\.css|.scss?$/,
+    exclude: /node_modules/,
+   use: [
+    {loader: "style-loader"},
+    {loader: "css-loader"},
+    {loader: "sass-loader"}
+   ]
 
-]
+},
+  //Loader Rule 4
+{
+  test: /\.(gif|jpe?g|png|ico)$/,
+  exclude: /node_modules/,
+  use: {loader: 'url-loader?limit=10000'}
+},
+  //Loader Rule 5
+{
+  test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
+  exclude: /node_modules/,
+  use: {loader: 'url-loader?limit=10000'}
+},
+  //Loader Rule 6
+{
+  test: /\.tsx?$/, 
+  exclude: /node_modules/,
+  use: {loader: "awesome-typescript-loader"}
+  },
+
+
+],
 },
 
-//optimization: {
-  //minimize: true,
-//},
 resolve: {
   extensions: ['*', '.js', '.jsx', '.tsx', '.ts.'],
   alias: {
