@@ -10,4 +10,5 @@ const rootReducer = combineReducers({
     user,
     registration
 });
+console.log(rootReducer);
 export default rootReducer;

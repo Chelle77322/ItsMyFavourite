@@ -7,7 +7,7 @@
     min-height: 44px;
     padding: 0.25em 1em;
     transition: 180ms ease-in-out;
-    border-radius: $imf-border-radius/2;
+    border-radius: math.div($imf-border-radius, 2);
     background-color:#104a70;
     color:#c6c6d4;
     font-size: 1.125rem;

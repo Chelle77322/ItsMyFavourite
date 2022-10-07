@@ -2,9 +2,9 @@
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 import {Route, Routes, Router}from 'react-router-dom'
-import {Login} from "../../../server/components/Login.jsx";
+import {default as Login} from "../../../server/components/Login.jsx";
 
-import {Register} from "../../../server/components/Register";
+import {default as Register} from "../../../server/components/Register";
 
 import "../../../styles/styles.scss";
 

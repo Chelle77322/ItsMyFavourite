@@ -2,7 +2,7 @@ import { configureStore} from '@reduxjs/toolkit';
 import { combineReducers} from 'redux';
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import {rootReducer} from '../_reducers';
+import {default as rootReducer} from '../_reducers';
 
 const loggerMiddleware = createLogger();
 const initialState = {
@@ -12,8 +12,9 @@ const initialState = {
   },
  
 }
-const reducer = combineReducers(rootReducer,{}
+const reducer = combineReducers(rootReducer,{initialState}
 );
+
 let state = store.getState(initialState);
 
 const store = configureStore({

@@ -5,7 +5,7 @@
     flex-direction: column;
     width: 40ch;
   align-items: center;
-    border-radius: $imf-border-radius;
+    border-radius:  math.div($imf-border-radius, 2);
    
     box-shadow: 2 4px 4px rgba(2, 20, 31, 0.18);
   
@@ -73,7 +73,8 @@
     img:first-child {
       object-fit: cover;
       max-height: 10em;
-      border-radius: $imf-border-radius $imf-border-radius 0 0;
+      border-radius:  math.div($imf-border-radius, 2)
+      $imf-border-radius 0 0;
     }
     // stylelint-enable
   

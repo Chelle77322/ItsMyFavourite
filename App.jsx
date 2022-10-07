@@ -2,6 +2,7 @@
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
+//import sass from 'sass';
 import ReactDOMServer from 'react-dom/server';
 import {StaticRouter, matchPath} from 'react-router-dom';
 import { App } from "./src/client/app.jsx";

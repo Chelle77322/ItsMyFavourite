@@ -13,7 +13,7 @@ const paths = {
 module.exports = {
   mode: 'development',
   entry: {
-    javascript: "./index.js",
+    javascript: "./index.jsx",
     html:"./views/index.html"
   },
   entry:path.resolve(__dirname,'src', 'index.jsx'),
