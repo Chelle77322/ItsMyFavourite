@@ -14,7 +14,7 @@ module.exports = {
   mode: 'development',
   entry: {
     javascript: "./index.jsx",
-    html:"./views/index.html"
+    html:"./public/index.html"
   },
   entry:path.resolve(__dirname,'src', 'index.jsx'),
   output: {

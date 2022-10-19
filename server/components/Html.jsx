@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-
 function Html({ children, initialState, scripts }) {
   return (
     <html>
@@ -10,7 +9,7 @@ function Html({ children, initialState, scripts }) {
       </head>
       <body>
         <div
-          id="app"
+          id="#app"
           dangerouslySetInnerHTML={{ __html: children }} />
 
         {initialState && (
@@ -21,9 +20,12 @@ function Html({ children, initialState, scripts }) {
         )}
 
         {scripts.map((item, index) => <script key={index} src={item} />)}
+        
       </body>
 
     </html>
-  );
-}
+  )
+          }  
+
+
 export default Html;

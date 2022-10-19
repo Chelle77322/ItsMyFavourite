@@ -1,4 +1,4 @@
-import { combineReducers } from "redux";
+import {combineReducers } from "redux";
 import message from './message';
 import auth from "./auth"
 import user from "./user-reducer";
@@ -8,7 +8,13 @@ const rootReducer = combineReducers({
     message,
     auth,
     user,
-    registration
+    registration,
 });
-console.log(rootReducer);
-export default rootReducer;
+let initialState = {
+    loggedIn: false,
+        thisUser: []
+}
+const [state, setState] = state = {}
+
+
+export default combineReducers(state = {...initialState, root:rootReducer})

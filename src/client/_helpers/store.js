@@ -1,32 +1,28 @@
 import { configureStore} from '@reduxjs/toolkit';
-import { combineReducers} from 'redux';
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import {default as rootReducer} from '../_reducers';
+import rootReducer from '../_reducers';
+import {persistStore, persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { default as userSlice} from "../features/userSlice"
 
 const loggerMiddleware = createLogger();
-const initialState = {
-  user: {
-    id: "",
-    password: "",
-  },
- 
+const root = rootReducer(userSlice.reducer);
+const persistConfig = {
+  key: 'root',
+  storage
 }
-const reducer = combineReducers(rootReducer,{initialState}
-);
+const persistedReducer = persistReducer(persistConfig, root)
 
-let state = store.getState(initialState);
+const store = () => configureStore(persistedReducer, {applyMiddleware: (thunkMiddleware)}
+  );
+const persistor = persistStore(store);
 
-const store = configureStore({
- reducer,
- applyMiddleware:{
-  thunkMiddleware,
-  loggerMiddleware,
-  state
-  
-}
-})
+const [state, setState] = state = {}
 
-export default store;
+
+
+
+export {store, persistor, state};
   
 

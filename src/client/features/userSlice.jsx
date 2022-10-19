@@ -37,7 +37,7 @@ try {
 );
 const loginUser = createAsyncThunk(
   'users/login',
-  async({id, password}, thunkAPI) => {
+  async({id, first_name, last_name,password}, thunkAPI) => {
     try{
       const response = await fetch(
         'https://localhost:3000/auth',
@@ -49,6 +49,7 @@ const loginUser = createAsyncThunk(
           },
           body: JSON.stringify({
             id,
+            first_name, last_name,
             password,
           }),
         }

@@ -4,8 +4,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {userSelector, fetchUserBytoken, clearState} from "./userSlice";
 
 import * as Loader from "react-loader-spinner";
-import {useNavigate} from "react-router-dom";
-import {createBrowserHistory} from "../../../server/helpers/history"
+import {default as createBrowserHistory} from "../../../server/helpers/history"
 
 const Dashboard = () => {
     const history = createBrowserHistory()

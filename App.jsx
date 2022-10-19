@@ -2,14 +2,15 @@
 import fs from 'fs';
 import path from 'path';
 import React from 'react';
-//import sass from 'sass';
+
+import "./styles/styles.scss";
 import ReactDOMServer from 'react-dom/server';
 import {StaticRouter, matchPath} from 'react-router-dom';
 import { App } from "./src/client/app.jsx";
 import routes from "./Routes/index.js";
 const app = express();
 
-app.get( /\.(js|css|map|ico|png)$/, express.static(path.resolve( __dirname, 'build')));
+app.get( /\.(js|css|map|ico|png|gif)$/, express.static(path.resolve( __dirname, 'build')));
 
 app.use('*', async (req, res)=> {
     const matchRoute = routes.find( route => matchPath(req.originalUrl, route));
@@ -29,7 +30,7 @@ app.use('*', async (req, res)=> {
             <App />
         </StaticRouter>
     );
-   indexHTML = indexHTML.replace( '<div id = "app"></div>', `<div id = "app">${ appHTML }</div>`);
+   indexHTML = indexHTML.replace( '<div id = "#app"></div>', `<div id = "#app">${ appHTML }</div>`);
    indexHTML = indexHTML.replace(
     'var initial_state = null;',
     `var initial_state = ${JSON.stringify(componentData)};`

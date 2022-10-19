@@ -1,21 +1,23 @@
 import React from 'react';
-import * as ReactDOMClient from 'react-dom/client';
+import {hydrate} from 'react-dom';
+import "./index.scss"
 import { Provider } from 'react-redux';
 
-import initialState from "./client/_helpers/store";
+import {store, persistor} from "./client/_helpers/store";
+import { PersistGate } from 'redux-persist/integration/react'
 
-import {default as createBrowserHistory} from '../server/helpers/history';
-import App from "./client/app";
+import {default as App} from "./client/app";
 import * as serviceWorker from "./serviceWorker";
-const container = document.getElementById('app');
-const app = ReactDOMClient.createRoot(container);
 
 
-app.render(
-<React>
-    <Provider store={initialState}>
-        <App history = {createBrowserHistory}/>
-    </Provider>
-    </React>
-    );
-    serviceWorker.unregister();
+hydrate(
+    <Provider store = {store}>
+        <React.StrictMode>
+        <PersistGate loading = {null} persistor={persistor}>
+            <App />
+            </PersistGate>
+        </React.StrictMode>
+    </Provider>,
+    document.getElementById('#app')
+);
+serviceWorker.unregister();

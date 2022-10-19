@@ -4,7 +4,6 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, userSelector, clearState } from './userSlice';
 import toast from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
 import {createBrowserHistory} from "../../../server/helpers/history"
 
 // eslint-disable-next-line no-empty-pattern
@@ -33,7 +32,7 @@ const Login = ({}) => {
       dispatch(clearState());
       history.push('/');
     }
-  }, []);
+  }, [dispatch, errorMessage, history, isError, isSuccess]);
   return (
     <Fragment>
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">

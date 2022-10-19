@@ -1,44 +1,46 @@
-import { hydrateRoot } from "react-dom/client";
-import { configureStore } from '@reduxjs/toolkit';
+import qs from 'qs';
+import React from 'react';
+import {renderToString} from 'react-dom/server';
+import {Provider} from "react-redux";
+import {configureStore} from "@reduxjs/toolkit"
+import rootReducer from '../client/_reducers/index'
+import App from "../components/App";
 
-import { Provider }from 'react-redux';
 
-import rootReducer from "../src/client/_reducers/index.js";
+module.exports = function handleRender(request, result){
+  const params = qs.parse(request.query)
+  const preloadedState = window.__PRELOADED_STATE__
+ const store = configureStore(rootReducer(preloadedState))
 
-const preloadedState = window.__PRELOADED_STATE__
-
-const clientStore = configureStore({
-  reducer: rootReducer,
-  preloadedState,
-})
-hydrateRoot(
-  document.getElementById('app'),
-  <Provider store={clientStore}
-  serverState={preloadedState}>
-
+ let content = renderToString(
+  <Provider store={store} >
+     
     <App />
   </Provider>
-)
+  );
+ const finalState = store.getState()
 
-//**OLD CODE KEPT HERE
-//import React from 'react';
-//import {renderToString} from 'react-dom/server';
-//import {Provider} from "react-redux";
-//import {configureStore} from "@reduxjs/toolkit"
-//import rootReducer from '../client/reducers/index'
-//import App from "../components/App";
+ result.send(renderFullPage(content, finalState))
+}
 
+//import { hydrateRoot } from "react-dom/client";
+//import { configureStore } from '@reduxjs/toolkit';
+//import { Provider }from 'react-redux';
 
-//module.exports = function render(initialState){
- // const store = configureStore(rootReducer(initialState))
+//import rootReducer from "../src/client/_reducers/index.js";
 
- // let content = renderToString(
-  //  <Provider store={store} >
-     
-  //    <App />
-  //  </Provider>
- // );
- // const preloadedState = store.getState()
+//const preloadedState = window.__PRELOADED_STATE__
 
- // return {content, preloadedState};
-//}
+//const clientStore = configureStore({
+ // reducer: rootReducer,
+ // preloadedState,
+//})
+//hydrateRoot(
+ // document.getElementById('#app'),
+  //<Provider store={clientStore}
+  //serverState={preloadedState}>
+
+   // <App />
+  //</Provider>
+//)
+

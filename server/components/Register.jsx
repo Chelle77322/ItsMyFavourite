@@ -1,8 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-
-
-
 import {userActions} from "../../src/client/_actions/userActions"
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";

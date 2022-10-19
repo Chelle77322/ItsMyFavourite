@@ -1,4 +1,4 @@
-
+import {alertConstants } from "../_constants/alert-constants";
 function alert(state = {}, action){
   switch(action.type){
     case alertConstants.SUCCESS: 

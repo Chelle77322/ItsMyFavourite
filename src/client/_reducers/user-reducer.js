@@ -1,13 +1,15 @@
 import { userConstants } from '../_constants';
-const initialState = {
-    user: {
-      id: "",
-      password: "",
-    },
-   
-  }
+import {useState} from "react"
 
-function user(state = initialState, action){
+
+
+// eslint-disable-next-line no-undef
+function user(state = initialState(), action){
+    let initialState = {
+        loggedIn: false,
+        thisUser: []
+    }
+    useState(() => initialState);
     switch (action.type) {
         case userConstants.GETALL_REQUEST: return {
             loading: true
@@ -22,7 +24,7 @@ function user(state = initialState, action){
             ...state,
             items: state.items.map(user =>
                 user.id === action.id ? 
-                { ... user, deleting: true}: user )
+                { ...user, deleting: true}: user )
         };
         case userConstants.DELETE_SUCCESS:
         return {
@@ -33,7 +35,7 @@ function user(state = initialState, action){
         ...state,
         items: state.items.map(user => {
             if(user.id === action.id){
-                const { deleting, ... userCopy} = user;
+                const { deleting, ...userCopy} = user;
                 return { ...userCopy, deleteError: action.error};
             }
             return user;

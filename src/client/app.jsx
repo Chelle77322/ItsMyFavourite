@@ -1,5 +1,6 @@
 import  React , {Component} from 'react';
 import { connect } from 'react-redux';
+import {hydrateRoot} from 'react-dom';
 import { default as Home }  from "./pages/Home";
 
 import { default as getUsers } from './redux/selectors.js';
@@ -15,7 +16,7 @@ export default class App extends Component {
       fetchUsers();
     }
   }
-  hydrate() {
+  hydrateRoot() {
     <Home />
     const { users } = this.props;
     return (
@@ -29,6 +30,7 @@ export default class App extends Component {
     );
   }
 }
+
 export const ConnectedApp = connect( 
   state => ({ users: getUsers(state) }), dispatch =>
   ({

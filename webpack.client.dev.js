@@ -34,7 +34,7 @@ const config = {
 plugins:
   [
     new CleanWebpackPlugin({
-    template: './src/views/index.html'
+    template: './public/index.html'
     })
   ],
   devServer: {

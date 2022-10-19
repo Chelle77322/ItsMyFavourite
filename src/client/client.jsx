@@ -1,16 +1,17 @@
 import React from 'react';
 import {hydrate} from 'react-dom';
 import {Provider} from "react-redux";
-//import {configureStore} from "@reduxjs/toolkit";
-//import {combineReducers} from "redux";
-//import rootReducer from "./_reducers/index";
-import { store} from "./_helpers/store";
+import {configureStore} from "@reduxjs/toolkit";
+import App from "../../server/components/App"
+import rootReducer from "../client/_reducers";
 
-import {App} from "./app";
+const store = configureStore(rootReducer,window.__PRELOADED_STATE__)
 
+delete window.__PRELOADED_STATE__
 hydrate(
-  <Provider store={store} >
+  <Provider store ={store}>
     <App />
-  </Provider>,
-  document.querySelector('app')
+    </Provider>,
+    document.getElementById('#app')
+
 )
