@@ -23,4 +23,4 @@ const rootReducer = combineReducers({
 
 ;
 
-export default combineReducers(user, rootReducer)
+export default combineReducers(users, rootReducer)

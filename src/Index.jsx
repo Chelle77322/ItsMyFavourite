@@ -1,5 +1,5 @@
 import React from 'react';
-import {hydrate} from 'react-dom';
+import {hydrateRoot} from 'react-dom/client';
 import "./index.scss"
 import { Provider } from 'react-redux';
 
@@ -10,14 +10,14 @@ import {default as App} from "./client/app";
 import * as serviceWorker from "./serviceWorker";
 
 
-hydrate(
+hydrateRoot(document.getElementById('#app'),
     <Provider store = {store}>
         <React.StrictMode>
-        <PersistGate loading = {users} persistor={persistor}>
+        <PersistGate loading = {store}>
             <App />
             </PersistGate>
         </React.StrictMode>
-    </Provider>,
-    document.getElementById('#app')
+    </Provider>
+   
 );
 serviceWorker.unregister();

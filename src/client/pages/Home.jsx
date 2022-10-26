@@ -11,7 +11,7 @@ import "../../../styles/styles.scss";
 
 
 export default class Home extends Component{
-    hydrate(){
+    hydrateRoot(){
         return(
             <section>
                 <Container fluid className = "imf-container" id="content">
