@@ -1,4 +1,4 @@
-import { configureStore} from '@reduxjs/toolkit';
+import { configureStore, createSlice} from '@reduxjs/toolkit';
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import rootReducer from '../_reducers';
@@ -7,22 +7,34 @@ import storage from 'redux-persist/lib/storage';
 import { default as userSlice} from "../features/userSlice"
 
 const loggerMiddleware = createLogger();
-const root = rootReducer(userSlice.reducer);
+export const roots = rootReducer;
+const root = createSlice ({
+  userSlice,
+  name: "store",
+  initialState: {},
+  reducers: {roots}
+})
 const persistConfig = {
   key: 'root',
   storage
 }
-const persistedReducer = persistReducer(persistConfig, root)
-
-const store = () => configureStore(persistedReducer, {applyMiddleware: (thunkMiddleware)}
-  );
-const persistor = persistStore(store);
-
-const [state, setState] = state = {}
+const persistedReducer = persistReducer(persistConfig, root);
 
 
 
+export const store = configureStore({
+  reducer: persistedReducer,
+  root,
+  roots,
+  persistStore,
+  middleware: (getDefaultMiddleware)=> getDefaultMiddleware().concat(loggerMiddleware, thunkMiddleware)
+})
 
-export {store, persistor, state};
+console.log(store);
+
+
+
+
+
+
   
-

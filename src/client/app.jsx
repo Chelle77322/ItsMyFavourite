@@ -1,27 +1,33 @@
-import  React , {Component} from 'react';
+import  React , {Component, useState} from 'react';
 import { connect } from 'react-redux';
-import {hydrateRoot} from 'react-dom';
 import { default as Home }  from "./pages/Home";
-
-import { default as getUsers } from './redux/selectors.js';
 import {default as usersFetched } from './redux/actions.js';
 
 const ENDPOINT = 'http://localhost:3000/data/users.json';
 
+
 export default class App extends Component {
   componentWillMount() {
-    const { users, fetchUsers } = this.props;
 
-    if (users === null ){
-      fetchUsers();
-    }
+  
+    const { users, getUsers } = useState({users:{id:[""]},});
+  
+
+    if (users === null) {
+      getUsers();
+    };
+    
   }
   hydrateRoot() {
+   
     <Home />
-    const { users } = this.props;
+    
     return (
+     
       <div>
+       
         {
+
           users && users.length > 0 && users.map(
             ({ id, first_name: firstName, last_name: lastName }) => <p key={ id }>{ `${ firstName} ${ lastName }` }</p>
           )
@@ -32,10 +38,14 @@ export default class App extends Component {
 }
 
 export const ConnectedApp = connect( 
-  state => ({ users: getUsers(state) }), dispatch =>
-  ({
-    fetchUsers: async () => dispatch(usersFetched (await (await fetch(ENDPOINT)).json()))
-  })
+  
+  dispatch =>
+  {
+    
+      return ({
+        fetchUsers: async () => dispatch(usersFetched(await (await fetch(ENDPOINT)).json()))
+      });
+    }
 )(App);
 
 

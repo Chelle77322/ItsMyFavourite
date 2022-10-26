@@ -1,13 +1,11 @@
 import { userConstants } from '../_constants';
 import {useState} from "react"
 
-
-
 // eslint-disable-next-line no-undef
-function user(state = initialState(), action){
+function user(users = initialState([{}]), action){
     let initialState = {
         loggedIn: false,
-        thisUser: []
+        users:{id:[{}]}
     }
     useState(() => initialState);
     switch (action.type) {
@@ -21,27 +19,27 @@ function user(state = initialState(), action){
             error: action.error
         };
         case userConstants.DELETE_REQUEST: return {
-            ...state,
-            items: state.items.map(user =>
+            ...users,
+            items: users.items.map(user =>
                 user.id === action.id ? 
-                { ...user, deleting: true}: user )
+                { ...users, deleting: true}: users )
         };
         case userConstants.DELETE_SUCCESS:
         return {
-            items: state.items.filter(user => user.id !== action.id)
+            items: users.items.filter(user => user.id !== action.id)
         };
         case userConstants.DELETE_FAILURE:
     return {
-        ...state,
-        items: state.items.map(user => {
+        ...users,
+        items: users.items.map(user => {
             if(user.id === action.id){
-                const { deleting, ...userCopy} = user;
+                const { deleting, ...userCopy} = users;
                 return { ...userCopy, deleteError: action.error};
             }
-            return user;
+            return users;
         })
     };
-    default: return state
+    default: return users
     }
 }
 export default user;
