@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
+
 import {Route, Routes, Router}from 'react-router-dom'
 import {default as Login} from "../../../server/components/Login.jsx";
 
@@ -10,8 +11,10 @@ import "../../../styles/styles.scss";
 
 
 
+
 export default class Home extends Component{
-    hydrateRoot(){
+   
+    componentsWillMount(){
         return(
             <section>
                 <Container fluid className = "imf-container" id="content">

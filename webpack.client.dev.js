@@ -20,12 +20,12 @@ const config = {
 {
   test: /\.(gif|jpe?g|png|ico)$/,
   exclude: /node_modules/,
-  loader: 'url-loader?limit=10000'
+  loader: 'url-loader?limit=770000'
 },
 {
   test: /\.(otf|eot|svg|ttf|woff|woff2).*$/,
   exclude: /node_modules/,
-  loader: 'url-loader?limit=10000'
+  loader: 'url-loader?limit=40000'
 },
     ],
     
@@ -34,7 +34,7 @@ const config = {
 plugins:
   [
     new CleanWebpackPlugin({
-    template: './public/index.html'
+    template: 'src/public/index.html'
     })
   ],
   devServer: {

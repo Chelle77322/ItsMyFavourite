@@ -1,5 +1,4 @@
 import { configureStore,combineReducers} from '@reduxjs/toolkit';
-
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import {default as rootReducer} from '../_reducers';
@@ -31,5 +30,3 @@ console.log(store);
 
 
 
-
-  

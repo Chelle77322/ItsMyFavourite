@@ -7,9 +7,10 @@ const ENDPOINT = 'http://localhost:3000/data/users.json';
 
 
 export default class App extends Component {
-  componentWillMount() {
+  componentsWillMount() {
 
   
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const { users, getUsers } = useState({users:{id:[""]},});
   
 
@@ -17,8 +18,8 @@ export default class App extends Component {
       getUsers();
     };
     
-  }
-  hydrateRoot() {
+  
+ 
    
     <Home />
     
@@ -47,6 +48,3 @@ export const ConnectedApp = connect(
       });
     }
 )(App);
-
-
-

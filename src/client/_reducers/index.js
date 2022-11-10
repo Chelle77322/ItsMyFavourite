@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import {combineReducers } from "redux";
 import message from './message';
 import auth from "./auth"
@@ -9,18 +10,16 @@ let initialState = {
     users:{id:[{}]} || {}
 }
 
-const {users = {} || undefined, setState} = setState => ({...initialState}|| {user:[{}]});
-
-
-const rootReducer = combineReducers({
+var rootReducer = combineReducers({
+    initialState,
     message,
     auth,
     user,
     registration
+}  
     
-    
-});
+);
 
-;
 
-export default combineReducers(users, rootReducer)
+
+export default {rootReducer}

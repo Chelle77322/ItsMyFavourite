@@ -1,7 +1,8 @@
+/* eslint-disable no-empty-pattern */
 /* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
 import { userConstants } from '../_constants';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 
 function auth () {
@@ -12,12 +13,13 @@ const windowGlobal = typeof window !== 'undefined' && window === windowGlobal.lo
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useEffect(() => {
-  windowGlobal.localStorage.setItems('user', JSON.stringify(user));
-}, [user, windowGlobal.localStorage]);
+  windowGlobal.localStorage.setItems('user', JSON.stringify(users));
+}, [users, windowGlobal.localStorage]);
 
   switch (action.type){
     case userConstants.LOGIN_REQUEST: 
     return {
+      ...state,
       loggingIn: true,
       users: action.user
     };

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { userConstants } from "../_constants";
 import {useState} from "react";
 

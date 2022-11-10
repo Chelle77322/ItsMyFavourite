@@ -13,10 +13,24 @@ const paths = {
 module.exports = {
   mode: 'development',
   entry: {
-    javascript: "./index.jsx",
-    html:"./public/index.html"
+  javascript:'./src/Index.jsx',
+  html: './src/public/index.html',
+
+},
+  output: {
+    filename:{ javascript:'main.js',
+    html: 'index.html',
+    inject: 'body'
   },
-  entry:path.resolve(__dirname,'src', 'index.jsx'),
+    path: path.resolve(__dirname, 'build'),
+  },
+  //entry: {
+    //javascript: "./Index.jsx",
+    //js: "./main.js",
+    //html:"./public/index.html"
+   
+  //},
+  entry:path.resolve(__dirname,'src', 'Index.jsx'),
   output: {
     path: path.join(__dirname, "build"),
     publicPath: "/",
@@ -27,7 +41,7 @@ module.exports = {
 devServer: {
     historyApiFallback: true,
     static: {
-    directory: path.join(__dirname, '/public'),
+    directory: path.join(__dirname, 'src/public'),
   },
  
   },  devtool: false,
@@ -56,7 +70,13 @@ devServer: {
         
       }),
      
-      new HtmlWebpackPlugin(),
+     new HtmlWebpackPlugin({
+      title: 'itsmyfavourite',
+      publicPath: './public',
+      favicon: './public/favicon.png',
+        filename: '[name].html',
+        chunkFilename: '[id].html',
+    }),
       
         new MiniCssExtractPlugin({
           filename: "[name].css",
@@ -104,7 +124,7 @@ rules: [
 {
   test: /\.(gif|jpe?g|png|ico)$/,
   exclude: /node_modules/,
-  use: {loader: 'url-loader?limit=10000'}
+  use: {loader: 'url-loader?limit=40000'}
 },
   //Loader Rule 5
 {

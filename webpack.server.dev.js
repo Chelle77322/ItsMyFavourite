@@ -9,7 +9,7 @@ import webpackNodeExternals
     },
     output: {
         path: path.join(__dirname, "build"),
-        publicPath: "/",
+        publicPath: "/src/public/",
         filename: "[name].js",
         libraryTarget: 'commonjs2',
 
