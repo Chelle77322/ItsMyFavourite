@@ -1,8 +1,8 @@
 import {Home} from './pages/Home';
 import PageMiss from './pages/PageMiss';
 import {LandingPage} from './pages/LandingPage';
-import {Register} from '../../server/components/Register';
-import {Login} from '../../server/components/Login';
+import {Register} from '../server/components/Register';
+import {Login} from '../server/components/Login';
 //import MyFavourites from './pages/MyFavourites';
 //import GooglePlace from './pages/GooglePlace;'
 

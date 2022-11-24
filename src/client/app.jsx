@@ -3,10 +3,11 @@ import { connect } from 'react-redux';
 import { default as Home }  from "./pages/Home";
 import {default as usersFetched } from './redux/actions.js';
 
-const ENDPOINT = 'http://localhost:3000/data/users.json';
+
+const ENDPOINT = 'http://localhost:8080/data/users.json';
 
 
-export default class App extends Component {
+export default class ConnectedApp extends Component {
   componentsWillMount() {
 
   
@@ -21,6 +22,7 @@ export default class App extends Component {
   
  
    
+    // eslint-disable-next-line no-unused-expressions
     <Home />
     
     return (
@@ -38,7 +40,7 @@ export default class App extends Component {
   }
 }
 
-export const ConnectedApp = connect( 
+export const SendApp = connect( 
   
   dispatch =>
   {
@@ -47,4 +49,4 @@ export const ConnectedApp = connect(
         fetchUsers: async () => dispatch(usersFetched(await (await fetch(ENDPOINT)).json()))
       });
     }
-)(App);
+)(ConnectedApp);

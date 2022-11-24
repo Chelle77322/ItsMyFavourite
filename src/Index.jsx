@@ -8,10 +8,10 @@ import _  from 'lodash';
 import {store} from "./client/_helpers/store";
 import { PersistGate } from 'redux-persist/integration/react'
 
-import {default as App} from "./client/app";
+import {default as SendApp} from "./client/app";
 import * as serviceWorker from "./serviceWorker";
 function component(){
-const element = document.createElement('div')
+const element = document.createElement('root')
 element.innerHTML = _.join([['Hello']])
 return element;
 } 
@@ -22,7 +22,7 @@ root.render(
     <Provider store = {store}>
          <React.StrictMode>
         <PersistGate loading = {store}>
-            <App />
+            <SendApp />
             </PersistGate>
             </React.StrictMode>
         
