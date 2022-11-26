@@ -36,7 +36,8 @@ module.exports = {
    filename: '[name].bundle.js',
    clean: true
   },
-  target: "node",
+ // target: "node",
+ target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
 
 devServer: {
     historyApiFallback: true,
