@@ -1,4 +1,4 @@
-﻿import {default as express, urlencoded} from 'express';
+﻿import {default as express, urlencoded, json} from 'express';
 import fs from 'fs';
 import path from 'path';
 import React from 'react';

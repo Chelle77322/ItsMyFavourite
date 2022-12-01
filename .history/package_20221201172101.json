@@ -12,7 +12,7 @@
   "homepage": "http://github.com/chelle77322/ItsMyFavourite/build/main.html",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "rm -rf build &&  webpack --config webpack.config.babel.js  && browserify ./src/client/client.js -o ./main.bundle.js -t ",
+    "build": "rm -rf build &&  webpack --config webpack.config.babel.js  && browserify ./src/client/client.js -o ./build/main.bundle.js -t ",
     "start": "webpack serve && nodemon ./build/server/server.js",
     "transpile": "babel ./ --out dir ./build/ --watch \"",
     "test": "echo\"Error: no test specified\" && exit 1",

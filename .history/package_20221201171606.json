@@ -1,7 +1,7 @@
 {
   "name": "itsmyfavourite",
   "version": "1.0.2",
-  "main": "index.jsx",
+  "main": "index.js",
   "description": "A REACT app that uses REDUX store and GooglePlaces API for users to search for all their favourite places and save them in one handy little app",
   "author": "Michelle Hall",
   "license": "ISC",
@@ -12,9 +12,9 @@
   "homepage": "http://github.com/chelle77322/ItsMyFavourite/build/main.html",
   "scripts": {
     "dev": "webpack-dev-server",
-    "build": "rm -rf build &&  webpack --config webpack.config.babel.js  && browserify ./src/client/client.js -o ./main.bundle.js -t ",
-    "start": "webpack serve && nodemon ./build/server/server.js",
-    "transpile": "babel ./ --out dir ./build/ --watch \"",
+    "build": "rm -rf build &&  webpack --config webpack.config.babel.js  && browserify ./src/client/client.js -o ",
+    "start": "webpack serve",
+    "transpile": "babel ./ --out dir build-server",
     "test": "echo\"Error: no test specified\" && exit 1",
     "format": "prettier"
   },

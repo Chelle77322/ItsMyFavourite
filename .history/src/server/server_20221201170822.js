@@ -7,7 +7,7 @@ import rootReducer from '../client/_reducers/index';
 import {getUsers} from "../client/redux/selectors";
 import { configureStore } from '../client/_helpers/store';
 import express from 'express';
-import isomorphic from '@types/isomorphic-fetch';
+import 'isomorphic-fetch';
 import App from "./components/App";
 
 

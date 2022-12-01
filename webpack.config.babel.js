@@ -1,10 +1,8 @@
 import path from 'path';
+import fs from 'fs';
 import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-
-
-
 import webpack from 'webpack';
 
 const paths = {
@@ -32,14 +30,14 @@ module.exports = {
   entry:path.resolve(__dirname, './index.jsx'),
   output: {
     path: path.join(__dirname, "build"),
-    publicPath: "/",
+    publicPath: process.env.PUBLIC_URL || "/",
    filename: '[name].bundle.js',
    clean: true
   },
- // target: "node",
- target: process.env.NODE_ENV === "development" ? "web" : "browserslist",
+ target: "node", node: {__filename: false},
+ //"browserslist" || "web" 
 
-devServer: {
+ devServer: {
     historyApiFallback: true,
     static: {
     directory: path.join(__dirname, '/build'),

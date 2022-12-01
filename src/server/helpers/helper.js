@@ -33,7 +33,7 @@ export default function (request, store, context) {
     '\\u003c'
   )}
                 </script>
-                <script src="/main.js"></script>
+                <script src="/main.bundle.js"></script>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
             </body>
     </html>`;
