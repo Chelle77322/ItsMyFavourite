@@ -1,5 +1,5 @@
 import axios from "axios";
-const GOOGLE_API_KEY = "http://localhost:8080/api";
+const GOOGLE_API_KEY = "http://localhost:8080/Routes/api/";
 axios.create({
     baseURL: GOOGLE_API_KEY,
     headers: {

@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import webpack from 'webpack';
 import webpackNodeExternals from 'webpack-node-externals'
+import dotenv from "dotenv-webpack";
  
 
 //import store  from "./src/client/_helpers/store"

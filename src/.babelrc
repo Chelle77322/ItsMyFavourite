@@ -1,0 +1,39 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "web": true,
+          "loose": true,
+    "modules": true
+        }
+       
+      },
+      "@babel/preset-react"
+    
+    ]
+   
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-jsx",
+    "react-hot-loader/babel",
+    [
+      "transform-assets",
+      {
+        "extensions": ["png", "gif", "jpg"],
+        "name": "[name].[ext]?[sha512:hash:base64:7]"
+      }
+    ]
+  ],
+  "env": {
+    "test": {
+      "plugins": ["istanbul"]
+    }
+  }
+ 
+}
+
+
+  

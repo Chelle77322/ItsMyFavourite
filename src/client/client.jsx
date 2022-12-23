@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Provider} from "react-redux";
-import {default as App} from "../server/components/App"
+import {default as App} from "../server/components/App.jsx"
 //import rootReducer from "../client/_reducers";
-import store from "../client/_helpers/store"
+import store from "../client/_helpers/store.js"
 
 
 export default class Client extends Component {

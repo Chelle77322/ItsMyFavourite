@@ -4,7 +4,7 @@ import path from 'path';
 import React from 'react';
 import connect from "mongoose";
 
-import "./styles/styles.scss";
+//import "./styles/styles.scss";
 import ReactDOMServer from 'react-dom/server';
 import {Router as Routes, matchPath, useRouteError} from 'react-router-dom';
 import { default as SendApp } from "./src/client/app.jsx";
@@ -13,20 +13,20 @@ const route = routes;
 const PORT = process.env.PORT || 8080
 use(urlencoded({extended: true}));
 if (process.env.NODE_ENV === "production"){
-    use(express(__dirname + "/src"))
+    use(express(__dirname + "/build"))
 }
 use(routes);
 console.log(routes);
 const app = express();
 
-  connect(process.env.MONGODB_URI || "mongodb: //localhost/src")
+  connect(process.env.MONGODB_URI || "mongodb: //localhost/build")
 
 
 //app.get( /\.(js|css|map|ico|png|gif)$/, express.static(path.resolve( __dirname, './build')));
 app.get('/*', async(req, result)=>{
     result.sendFile(path.join(__dirname, 'build','main.html'),function(err){
        if (err){
-          res.status(500).send(err)
+          result.status(500).send(err)
         }
     }
     )

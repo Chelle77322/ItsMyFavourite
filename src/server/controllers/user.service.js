@@ -1,4 +1,4 @@
-import config from '../../../config.js';
+import {Connection} from '../../../config.js';
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import {db} from '../helpers/db.js';
@@ -17,7 +17,7 @@ async function authenticate({id, password}){
     const user = await User.findOne({id});
     if (user && bcrypt.compareSync(password, user.hash)) {
         const token = jwt.sign({sub: user.id},
-            config.secret,{expiresIn: '7 days'});
+            Connection.secret,{expiresIn: '7 days'});
         return{ 
             ...user.toJSON(),
             token
@@ -54,7 +54,7 @@ async function update(user){
         headers: { ...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };
-    const response = await fetch(`${config.apiUrl}/users/${user.id}`, requestOptions);
+    const response = await fetch(`${Connection.config}/users/${user.id}`, requestOptions);
     // eslint-disable-next-line no-undef
     return handleResponse(response);;
 }

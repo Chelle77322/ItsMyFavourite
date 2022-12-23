@@ -8,3 +8,4 @@ webpack.config.js
 .env.production
 
 its_my_favourite.pem
+.history

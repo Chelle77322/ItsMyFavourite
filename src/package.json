@@ -3,13 +3,12 @@
     "version": "0.1.0",
     "private": true,
     "proxy": "http://localhost:8080/",
-   
     "dependencies": {
         "@reduxjs/toolkit": "^1.9.1",
         "@testing-library/jest-dom": "^5.16.5",
         "@testing-library/react": "^13.4.0",
         "@testing-library/user-event": "^14.4.3",
-        "axios": "^1.2.0",
+        "axios": "^1.2.1",
         "babel-loader": "^9.1.0",
         "bootstrap": "^5.2.3",
         "react": "^18.2.0",
@@ -29,13 +28,18 @@
     },
     "scripts": {
         "start": "react-scripts start",
-        "transpile": "babel ./server --out-dir build-server",
         "build": "react-scripts build",
         "test": "react-scripts test --env=jsdom",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "server": "json-server --port 8080",
+        "type": "module",
+        "transpile": "babel ./server --out-dir build-server"
     },
     "eslintConfig": {
-        "extends": "react-app"
+        "extends": [
+            "react-app",
+             "react-app/jest"
+    ]
     },
     "browser": {
         "fs": false

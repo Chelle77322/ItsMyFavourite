@@ -13,7 +13,7 @@ module.exports = {
         libraryTarget: "commonjs2",
     },
     target: 'node',
-    moudle: {
+    module: {
         rules:[
             {
                 test: /\.js$/,

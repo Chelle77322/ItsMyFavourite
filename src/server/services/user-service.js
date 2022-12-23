@@ -1,5 +1,5 @@
 import axios from 'axios';
-import authHeader from "./auth-header";
+import authHeader from "./auth-header.js";
 const GOOGLE_API_KEY = "../../../config.js";
 
 export class UserService {

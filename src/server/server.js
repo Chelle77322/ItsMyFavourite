@@ -3,9 +3,9 @@
 import React from 'react';
 import {renderToString, ReactDOMServerReadableStream} from 'react-dom/server';
 import {Provider} from "@reduxjs/toolkit";
-import rootReducer from '../client/_reducers/index';
-import {getUsers} from "../client/redux/selectors";
-import { configureStore } from '../client/_helpers/store';
+import rootReducer from '../client/_reducers/index.js';
+import {getUsers} from "../client/redux/selectors.js";
+import { configureStore } from '../client/_helpers/store.js';
 import express from 'express';
 import isomorphic from '@types/isomorphic-fetch';
 import App from "./components/App";

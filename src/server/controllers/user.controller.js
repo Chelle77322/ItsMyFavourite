@@ -11,7 +11,7 @@ Router.get('/:id', getById);
 Router.put('/:id', update);
 Router.delete('/:id', _delete);
 
-module.export = Router;
+//module.export = Router;
 
 export function authenticate(request, result, next){
     userService.authenticate(request.body).then(user => user ? result.json(user):result.status(400).json({message: "ID or password is incorrect"})).catch(error => next(error));

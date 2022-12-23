@@ -5,11 +5,11 @@ import "./index.scss"
 import { Provider } from 'react-redux';
 import _  from 'lodash';
 
-import {store} from "./client/_helpers/store";
+import {store} from "./client/_helpers/store.js";
 import { PersistGate } from 'redux-persist/integration/react'
 
-import {default as SendApp} from "./client/app";
-import * as serviceWorker from "./serviceWorker";
+import {default as SendApp} from "./client/app.jsx";
+import * as serviceWorker from "./serviceWorker.js";
 function component(){
 const element = document.createElement('root')
 element.innerHTML = _.join([['Hello']])

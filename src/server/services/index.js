@@ -1,3 +1,3 @@
-export * from './user-service';
-export * from './auth-header';
-export * from './auth-service';
+export * from './user-service.js';
+export * from './auth-header.js';
+export * from './auth-service.js';

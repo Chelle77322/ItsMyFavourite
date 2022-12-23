@@ -1,26 +1,34 @@
 import path from 'path';
-import fs from 'fs';
+import clientConfig from "./webpack.client.dev.js";
+import serverConfig from "./webpack.server.dev.js";
 import WebpackShellPluginNext from 'webpack-shell-plugin-next';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import webpack from 'webpack';
+import {merge} from 'webpack-merge';
+import process from 'process';
+import DotenvWebpackPlugin from 'dotenv-webpack';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+console.log('directory-name', __dirname);
 
 const paths = {
   BUILD: path.resolve(__dirname, './build/'),
   SRC: path.resolve(__dirname, './src/'),
 };
 
-module.exports = {
+export default (clientConfig, serverConfig) => {
+  return merge ([{
+  
   mode: 'development',
   entry: {
   javascript:'./src/Index.jsx',
   html: './src/public/index.html',
-  
-
-},
+  },
   output: {
-    filename:{ javascript:'main.bundle.js',
-    html: 'main.html',
+    filename:{ javascript:'index.js',
+    html: 'index.html',
     inject: 'body',
     
   },
@@ -35,7 +43,7 @@ module.exports = {
    clean: true
   },
  target: "node", node: {__filename: false},
- //"browserslist" || "web" 
+
 
  devServer: {
     historyApiFallback: true,
@@ -95,7 +103,7 @@ module.exports = {
       content: "Google Places, Favourites, React, Redux, Locations, Shops, Restaurants, Favourite, ItsMyFavourite, API, MichelleHall"},
       inject: 'body',
       inject: 'head',
-      template: './src/public/index.html',
+      template: './public/index.html',
       
         filename: '[name].html',
         chunkFilename: '[id].html',
@@ -107,12 +115,16 @@ module.exports = {
           
         }),
        
-      new webpack.ProvidePlugin({
-        process: 'process/browser',
-      }),
+      //new webpack.ProvidePlugin({
+       // process: 'process/browser',
+      //}),
     
     new webpack.DefinePlugin({
       'process.platform': JSON.stringify(process.platform)
+  }),
+  new DotenvWebpackPlugin({
+
+    path: '.env.developing'
   })
 
   ],
@@ -135,21 +147,29 @@ rules: [
   },
     //Loader Rule 3
   {
-    test: /\.css|.scss?$/,
-    exclude: /node_modules/,
-   use: [
-    {loader: "style-loader"},
-    {loader: "css-loader"},
-    {loader: "sass-loader"},
-    
-   ]
+    test: /\.(sass|css|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+          {
+            loader: "postcss-loader",
+            options: {
+              plugins: 'autoprefixer'
+            }
+          }
+              ],
+            },
+          
+         
+        
 
-},
+
   //Loader Rule 4
 {
   test: /\.(gif|jpe?g|png|ico)$/,
   exclude: /node_modules/,
-  use: {loader: 'url-loader?limit=40000'}
+  use: {loader: 'url-loader?limit=1000000'}
 },
   //Loader Rule 5
 {
@@ -183,35 +203,36 @@ resolve: {
   alias: {
     '~': path.resolve(__dirname, '/src'),
   },
-  fallback: {
-    fs: require.resolve("fs"),
-    tls: false,
-    net: false,
-    path: require.resolve("path-browserify"),
-    zlib: false,
-    http: require.resolve("stream-http"),
-    https: require.resolve("stream-http"),
-    stream: require.resolve("stream-browserify"),
-    crypto: require.resolve("crypto-browserify"),
-    assert: false,
-    async_hooks: false,
-    url: require.resolve("url/"),
-  },
+  //fallback: {
+    //fs: meta.resolve("fs"),
+    //tls: false,
+    //net: false,
+    //path: meta.resolve("path-browserify"),
+   // zlib: false,
+   // http: meta.resolve("stream-http"),
+    //https: meta.resolve("stream-http"),
+   // stream: meta.resolve("stream-browserify"),
+    //crypto: meta.resolve("crypto-browserify"),
+    //assert: false,
+    //async_hooks: false,
+   // url: meta.resolve("url/"),
+  //},
     },
-    // eslint-disable-next-line no-undef    
-  };
-  if (process.env.NODE_ENV === 'production') {
-    module.exports.devtool = '#source-map'
-    module.exports.plugins = (module.exports.plugins || []).concat([
-      new webpack.DefinePlugin({
-        'process.env': { NODE_ENV: '"production"' }
-      }),
-      new webpack.optimize.UglifyJsPlugin({
-        sourceMap: true,
-        compress: { warnings: false }
-      }),
-      new webpack.LoaderOptionsPlugin({ minimize: true })
-    ])
-   
+       
+  }])
+  //if (process.env.NODE_ENV === 'production') {
+  //module.exports devtool = '#source-map'
+   // export plugins = (module.exports.plugins || []).concat([
+   //   new webpack.DefinePlugin({
+   //     'process.env': { NODE_ENV: '"production"' }
+   //   }),
+   //   new webpack.optimize.UglifyJsPlugin({
+   //     sourceMap: true,
+   //     compress: { warnings: false }
+   //   }),
+   //   new webpack.LoaderOptionsPlugin({ minimize: true })
+   // ])
   }
- 
+  
+
+  //export default config (clientConfig, serverConfig);

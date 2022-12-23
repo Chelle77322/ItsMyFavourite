@@ -1,5 +1,5 @@
 import {Routes as Router}from 'react-router-dom';
-import {authenticate,getById, register, _delete,update, getAll } from "../../server/controllers/user.controller";
+import {authenticate,getById, register, _delete,update, getAll } from "../../server/controllers/user.controller.js";
 const router = Router;
 
 router.use((request, result, next)=> {
