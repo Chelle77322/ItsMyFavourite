@@ -1,12 +1,13 @@
 {
     "cSpell.words": [
-        "Favourite",
-        "Submition",
-        "virtuals",
         "cognitoidentity",
+        "compat",
+        "Dualstack",
+        "Favourite",
         "ruleset",
         "serde",
         "Serde",
-        "Dualstack"
+        "Submition",
+        "virtuals"
     ]
 }
