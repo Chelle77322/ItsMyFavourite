@@ -11,11 +11,11 @@ let developmentConfig = () => {
   return merge([
     {
      mode: 'development',
-     entry: path.join(__dirname, "src/js/client", "app.js"),
+     entry: path.join(__dirname, "src/js/client", "app.jsx"),
       output: {
         path: path.join(__dirname, "dist", "js"),
         filename: 'main.js',
-        publicPath: "/public/",
+        publicPath: "/",
        
       }, 
       debug: true,
@@ -29,8 +29,8 @@ let developmentConfig = () => {
 
        new HtmlWebpackPlugin({
           
-         title: 'Book Store',
-          filename: '/public/index.html'
+         title: 'Its My Favourite',
+          filename: 'index.html'
           
         }),
         new webpack.DefinePlugin({

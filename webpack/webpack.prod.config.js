@@ -15,11 +15,11 @@ let productionConfig = () => {
   return merge([
     {
       mode: "production",
-      entry: path.join(__dirname, "src/js/client", "app.js"),
+      entry: path.join(__dirname, "src/js/client", "app.jsx"),
       output: {
         path: path.join(__dirname, "dist", "js"),
         filename: 'main.js',
-        publicPath: "/public/",
+        publicPath: "/",
       },
       debug: true,
       devtool: 'source-map',

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content=" An isomorphic react redux app that utilises the Google Places API so users are able to save all their favourite places">
+    <meta name="author" content="Michelle Hall">
+    <link rel="icon" href="../../public/favicon.ico">
+
+    <title>Things To Do Today </title>
+
+    <link rel = "stylesheet" type = "text/html" href="../css/index.scss" rel="stylesheet">
+        
+  </head>
+
+  <body>   
+
+    <div id="root">
+        <%- markup -%>
+    </div>
+    
+    <script type="text/javascript" charset="utf-8">
+      window.__REDUX_STATE__ = JSON.parse('<%- JSON.stringify(initialState) %>');
+      console.log('+++Initial State text property from Server ==> ' )
+      console.dir( window.__REDUX_STATE__)
+    </script>
+
+    <script type = "module" src="main.js"></script>
+  </body>
+</html>
