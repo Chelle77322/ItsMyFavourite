@@ -10,6 +10,6 @@ mongoose.Promise = global.Promise;
 
 export function db() {
     // eslint-disable-next-line no-labels
-    require('../controllers/user.model.js')
+    require('../Controllers/user.model.js')
 }
 

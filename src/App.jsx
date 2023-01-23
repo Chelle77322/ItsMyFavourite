@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 
-import {default as Home} from '../Pages/Home.jsx';
-import {default as PageMiss} from '../Pages/PageMiss.jsx';
+import {default as Home} from '../src/js/shared/Pages/Home.jsx';
+import {default as PageMiss} from '../src/js/shared/Pages/PageMiss.jsx';
 
 export function App() { 
     return (
@@ -14,7 +14,9 @@ export function App() {
                     <Route exact Component={PageMiss} path = "/pagemiss"/>
                 </Routes>
             </Router>
+            
         </div>
     );
 }
 
+export default App

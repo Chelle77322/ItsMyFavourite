@@ -1,7 +1,7 @@
 /* eslint-disable no-empty-pattern */
 /* eslint-disable no-undef */
 /* eslint-disable no-use-before-define */
-import { userConstants } from '../_constants';
+import { userConstants } from '../Constants/user-constants.js';
 import { useEffect } from 'react';
 
 

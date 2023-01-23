@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect}from 'react-redux';
-import {userActions} from "../_actions/userActions.js";
+import {userActions} from "../Actions/userActions.js";
 
 
 import {Label, Container} from "reactstrap";

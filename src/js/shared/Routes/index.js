@@ -9,6 +9,6 @@ const apiRoutes = Router;
 router.use("./api", apiRoutes);
 //If nothing is obtained from the API call then just show the default REACT app page instead
 router.use(function(req, result) {
-    result.sendFile(join(__dirname, "./build/main.html"));
+    result.sendFile(join(__dirname, "/public/index.html"));
 });
 export default router;

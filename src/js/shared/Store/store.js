@@ -1,20 +1,20 @@
-import { configureStore,combineReducers} from '@reduxjs/toolkit';
+import { configureStore} from '@reduxjs/toolkit';
+import rootReducer from "../Reducers/index.js";
 import thunkMiddleware  from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import {default as rootReducer} from '../_reducers';
+
 import {persistStore, persistReducer} from 'redux-persist';
-import storage from 'redux-persist/lib/storage';
-//import { default as userSlice} from "../features/userSlice"
+//import storage from 'redux-persist/lib/storage';
+//import { default as userSlice} from "../Features/userSlice.jsx"
 
 const loggerMiddleware = createLogger();
 
 
-const root = combineReducers ({user:rootReducer})
-const persistConfig = {
-  key: 'root',
-  storage,
-}
-const persistedReducer = persistReducer(persistConfig, root);
+const stored = configureStore({
+  reducer: rootReducer,
+ 
+})
+const persistedReducer = persistReducer(persistConfig,stored);
 
 
 
@@ -26,7 +26,7 @@ export const store = configureStore({
 
 console.log(store);
 
-
+export default store;
 
 
 

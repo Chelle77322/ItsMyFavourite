@@ -15,9 +15,9 @@ let productionConfig = () => {
   return merge([
     {
       mode: "production",
-      entry: path.join(__dirname, "src/js/client", "app.jsx"),
+      entry: path.join(__dirname, "src", "index.js"),
       output: {
-        path: path.join(__dirname, "dist", "js"),
+        path: path.join(__dirname, "dist"),
         filename: 'main.js',
         publicPath: "/",
       },
@@ -35,8 +35,8 @@ let productionConfig = () => {
 
         new HtmlWebpackPlugin({
           
-          title: 'Book Store',
-          filename: '/public/index.html'
+          title: 'Favourites',
+          filename: 'index.html'
           
         }),
         new MiniCssExtractPlugin(),

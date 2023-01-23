@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginUser, userSelector, clearState } from './userSlice.jsx';
 import toast from 'react-hot-toast';
-import {createBrowserHistory} from "../helpers/history.js"
+import {createBrowserHistory} from "../Helpers/history.js"
 
 // eslint-disable-next-line no-empty-pattern
 const Login = ({}) => {

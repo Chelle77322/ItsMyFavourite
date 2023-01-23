@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, {Fragment, useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {userSelector, fetchUserBytoken, clearState} from "../features/userSlice.jsx";
+import {userSelector, fetchUserBytoken, clearState} from "../Features/userSlice.jsx";
 
 import * as Loader from "react-loader-spinner";
-import {default as createBrowserHistory} from "../helpers/history.js"
+import {default as createBrowserHistory} from "../Helpers/history.js"
 
 const Dashboard = () => {
     const history = createBrowserHistory()

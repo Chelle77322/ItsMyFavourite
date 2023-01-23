@@ -1,7 +1,7 @@
 import axios from "axios";
-const GOOGLE_API_KEY = "http://localhost:8080/Routes/api/";
+const GOOGLE_API_URL  = "http://localhost:8080/Routes/api/";
 axios.create({
-    baseURL: GOOGLE_API_KEY,
+    baseURL: GOOGLE_API_URL,
     headers: {
         "Content-Type": "application/json"
     }
@@ -9,7 +9,7 @@ axios.create({
 
 export class AuthService {
     async login(id, password){
-        const response = await axios.post(`${GOOGLE_API_KEY}signIn`, {id, password});
+        const response = await axios.post(`${GOOGLE_API_URL}signIn`, {id, password});
         if(response.data.accessToken)
         {localStorage.setItem("user", JSON.stringify(response.data));
     }
@@ -21,7 +21,7 @@ export class AuthService {
     }
 
     register(id, first_name, last_name, password, favourites){
-        return axios.Axios(GOOGLE_API_KEY + "signUp",{
+        return axios.Axios(GOOGLE_API_URL  + "signUp",{
             id, first_name, last_name, password, favourites
         });
     }

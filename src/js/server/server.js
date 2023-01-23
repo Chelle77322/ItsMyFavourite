@@ -4,7 +4,7 @@ import path from 'path';
 import React from 'react';
 import connect from "mongoose";
 
-import "./styles/styles.scss";
+
 import ReactDOMServer from 'react-dom/server';
 import {Router as Routes, matchPath, useRouteError} from 'react-router-dom';
 import { default as SendApp } from "../client/app.jsx";
@@ -13,18 +13,18 @@ import routes from "../shared/Routes/index.js";
 const PORT = process.env.PORT || 8080
 use(urlencoded({extended: true}));
 if (process.env.NODE_ENV === "production"){
-    use(express(__dirname + "/build"))
+    use(express(__dirname + "dist"))
 }
 use(routes);
 console.log(routes);
 const app = express();
 
-  connect(process.env.MONGODB_URI || "mongodb: //localhost/build/")
+  connect(process.env.MONGODB_URI || "mongodb: //localhost/dist/")
 
 
-app.get( /\.(js|css|map|ico|png|gif)$/, express.static(path.resolve( __dirname, './build')));
+app.get( /\.(js|css|map|ico|png|gif)$/, express.static(path.resolve( __dirname, 'dist')));
 app.get('/*', async(req, result)=>{
-    result.sendFile(path.join(__dirname, 'build','main.html'),function(err){
+    result.sendFile(path.join(__dirname, 'dist','index.html'),function(err){
        if (err){
           result.status(500).send(err)
         }
@@ -40,7 +40,7 @@ app.use('/*', async (req, result)=> {
         componentData = await matchRoute.component.fetchData();
     }
 
-    let mainHTML = fs.readFileSync( path.resolve( __dirname, 'build','main.html'), { 
+    let mainHTML = fs.readFileSync( path.resolve( __dirname, 'dist','index.html'), { 
        encoding: 'utf8' ,
        contentType: 'application/javascript'
        

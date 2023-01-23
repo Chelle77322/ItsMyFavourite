@@ -1,6 +1,6 @@
-import { userConstants } from '../_constants';
-import { userService } from '../_services';
-import { alertActions } from '../_actions';
+import { userConstants } from '../Constants/user-constants.js';
+import { default as userService } from '../Services/user-service.js';
+import { alertActions } from '../Actions/alertActions.js';
 //import history from '../../../server/helpers/history';
 
 

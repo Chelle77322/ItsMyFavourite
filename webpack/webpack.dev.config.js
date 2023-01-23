@@ -1,6 +1,5 @@
 import {merge}  from 'webpack-merge';
 import  webpackBaseConfig  from './webpack.base.config.js';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
  const __filename = fileURLToPath(import.meta.url);
@@ -11,9 +10,9 @@ let developmentConfig = () => {
   return merge([
     {
      mode: 'development',
-     entry: path.join(__dirname, "src/js/client", "app.jsx"),
+     entry: path.join(__dirname, "src", "index.js"),
       output: {
-        path: path.join(__dirname, "dist", "js"),
+        path: path.join(__dirname, "dist"),
         filename: 'main.js',
         publicPath: "/",
        
@@ -26,14 +25,7 @@ let developmentConfig = () => {
     },
   
       plugins: [
-
-       new HtmlWebpackPlugin({
-          
-         title: 'Its My Favourite',
-          filename: 'index.html'
-          
-        }),
-        new webpack.DefinePlugin({
+  new webpack.DefinePlugin({
           isDevelopment: true,
           'process.env': {
             NODE_ENV: JSON.stringify('development'),
