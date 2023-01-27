@@ -1,9 +1,10 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 
-const registerUser  = createAsyncThunk ('./signUp.jsx', 
+const registerUser  = createAsyncThunk (signUp)
+console.log(registerUser)
 async({id, first_name, last_name, password}, thunkAPI)=> {
 try {
-  const response = await fetch ('https://itsmyfavourite.herokuapp.com/api/users/',
+  const response = await fetch ('https://localhost:8080/api/users/',
   {
     method: 'POST',
     headers: {
@@ -34,7 +35,7 @@ try {
   return thunkAPI.rejectWithValue(error.response.data);
 }
 }
-);
+
 const loginUser = createAsyncThunk(
   'users/login',
   async({id, first_name, last_name,password}, thunkAPI) => {
@@ -75,7 +76,7 @@ const fetchUserByToken = createAsyncThunk('users/fetchUserByToken',
 async ({token}, thunkAPI) => {
   try{
     const response = await fetch(
-      'https://itsmyfavourite.herokuapp.com/api/users',
+      'https://localhost:8080/api/users',
       {
         method: 'GET',
         headers: {
@@ -103,8 +104,8 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     id: '',
-    first_name: '',
-    last_name: '',
+    firstName: '',
+    lastName: '',
     password: '',
     isFetching: false,
     isSuccess: false,
@@ -144,7 +145,7 @@ const userSlice = createSlice({
     },
     [loginUser.rejected]: (state,{payload}) => {
       console.log('payload', payload);
-      state.isFetchhing = false;
+      state.isFetching = false;
       state.isError = true;
       state.errorMessage = payload.message;
     },
@@ -162,7 +163,7 @@ const userSlice = createSlice({
       state.first_name = payload.first_name;
     },
     [fetchUserByToken.rejected]: (state) => {
-      console.log('fetchUserByToken');
+      console.log(fetchUserByToken);
       state.isFetching = false;
       state.isError = true;
     },

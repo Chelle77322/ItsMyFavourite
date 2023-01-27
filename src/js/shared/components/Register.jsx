@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {userActions} from "../Actions/userActions.js"
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Button from "react-validation/build/button";
-//import {isValidEmail} from "../../../../utils/index";
-//import signUp from "../client/features/signUp";
+//import Form from "react-bootstrap-validation/Form";
+//import Input from "react-bootstrap-validation/Input";
+//import Button from "react-bootstrap-validation/Button";
+import {isValidEmail} from "../Utils/index.js";
+import signUp from "../Features/signUp.jsx";
 
 export class Register extends Component {
     constructor(props) { 

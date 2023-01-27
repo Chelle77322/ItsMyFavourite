@@ -1,21 +1,15 @@
-import React from "react";
-import ReactDOM  from "react-dom";
-import {Provider} from 'react-redux';
-import  {default as store} from "../src/js/shared/Store/store.js"
-import {App} from "./App.jsx"
-import "bootstrap/dist/css/bootstrap.min.css"
+import  * as React from "react";
+import {render} from "react-dom"
+ 
 
-const initalState = window.__REDUX_STATE__
-//console.log(store.getState(initalState));
+import App from "./App.jsx";
 
 const appElement = document.getElementById("root");
 
 
+render(
+  
+App,
 
-ReactDOM.render(
-	<Provider store={store}>
-		<App />
-	</Provider>,
-appElement
-	
-	);
+ appElement
+);

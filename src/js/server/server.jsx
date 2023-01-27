@@ -6,9 +6,9 @@ import connect from "mongoose";
 
 
 import ReactDOMServer from 'react-dom/server';
-import {Router as Routes, matchPath, useRouteError} from 'react-router-dom';
-import { default as SendApp } from "../client/app.jsx";
-import routes from "../shared/Routes/index.js";
+import {Router as Routes, matchPath} from 'react-router-dom';
+import { default as SendApp } from "../../App.jsx";
+import routes from "../Routes/index.js";
 
 const PORT = process.env.PORT || 8080
 use(urlencoded({extended: true}));
@@ -19,7 +19,7 @@ use(routes);
 console.log(routes);
 const app = express();
 
-  connect(process.env.MONGODB_URI || "mongodb: //localhost/dist/")
+  connect(process.env.MONGODB_URI || "mongodb: //localhost/itsmyfavourite/")
 
 
 app.get( /\.(js|css|map|ico|png|gif)$/, express.static(path.resolve( __dirname, 'dist')));

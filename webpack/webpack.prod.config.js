@@ -35,8 +35,7 @@ let productionConfig = () => {
 
         new HtmlWebpackPlugin({
           
-          title: 'Favourites',
-          filename: 'index.html'
+       
           
         }),
         new MiniCssExtractPlugin(),

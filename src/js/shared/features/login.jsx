@@ -14,9 +14,9 @@ const Login = ({}) => {
   const {isSuccess, isError, errorMessage } = useSelector(
     userSelector);
 
-  const onSubmit = (data) => {
+  function onSubmit(data) {
     dispatch(loginUser(data));
-  };
+  }
   
   useEffect(() => {
     return () => {

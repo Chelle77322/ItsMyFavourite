@@ -12,7 +12,7 @@ import "../../../styles/styles.scss";
 
 
 
-export default class Home extends Component{
+export class Home extends Component{
    
     componentsWillMount(){
         return(

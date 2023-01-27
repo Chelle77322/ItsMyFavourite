@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function PageMiss({ staticContext = {} }) {
+export function PageMiss({ staticContext = {} }) {
   staticContext.notFound = true;
   return (
     <div className="ui container">

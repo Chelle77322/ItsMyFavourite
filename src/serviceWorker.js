@@ -69,7 +69,7 @@ function checkValidServiceWorker(serviceUrl, config) {
     fetch(serviceUrl, {
         headers:{'Service-Worker': 'script'},
     }).then(response => {
-        const contentType = response.headeers.get('content-type');
+        const contentType = response.headers.get('content-type');
         if(
             response.status === 404 ||(contentType != null && contentType.indexOf('javascript') === -1)
         ){

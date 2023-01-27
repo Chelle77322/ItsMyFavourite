@@ -6,68 +6,68 @@
     "data": [
         {
             "id": 4,
-            "first_name": "Mary",
-            "last_name": "Watson",
+            "firstName": "Mary",
+            "lastName": "Watson",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 5,
-            "first_name": "Barbara",
-            "last_name": "Carpenter",
+            "firstName": "Barbara",
+            "lastName": "Carpenter",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 6,
-            "first_name": "Angela ",
-            "last_name": "Bennett",
+            "firstName": "Angela ",
+            "lastName": "Bennett",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 7,
-            "first_name": "Deborah",
-            "last_name": "Parsons",
+            "firstName": "Deborah",
+            "lastName": "Parsons",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 8,
-            "first_name": "Moira",
-            "last_name": "Brockey",
+            "firstName": "Moira",
+            "lastName": "Brockey",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 9,
-            "first_name": "Angelique",
-            "last_name": "Stephenson",
+            "firstName": "Angelique",
+            "lastName": "Stephenson",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 10,
-            "first_name": "Laura",
-            "last_name": "Warren",
+            "firstName": "Laura",
+            "lastName": "Warren",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 11,
-            "first_name": "Emma",
-            "last_name": "Dally",
+            "firstName": "Emma",
+            "lastName": "Dally",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoramires/128.jpg"
         },
         {
             "id": 12,
-            "first_name": "James",
-            "last_name": "Warren",
+            "firstName": "James",
+            "lastName": "Warren",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/stephenmoon/128.jpg"
         },
         {
             "id": 13,
-            "first_name": "Lee",
-            "last_name": "Ristow",
+            "firstName": "Lee",
+            "lastName": "Ristow",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/bigmancho/128.jpg"
         },
         {
             "id": 14,
-            "first_name": "Dom",
-            "last_name": "Haswell",
+            "firstName": "Dom",
+            "lastName": "Haswell",
             "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/marcoamires/128.jpg"
         }
     ]

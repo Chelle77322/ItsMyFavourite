@@ -1,6 +1,7 @@
 import { merge }  from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-
+import UglifyJsPlugin from "uglifyjs-webpack-plugin"
+import NodePolyfillPlugin from "node-polyfill-webpack-plugin"
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -14,7 +15,11 @@ console.log('directory-name', __dirname);
 let webpackBaseConfig = () => {
   return merge([
     {
-      mode: 'production',
+      externals:{
+        "fs": "commonjs fs",
+        "net": "commonjs net",
+      },
+      mode: 'none',
       performance: {
         hints: false,
         maxEntrypointSize: 512000,
@@ -27,23 +32,28 @@ let webpackBaseConfig = () => {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-              loader: 'babel-loader',
+              loader: "babel-loader",
             }
           },
           {
           test: /\.jsx$/,
             exclude: /node_modules/,
             use: {
-              loader: 'babel-loader',
+              loader: "babel-loader",
             }
           },
           {
             test: /\.module\.(sa|sc|c)ss$/,
             use: [
-              'css-loader',
-              'sass-loader',
-              'style-loader'
+              {
+              loader:'style-loader',
             
+              },
+              {
+                loader: 'css-loader',
+               
+              },
+              'sass-loader'
             ]
           },
           {
@@ -63,12 +73,22 @@ let webpackBaseConfig = () => {
               loader: 'url-loader',
             },
           },
-        
+          
+          {  test: /\.html$/i,
+            loader: "html-loader",
+            options: {
+              // Disables attributes processing
+              sources: false,
+            },
+          }
         ],
-    
-
-       
       },
+      resolve:{
+        fallback:{
+          "async_hooks": false
+        }
+      },
+      
          
       plugins: [
         new HtmlWebpackPlugin({
@@ -83,7 +103,19 @@ let webpackBaseConfig = () => {
           filename: "[name].css",
           chunkFilename: "[id].css"
           
-        })
+        }),
+        new NodePolyfillPlugin(),
+        new UglifyJsPlugin({
+          uglifyOptions: {
+            mangle: true,
+            warnings: false,
+            compress: {
+                pure_getters: true,
+                unsafe: true,
+                unsafe_comps: true,
+                //screw_ie8: true, // no such option in uglify
+            },
+          },})
       ],
       devServer: {
         historyApiFallback: true,

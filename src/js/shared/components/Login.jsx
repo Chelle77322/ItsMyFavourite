@@ -4,9 +4,9 @@ import {userActions} from "../Actions/userActions.js";
 
 
 import {Label, Container} from "reactstrap";
-import Form from "react-validation/build/form";
-import Input from "react-validation/build/input";
-import Button from "react-validation/build/button";
+//import Form from "react-validation/lib/form";
+//import Input from "react-validation/lib/input";
+//import Button from "react-validation/lib/button";
 
 
 export class Login extends Component {
@@ -129,7 +129,7 @@ export class Login extends Component {
         }
         const mapStateToProps = (state) => {
           return {
-            user: state.user.user
+            user: state.user
           }
         }
         export default connect (mapStateToProps)(Login);
