@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Outlet, BrowserRouter, Router, Route} from 'react-router-dom';
+import { Outlet, Routes, Route} from 'react-router-dom';
 import { createMemoryHistory } from "history";
 import Home from '../src/js/shared/Pages/Home.jsx';
 import Html from "../src/js/shared/Pages/LandingPage.jsx";
@@ -16,19 +16,17 @@ export default class App extends Component {
    render(){
     return (
         <>
-        <BrowserRouter>
-        <Router navigator={history}>
+        
+       <Routes>
         <Route element={<FavouriteLayout />}></Route>
         <Route path = "/landing" element = {<Html/>} />
-        <Route path ="/" element={<Home />} />
-        <Route path = "/pagemiss" element = {PageMiss} />
+        <Route path ="/*" element={<Home />} />
+        <Route path = "/pagemiss" element = {<PageMiss/>} />
     
-             
+        </Routes>     
              
                
-            </Router>
-            </BrowserRouter>
-            
+          
             </>  
     );
 }

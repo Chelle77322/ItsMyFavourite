@@ -1,8 +1,7 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-
-import {Route, Routes, Router}from 'react-router-dom'
+import {Route, Routes}from 'react-router-dom'
 import Login from "../Components/Login.jsx";
 
 import {default as Register} from "../Components/Register.jsx";
@@ -14,8 +13,10 @@ import "../../../styles/styles.scss";
 
 export default class Home extends Component{
    
-    componentsWillMount(){
+    render(){
+       
         return(
+           
             <section>
                 <Container fluid className = "imf-container" id="content">
                 
@@ -32,17 +33,19 @@ export default class Home extends Component{
                     </Col>
                     </Row>
                     <Row>
-                        <Router>
+                       
                         <Routes>
                             <Route exact component = {<Login/>} path = "/Login"/>
                             <Route exact component = {<Register/>} path = "/Register"/>
                         </Routes>
-                        </Router>
+                        
                     </Row>
                     </Container>
                     </Container>
             </section>
-        );
+       
+        )
+    }
     }
 
-}
+
