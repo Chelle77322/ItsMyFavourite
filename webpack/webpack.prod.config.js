@@ -1,6 +1,5 @@
-import {merge}  from 'webpack-merge';
+import { merge }  from 'webpack-merge';
 import TerserPlugin from 'terser-webpack-plugin';
-//import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import OptimizeCssAssetsPlugin from 'optimize-css-assets-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
@@ -14,15 +13,13 @@ console.log('directory-name', __dirname)
 let productionConfig = () => {
   return merge([
     {
-      mode: "production",
-      entry: path.join(__dirname, "src", "index.js"),
-      output: {
-        path: path.join(__dirname, "dist"),
-        filename: 'main.js',
+      mode: 'production',
+      entry: "./src/index.js",
+      output:{
+        path: path.resolve(__dirname, "dist",),
         publicPath: "/",
-      },
-      debug: true,
-      devtool: 'source-map',
+        main: "/dist/main.js",
+       },
       performance: {
         hints: process.env.NODE_ENV === 'production' ? "warning" : false
       },
@@ -32,12 +29,6 @@ let productionConfig = () => {
         minimizer: [new TerserPlugin()],
       },
       plugins: [
-
-        new HtmlWebpackPlugin({
-          
-       
-          
-        }),
         new MiniCssExtractPlugin(),
         new OptimizeCssAssetsPlugin(),
         new webpack.DefinePlugin({

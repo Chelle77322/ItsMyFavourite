@@ -1,4 +1,4 @@
-import {merge}  from 'webpack-merge';
+import { merge }  from 'webpack-merge';
 import  webpackBaseConfig  from './webpack.base.config.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -10,22 +10,17 @@ let developmentConfig = () => {
   return merge([
     {
      mode: 'development',
-     entry: path.join(__dirname, "src", "index.js"),
-      output: {
-        path: path.join(__dirname, "dist"),
-        filename: 'main.js',
-        publicPath: "/",
-       
-      }, 
-      debug: true,
-      devtool: 'source-map',
-      
+     entry:'./src/index.js',
+     output:{
+      path: path.resolve(__dirname, "dist",),
+      publicPath: "/",
+      main: "/dist/main.js",
+     },
      performance: {
       hints: process.env.NODE_ENV === 'development' ? "warning" : false
     },
-  
       plugins: [
-  new webpack.DefinePlugin({
+        new webpack.DefinePlugin({
           isDevelopment: true,
           'process.env': {
             NODE_ENV: JSON.stringify('development'),

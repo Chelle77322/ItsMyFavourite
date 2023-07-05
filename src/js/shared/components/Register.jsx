@@ -4,8 +4,8 @@ import {userActions} from "../Actions/userActions.js"
 //import Form from "react-bootstrap-validation/Form";
 //import Input from "react-bootstrap-validation/Input";
 //import Button from "react-bootstrap-validation/Button";
-import {isValidEmail} from "../Utils/index.js";
-import signUp from "../Features/signUp.jsx";
+//import {isValidEmail} from "../Utils/index.js";
+//import signUp from "../Features/signUp.jsx";
 
 export class Register extends Component {
     constructor(props) { 

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {connect}from 'react-redux';
 import {userActions} from "../Actions/userActions.js";
 
 
@@ -9,7 +8,7 @@ import {Label, Container} from "reactstrap";
 //import Button from "react-validation/lib/button";
 
 
-export class Login extends Component {
+export  default class Login extends Component {
     constructor (props){ 
         super(props);
         this.state = {
@@ -132,6 +131,6 @@ export class Login extends Component {
             user: state.user
           }
         }
-        export default connect (mapStateToProps)(Login);
+       
     
     

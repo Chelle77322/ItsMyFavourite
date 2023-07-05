@@ -1,13 +1,13 @@
 import { merge }  from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import UglifyJsPlugin from "uglifyjs-webpack-plugin"
-import NodePolyfillPlugin from "node-polyfill-webpack-plugin"
+//import UglifyJsPlugin from "uglifyjs-webpack-plugin"
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import path from 'path';
+import NodePolyfillPlugin from "node-polyfill-webpack-plugin"
+import path from "path";
 import { fileURLToPath } from 'url';
-import  webpack from 'webpack';
+import  webpack  from 'webpack';
 
-const __filename = fileURLToPath(import.meta.url);
+ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 console.log('directory-name', __dirname);
 
@@ -19,27 +19,27 @@ let webpackBaseConfig = () => {
         "fs": "commonjs fs",
         "net": "commonjs net",
       },
+
       mode: 'none',
       performance: {
         hints: false,
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000
+        maxEntrypointSize: 5600000,
+        maxAssetSize: 5600000
     },
       module: {
         rules: [
-          
           {
             test: /\.js$/,
             exclude: /node_modules/,
             use: {
-              loader: "babel-loader",
+              loader: 'babel-loader',
             }
           },
           {
           test: /\.jsx$/,
             exclude: /node_modules/,
             use: {
-              loader: "babel-loader",
+              loader: 'babel-loader',
             }
           },
           {
@@ -70,57 +70,31 @@ let webpackBaseConfig = () => {
           {
             test: /\.(jpg|png)$/,
             use: {
-              loader: 'url-loader',
+             loader: 'url-loader',
             },
           },
-          
-          {  test: /\.html$/i,
-            loader: "html-loader",
-            options: {
-              // Disables attributes processing
-              sources: false,
-            },
-          }
+        
         ],
       },
-      resolve:{
-        fallback:{
-          "async_hooks": false
-        }
-      },
-      
-         
       plugins: [
         new HtmlWebpackPlugin({
           template: './public/index.html',
           filename: 'index.html'
         }),
-        new webpack.DefinePlugin({
-       'process.platform': JSON.stringify(process.platform)
-        }),
       
-      new MiniCssExtractPlugin({
-          filename: "[name].css",
-          chunkFilename: "[id].css"
-          
-        }),
-        new NodePolyfillPlugin(),
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            mangle: true,
-            warnings: false,
-            compress: {
-                pure_getters: true,
-                unsafe: true,
-                unsafe_comps: true,
-                //screw_ie8: true, // no such option in uglify
-            },
-          },})
+      new webpack.DefinePlugin({
+    'process.platform': JSON.stringify(process.platform)
+  }),
+    new NodePolyfillPlugin(),
+    new MiniCssExtractPlugin({ })
       ],
       devServer: {
         historyApiFallback: true,
-     
-    },
+        static:{
+          directory: path.join(__dirname, 'public'),
+        }
+        
+      }
   }]);
     };
    export default webpackBaseConfig();

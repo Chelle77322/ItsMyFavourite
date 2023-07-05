@@ -1,22 +1,35 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
-
-import {Home} from '../src/js/shared/Pages/Home.jsx';
+import React, {Component} from 'react';
+import { Outlet, BrowserRouter, Router, Route} from 'react-router-dom';
+import { createMemoryHistory } from "history";
+import Home from '../src/js/shared/Pages/Home.jsx';
+import Html from "../src/js/shared/Pages/LandingPage.jsx";
 import  {PageMiss} from '../src/js/shared/Pages/PageMiss.jsx';
 
-export function App() { 
+const FavouriteLayout = () => (
+    <FavouriteState>
+       <Outlet /> 
+    </FavouriteState>
+);
+const history = createMemoryHistory()
+export default class App extends Component { 
+    ;
+   render(){
     return (
-        <div className = "root">
-            <Router>
-                <Routes>
-                    <Route Component={Home} path = "/home"/>
-                    <Route Component={PageMiss} path = "/pagemiss"/>
-                </Routes>
+        <>
+        <BrowserRouter>
+        <Router navigator={history}>
+        <Route element={<FavouriteLayout />}></Route>
+        <Route path = "/landing" element = {<Html/>} />
+        <Route path ="/" element={<Home />} />
+        <Route path = "/pagemiss" element = {PageMiss} />
+    
+             
+             
+               
             </Router>
+            </BrowserRouter>
             
-        </div>
+            </>  
     );
 }
-
-export default App
+}

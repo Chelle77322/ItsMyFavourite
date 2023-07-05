@@ -1,8 +1,11 @@
-
+import path from "path";
+import express from "express";
 import userRoutes from "./user.routes.js"
 
-import {Routes as Router} from 'react-router-dom';
-const router = Router;
-router.use("./user.routes", userRoutes);
+const router = express.Router();
+router.use("/user.routes", userRoutes);
+router.use((request, result)=> {
+    result.sendFile(path.join__dirname, "dist","index.html");
+});
 
 export default router;

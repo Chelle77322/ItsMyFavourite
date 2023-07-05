@@ -1,6 +1,6 @@
-import {Routes as Router}from 'react-router-dom';
-import {authenticate,getById, register, _delete,update, getAll } from "../../js/shared/Controllers/user.controller.js";
-const router = Router;
+import express from "express";
+import {authenticate, getById, register, _delete, update, getAll } from "../../js/shared/Controllers/user.controller.js";
+const router = express.Router();
 
 router.use((request, result, next)=> {
     result.header(
@@ -10,12 +10,14 @@ router.use((request, result, next)=> {
     );
     next();
 });
-router.get(`/all`, getAll);
-router.get(`/authenticate`,authenticate);
 
-router.get(`/:id`,getById);
+router.get("/all", getAll);
+router.get("/authenticate",authenticate);
 
-router.get(`/register`, register);
-router.get(`/update`, update);
-router.get(`_delete`, _delete);
+router.get("/:id",getById);
+
+router.get("/register", register);
+router.get("/update", update);
+router.get("_delete", _delete);
+
 export default router;

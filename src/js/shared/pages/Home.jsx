@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
 
 import {Route, Routes, Router}from 'react-router-dom'
-import {default as Login} from "../Components/Login.jsx";
+import Login from "../Components/Login.jsx";
 
 import {default as Register} from "../Components/Register.jsx";
 
@@ -12,7 +12,7 @@ import "../../../styles/styles.scss";
 
 
 
-export class Home extends Component{
+export default class Home extends Component{
    
     componentsWillMount(){
         return(
@@ -24,7 +24,7 @@ export class Home extends Component{
                     <Col>
                     <div className = "home-header">
                         <h1 style={{ paddingBottom:5 }}
-                        className="heading"></h1>
+                        className="heading"> It's My Favourite</h1>
                     </div>
                     <div style = {{padding: 50, textAlign: "right"}}>
 
@@ -34,8 +34,8 @@ export class Home extends Component{
                     <Row>
                         <Router>
                         <Routes>
-                            <Route exact component = {Login} path = "/Login"/>
-                            <Route exact component = {Register} path = "/Register"/>
+                            <Route exact component = {<Login/>} path = "/Login"/>
+                            <Route exact component = {<Register/>} path = "/Register"/>
                         </Routes>
                         </Router>
                     </Row>
@@ -44,4 +44,5 @@ export class Home extends Component{
             </section>
         );
     }
+
 }
