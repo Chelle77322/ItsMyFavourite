@@ -1,15 +1,16 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import {userActions} from "../Actions/userActions.js"
-//import Form from "react-bootstrap-validation/Form";
-//import Input from "react-bootstrap-validation/Input";
-//import Button from "react-bootstrap-validation/Button";
-//import {isValidEmail} from "../Utils/index.js";
+import Form from "react-validation";
+import Input from "react-validation";
+import Button from "react-validation";
+import {isValidEmail} from "../Utils/index.js";
 //import signUp from "../Features/signUp.jsx";
 
 export class Register extends Component {
     constructor(props) { 
         super(props);
+        this.state = {status:true};
         this.state = {
             user:{
             id: '',
@@ -31,14 +32,14 @@ export class Register extends Component {
         submitted: false,
         }
     }
-    componentsDidMount() {
-        if(this.props.user){
-            this.setState({user: this.props.user});
-        if(this.props.user.password){
-            this.resetErrorMessage();
-        }
-        }
-    }
+    //componentsDidMount() {
+    //    if(this.props.user){
+      //      this.setState({user: this.props.user});
+        //if(this.props.user.password){
+          //  this.resetErrorMessage();
+        //}
+       // }
+    //}
     makeChange = (event) => {
         let password = "";
         const {name, value}= event.target;
@@ -115,18 +116,20 @@ resetErrorMessage = () => {
     this.setState({errors});
 
 }
-hydrate() {
-    const {id, first_name, last_name, password} = this.state.user;
+render() {
+    const user = {id, first_name, last_name, password} = this.state.user;
     
-    const {submitted} = this.state.user;
+    const  {submitted} = this.state.user;
     
     
     return (
+      
       <div className = "col-md-12">
         <div className="card card-container">
           <img src = "//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="profile-img" className ="profile-img-card"/>
           <Form >
               <div>
+              <p> Here is the Register Page</p>
                 <div className = "form-group">
                   <label htmlFor="id">ID</label>
                   <Input type = "text"
@@ -175,11 +178,14 @@ hydrate() {
     );
                   }
                 }
-                const mapStateToProps = (state) => {
+                const mapStateToProps = (state, user) => {
                   return {
                     user: state.user.user
                   }
                 }
+                //const mapStateToProps = (state) => ({
+                  //  user: state.user.user
+                //})
                 
                 export default connect(mapStateToProps)(Register);
                 

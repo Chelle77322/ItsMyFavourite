@@ -4,6 +4,7 @@
         "compat",
         "Dualstack",
         "Favourite",
+        "navrow",
         "ruleset",
         "serde",
         "Serde",

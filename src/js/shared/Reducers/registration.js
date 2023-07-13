@@ -1,17 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { userConstants } from "../Constants/user-constants.js";
-import {useState} from "react";
-
 
 function registration(users = {id:[{}]},action)
 {
-    let initialState = {
-        loggedIn: false,
-        users:{id:[{}]}
-    }
-    useState(() => initialState);
-    
-    switch (action.type){
+   switch (action.type){
         case userConstants.REGISTER_REQUEST:
             return { registering: true};
         case userConstants.REGISTER_SUCCESS: 

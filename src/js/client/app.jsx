@@ -8,7 +8,7 @@ function App() {
            
             <div>
            
-            <Route exact path = "/" component = {Home}/>
+            <Route path = "/" element = {Home}/>
                 
             </div>
             

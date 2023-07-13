@@ -76,10 +76,10 @@ select {
 }
 body {
   display: block;
-  min-height: 50vh;
+  min-height: 200px;
   font-family: "Pathway Gothic One", sans-serif;
   min-width: fit-content;
-  background-color: #1d7565;
+  background-color: #ffffff;
 }
 
 main,

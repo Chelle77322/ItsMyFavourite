@@ -1,13 +1,11 @@
-/* eslint-disable no-empty-pattern */
-/* eslint-disable no-undef */
-/* eslint-disable no-use-before-define */
 import { userConstants } from '../Constants/user-constants.js';
-import { useEffect } from 'react';
+import { useEffect, useState} from 'react';
 
 
 function auth () {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const {users = {} || undefined, useState} = useState({...initialState}||{users: [] = []});
+
+
+const {users = {} || useState} = useState({...initialState}||{users: [] = []});
  
 const windowGlobal = typeof window !== 'undefined' && window === windowGlobal.localStorage('user');
 

@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import { Outlet, Routes, Route} from 'react-router-dom';
-import { createMemoryHistory } from "history";
 import Home from '../src/js/shared/Pages/Home.jsx';
 import Html from "../src/js/shared/Pages/LandingPage.jsx";
 import  {PageMiss} from '../src/js/shared/Pages/PageMiss.jsx';
@@ -10,9 +9,9 @@ const FavouriteLayout = () => (
        <Outlet /> 
     </FavouriteState>
 );
-const history = createMemoryHistory()
+
 export default class App extends Component { 
-    ;
+    
    render(){
     return (
         <>

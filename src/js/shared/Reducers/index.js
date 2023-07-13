@@ -1,23 +1,22 @@
-
-import {combineReducers } from "redux";
+//import {combineReducers } from "redux";
+//import {useState} from "react";
 
 import message from './message.js';
 import auth from "./auth.js"
 import user from "./user-reducer.js";
 import registration from "./registration.js";
 
-let initialState = {
-    loggedIn: false,
-    users:{id:[{}]} || {}
-}
+var initialState = {loggedIn: null, users: null}
 
-const rootReducer = combineReducers({
+export default function rootReducer () {
+
+
    message,
     auth,
     user,
     registration
-});
+ 
+    
+};
+console.log(initialState)
 
-
-
-export default rootReducer(initialState);

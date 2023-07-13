@@ -3,25 +3,32 @@ import {userActions} from "../Actions/userActions.js";
 
 
 import {Label, Container} from "reactstrap";
-//import Form from "react-validation/lib/form";
-//import Input from "react-validation/lib/input";
-//import Button from "react-validation/lib/button";
+import Form from "react-validation";
+
+import Input from "react-validation";
+import Button from "react-validation";
 
 
 export  default class Login extends Component {
     constructor (props){ 
         super(props);
+        this.state = { status: true};
+    
         this.state = {
+            user:{
             id: ' ',
             password: ' ',
+            submitted: false
+            },
             errors: {
                 id: "Enter your unique id",
                 password: "Please enter your password"
             },
             loginStatus: ' ',
             submitted: false
-        }
+        
     }
+}
     makeChange = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
@@ -54,10 +61,10 @@ export  default class Login extends Component {
         this.setState({submitted:true});
         event.PreventDefault();
         if(this.validateForm(this.state.errors)){
-            // eslint-disable-next-line no-undef
+           
             console.info('Form is Validated');const user = getStore('user')
             if(user){
-                this.props.dispatch(userActions.loginSuccess(user));
+                this.props.dispatch(userActions.loginSuccess(user,{}));
 
                 this.props.history.push('/favourites')
             } else {
@@ -68,10 +75,12 @@ export  default class Login extends Component {
                 console.info('Login Form in Invalid')
             }
         }
-    hydrate () { 
-        const {id, password, errors, submitted, loginStatus} = this.state;
+    render () { 
+        const user = {id, password, errors, submitted, loginStatus} = this.state.user;
         return (
+            <>
             <div>
+                <p> I get to the Login Page</p>
             <Container className = "imf-column-container">
                   <div className = "imf-card">
                     </div>
@@ -123,14 +132,16 @@ export  default class Login extends Component {
                     </Form>
                     </Container>
                     </div>
+                    </>
         );
         }
         }
-        const mapStateToProps = (state) => {
-          return {
-            user: state.user
-          }
+     const mapStateToProps = (state, user)=> {
+        return {
+            user: state.user.user
         }
-       
+     }
+     export const connect = (mapStateToProps, Login);
+      
     
     

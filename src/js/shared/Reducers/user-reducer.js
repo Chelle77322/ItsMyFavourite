@@ -6,7 +6,7 @@ import {useState} from "react"
 function user(users = initialState([{}]), action){
     let initialState = {
         loggedIn: false,
-        users:{id:[{}]}
+        users:null
     }
     useState(() => initialState);
     switch (action.type) {
