@@ -7,5 +7,5 @@ router.use("/user.routes", userRoutes);
 router.use((request, result)=> {
     result.sendFile(path.join__dirname, "dist","index.html");
 });
-
+console.log(router);
 export default router;

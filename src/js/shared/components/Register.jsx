@@ -1,49 +1,49 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import {connect}  from 'react-redux';
 import {userActions} from "../Actions/userActions.js"
-import Form from "react-validation";
-import Input from "react-validation";
-import Button from "react-validation";
-import {isValidEmail} from "../Utils/index.js";
+import Form from "react-inputs-validation";
+import Input from "react-inputs-validation";
+import Button from "react-inputs-validation";
+//import {isValidEmail} from "../Utils/index.js";
 //import signUp from "../Features/signUp.jsx";
 
-export class Register extends Component {
+export default class Register extends Component {
     constructor(props) { 
         super(props);
         this.state = {status:true};
         this.state = {
-            user:{
-            id: '',
-            first_name: '',
-            last_name: '',
+            users:{
+             _id: ' ',
+            firstName: '',
+            lastName: '',
             password: '',
             favourites: [],
-            submitted: false
             },
+           
         errors: {
-            user: {
-                id: "Enter your unique identifier here",
-                first_name: "Enter your first name here",
-                last_name: "Enter your last name here",
+            users: {
+                _id: "Enter your unique identifier here",
+                firstName: "Enter your first name here",
+                lastName: "Enter your last name here",
                 password: " Enter a unique password of at least 9 alpha numeric characters"
             }
         }, 
-        validForm: false, 
+        validForm: '', 
         submitted: false,
         }
     }
-    //componentsDidMount() {
-    //    if(this.props.user){
-      //      this.setState({user: this.props.user});
-        //if(this.props.user.password){
-          //  this.resetErrorMessage();
-        //}
-       // }
-    //}
+    componentsDidMount() {
+        if(this.props.user){
+            this.setState({user: this.props.user_id});
+        if(this.props.user.password){
+            this.resetErrorMessage();
+        }
+        }
+    }
     makeChange = (event) => {
-        let password = "";
+        let password = " ";
         const {name, value}= event.target;
-        const user = this.state.user;
+        const user = this.state.users;
 
         if (name ==="password") { 
             password = (value);
@@ -59,15 +59,15 @@ export class Register extends Component {
         const {name, value} = event.target;
         let errors = this.state.errors;
         switch(name){
-            case 'id':
-                errors.user.id = value.length <1?
-                'Enter unique id': ' ';
+           case '_id':
+                errors.users._id = value.length <1?
+               'Enter unique id': ' ';
             break;
-            case 'first_name': errors.user.first_name = value <1? "Enter your first name": " ";
+            case 'first_name': errors.users.firstName = value <1? "Enter your first name": " ";
             break;
-            case 'last_name': errors.user.last_name = value <1 ? "Enter your last name": " ";
+            case 'last_name': errors.users.lastName = value <1 ? "Enter your last name": " ";
             break;
-            case "password": errors.user.password = value <1 ? " Enter a password": " ";
+            case "password": errors.users.password = value <1 ? " Enter a password": " ";
             break;
             default:
             break;
@@ -76,7 +76,7 @@ export class Register extends Component {
     }
     checkChange = (event) => {
         const {name, checked} = event.target;
-        const user = this.state.user;
+        const user = this.state.users;
         user[name] = checked;
         this.setState({user});
     }
@@ -91,10 +91,11 @@ validateForm = (errors)=> {
 }
 //** SUBMITS THE DATA TO THE STORE TO BE KEPT AND RETRIEVED WHEN REQUIRED */
 submitForm = async(event) => {
+ const submitted = false;
     this.setState({submitted: true});
     this.props.dispatch(userActions.formSubmitionStatus(true));
-    const user = this.state.user;
-    if(user && this.props.user.user)
+    const user = this.state.users;
+    if(user && this.props.users.user)
     {
         console.info('Valid Form')
         this.props.dispatch(userActions.registerSuccess(user));
@@ -109,66 +110,64 @@ submitForm = async(event) => {
 resetErrorMessage = () => {
     let errors = this.state.errors;
     // eslint-disable-next-line no-unused-expressions
-    errors.user.id = " ";
-    errors.user.first_name = " ";
-    errors.user.last_name = " ";
-    errors.user.password = " ";
+   errors.users._id = " ";
+    errors.users.firstName = " ";
+    errors.users.lastName = " ";
+    errors.users.password = " ";
     this.setState({errors});
 
 }
 render() {
-    const user = {id, first_name, last_name, password} = this.state.user;
-    
-    const  {submitted} = this.state.user;
+    const {_id, firstName, lastName, password, submitted} = this.state
     
     
-    return (
+  return (
       
       <div className = "col-md-12">
         <div className="card card-container">
           <img src = "//ssl.gstatic.com/accounts/ui/avatar_2x.png" alt="profile-img" className ="profile-img-card"/>
           <Form >
               <div>
-              <p> Here is the Register Page</p>
-                <div className = "form-group">
+             
+              <div className = "form-group">
                   <label htmlFor="id">ID</label>
                   <Input type = "text"
                   className = "form-control"
-                  value = {id}
-                  name="id"onChange={(e)=>{this.makeChange(e)}}
+                  value = {_id}
+                  name="id"onChange={(event)=>{this.makeChange(event)}}
                  />
                 </div>
             
                 <div className ="form-group">
                   <label htmlFor="first_name"> First Name</label>
                   <Input type = "text"
-                  value = {first_name}
-                  name = "first_name"onChange={(e)=>{this.makeChange(e)}}
+                  value = {firstName}
+                  name = "first_name"onChange={(event)=>{this.makeChange(event)}}
                   className = "form-control"
                   placeholder = "First Name"/>
-                  {submitted && this.state.errors.user.first_name.length > 0 && <span className = 'error'>{this.state.errors.user.first_name}</span>}
+                  {submitted && this.state.errors.users.firstName.length > 0 && <span className = 'error'>{this.state.errors.users.firstName}</span>}
                 </div>
                 <div className ="form-group">
                   <label htmlFor="last_name"> Last Name</label>
                   <Input type = "text"
-                  value = {last_name}
-                  name = "last_name"onChange={(e)=>{this.makeChange(e)}}
+                  value = {lastName}
+                  name = "last_name"onChange={(event)=>{this.makeChange(event)}}
                   className = "form-control"
                   placeholder = "Last Name"/>
-                  {submitted && this.state.errors.user.last_name.length > 0 && <span className = 'error'>{this.state.errors.user.last_name}</span>}
+                  {submitted && this.state.errors.users.lastName.length > 0 && <span className = 'error'>{this.state.errors.users.lastName}</span>}
                 </div>
                 <div className = "form-group">
                   <label htmlFor ="password"> Password</label>
                   <Input type = "password"
                   value={password}
-                  name="password" onChange={(e)=>{this.makeChange(e)}}
+                  name="password" onChange={(event)=>{this.makeChange(event)}}
                   className="form-control"
                   placeholder= "Password Required"/>
-                 {submitted && this.state.errors.user.password.length >0 && < span className =" error"> {this.state.errors.user.password}</span>}
+                 {submitted && this.state.errors.users.password.length >0 && < span className =" error"> {this.state.errors.users.password}</span>}
                 </div>
                 <div className="form-group">
                   <Button type = "button" className = "btn btn-primary btn-block"
-                  onClick={this.submitForm}>Register</Button>
+                  onClick={this.registerForm}>Register</Button>
                   </div>
                 </div>  
             
@@ -180,14 +179,12 @@ render() {
                 }
                 const mapStateToProps = (state, user) => {
                   return {
-                    user: state.user.user
+                user,
+                  state
                   }
                 }
-                //const mapStateToProps = (state) => ({
-                  //  user: state.user.user
-                //})
-                
-                export default connect(mapStateToProps)(Register);
+       
+   connect(mapStateToProps)(Register);
                 
                   
                   

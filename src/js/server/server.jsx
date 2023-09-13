@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === "production"){
 use(routes);
 console.log(routes);
 const app = express();
+app.use(express.static(path.join(__dirname,'client','build')) )
 
   connect(process.env.MONGODB_URI || "mongodb: //localhost/itsmyfavourite/")
 

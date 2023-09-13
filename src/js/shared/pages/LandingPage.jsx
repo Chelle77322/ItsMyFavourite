@@ -1,21 +1,20 @@
 import React, {Component} from 'react';
-
+import {Container, Row, Col} from 'react-bootstrap';
+import "../../../styles/styles.scss";
 export default class Html extends Component { 
     render(){
   return (
-    <html>
-      <head>
-        <meta charSet="UTF-8" />
-        <title>Welcome to It's My Favourite 🦘 </title>
-      </head>
-      <body>
-        <div id="root">
-<p> I get here</p>
-        </div>
-        
-      </body>
+    
+       
 
-    </html>
+<Container>
+  <div  id = "imf-column-container">
+  <p>I am 🛠 </p></div>
+</Container>
+
+    
+        
+     
   )
           }  
 

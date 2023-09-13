@@ -6,8 +6,10 @@ import store from "./js/shared/Store/store.js"
 import App from "./App.jsx";
 
 const rootElement = document.getElementById("root");
+
 if (rootElement){
         const root = createRoot(rootElement);
+        
         root.render(
         <Router>
                 <Provider store = {store}>

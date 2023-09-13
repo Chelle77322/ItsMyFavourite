@@ -12,11 +12,11 @@ export const userActions = {
     delete: _delete
 };
 
-function login(id, password){
+function login(_id, password){
     return dispatch => {
-        dispatch(request({ id}));
+        dispatch(request({_id}));
 
-        userService.login(id, password).then(user => {
+        userService.login(_id, password).then(user => {
             dispatch(success(user));
             
         },
@@ -69,19 +69,19 @@ function getAll() {
     function success(users) { return { type: userConstants.GETALL_SUCCESS, users } }
     function failure(error) { return { type: userConstants.GETALL_FAILURE, error } }
 }
-function _delete(id) {
+function _delete(_id) {
     return dispatch => {
-        dispatch(request(id));
+        dispatch(request(_id));
 
-        userService.delete(id)
+        userService.delete(_id)
             .then(
-                user => dispatch(success(id)),
-                error => dispatch(failure(id, error.toString()))
+                user => dispatch(success(_id)),
+                error => dispatch(failure(_id, error.toString()))
             );
     };
 
-    function request(id) { return { type: userConstants.DELETE_REQUEST, id } }
-    function success(id) { return { type: userConstants.DELETE_SUCCESS, id } }
+    function request(_id) { return { type: userConstants.DELETE_REQUEST, _id } }
+    function success(_id) { return { type: userConstants.DELETE_SUCCESS, _id } }
     function failure(id, error) { return { type: userConstants.DELETE_FAILURE, id, error } }
 }
 

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { userConstants } from "../Constants/user-constants.js";
 
-function registration(users = {id:[{}]},action)
+function registration(users = {_id:[{}]},action)
 {
    switch (action.type){
         case userConstants.REGISTER_REQUEST:

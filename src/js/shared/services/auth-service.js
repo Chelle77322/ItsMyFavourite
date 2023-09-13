@@ -8,8 +8,8 @@ axios.create({
 });
 
 export class AuthService {
-    async login(id, password){
-        const response = await axios.post(`${GOOGLE_API_URL}signIn`, {id, password});
+    async login(_id, password){
+        const response = await axios.post(`${GOOGLE_API_URL}signIn`, {_id, password});
         if(response.data.accessToken)
         {localStorage.setItem("user", JSON.stringify(response.data));
     }
@@ -20,9 +20,9 @@ export class AuthService {
         localStorage.removeItem("user");
     }
 
-    register(id, first_name, last_name, password, favourites){
+    register(_id, firstName, lastName, password, favourites){
         return axios.Axios(GOOGLE_API_URL  + "signUp",{
-            id, first_name, last_name, password, favourites
+            _id, firstName, lastName, password, favourites
         });
     }
 }

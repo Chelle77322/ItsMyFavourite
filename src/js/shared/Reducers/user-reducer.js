@@ -22,18 +22,18 @@ function user(users = initialState([{}]), action){
         case userConstants.DELETE_REQUEST: return {
             ...users,
             items: users.items.map(user =>
-                user.id === action.id ? 
+                user._id === action._id ? 
                 { ...users, deleting: true}: users )
         };
         case userConstants.DELETE_SUCCESS:
         return {
-            items: users.items.filter(user => user.id !== action.id)
+            items: users.items.filter(user => user._id !== action._id)
         };
         case userConstants.DELETE_FAILURE:
     return {
         ...users,
         items: users.items.map(user => {
-            if(user.id === action.id){
+            if(user._id === action._id){
                 const { deleting, ...userCopy} = users;
                 return { ...userCopy, deleteError: action.error};
             }

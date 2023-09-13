@@ -26,7 +26,7 @@ try {
       require('localstorage-polyfill');
   }
     localStorage.setItem('token', data.token);
-    return {...data,id: id};
+    return {...data,_id: _id};
   }else {
     return thunkAPI.rejectWithValue(data);
   }
@@ -38,7 +38,7 @@ try {
 
 const loginUser = createAsyncThunk(
   'users/login',
-  async({id, first_name, last_name,password}, thunkAPI) => {
+  async({_id, firstName, lastName,password}, thunkAPI) => {
     try{
       const response = await fetch(
         'https://localhost:8080/auth',
@@ -49,8 +49,8 @@ const loginUser = createAsyncThunk(
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
-            id,
-            first_name, last_name,
+            _id,
+            firstName, lastName,
             password,
           }),
         }
@@ -103,7 +103,7 @@ async ({token}, thunkAPI) => {
 const userSlice = createSlice({
   name: 'user',
   initialState: {
-    id: '',
+    _id: '',
     firstName: '',
     lastName: '',
     password: '',
@@ -125,9 +125,9 @@ const userSlice = createSlice({
       console.log('payload', payload);
       state.isFetching = false;
       state.isSuccess = true;
-      state.id = payload.user.id;
-      state.first_name = payload.user.first_name;
-      state.last_name = payload.user.last_name;
+      state._id = payload.user._id;
+      state.firstName = payload.user.firstName;
+      state.lastName = payload.user.lastName;
     },
     [registerUser.pending]: (state) => {
       state.isFetching = true;
@@ -138,7 +138,7 @@ const userSlice = createSlice({
       state.errorMessage = payload.message;
     },
     [loginUser.fulfilled]: (state,{payload}) => {
-      state.id = payload.id;
+      state._id = payload._id;
       state.isFetching = false;
       state.isSuccess = true;
       return state;
@@ -159,8 +159,8 @@ const userSlice = createSlice({
       state.isFetching = false;
       state.isSuccess = true;
       
-      state.id = payload.id;
-      state.first_name = payload.first_name;
+      state._id = payload._id;
+      state.firstName = payload.firstName;
     },
     [fetchUserByToken.rejected]: (state) => {
       console.log(fetchUserByToken);

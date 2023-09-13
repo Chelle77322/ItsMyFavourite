@@ -31,12 +31,11 @@ export function configureFakeBackend() {
             // route functions
 
             function authenticate() {
-                const { username, password } = body;
-                const user = users.find(x => x.username === username && x.password === password);
+                const {_id, password } = body;
+                const user = users.find(x => x._id === _id && x.password === password);
                 if (!user) return error('Username or password is incorrect');
                 return ok({
-                    id: user.id,
-                    username: user.username,
+                    _id: user._id,
                     firstName: user.firstName,
                     lastName: user.lastName,
                     token: 'fake-jwt-token'
@@ -46,12 +45,12 @@ export function configureFakeBackend() {
             function register() {
                 const user = body;
     
-                if (users.find(x => x.username === user.username)) {
-                    return error(`Username  ${user.username} is already taken`);
+                if (users.find(x => x._id === user._id)) {
+                    return error(`Username  ${user._id} is already taken`);
                 }
     
                 // assign user id and a few other properties then save
-                user.id = users.length ? Math.max(...users.map(x => x.id)) + 1 : 1;
+                user._id = users.length ? Math.max(...users.map(x => x._id)) + 1 : 1;
                 users.push(user);
                 localStorage.setItem('users', JSON.stringify(users));
 
@@ -67,7 +66,7 @@ export function configureFakeBackend() {
             function deleteUser() {
                 if (!isLoggedIn()) return unauthorized();
     
-                users = users.filter(x => x.id !== idFromUrl());
+                users = users.filter(x => x._id !== idFromUrl());
                 localStorage.setItem('users', JSON.stringify(users));
                 return ok();
             }

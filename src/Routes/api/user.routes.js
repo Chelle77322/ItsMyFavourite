@@ -14,7 +14,7 @@ router.use((request, result, next)=> {
 router.get("/all", getAll);
 router.get("/authenticate",authenticate);
 
-router.get("/:id",getById);
+router.get("/:_id",getById);
 
 router.get("/register", register);
 router.get("/update", update);

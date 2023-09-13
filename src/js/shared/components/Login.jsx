@@ -1,34 +1,45 @@
 import React, {Component} from 'react';
+import {connect}  from "react-redux";
 import {userActions} from "../Actions/userActions.js";
 
 
-import {Label, Container} from "reactstrap";
-import Form from "react-validation";
+import {Container, Row, Col} from 'react-bootstrap';
+import Form from "react-inputs-validation";
 
-import Input from "react-validation";
-import Button from "react-validation";
+import Input from "react-inputs-validation";
+import Button from "react-inputs-validation";
+import Label from "react-inputs-validation";
+import "../../../styles/styles.scss";
 
-
-export  default class Login extends Component {
+export   class Login extends Component {
     constructor (props){ 
         super(props);
-        this.state = { status: true};
-    
-        this.state = {
-            user:{
-            id: ' ',
-            password: ' ',
+       this.state = {status:true};
+         this.state = {
+            users:{
+             _id: ' ',
+            password: '',
             submitted: false
             },
-            errors: {
-                id: "Enter your unique id",
+          errors: {
+            users:{
+                _id: "Enter your unique id",
                 password: "Please enter your password"
             },
-            loginStatus: ' ',
+        },
+            loginStatus:'',
             submitted: false
-        
-    }
-}
+        }
+        }
+        componentsDidMount() {
+            
+            if(this.props.user){
+                this.setState({user: this.props.user_id});
+            if(this.props.user.password){
+                this.resetErrorMessage();
+            }
+            }
+        }
     makeChange = (event) => {
         const {name, value} = event.target;
         this.setState({[name]: value});
@@ -38,8 +49,8 @@ export  default class Login extends Component {
         const {name, value} = event.target;
         let errors = this.state.errors;
         switch(name){
-            case 'id':
-                errors.id = value.length < 1 ? "Enter your unique identifier here": ' ';
+            case '_id':
+                errors._id = value.length < 1 ? "Enter your unique identifier here": ' ';
                 break;
             case 'password':
                 errors.password = value.length < 1 ? "Enter your password here": ' ';
@@ -72,28 +83,33 @@ export  default class Login extends Component {
             } 
             } else {
                 this.props.dispatch(userActions.loginFail);
-                console.info('Login Form in Invalid')
+                console.log('Login Form in Invalid')
             }
         }
     render () { 
-        const user = {id, password, errors, submitted, loginStatus} = this.state.user;
-        return (
-            <>
-            <div>
-                <p> I get to the Login Page</p>
-            <Container className = "imf-column-container">
+
+        const {_id, password, errors, submitted, loginStatus} = this.state
+     
+        return (   
+          
+             
+               
+            <Container  fluid className = "imf-container" id = "Login">
+                <p>I get to the Login page 👯‍♂️ </p>
+                <Row>
+                <Col>
                   <div className = "imf-card">
                     </div>
                     <Form name = "loginForm">
                       <div className = 'form-group'>
                         <Label htmlFor = "id">ID</Label>
                         <Input type = "text"
-                        value = {id}
+                        value = {_id}
                         name = "id" onChange={(event) =>{this.makeChange(event)}}
                         className = "form-control"
                         id = "id"
                         placeholder = "ID"/>
-                        {submitted && errors.id.length >0 && <span className = "error">{errors.id}</span>}
+                        {submitted && errors._id.length >0 && <span className = "error">{errors._id}</span>}
                       </div>
         
                       <div className = "form-group">
@@ -130,18 +146,18 @@ export  default class Login extends Component {
                     </div>
                         
                     </Form>
+                    </Col>
+                    </Row>
                     </Container>
-                    </div>
-                    </>
+                                 
+                             
         );
         }
-        }
-     const mapStateToProps = (state, user)=> {
-        return {
-            user: state.user.user
-        }
-     }
-     export const connect = (mapStateToProps, Login);
-      
-    
-    
+}    
+const mapStateToProps = (state) => {
+    return {
+      user: state.user.user
+    }
+  }
+  export default connect (mapStateToProps)(Login);
+

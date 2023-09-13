@@ -3,7 +3,7 @@
   "name": "Its My Favourite: Keep all your favourite shops, restaurants and places",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "./favicon.png",
       "sizes": "500x500",
       "type": "image/png"
     },

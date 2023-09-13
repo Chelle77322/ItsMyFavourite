@@ -10,7 +10,7 @@ export default  {
     },
     //Saves the search to the mongodb associated by booking_id
     SavePlace: function(placesInfo) {
-        return axios.post(`/${placesInfo.id}`);
+        return axios.post(`/${placesInfo._id}`);
     },
     //Gets the places you have saved from the mongodb
     getPlaces: async function() {
@@ -22,7 +22,7 @@ export default  {
         }
     },
     //This gets all places associated with booking_id of a registered user
-    getPlace : function(user)
+    getPlace : function()
     {
         return axios.get("./api/GooglePlace" + URLSearchParams);
     },

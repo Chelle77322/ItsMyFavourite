@@ -1,8 +1,8 @@
 import {Types} from '../Constants/user-constants.js';
 import {AuthService} from "../Services/auth-service.js";
 
-export const authActions = (id, firstName, lastName, password) => (dispatch) => {
-    return AuthService.register(id, firstName, lastName, password).then
+export const authActions = (_id, firstName, lastName, password) => (dispatch) => {
+    return AuthService.register(_id, firstName, lastName, password).then
     (
         (response) => {
             dispatch({
@@ -31,8 +31,8 @@ export const authActions = (id, firstName, lastName, password) => (dispatch) => 
     }    
     );
 };
-export const login = (id, password) => (dispatch)=> {
-    return AuthService.login(id, password).then (
+export const login = (_id, password) => (dispatch)=> {
+    return AuthService.login(_id, password).then (
         (data) => {
             dispatch({
                 type: Types.LOGIN_SUCCESS, payload: {user:data},

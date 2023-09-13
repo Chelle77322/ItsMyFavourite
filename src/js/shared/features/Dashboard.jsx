@@ -17,7 +17,7 @@ const Dashboard = () => {
             token: localStorage.getItem("token")
         }))
     }, [])
-    const {id} = useSelector(userSelector)
+    const {_id} = useSelector(userSelector)
 
     useEffect(() => {
         if(isError){
@@ -39,7 +39,7 @@ const Dashboard = () => {
       ) : (
         <Fragment>
           <div className="container mx-auto">
-            Welcome back <h3>{id}</h3>
+            Welcome back <h3>{_id}</h3>
           </div>
           <button
             onClick={onLogOut}

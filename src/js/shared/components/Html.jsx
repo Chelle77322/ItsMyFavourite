@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-function Html({ children, initialState, scripts }) {
+function Insert({ children, initialState, scripts }) {
   return (
     <html>
       <head>
@@ -13,7 +13,7 @@ function Html({ children, initialState, scripts }) {
           dangerouslySetInnerHTML={{ __html: children }} />
 
         {initialState && (
-          <script
+          <scripts
             dangerouslySetInnerHTML={{
               __html: `window.APP_STATE=${JSON.stringify(initialState)}`
             }} />
@@ -28,4 +28,4 @@ function Html({ children, initialState, scripts }) {
           }  
 
 
-export default Html;
+export default Insert;

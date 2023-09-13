@@ -13,10 +13,10 @@ export const userService = {
     update,
     delete: _delete
 };
-async function authenticate({id, password}){
-    const user = await User.findOne({id});
+async function authenticate(_id, password){
+    const user = await User.findOne({_id});
     if (user && bcrypt.compareSync(password, user.hash)) {
-        const token = jwt.sign({sub: user.id},
+        const token = jwt.sign({sub: user._id},
             Connection.secret,{expiresIn: '7 days'});
         return{ 
             ...user.toJSON(),
@@ -27,15 +27,15 @@ async function authenticate({id, password}){
 async function getAll() {
     return await User.find();
 }
-async function getById(id){ 
-    return await User.findById(id);
+async function getById(_id){ 
+    return await User.findById(_id);
 }
 async function create(userParam){
     //this validates the user
-    if (await User.findOne({id:userParam.id}))
+    if (await User.findOne({_id:userParam._id}))
     {
         // eslint-disable-next-line no-throw-literal
-        throw 'ID "' + userParam.id + '" is already taken';
+        throw 'ID "' + userParam._id + '" is already taken';
     }
     const user = new User(userParam)
     if(userParam.password){
@@ -54,12 +54,12 @@ async function update(user){
         headers: { ...authHeader(), 'Content-Type': 'application/json'},
         body: JSON.stringify(user)
     };
-    const response = await fetch(`${Connection.config}/users/${user.id}`, requestOptions);
+    const response = await fetch(`${Connection.config}/users/${user._id}`, requestOptions);
     // eslint-disable-next-line no-undef
     return handleResponse(response);;
 }
-async function _delete(id){
-    await User.findByIdAndRemove(id);
+async function _delete(_id){
+    await User.findByIdAndRemove(_id);
 }
 
 
