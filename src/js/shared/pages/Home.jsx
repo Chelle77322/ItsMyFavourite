@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/heading-has-content */
 import React, {Component} from 'react';
 import {Container, Row, Col} from 'react-bootstrap';
-import {Outlet, Route, Routes}from 'react-router-dom';
+import {Route, Routes}from 'react-router-dom';
 import Login from "../Components/Login.jsx";
 
 
-import {default as Register} from "../Components/Register.jsx";
+import Register from "../Components/Register.jsx";
 
 import Navigation from "../Components/Home/Navigation.jsx"
 
@@ -33,8 +33,8 @@ render(){
                     
         <Routes>
            
-               <Route exact Component = {<Login/>} path = "/Login" />
-               <Route exact component = {<Register/>} path = "/Register" />
+               <Route element = {<Login/>} path = "/Login" />
+               <Route element = {<Register/>} path = "/Register" />
 
                                
                             </Routes>

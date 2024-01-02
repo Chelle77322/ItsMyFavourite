@@ -7,19 +7,21 @@ import Button from "react-inputs-validation";
 //import {isValidEmail} from "../Utils/index.js";
 //import signUp from "../Features/signUp.jsx";
 
-export default class Register extends Component {
+export class Register extends Component {
     constructor(props) { 
         super(props);
-        this.state = {status:true};
+        const redirectRoute = this.props.location.query.next || '/register';
+        //this.state = {status:true};
         this.state = {
             users:{
              _id: ' ',
             firstName: '',
-            lastName: '',
+           lastName: '',
             password: '',
             favourites: [],
+            redirectTo: redirectRoute
             },
-           
+       
         errors: {
             users: {
                 _id: "Enter your unique identifier here",
@@ -33,11 +35,12 @@ export default class Register extends Component {
         }
     }
     componentsDidMount() {
-        if(this.props.user){
+        if(this.props.users){
             this.setState({user: this.props.user_id});
         if(this.props.user.password){
             this.resetErrorMessage();
         }
+        console.log(user, "Components Did Mount")
         }
     }
     makeChange = (event) => {
@@ -117,6 +120,10 @@ resetErrorMessage = () => {
     this.setState({errors});
 
 }
+register(event){
+    event.preventDefault();
+    this.props.actions.registerUser(this.state._id,this.state.firstName, this.state.lastName, this.state.password, this.state.redirectTo )
+}
 render() {
     const {_id, firstName, lastName, password, submitted} = this.state
     
@@ -177,14 +184,21 @@ render() {
     );
                   }
                 }
-                const mapStateToProps = (state, user) => {
-                  return {
-                user,
-                  state
-                  }
-                }
-       
-   connect(mapStateToProps)(Register);
+                const mapStateToProps = (state) => ({
+                    isAuthenticating: state.auth.isAuthenticating,
+                    statusText : state.auth.statusText
+                });
+                const mapDispatchToProps = (dispatch)=> ({
+                    actions: Register,dispatch
+                })
+                //const mapStateToProps = (state) => {
+                  //return {
+                //user: state.users.user[[]]
+                  //}
+                //}
+     
+  export default connect(mapStateToProps)(state)
+  mapDispatchToProps(Register);
                 
                   
                   
